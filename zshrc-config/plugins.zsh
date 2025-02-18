@@ -1,0 +1,36 @@
+plugins=(
+  pip
+  golang
+  gpg-agent
+  zoxide
+  gem
+  pod
+  docker
+  starship
+  docker-compose
+  pyenv
+  jsontools
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  alias-finder
+  fzf
+  fzf-tab
+  ubuntu
+  gh
+  vi-mode
+  nvm
+  command-not-found
+  colored-man-pages
+  rust
+  react-native
+  zsh-fzf-history-search
+  yarn
+  safe-paste
+  nodenv
+  rvm
+  ruby
+  ssh
+  direnv
+  gradle
+  bundler
+)

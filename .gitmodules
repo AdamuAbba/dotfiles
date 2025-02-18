@@ -1,0 +1,9 @@
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "fzf-git.sh"]
+	path = fzf-git.sh
+	url = https://github.com/junegunn/fzf-git.sh
+[submodule ".config/yazi/plugins/easyjump.yazi"]
+	path = .config/yazi/plugins/easyjump.yazi
+	url = https://gitee.com/DreamMaoMao/easyjump.yazi.git

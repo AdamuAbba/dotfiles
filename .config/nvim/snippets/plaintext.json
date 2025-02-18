@@ -1,0 +1,17 @@
+{
+  "Desktop Entry Template": {
+    "prefix": "desktop",
+    "body": [
+      "[Desktop Entry]",
+      "Version=${1:1.0}",
+      "Name=${2:My Application}",
+      "Comment=${3:This is my application}",
+      "Exec=${4:/usr/bin/my_application}",
+      "Icon=${5:my_application_icon}",
+      "Terminal=${6:false}",
+      "Type=Application",
+      "Categories=${7:Utility;}"
+    ],
+    "description": "Create a basic .desktop entry"
+  }
+}

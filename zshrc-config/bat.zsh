@@ -1,0 +1,5 @@
+export BAT_THEME="Dracula"
+alias -g -- cat="bat"
+export MANPATH="/usr/local/man:$MANPATH"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+MANROFFOPT="-c"
