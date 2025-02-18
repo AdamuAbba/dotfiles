@@ -1,0 +1,129 @@
+#==================== variables ==============================
+set $mod Mod1
+set $up k
+set $down j
+set $left h
+set $right l
+set $ws1 1
+set $ws2 2
+
+#==================== i3 configs/visuals ==============================
+default_border pixel 0
+default_floating_border pixel 0
+font pango:JetBrainsMono Nerd Font Medium 12
+floating_modifier Mod1
+tiling_drag modifier titlebar
+gaps inner 10
+gaps outer 5
+gaps top 40
+
+#==================== autostart ======================================
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+exec --no-startup-id --no-startup-id xfce4-power-manager
+exec --no-startup-id ~/dotfiles/.config/scripts/battery.sh&
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/libexec/gsd-xsettings
+exec_always --no-startup-id feh --no-fehbg --bg-fill ~/dotfiles/wallpapers/1366x768-eDP-1.png ~/dotfiles/wallpapers/1920x1080-DP-2.png
+exec_always --no-startup-id ~/dotfiles/.config/scripts/i3/auto-extend-monitor.sh
+exec_always --no-startup-id ~/dotfiles/.config/polybar/launch.sh --forest
+exec_always --no-startup-id ~/dotfiles/.config/scripts/xborder/xborders --config ~/dotfiles/.config/xborder/config.json &
+exec_always --no-startup-id picom -b --config ~/dotfiles/.config/picom/picom.conf
+exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
+exec_always --no-startup-id killall dunst && dunst -config ~/dotfiles/.config/dunst/dunstrc &
+
+#==================== launch programs/i3 bindings ======================
+bindsym Mod1+Return exec --no-startup-id wezterm start
+bindsym Mod1+space exec --no-startup-id ~/dotfiles/.config/rofi/launchers/type-1/launcher.sh
+bindsym Shift+Control+q kill
+#-->power,brightness,volume,battery,wifi
+bindsym Mod1+Shift+p exec --no-startup-id ~/dotfiles/.config/rofi/powermenu/type-1/powermenu.sh
+bindsym Mod1+Shift+b exec --no-startup-id ~/dotfiles/.config/rofi/applets/bin/battery.sh
+bindsym Mod1+Shift+s exec --no-startup-id ~/dotfiles/.config/rofi/applets/bin/brightness.sh
+bindsym Mod1+Shift+v exec --no-startup-id ~/dotfiles/.config/rofi/applets/bin/volume.sh
+# bindsym $mod+Shift+m exec --no-startup-id ~/dotfiles/.config/scripts/i3/auto-extend-monitor.sh
+#-->
+bindsym Mod1+Shift+c reload
+bindsym Mod1+Shift+r restart
+
+#==================== program workspace assignment ========================
+#--> workspace 1
+assign [class="Google-chrome" instance="google-chrome"] → $ws1
+#--> workspace 2
+assign [class="org.wezfurlong.wezterm" instance="org.wezfurlong.wezterm"] → $ws2
+assign [class="Postman" instance="postman"] → $ws2
+
+#==================== container configs ======================
+bindsym $mod+Shift+$right move container to workspace back_and_forth,workspace prev
+bindsym $mod+Shift+$left move container to workspace back_and_forth,workspace next
+#--> Focus
+bindsym Shift+Control+$left focus left
+bindsym Shift+Control+$down focus down
+bindsym Shift+Control+$up focus up
+bindsym Shift+Control+$right focus right
+#--> floating pop up automatically
+for_window [instance="(?i)localhost_page_1"]       floating   disable
+for_window [window_role="task_dialog"]             floating     enable
+for_window [window_role="pop-up"]                  floating     enable
+for_window [class="Arandr"]                        floating     enable
+for_window [class="obsidian"]                      floating     enable
+for_window [class="Pavucontrol"]                   floating     enable
+for_window [class="Dunst"]                         floating     enable
+for_window [class="Nm-connection-editor"]          floating     enable
+for_window [class="(?i)Evolution-alarm-notify"]    floating     enable
+for_window [class="(?i)fpakman"]                   floating     enable
+for_window [class="(?i)Gnome-screenshot"]          floating     enable
+for_window [class="(?i)GParted"]                   floating     enable
+for_window [class="(?i)Lxappearance"]              floating     enable
+for_window [class="(?i)octopi"]                    floating     enable
+for_window [class="(?i)openfortiGUI"]              floating     enable
+for_window [class="(?i)qt5ct"]                     floating     enable
+for_window [class="(?i)Qtconfig-qt4"]              floating     enable
+for_window [class="(?i)Simple-scan"]               floating     enable
+for_window [class="(?i)Skype"]                     floating     enable
+for_window [class="(?i)System-config-printer.py"]  floating     enable
+for_window [class="(?i)Xfburn"]                    floating     enable
+for_window [title="alsamixer"]                     floating     enable
+for_window [title="File Transfer*"]                floating     enable
+for_window [title="i3_help"]                       floating     enable
+for_window [window_role="PictureInPicture"]        floating     enable
+#--> scratchpad config
+bindsym Shift+Control+minus move scratchpad
+bindsym Shift+Control+plus scratchpad show,floating toggle
+
+#=========================== workspace configs =======================================
+#--> orientation
+bindsym Mod1+v split v
+bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+bindsym Mod1+e layout toggle split
+#--> switching
+bindsym $mod+$right workspace back_and_forth
+bindsym $mod+$left workspace back_and_forth
+#--> focus
+for_window [urgent=latest]           focus
+for_window [class=".*"]              focus
+
+#==================== monitor config ====================
+workspace $ws1 output primary
+
+#==================== resize container ==================== 
+mode "resize" {
+        bindsym $right       resize shrink width 10 px or 10 ppt
+        bindsym $up       resize grow height 10 px or 10 ppt
+        bindsym $down         resize shrink height 10 px or 10 ppt
+        bindsym $left      resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Mod1+r mode "default"
+}
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
+
+bindsym Mod1+r mode "resize"

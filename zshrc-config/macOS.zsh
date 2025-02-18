@@ -1,0 +1,11 @@
+  export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Documents/Monexus/firebase-cloud-credentials/money-transfer-aad55-aada2e3c24d5.json"
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+  export MANPATH="/usr/local/man:$MANPATH"
+  export ZSH="$HOME/.oh-my-zsh"
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export PATH=$PATH:$ANDROID_HOME/emulator
+  export PATH=$PATH:$ANDROID_HOME/build-tools
+  export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+  export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  export PATH=~/.local/bin/:$PATH

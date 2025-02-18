@@ -1,0 +1,36 @@
+{
+  "Lua Function Documentation": {
+    "prefix": "docf",
+    "body": [
+      "-- Function: ${1:function_name}",
+      "-- -------------------------",
+      "-- Description:",
+      "--   ${2:Description of the function}",
+      "-- Parameters:",
+      "--   ${3:parameter_1} - ${4:Description of parameter 1}",
+      "-- Returns:",
+      "--   ${5:Description of what the function returns}",
+      "-- Usage:",
+      "--   ${6:enter usage}",
+      "",
+      "function ${1:function_name}()",
+      "    ${7-- Function logic goes here}",
+      "end",
+      ""
+    ],
+    "description": "Generate documentation for a Lua function"
+  },
+  "Add separator": {
+    "prefix": "divider",
+    "body": "--============================================= $0 ============================================="
+  },
+  "Comment Divider": {
+    "prefix": "comment",
+    "body": [
+      "-- ------------------------------",
+      "-- ${1:Comment goes here}",
+      "-- ------------------------------"
+    ],
+    "description": "Insert a comment divider"
+  }
+}

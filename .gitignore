@@ -1,0 +1,135 @@
+#============================================= Neovim =============================================
+.config/tmux/plugins/
+
+#============================================= Neovim =============================================
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
+.config/nvim/tt.*
+.config/nvim/.tests
+.config/nvim/doc/tags
+.config/nvim/debug
+.config/nvim/.repro
+.config/nvim/foo.*
+.config/nvim/*.log
+.config/nvim/data
+# .config/nvim/README.md
+.config/nvim/LICENSE
+
+#============================================= Github =============================================
+.config/github-copilot/
+
+#============================================= Intellij =============================================
+.idea/
+.config/jgit/
+
+#============================================= wireshark =============================================
+.config/wireshark/
+#============================================= helix =============================================
+.config/helix/runtime
+#============================================= GTK Stuff =============================================
+.config/themes/Linux/skins/dracula/gtk/node_modules/
+.config/themes/Linux/skins/dracula/gtk/.sass-cache/
+.config/themes/Linux/skins/dracula/gtk/*.css.map
+.config/themes/Linux/skins/dracula/gtk/_gnome-shell
+.config/themes/Linux/skins/dracula/gtk/install.sh
+
+#============================================= remaining stuff =============================================
+.config/input-remapper/
+.config/configstore
+.config/.gsd-keyboard.settings-ported
+.config/BraveSoftware/
+.config/Code/
+.config/Electron/
+.config/Google/
+.config/QtProject.conf
+.config/Softdeluxe/
+.config/appimagelauncher.cfg
+.config/autostart/
+.config/burn-my-windows/
+.config/chromium/
+.config/dconf/
+.config/discord/
+.config/eas-cli-nodejs/
+.config/enchant/
+.config/evolution/
+.config/forge/
+.config/gedit/
+.config/gnome-control-center/
+.config/gnome-initial-setup-done
+.config/goa-1.0/
+.config/google-chrome-beta/
+.config/google-chrome-unstable/
+.config/google-chrome/
+.config/grammarly-languageserver/
+.config/gsconnect/
+.config/ibus/
+.config/kazam/
+.config/menus/
+.config/microsoft-edge-beta/
+.config/microsoft-edge-dev/
+.config/mimeapps.list
+.config/monitors.xml
+.config/my-first-app/
+.config/nautilus/
+.config/polar/
+.config/pulse/
+.config/systemd/
+.config/tiling-assistant/
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/yarn/
+.config/yelp/
+.config/zoom.conf
+.config/zoomus.conf
+.fzf/
+.config/Android Open Source Project/
+.config/Docker Desktop/
+.config/Unknown Organization/
+.config/Bitwarden CLI/
+.config/monitors.xml~
+.config/obs-studio/
+.config/screenkey.json
+.config/vlc/
+.config/spotify
+.config/bashtop
+.config/corectrl
+.config/Postman
+.config/FreeTube
+.config/React Native Debugger/
+.config/balenaEtcher/
+.wakatime.cfg
+.config/thefuck/
+.DS_Store
+
+#============================================= obsidian =============================================
+.config/obsidian
+
+#============================================= plymouth-themes =============================================
+.config/plymouth-themes
+.config/plymouth-themes/*.tar.gz
+
+#============================================= xprop2i3 =============================================
+.config/scripts/xprop2i3/scMakefile
+.config/scripts/xprop2i3/Makefile.old
+.config/scripts/xprop2i3/Build
+.config/scripts/xprop2i3/Build.bat
+.config/scripts/xprop2i3/META.*
+.config/scripts/xprop2i3/MYMETA.*
+.config/scripts/xprop2i3/_build/
+.config/scripts/xprop2i3/.build/
+.config/scripts/xprop2i3/cover_db/
+.config/scripts/xprop2i3/blib/
+.config/scripts/xprop2i3/inc/
+.config/scripts/xprop2i3/.lwpcookies
+.config/scripts/xprop2i3/.last_cover_stats
+.config/scripts/xprop2i3/nytprof.out
+.config/scripts/xprop2i3/pod2htm*.tmp
+.config/scripts/xprop2i3/pm_to_blib
+.config/scripts/xprop2i3/xprop2i3-*
+.config/scripts/xprop2i3/xprop2i3-*.tar.gz
+
+#============================================= xborder =============================================
+.config/scripts/xborder/__pycache__/
+.config/scripts/xborder/.update_ignore.txt
+.config/scripts/xborder/.idea
+.config/scripts/xborder/venv

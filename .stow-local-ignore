@@ -1,0 +1,10 @@
+\.git
+LICENSE
+README.md
+\.gitmodules
+\.config/\.DS_Store
+\.DS_Store
+\.config/themes
+setup.sh
+setup
+\.gitignore

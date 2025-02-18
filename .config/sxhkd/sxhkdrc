@@ -1,0 +1,32 @@
+control + shift + t
+ wezterm start
+
+# brightness keys
+XF86MonBrightnessUp
+ changebrightness up
+
+XF86MonBrightnessDown
+ changebrightness down
+
+# media keys
+# shift + control + underscore
+F6
+ playerctl previous --player spotify
+
+#shift + control + plus
+F8
+ playerctl next --player spotify
+
+#control + shift + p
+F7
+ playerctl play-pause --player spotify
+
+# volume keys
+69
+ changevolume up
+
+68
+ changevolume down
+
+70
+ changevolume mute
