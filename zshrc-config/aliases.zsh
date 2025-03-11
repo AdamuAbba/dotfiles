@@ -1,6 +1,7 @@
 #============================================= Aliases =============================================
 alias ios-clean-simulator="rm -R ~/Library/Developer/CoreSimulator/Caches"
 alias cd="z"
+alias ping="gping"
 alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias gg="lazygit"
 alias gsout="gnome-session-quit --logout --no-prompt"
@@ -16,6 +17,11 @@ alias edit-nvim="nvim ~/dotfiles/.config/nvim/"
 alias edit-alias="nvim ~/dotfiles/zshrc-config/aliases.zsh"
 alias edit-starship="nvim ~/dotfiles/.config/starship.toml"
 alias edit-wezterm="nvim ~/dotfiles/.config/wezterm/"
+alias edit-hx="hx ~/dotfiles/.config/helix/config.toml"
+alias edit-hx-lang="hx ~/dotfiles/.config/helix/languages.toml"
+alias edit-zellij="nvim $HOME/dotfiles/.config/zellij/config.kdl"
+alias edit-tv="nvim $HOME/dotfiles/.config/television/config.toml"
+
 #============================================= lnd =============================================
 alias edit-lnd="nvim ~/Library/Application\ Support/Lnd/lnd.conf"
 #============================================= zsh =============================================

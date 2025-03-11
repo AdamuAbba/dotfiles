@@ -35,3 +35,13 @@ end, {
 --============================================= Create Blank Newline =============================================
 map("n", "<leader>o", "o<ESC>k", { desc = "↓ Create Blank Newline below and stay in Normal mode", silent = true })
 map("n", "<leader>O", "o<ESC>j", { desc = "↑ Create Blank Newline above and stay in Normal mode", silent = true })
+
+--============================================= nvim-scissors =============================================
+map("n", "<leader>he", function()
+  require("scissors").editSnippet()
+end, { desc = "Snippet: Edit" })
+
+-- when used in visual mode, prefills the selection as snippet body
+map({ "n", "x" }, "<leader>ha", function()
+  require("scissors").addNewSnippet()
+end, { desc = "Snippet: Add" })

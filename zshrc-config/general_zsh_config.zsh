@@ -1,5 +1,6 @@
 #============================================= ENV configs =============================================
-
+export HELIX_RUNTIME=/opt/homebrew/Cellar/helix/25.01.1/libexec/runtime
+export XDG_CONFIG_HOME="$HOME/.config"
 GITSTATUS_LOG_LEVEL=DEBUG
 export PATH="$HOME/bin:$PATH"
 export GDK_SCALE=2
@@ -16,7 +17,9 @@ export EDITOR="$VISUAL"
 export LAZYPLUGINS="$HOME/.local/share/nvim/site/pack/lazy/start"
 
 #============================================= Command History =============================================
-HISTFILE=$HOME/.zhistory
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=500
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -24,7 +27,6 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 setopt appendhistory
-setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -32,8 +34,3 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 unsetopt correct_all
 unsetopt correct
-
-#============================================= Man stuff =============================================
-export MANPATH="/usr/local/man:$MANPATH"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-MANROFFOPT="-c"

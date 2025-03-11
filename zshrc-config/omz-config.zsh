@@ -4,14 +4,6 @@ export ZSH_CUSTOM="$HOME/dotfiles/.oh-my-zsh/custom"
 ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
 ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
 ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
-#-------------- tmux -------------------------------
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_AUTOQUIT=true
-ZSH_TMUX_CONFIG=$HOME/dotfiles/.config/tmux/tmux.conf
-ZSH_TMUX_FIXTERM=true
-
-
 #============================================= Base configs =============================================
 zstyle ':omz:lib:directories' aliases no
 zstyle ':omz:lib:*' aliases no

@@ -31,6 +31,9 @@ return {
         }
       end
     end
+    local function get_shell()
+      return vim.fn.getenv("SHELL")
+    end
     --============================================= picker =============================================
     opts.picker = {
       sources = {
@@ -38,14 +41,41 @@ return {
           hidden = true,
           ignored = true,
           follow = true,
-          layout = { layout = { position = "right" } },
+          layout = {
+            layout = {
+              position = "float",
+              width = math.floor(vim.o.columns * 0.6),
+              height = math.floor(vim.o.lines * 0.8),
+              border = "rounded",
+              backdrop = true,
+            },
+          },
         },
       },
     }
+    opts.styles = {}
     --============================================= image =============================================
-    opts.image = {}
+    opts.image = {
+      doc = {
+        max_width = 20,
+        max_height = 10,
+        float = false,
+      },
+    }
     --============================================= statuscolumn =============================================
     opts.statuscolumn = { enabled = true }
+    --============================================= terminal =============================================
+    opts.terminal = {
+      enabled = true,
+      win = {
+        style = "float",
+        width = math.floor(vim.o.columns * 0.7),
+        height = math.floor(vim.o.lines * 0.7),
+        border = "rounded",
+        title = get_shell(),
+        title_pos = "center",
+      },
+    }
     --============================================= dashboard =============================================
     opts.dashboard = {
       enabled = true,

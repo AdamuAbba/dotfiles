@@ -1,0 +1,8 @@
+[[cable_channel]]
+name = "zsh-history"
+source_command = "tail -r $HOME/.zsh_history | cut -d\";\" -f 2-"
+
+[[cable_channel]]
+name = "brew-list"
+source_command = 'brew list --versions'
+preview_command = 'brew info {0}'

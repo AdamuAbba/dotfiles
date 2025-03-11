@@ -18,7 +18,7 @@
 # The log format uses } characters between each field, and `column` is later
 # used to split on them. A } in the commit subject or any other field will
 # break this.
-
+export GIT_PAGER=delta
 LOG_HASH="%C(always,yellow)%h%C(always,reset)"
 LOG_RELATIVE_TIME="%C(always,green)(%ar)%C(always,reset)"
 LOG_AUTHOR="%C(always,blue)<%an>%C(always,reset)"

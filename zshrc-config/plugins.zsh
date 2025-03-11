@@ -13,17 +13,16 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   alias-finder
-  fzf
-  fzf-tab
   ubuntu
   gh
   vi-mode
+  fzf
+  fzf-tab
   nvm
   command-not-found
   colored-man-pages
   rust
   react-native
-  zsh-fzf-history-search
   yarn
   safe-paste
   nodenv
