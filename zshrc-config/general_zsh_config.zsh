@@ -35,8 +35,6 @@ setopt hist_find_no_dups
 unsetopt correct_all
 unsetopt correct
 
-
 export PATH="/opt/homebrew/opt/trash/bin:$PATH"
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -12,6 +12,7 @@ plugins=(
   alias-finder
   ubuntu
   gh
+  vi-mode
   fzf
   fzf-tab
   nvm

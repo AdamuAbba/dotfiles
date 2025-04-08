@@ -48,6 +48,7 @@ layout {
         color_highlight_low "#2a283e"
         color_highlight_med "#44415a"
         color_highlight_high "#56526e"
+        color_black "#000000"
 
         format_left   "#[fg=$overlay_light,bold]{session} {mode}#[] "
         format_center "{tabs}"
@@ -77,12 +78,12 @@ layout {
         mode_session       "#[fg=$love,bold] SESSION "
         mode_prompt        "#[fg=$love,bold] PROMPT "
 
-        tab_normal              "#[fg=$subtle,bold] {index} #[fg=$subtle,bold] {name} {floating_indicator} "
-        tab_normal_fullscreen   "#[fg=$subtle,bold] {index} #[fg=$subtle,bold] {name} {fullscreen_indicator} "
-        tab_normal_sync         "#[fg=$subtle] {index} #[fg=$subtle] {name} {sync_indicator} "
-        tab_active              "#[bg=$overlay,fg=$text,bold] {index} #[bg=$overlay,fg=$text,bold] {name} {floating_indicator} "
-        tab_active_fullscreen   "#[bg=$overlay,fg=$text,bold] {index} #[bg=$overlay,fg=$text,bold] {name} {fullscreen_indicator} "
-        tab_active_sync         "#[bg=$overlay,fg=$text,bold] {index} #[bg=$overlay,fg=$text,bold] {name} {sync_indicator} "
+        tab_normal              "#[fg=$text,bold] {name} {floating_indicator} "
+        tab_normal_fullscreen   "#[fg=$text,bold] {name} {fullscreen_indicator} "
+        tab_normal_sync         "#[fg=$text,bold] {name} {sync_indicator} "
+        tab_active              "#[bg=$overlay,fg=$active,bold] {name} {floating_indicator} "
+        tab_active_fullscreen   "#[bg=$overlay,fg=$active,bold] {name} {fullscreen_indicator} "
+        tab_active_sync         "#[bg=$overlay,fg=$active,bold] {name} {sync_indicator} "
         tab_separator           " "
 
         tab_sync_indicator       ""
