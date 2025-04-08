@@ -36,12 +36,12 @@ g.lazyvim_blink_main = true
 --=============================================  Options ==============================================
 opt.termguicolors = true
 opt.cursorline = true
+opt.cursorcolumn = true
 opt.number = true
 opt.laststatus = 3
 opt.showmode = false
 opt.swapfile = true
 opt.clipboard = "unnamedplus"
 opt.mouse = ""
-
 --=============================================  window scoped ==============================================
 w.relativenumber = false

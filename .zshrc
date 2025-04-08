@@ -2,10 +2,12 @@
 #--------------------------------- PLEASE ------------------------------------------------
 #--------------------------------- Do ------------------------------------------------
 #--------------------------------- NOT ------------------------------------------------
-#--------------------------------- RE-ORDER ------------------------------------------------
+#--------------------------------- RE-ORDER ANYTHING ------------------------------------------------
 
 #=============================================== List of all plugins ==============================
 source $HOME/zshrc-config/plugins.zsh
+#=============================================== zsh-vi-mode==============================
+source $HOME/zshrc-config/zsh-vi-mode.zsh
 #============================================== General zsh config ================================
 source $HOME/zshrc-config/general_zsh_config.zsh
 #============================================== text-editor =======================================
@@ -41,8 +43,6 @@ source $HOME/zshrc-config/omz-config.zsh
 source $HOME/zshrc-config/aliases.zsh
 #============================================ Additional completions for zsh ========================
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-#============================================ keep at bottom (DO NOT TOUCH ABBA) ====================
-source $ZSH/oh-my-zsh.sh
 #============================================ Lang (Do not remove from bottom) ======================
 source $HOME/zshrc-config/languages/python.zsh
 source $HOME/zshrc-config/languages/rust.zsh
@@ -65,3 +65,6 @@ tv_zsh_history_widget() {
 
 # Bind it to Ctrl+R
 bindkey "^R" tv_zsh_history_widget
+
+#============================================ keep at bottom (DO NOT TOUCH ABBA) ====================
+source $ZSH/oh-my-zsh.sh

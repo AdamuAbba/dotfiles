@@ -8,14 +8,14 @@ return {
           icon = " ",
           key = "a",
           desc = "Edit Aerospace Config",
-          action = ":edit ~/dotfiles/.config/aerospace/aerospace.toml",
+          action = ":edit $HOME/.config/aerospace/aerospace.toml",
         }
       else
         return {
           icon = " ",
           key = "i",
           desc = "Edit i3 Config",
-          action = ":edit ~/dotfiles/.config/i3/config",
+          action = ":edit $HOME/.config/i3/config",
         }
       end
     end
@@ -27,7 +27,7 @@ return {
           icon = " ",
           key = "p",
           desc = "Edit Polybar Config",
-          action = ":edit ~/dotfiles/.config/polybar/forest/config.ini",
+          action = ":edit $HOME/.config/polybar/forest/config.ini",
         }
       end
     end
@@ -113,13 +113,13 @@ return {
             icon = " ",
             key = "w",
             desc = "Edit Wezterm Config",
-            action = ":edit ~/dotfiles/.config/wezterm/wezterm.lua",
+            action = ":edit $HOME/.config/wezterm/wezterm.lua",
           },
           {
             icon = "󱓞 ",
             key = "s",
             desc = "Edit Starship config",
-            action = ":edit ~/dotfiles/.config/starship.toml",
+            action = ":edit $HOME/.config/starship.toml",
           },
           set_status_bar(),
           getWinManager(),

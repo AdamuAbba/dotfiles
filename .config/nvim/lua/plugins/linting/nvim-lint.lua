@@ -8,7 +8,7 @@ return {
         ["markdownlint-cli2"] = {
           args = {
             "--config",
-            HOME .. "/dotfiles/.config/nvim/lua/plugins/linting/.markdownlint-cli2.yaml",
+            HOME .. "/.config/nvim/lua/plugins/linting/.markdownlint-cli2.yaml",
             "--",
           },
         },

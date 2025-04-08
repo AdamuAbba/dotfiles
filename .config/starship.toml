@@ -19,8 +19,8 @@ yellow = "#f1fa8c"
 
 
 [character]
-error_symbol = "[ ](bold red)"
-success_symbol = "[ ](bold green)"
+error_symbol = "[ ](bold red)"
+success_symbol = "[ ](bold green)"
 
 [username]
 format = "[$user]($style) on "

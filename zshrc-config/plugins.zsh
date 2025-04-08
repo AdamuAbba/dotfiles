@@ -9,11 +9,9 @@ plugins=(
   starship
   docker-compose
   pyenv
-  jsontools
   alias-finder
   ubuntu
   gh
-  vi-mode
   fzf
   fzf-tab
   nvm
@@ -21,7 +19,6 @@ plugins=(
   colored-man-pages
   rust
   react-native
-  yarn
   safe-paste
   nodenv
   rvm

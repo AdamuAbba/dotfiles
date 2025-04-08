@@ -16,10 +16,3 @@ zstyle ':omz:plugins:alias-finder' cheaper no
 
 #============================================= zoxide =============================================
 export ZOXIDE_CMD_OVERRIDE="cd"
-#============================================= VI-mode =============================================
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
-INSERT_MODE_INDICATOR="%F{yellow}+%f"
-bindkey -M viins 'jj' vi-cmd-mode
-PROMPT="$PROMPT\$(vi_mode_prompt_info)"
-RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
