@@ -183,7 +183,9 @@ plugins {
 }
 
 load_plugins {
-  "file:/Users/abba/.config/zellij/plugins/zjframes.wasm"
+  "file:/Users/abba/.config/zellij/plugins/zjframes.wasm" {
+     hide_frame_for_single_pane       "true"
+  }
 }
 simplified_ui false
 theme "dracula"
