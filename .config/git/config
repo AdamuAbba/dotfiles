@@ -3,7 +3,7 @@
 
 [user]
     email = abbaadamu302@gmail.com
-    name = AdamuAbba
+	name = shytypes
     signingkey = B87CC68CF426C819
 
 [http]
@@ -52,3 +52,8 @@
 
 [tag]
     forceSignAnnotated = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
