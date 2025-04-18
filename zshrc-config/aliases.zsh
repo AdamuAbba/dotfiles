@@ -30,6 +30,8 @@ alias edit-plugins="nvim $HOME/zshrc-config/plugins.zsh"
 alias edit-z-layout="nvim $HOME/.config/zellij/layouts/default.kdl"
 alias edit-atac-theme="nvim $ATAC_THEME"
 alias edit-atac-kb="nvim $ATAC_KEY_BINDINGS"
+alias edit-skhd="nvim $HOME/.config/skhd/skhdrc"
+alias edit-aero="nvim $HOME/.config/aerospace/aerospace.toml"
 
 #============================================= lnd =============================================
 alias edit-lnd="nvim ~/Library/Application\ Support/Lnd/lnd.conf"

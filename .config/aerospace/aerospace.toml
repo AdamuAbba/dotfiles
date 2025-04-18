@@ -12,12 +12,12 @@
 # All possible modifiers: cmd, alt, ctrl, shift
 
 after-login-command = [
-  'exec-and-forget borders active_color=0xFFC591FF inactive_color=0x00494D64 width=5.0 hidpi=on',
+  # 'exec-and-forget borders active_color=0xFFC591FF inactive_color=0x00494D64 width=5.0 hidpi=on',
 ]
 
 after-startup-command = []
 
-start-at-login = false
+start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 default-root-container-layout = 'tiles'
@@ -33,13 +33,13 @@ automatically-unhide-macos-hidden-apps = true
 [gaps]
 inner.horizontal = 14
 inner.vertical = 14
-outer.left = 14
-outer.bottom = 14
-outer.top = 14
-outer.right = 14
+outer.left = 17
+outer.bottom = 17
+outer.top = 17
+outer.right = 17
 
 [mode.main.binding]
-cmd-alt-h = []                              # Disable "hide others"
+cmd-alt-h = []
 shift-ctrl-h = 'focus left'
 shift-ctrl-j = 'focus down'
 shift-ctrl-k = 'focus up'
@@ -87,6 +87,11 @@ run = ["move-node-to-workspace 1:Browser"]
 [[on-window-detected]]
 if.app-id = 'org.freedownloadmanager.fdm6'
 run = ["move-node-to-workspace 1:Browser"]
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = ["move-node-to-workspace 1:Browser"]
+
 #============================================= Editors/IDEs =============================================
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
@@ -106,6 +111,14 @@ if.app-name-regex-substring = 'qemu-system-aarch64'
 run = ["layout floating", "move-node-to-workspace 3:Sims/VMs"]
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'raycast'
+run = ["layout floating"]
+
+[[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
 run = ["layout floating", "move-node-to-workspace 3:Sims/VMs"]
 
@@ -116,10 +129,6 @@ run = "move-node-to-workspace 4:Tools"
 
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run = ["move-node-to-workspace 4:Tools"]
-
-[[on-window-detected]]
-if.app-id = 'com.atlassian.trello'
 run = ["move-node-to-workspace 4:Tools"]
 
 #============================================= Media =============================================
@@ -134,6 +143,10 @@ run = "move-node-to-workspace 5:Media"
 #============================================= Misc =============================================
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
+run = "move-node-to-workspace 6:Misc"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
 run = "move-node-to-workspace 6:Misc"
 
 [[on-window-detected]]

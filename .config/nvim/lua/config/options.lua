@@ -6,18 +6,6 @@ local opt = vim.opt
 local g = vim.g
 local w = vim.wo
 
-vim.filetype.add({
-  extension = {
-    ["http"] = "http",
-  },
-})
---============================================= open in browswer ======================================
-vim.cmd([[
-function! g:Open_browser(url)
-    silent exec "!google-chrome --app=" . a:url . " &"
-endfunction
-]])
-
 --============================================= Undercurl =============================================
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
@@ -29,7 +17,6 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
 -- g.python3_host_prog = "/Users/abba/.pyenv/versions/neovim/bin/python"
-g.mkdp_browserfunc = "g:Open_browser"
 g.lazyvim_prettier_needs_config = true
 g.lazyvim_blink_main = true
 

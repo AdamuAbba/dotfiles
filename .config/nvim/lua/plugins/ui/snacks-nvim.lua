@@ -116,6 +116,12 @@ return {
             action = ":edit $HOME/.config/wezterm/wezterm.lua",
           },
           {
+            icon = "󰙏 ",
+            key = "d",
+            desc = "Edit diary",
+            action = ":edit $HOME/Documents/shytypes-obs-vault/Todo.md",
+          },
+          {
             icon = "󱓞 ",
             key = "s",
             desc = "Edit Starship config",
