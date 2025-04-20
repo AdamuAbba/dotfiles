@@ -27,9 +27,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 automatically-unhide-macos-hidden-apps = true
 
-#################################
-#        Window stuff           #
-#################################
+#####################################################################################################
+#                                            Window Stuff                                           #
+#####################################################################################################
 [gaps]
 inner.horizontal = 14
 inner.vertical = 14
@@ -49,9 +49,10 @@ shift-ctrl-q = 'close'
 cmd-shift-h = 'move-node-to-workspace prev'
 cmd-shift-l = 'move-node-to-workspace next'
 
-#################################
-#        workspace stuff        #
-#################################
+#####################################################################################################
+#                                            workspaces                                             #
+#####################################################################################################
+#============ first monitor workspaces
 cmd-1 = 'workspace 1:Browser'
 cmd-2 = 'workspace 2:Editor'
 cmd-3 = 'workspace 3:Sims/VMs'
@@ -59,12 +60,29 @@ cmd-4 = 'workspace 4:Tools'
 cmd-5 = 'workspace 5:Media'
 cmd-6 = 'workspace 6:Misc'
 
+#============ second monitor workspaces
+cmd-7 = 'workspace 7:MT2/Browser'
+cmd-8 = 'workspace 8:MT2/Editor'
+
+[workspace-to-monitor-force-assignment]
+"1:Browser" = 'main'
+"2:Editor" = 'main'
+"3:Sims/VMs" = 'main'
+"4:Tools" = 'main'
+"5:Media" = 'main'
+"6:Misc" = 'main'
+"7:MT2/Browser" = 'secondary'
+"8:MT2/Editor" = 'secondary'
+
 cmd-l = 'workspace next'
 cmd-h = 'workspace prev'
 
 alt-shift-right = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 
+#####################################################################################################
+#                                            Mode resize                                            #
+#####################################################################################################
 shift-ctrl-r = 'mode resize'
 [mode.resize.binding]
 h = 'resize width -50'
@@ -76,23 +94,26 @@ enter = 'mode main'
 esc = 'mode main'
 ctrl-leftSquareBracket = 'mode main'
 
-#################################
-#        Callbacks              #
-#################################
+#####################################################################################################
+#                                            Callbacks                                              #
+#####################################################################################################
 #============================================= Browsers =============================================
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = ["move-node-to-workspace 1:Browser"]
-
+#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'org.freedownloadmanager.fdm6'
-run = ["move-node-to-workspace 1:Browser"]
+run = ["layout floating", "move-node-to-workspace 1:Browser"]
 
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = ["move-node-to-workspace 1:Browser"]
 
-#============================================= Editors/IDEs =============================================
+#============ Second Monitor
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ["move-node-to-workspace 7:MT2/Browser"]
+
+#============================================= Editors/IDEs =========================================
+#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace 2:Editor"
@@ -102,8 +123,13 @@ if.app-id = 'com.google.android.studio'
 run = "move-node-to-workspace 2:Editor"
 
 [[on-window-detected]]
-if.app-id = 'com.apple.dt.Xcode '
+if.app-id = 'com.apple.dt.Xcode'
 run = ["move-node-to-workspace 2:Editor"]
+
+#============ Second Monitor
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ["move-node-to-workspace 8:MT2/Editor"]
 
 #============================================= Sims/Vms =============================================
 [[on-window-detected]]
@@ -122,7 +148,7 @@ run = ["layout floating"]
 if.app-id = 'com.apple.iphonesimulator'
 run = ["layout floating", "move-node-to-workspace 3:Sims/VMs"]
 
-#============================================= Tools =============================================
+#============================================= Tools ================================================
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = "move-node-to-workspace 4:Tools"
@@ -140,6 +166,10 @@ run = "move-node-to-workspace 5:Media"
 if.app-id = 'org.videolan.vlc'
 run = "move-node-to-workspace 5:Media"
 
+[[on-window-detected]]
+if.app-id = 'com.smartcodeltd.stremio'
+run = "move-node-to-workspace 5:Media"
+
 #============================================= Misc =============================================
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -152,3 +182,15 @@ run = "move-node-to-workspace 6:Misc"
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 6:Misc"
+
+# [[on-window-detected]]
+# if.app-id = 'com.raycast.macos'
+# run = ["layout floating", "move-node-to-workspace 6:Misc"]
+
+[[on-window-detected]]
+if.app-id = 'ch.protonvpn.mac'
+run = "move-node-to-workspace 6:Misc"
+
+[[on-window-detected]]
+if.app-id = 'com.grammarly.ProjectLlama'
+run = ["layout floating", "move-node-to-workspace 6:Misc"]
