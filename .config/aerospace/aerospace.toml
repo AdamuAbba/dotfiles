@@ -64,6 +64,12 @@ cmd-6 = 'workspace 6:Misc'
 cmd-7 = 'workspace 7:MT2/Browser'
 cmd-8 = 'workspace 8:MT2/Editor'
 
+cmd-l = 'workspace next'
+cmd-h = 'workspace prev'
+
+alt-shift-right = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
+
 [workspace-to-monitor-force-assignment]
 "1:Browser" = 'main'
 "2:Editor" = 'main'
@@ -73,12 +79,7 @@ cmd-8 = 'workspace 8:MT2/Editor'
 "6:Misc" = 'main'
 "7:MT2/Browser" = 'secondary'
 "8:MT2/Editor" = 'secondary'
-
-cmd-l = 'workspace next'
-cmd-h = 'workspace prev'
-
-alt-shift-right = 'move-workspace-to-monitor --wrap-around next'
-alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
+"9:MT2/VMs" = 'secondary'
 
 #####################################################################################################
 #                                            Mode resize                                            #
@@ -132,21 +133,19 @@ if.app-id = 'com.microsoft.VSCode'
 run = ["move-node-to-workspace 8:MT2/Editor"]
 
 #============================================= Sims/Vms =============================================
+#============ First Monitor
 [[on-window-detected]]
 if.app-name-regex-substring = 'qemu-system-aarch64'
 run = ["layout floating", "move-node-to-workspace 3:Sims/VMs"]
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'finder'
-run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'raycast'
-run = ["layout floating"]
-
-[[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
 run = ["layout floating", "move-node-to-workspace 3:Sims/VMs"]
+
+#============ Second Monitor
+[[on-window-detected]]
+if.app-name-regex-substring = 'UTM'
+run = ["layout floating", "move-node-to-workspace 9:MT2/VMs"]
 
 #============================================= Tools ================================================
 [[on-window-detected]]
@@ -176,6 +175,10 @@ if.app-id = 'com.apple.finder'
 run = "move-node-to-workspace 6:Misc"
 
 [[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = "move-node-to-workspace 6:Misc"
+
+[[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = "move-node-to-workspace 6:Misc"
 
@@ -183,13 +186,25 @@ run = "move-node-to-workspace 6:Misc"
 if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 6:Misc"
 
-# [[on-window-detected]]
-# if.app-id = 'com.raycast.macos'
-# run = ["layout floating", "move-node-to-workspace 6:Misc"]
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'raycast'
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'ch.protonvpn.mac'
-run = "move-node-to-workspace 6:Misc"
+run = ["layout floating", "move-node-to-workspace 6:Misc"]
+
+[[on-window-detected]]
+if.app-id = "com.tunnelbear.mac.TunnelBear"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'vpn'
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.grammarly.ProjectLlama'
