@@ -4,10 +4,10 @@
 #--------------------------------- NOT ------------------------------------------------
 #--------------------------------- RE-ORDER ANYTHING ------------------------------------------------
 
-#============================================ Dracula theme================================================
+#============================================ Dracula theme========================================
 #-------- Load dracula color palette before sourcing brew
 source $HOME/zshrc-config/dracula_palette.zsh
-#============================================ homebrew ==============================================
+#============================================ homebrew ============================================
 source $HOME/zshrc-config/homebrew.zsh
 #=============================================== List of all plugins ==============================
 source $HOME/zshrc-config/plugins.zsh
@@ -35,6 +35,8 @@ source $HOME/zshrc-config/fzf.zsh
 source $HOME/zshrc-config/git.zsh
 #============================================ Github ================================================
 source $HOME/zshrc-config/atac.zsh
+#============================================ Jetbrains =============================================
+source $HOME/zshrc-config/jetbrains.zsh
 #============================================ nvm ===================================================
 # ---- leave above OMZ initialization because of {nvm} ------------------------
 source $HOME/zshrc-config/languages/javascript.zsh
@@ -43,7 +45,7 @@ source $HOME/zshrc-config/omz-config.zsh
 #============================================ Aliases ===============================================
 source $HOME/zshrc-config/aliases.zsh
 #============================================ Additional completions for zsh ========================
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+source $HOME/zshrc-config/zsh-completions.zsh
 #============================================ Lang (Do not remove from bottom) ======================
 source $HOME/zshrc-config/languages/python.zsh
 source $HOME/zshrc-config/languages/rust.zsh

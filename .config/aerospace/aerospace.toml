@@ -11,12 +11,8 @@
 
 # All possible modifiers: cmd, alt, ctrl, shift
 
-after-login-command = [
-  # 'exec-and-forget borders active_color=0xFFC591FF inactive_color=0x00494D64 width=5.0 hidpi=on',
-]
-
+after-login-command = []
 after-startup-command = []
-
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -59,10 +55,11 @@ cmd-3 = 'workspace 3:Sims/VMs'
 cmd-4 = 'workspace 4:Tools'
 cmd-5 = 'workspace 5:Media'
 cmd-6 = 'workspace 6:Misc'
-
 #============ second monitor workspaces
 cmd-7 = 'workspace 7:MT2/Browser'
 cmd-8 = 'workspace 8:MT2/Editor'
+cmd-9 = 'workspace 9:MT2/VMs'
+cmd-0 = 'workspace 10:MT2/Tools'
 
 cmd-l = 'workspace next'
 cmd-h = 'workspace prev'
@@ -80,20 +77,21 @@ alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 "7:MT2/Browser" = 'secondary'
 "8:MT2/Editor" = 'secondary'
 "9:MT2/VMs" = 'secondary'
+"10:MT2/Tools" = 'secondary'
 
 #####################################################################################################
 #                                            Mode resize                                            #
 #####################################################################################################
-shift-ctrl-r = 'mode resize'
-[mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
-b = 'balance-sizes'
-enter = 'mode main'
-esc = 'mode main'
-ctrl-leftSquareBracket = 'mode main'
+# shift-ctrl-r = 'mode resize'
+# [mode.resize.binding]
+# h = 'resize width -50'
+# j = 'resize height +50'
+# k = 'resize height -50'
+# l = 'resize width +50'
+# b = 'balance-sizes'
+# enter = 'mode main'
+# esc = 'mode main'
+# ctrl-leftSquareBracket = 'mode main'
 
 #####################################################################################################
 #                                            Callbacks                                              #
@@ -148,6 +146,7 @@ if.app-name-regex-substring = 'UTM'
 run = ["layout floating", "move-node-to-workspace 9:MT2/VMs"]
 
 #============================================= Tools ================================================
+#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = "move-node-to-workspace 4:Tools"
@@ -155,6 +154,11 @@ run = "move-node-to-workspace 4:Tools"
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
 run = ["move-node-to-workspace 4:Tools"]
+
+#============ Second Monitor
+[[on-window-detected]]
+if.app-id = "com.github.GitHubClient"
+run = ["layout floating", "move-node-to-workspace 10:MT2/Tools"]
 
 #============================================= Media =============================================
 [[on-window-detected]]
@@ -172,7 +176,7 @@ run = "move-node-to-workspace 5:Media"
 #============================================= Misc =============================================
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = "move-node-to-workspace 6:Misc"
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
@@ -187,25 +191,17 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 6:Misc"
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'finder'
-run = ["layout floating"]
-
-[[on-window-detected]]
 if.app-name-regex-substring = 'raycast'
 run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'ch.protonvpn.mac'
-run = ["layout floating", "move-node-to-workspace 6:Misc"]
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "com.tunnelbear.mac.TunnelBear"
 run = ["layout floating"]
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'vpn'
-run = ["layout floating"]
-
-[[on-window-detected]]
 if.app-id = 'com.grammarly.ProjectLlama'
-run = ["layout floating", "move-node-to-workspace 6:Misc"]
+run = ["layout floating"]
