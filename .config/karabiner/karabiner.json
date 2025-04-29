@@ -1,0 +1,94 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "parameters": {
+                    "basic.simultaneous_threshold_milliseconds": 10,
+                    "basic.to_if_held_down_threshold_milliseconds": 200
+                },
+                "rules": [
+                    {
+                        "description": "j + k → Right Shift (chord), preserves j/k",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "j" },
+                                        { "key_code": "k" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "right_shift" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "d + f → Left Shift (chord), preserves d/f",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "d" },
+                                        { "key_code": "f" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "left_shift" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Right Command → Hyper (Cmd + Ctrl + Opt)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control",
+                                        "modifiers": ["left_command", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_control → caps_lock",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "caps_lock → control when held, escape when tapped",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
+        }
+    ]
+}
