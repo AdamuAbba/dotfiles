@@ -1,0 +1,26 @@
+{
+  "title": "Remap Left Control to Caps Lock",
+  "rules": [
+    {
+      "description": "left_control → caps_lock",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "left_control",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

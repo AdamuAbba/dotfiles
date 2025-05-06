@@ -16,9 +16,8 @@ after-startup-command = []
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
+default-root-container-layout = 'accordion'
+default-root-container-orientation = 'vertical'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 automatically-unhide-macos-hidden-apps = true
@@ -26,16 +25,36 @@ automatically-unhide-macos-hidden-apps = true
 #####################################################################################################
 #                                            Window Stuff                                           #
 #####################################################################################################
+accordion-padding = 30
+
 [gaps]
 inner.horizontal = 14
 inner.vertical = 14
 outer.left = 17
 outer.bottom = 17
-outer.top = 17
+outer.top = [{ monitor.'built-in.*' = 13 }, 17]
 outer.right = 17
 
+[key-mapping]
+preset = 'qwerty'
+
 [mode.main.binding]
-cmd-alt-h = []
+#####################################################################################################
+#                                        Open/focus apps                                            #
+#####################################################################################################
+# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+# using RayCast for now but i might concider this
+# cmd-alt-ctrl-shift-b = 'exec-and-forget open -a "Brave Browser.app"'
+# cmd-alt-ctrl-shift-w = 'exec-and-forget open -a "WezTerm.app"'
+# cmd-alt-ctrl-shift-a = 'exec-and-forget open -a "Ghostty.app"'
+# cmd-alt-ctrl-shift-z = 'exec-and-forget open -a "Obsidian.app"'
+# cmd-alt-ctrl-shift-r = 'exec-and-forget open -a "Windows App"'
+# cmd-alt-ctrl-shift-c = 'exec-and-forget open -a "Slack.app"'
+# cmd-alt-ctrl-shift-w = 'exec-and-forget open -a "Microsoft Teams.app"'
+# cmd-alt-ctrl-shift-s = 'exec-and-forget open -a "Spotify.app"'
+#####################################################################################################
+#                                            Windows                                                #
+#####################################################################################################
 shift-ctrl-h = 'focus left'
 shift-ctrl-j = 'focus down'
 shift-ctrl-k = 'focus up'
@@ -196,6 +215,10 @@ run = "move-node-to-workspace 5:Misc"
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
 run = ["layout floating", "move-node-to-workspace 5:Misc"]
+
+[[on-window-detected]]
+if.app-id = "md.obsidian"
+run = ["move-node-to-workspace 5:Misc"]
 
 #============================================= Social =============================================
 #============ First Monitor
