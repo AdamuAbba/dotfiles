@@ -2,7 +2,6 @@
 alias ios-clean-simulator="rm -R ~/Library/Developer/CoreSimulator/Caches"
 alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
 
-alias ping="gping"
 alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias gg="lazygit"
 alias rm='trash'

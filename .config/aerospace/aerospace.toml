@@ -226,6 +226,9 @@ run = ["move-node-to-workspace 5:Misc"]
 if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 6:Social"
 
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace 6:Social"
 #============ Second Monitor
 
 
