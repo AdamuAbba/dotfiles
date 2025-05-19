@@ -2,6 +2,7 @@ return {
   {
     "vyfor/cord.nvim",
     build = ":Cord update",
+    enabled = false,
     opts = function()
       local blacklist = {
         "mindful-insights-mobile",

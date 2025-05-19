@@ -2,7 +2,14 @@
 
 keymap = [
   #============================================= Plugins =============================================
-  { on = "s", run = "plugin easyjump", desc = "easyjump" },
+  #------------------------------ smart-enter
+  { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  #------------------------------ smart-paste
+  { on = "p", run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
+  #------------------------------ jump-to-char
+  { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
+  #------------------------------ copy-file-contents
+  { on = "<A-y>", run = "plugin copy-file-contents", desc = "Copy contents of file" },
 
   #========================================== Navigations =============================================
   { on = [
@@ -100,7 +107,7 @@ keymap = [
   { on = [
     "g",
     "c",
-  ], run = "cd ~/dotfiles", desc = "Go to dotfiles" },
+  ], run = "cd ~/Documents/dotfiles", desc = "Go to dotfiles" },
   { on = [
     "g",
     "p",

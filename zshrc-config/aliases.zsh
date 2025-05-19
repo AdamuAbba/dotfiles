@@ -5,6 +5,7 @@ alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
 alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias gg="lazygit"
 alias rm='trash'
+alias kj="koji --config=$HOME/.config/koji/config.toml"
 alias ping="gping"
 alias gsout="gnome-session-quit --logout --no-prompt"
 alias edit-grub="nvim /etc/default/grub"
@@ -16,8 +17,12 @@ alias update-node="nvm install --reinstall-packages-from=default --latest-npm 'l
 alias update-npm="npm install -g npm@latest"
 alias update-brew-pkgs="brew update && brew upgrade && brew cleanup"
 
-alias edit-bitcoin="nvim ~/Library/Application Support/Bitcoin/bitcoin.conf"
+alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
+alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
+alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind"
+
 alias edit-nvim="nvim $HOME/.config/nvim/"
+alias edit-yz="nvim $HOME/.config/yazi/yazi.toml"
 alias edit-alias="nvim $HOME/zshrc-config/aliases.zsh"
 alias edit-starship="nvim $HOME/.config/starship.toml"
 alias edit-wezterm="nvim $HOME/.config/wezterm/wezterm.lua"
