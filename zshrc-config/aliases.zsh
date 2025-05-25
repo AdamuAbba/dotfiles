@@ -22,6 +22,7 @@ alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
 alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind"
 
 alias edit-nvim="nvim $HOME/.config/nvim/"
+alias edit-kba="nvim $HOME/.config/karabiner/assets/complex_modifications/"
 alias edit-yz="nvim $HOME/.config/yazi/yazi.toml"
 alias edit-alias="nvim $HOME/zshrc-config/aliases.zsh"
 alias edit-starship="nvim $HOME/.config/starship.toml"

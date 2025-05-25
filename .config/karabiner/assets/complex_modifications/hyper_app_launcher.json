@@ -162,7 +162,7 @@
           },
           "to": [
             {
-              "shell_command": "open -a 'Discord'"
+              "shell_command": "open -a 'Legcord'"
             }
           ]
         },

@@ -81,13 +81,7 @@ return {
       enabled = true,
       ---@class snacks.dashboard.Config
       preset = {
-        footer = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return {
-            "Keep cooking 🔥" .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
-          }
-        end,
+        footer = {},
         header = [[
  ███████╗██╗  ██╗██╗   ██╗████████╗██╗   ██╗██████╗ ███████╗███████╗
  ██╔════╝██║  ██║╚██╗ ██╔╝╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔════╝
@@ -142,7 +136,6 @@ return {
             action = ":edit $HOME/Library/Application Support/Lnd/lnd.conf",
           },
           { icon = " ", key = "z", desc = "Edit .zshrc", action = ":edit ~/.zshrc" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
         formats = {
@@ -167,7 +160,6 @@ return {
         sections = {
           { section = "header" },
           { section = "keys" },
-          { section = "startup" },
         },
       },
     }

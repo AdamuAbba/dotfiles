@@ -205,6 +205,10 @@ if.app-id = 'com.apple.finder'
 run = ["layout floating"]
 
 [[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = ["move-node-to-workspace 5:Misc"]
+
+[[on-window-detected]]
 if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace 5:Misc"
 
