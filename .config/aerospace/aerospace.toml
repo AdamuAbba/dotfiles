@@ -184,6 +184,10 @@ run = ["move-node-to-workspace 3:Tools"]
 if.app-id = "com.github.GitHubClient"
 run = ["move-node-to-workspace 3:Tools"]
 
+[[on-window-detected]]
+if.app-id = "org.gimp.gimp-3.0"
+run = ["move-node-to-workspace 3:Tools"]
+
 #============ Second Monitor
 
 #============================================= Media =============================================

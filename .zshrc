@@ -6,7 +6,7 @@
 
 #============================================ Dracula theme========================================
 #-------- Load dracula color palette before sourcing brew
-source $HOME/zshrc-config/dracula_palette.zsh
+source $HOME/zshrc-config/theme.zsh
 #============================================ homebrew ============================================
 source $HOME/zshrc-config/homebrew.zsh
 #=============================================== List of all plugins ==============================

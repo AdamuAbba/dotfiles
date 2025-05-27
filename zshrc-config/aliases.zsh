@@ -5,7 +5,7 @@ alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
 alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias gg="lazygit"
 alias rm='trash'
-alias kj="koji --config=$HOME/.config/koji/config.toml"
+alias koji="koji --config=$HOME/.config/koji/config.toml"
 alias ping="gping"
 alias gsout="gnome-session-quit --logout --no-prompt"
 alias edit-grub="nvim /etc/default/grub"
@@ -16,6 +16,9 @@ alias cpu-set-high="echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpu
 alias update-node="nvm install --reinstall-packages-from=default --latest-npm 'lts/*'"
 alias update-npm="npm install -g npm@latest"
 alias update-brew-pkgs="brew update && brew upgrade && brew cleanup"
+# alias presenterm="presenterm -x --theme=terminal-dark"
+alias rec="asciinema rec"
+alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
