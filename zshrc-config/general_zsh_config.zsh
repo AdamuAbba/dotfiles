@@ -1,6 +1,7 @@
 #============================================= ENV configs =============================================
 export HELIX_RUNTIME=/opt/homebrew/Cellar/helix/25.01.1/libexec/runtime
 export XDG_CONFIG_HOME="$HOME/.config"
+export SCREEN_RECORDING_DIR="$HOME/Movies/screen-recordings"
 GITSTATUS_LOG_LEVEL=DEBUG
 export PATH="$HOME/bin:$PATH"
 export GDK_SCALE=2

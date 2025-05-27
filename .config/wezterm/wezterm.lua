@@ -11,7 +11,7 @@ require "events.update-status"
 --============================================= UI =============================================
 config.color_scheme = "Dracula (Official)"
 config.font = wezterm.font("ShureTechMono Nerd Font", { weight = "Regular" })
-config.font_size = 17
+config.font_size = 17.2
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 -- config.underline_thickness = "1pt"

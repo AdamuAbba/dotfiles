@@ -40,19 +40,6 @@ preset = 'qwerty'
 
 [mode.main.binding]
 #####################################################################################################
-#                                        Open/focus apps                                            #
-#####################################################################################################
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# using RayCast for now but i might concider this
-# cmd-alt-ctrl-shift-b = 'exec-and-forget open -a "Brave Browser.app"'
-# cmd-alt-ctrl-shift-w = 'exec-and-forget open -a "WezTerm.app"'
-# cmd-alt-ctrl-shift-a = 'exec-and-forget open -a "Ghostty.app"'
-# cmd-alt-ctrl-shift-z = 'exec-and-forget open -a "Obsidian.app"'
-# cmd-alt-ctrl-shift-r = 'exec-and-forget open -a "Windows App"'
-# cmd-alt-ctrl-shift-c = 'exec-and-forget open -a "Slack.app"'
-# cmd-alt-ctrl-shift-w = 'exec-and-forget open -a "Microsoft Teams.app"'
-# cmd-alt-ctrl-shift-s = 'exec-and-forget open -a "Spotify.app"'
-#####################################################################################################
 #                                            Windows                                                #
 #####################################################################################################
 shift-ctrl-h = 'focus left'
@@ -184,11 +171,19 @@ run = ["move-node-to-workspace 3:Tools"]
 if.app-id = "com.github.GitHubClient"
 run = ["move-node-to-workspace 3:Tools"]
 
+[[on-window-detected]]
+if.app-id = "org.gimp.gimp-3.0"
+run = ["move-node-to-workspace 3:Tools"]
+
 #============ Second Monitor
 
 #============================================= Media =============================================
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
+run = "move-node-to-workspace 4:Media"
+
+[[on-window-detected]]
+if.app-id = 'com.jpochyla.psst'
 run = "move-node-to-workspace 4:Media"
 
 [[on-window-detected]]
@@ -201,10 +196,6 @@ run = "move-node-to-workspace 4:Media"
 
 #============================================= Misc =============================================
 [[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = ["layout floating"]
-
-[[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
 run = ["move-node-to-workspace 5:Misc"]
 
@@ -214,11 +205,11 @@ run = "move-node-to-workspace 5:Misc"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
-run = "move-node-to-workspace 5:Misc"
+run = ["layout floating"]
 
 [[on-window-detected]]
-if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
-run = ["layout floating", "move-node-to-workspace 5:Misc"]
+if.app-id = "net.freemacsoft.AppCleaner"
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "md.obsidian"
@@ -241,6 +232,18 @@ run = "move-node-to-workspace 6:Social"
 
 
 #============================================= Detached (Floating) =============================================
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ["layout floating"]
+
 [[on-window-detected]]
 if.app-name-regex-substring = 'raycast'
 run = ["layout floating"]

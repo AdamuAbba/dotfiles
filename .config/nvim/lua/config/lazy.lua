@@ -29,6 +29,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
+    --============================================= languages extras ==========================================
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.toml" },
     { import = "lazyvim.plugins.extras.lang.json" },
@@ -46,27 +47,48 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.ruby" },
     { import = "lazyvim.plugins.extras.lang.prisma" },
+    { import = "lazyvim.plugins.extras.lang.vue" },
+
+    --============================================= linting extras ============================================
     { import = "lazyvim.plugins.extras.linting.eslint" },
+
+    --============================================= formatting extras =========================================
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.formatting.biome" },
     { import = "lazyvim.plugins.extras.formatting.black" },
+
+    --============================================= editor extras =============================================
     { import = "lazyvim.plugins.extras.editor.mini-move" },
     { import = "lazyvim.plugins.extras.editor.mini-diff" },
     { import = "lazyvim.plugins.extras.editor.snacks_picker" },
     { import = "lazyvim.plugins.extras.editor.snacks_explorer" },
+
+    --============================================= util extras ===============================================
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.dot" },
+    { import = "lazyvim.plugins.extras.util.octo" },
+
+    --============================================= coding extras =============================================
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.coding.blink" },
     { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
+
+    --============================================= test extras ===============================================
     { import = "lazyvim.plugins.extras.test.core" },
+
+    --============================================= debug-adapter extras ======================================
     { import = "lazyvim.plugins.extras.dap.core" },
+
+    --============================================= ai extras =================================================
     { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+
+    --============================================= ui extras =================================================
     { import = "lazyvim.plugins.extras.ui.smear-cursor" },
+
     -- import/override with your plugins
     { import = "plugins" },
     { import = "plugins.linting" },
@@ -77,7 +99,7 @@ require("lazy").setup({
     { import = "plugins.test" },
     { import = "plugins.dap" },
     { import = "plugins.util" },
-    { import = "plugins.misc" },
+    -- { import = "plugins.misc" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

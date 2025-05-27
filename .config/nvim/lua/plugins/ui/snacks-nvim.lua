@@ -34,6 +34,7 @@ return {
     local function get_shell()
       return vim.fn.getenv("SHELL")
     end
+
     --============================================= picker =============================================
     opts.picker = {
       sources = {
@@ -41,6 +42,8 @@ return {
           hidden = true,
           ignored = true,
           follow = true,
+          -- auto_close = true,
+          follow_file = true,
           layout = {
             layout = {
               position = "float",

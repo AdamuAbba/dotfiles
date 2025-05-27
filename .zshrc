@@ -6,7 +6,7 @@
 
 #============================================ Dracula theme========================================
 #-------- Load dracula color palette before sourcing brew
-source $HOME/zshrc-config/dracula_palette.zsh
+source $HOME/zshrc-config/theme.zsh
 #============================================ homebrew ============================================
 source $HOME/zshrc-config/homebrew.zsh
 #=============================================== List of all plugins ==============================
@@ -15,6 +15,8 @@ source $HOME/zshrc-config/plugins.zsh
 source $HOME/zshrc-config/general_zsh_config.zsh
 #============================================ text-editor =========================================
 source $HOME/zshrc-config/text-editor.zsh
+#============================================ asciinema =========================================
+source $HOME/zshrc-config/asciinema.zsh
 #============================================ machine-specifics ===================================
 source $HOME/zshrc-config/machine_specifics.zsh
 #============================================ bat =================================================

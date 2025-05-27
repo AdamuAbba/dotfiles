@@ -115,6 +115,25 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Figma'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "s",
             "modifiers": {
               "mandatory": [
@@ -126,7 +145,7 @@
           },
           "to": [
             {
-              "shell_command": "open -a 'Spotify'"
+              "shell_command": "open -a 'Psst'"
             }
           ]
         },
@@ -163,6 +182,25 @@
           "to": [
             {
               "shell_command": "open -a 'Legcord'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Simulator'"
             }
           ]
         },

@@ -1,57 +1,55 @@
 [init]
-    defaultBranch = main
-
+  defaultBranch = main
 [user]
-    email = abbaadamu302@gmail.com
+  email = abbaadamu302@gmail.com
 	name = shytypes
-    signingkey = B87CC68CF426C819
-
+  signingkey = B87CC68CF426C819
 [http]
-    version = HTTP/2
-    postBuffer = 524288000
-
-[mergetool]
-    keepBackup = false
-
+  version = HTTP/2
+  postBuffer = 524288000
 [core]
-    pager = delta
-    excludesfile = /Users/abba/.gitignore_global
-
+  pager = delta
+  excludesfile = /Users/abba/.gitignore_global
+  editor = nvim
 [delta]
-    features = side-by-side line-numbers decorations
-    syntax-theme = Dracula
-    plus-style = syntax "#003800"
-    minus-style = syntax "#3f0001"
-    navigate = true
-    dark = true
-
+  features = side-by-side line-numbers decorations
+  syntax-theme = Dracula
+  plus-style = syntax "#003800"
+  minus-style = syntax "#3f0001"
+  navigate = true
+  dark = true
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = cyan box ul
-
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
 [delta "line-numbers"]
-    line-numbers-left-style = cyan
-    line-numbers-right-style = cyan
-    line-numbers-minus-style = 124
-    line-numbers-plus-style = 28
-
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
 [diff]
   colorMoved = default
-
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool]
+  prompt = false
 [merge]
   conflictstyle = diff3
-
+  tool = nvimdiff
+[mergetool]
+  prompt = true
+  keepBackup = false
+[mergetool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
 [commit]
 	gpgsign = true
 	signoff = true
-
 [gpg]
-	program = gpg
-
+  program = gpg
 [tag]
-    forceSignAnnotated = true
+  forceSignAnnotated = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
