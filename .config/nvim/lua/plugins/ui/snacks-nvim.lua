@@ -59,7 +59,7 @@ return {
       doc = {
         max_width = 20,
         max_height = 10,
-        float = false,
+        float = true,
       },
     }
     --============================================= statuscolumn =============================================

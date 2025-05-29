@@ -12,7 +12,7 @@ return {
     init = function()
       vim.cmd([[
 function OpenMarkdownPreview (url)
-    execute "silent ! open -a Google\\ Chrome -n --args --new-window --incognito " . a:url
+    execute "silent ! open -a Zen -n --args --new-tab " . a:url
   endfunction
  ]])
 

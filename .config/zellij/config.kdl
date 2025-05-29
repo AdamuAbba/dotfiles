@@ -184,7 +184,7 @@ plugins {
 
 load_plugins {
   "file:/Users/abba/.config/zellij/plugins/zjframes.wasm" {
-     hide_frame_for_single_pane       "true"
+     hide_frame_for_single_pane       "false"
   }
 }
 simplified_ui false

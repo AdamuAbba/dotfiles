@@ -225,6 +225,10 @@ if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
 run = ["layout floating", "move-node-to-workspace 5:Misc"]
 
 [[on-window-detected]]
+if.app-id = "net.freemacsoft.AppCleaner"
+run = ["layout floating", "move-node-to-workspace 5:Misc"]
+
+[[on-window-detected]]
 if.app-id = "md.obsidian"
 run = ["move-node-to-workspace 5:Misc"]
 
