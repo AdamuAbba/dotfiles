@@ -15,10 +15,11 @@ alias cpu-show-current="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governo
 alias cpu-set-high="echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 alias update-node="nvm install --reinstall-packages-from=default --latest-npm 'lts/*'"
 alias update-npm="npm install -g npm@latest"
-alias update-brew-pkgs="brew update && brew upgrade && brew cleanup"
+alias update-brew-pkgs="brew update && brew upgrade && brew cleanup --prune=all"
 alias rec="asciinema rec"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
+alias ghmp="gh markdown-preview --dark-mode"
 
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"

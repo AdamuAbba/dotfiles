@@ -102,7 +102,7 @@ gui:
   # If true, show jump-to-window keybindings in window titles.
   showPanelJumps: true
   # Deprecated: use nerdFontsVersion instead
-  showIcons: false
+  showIcons: true
   # Nerd fonts version to use.
   # One of: '2' | '3' | empty string (default)
   # If empty, do not show icons.
@@ -483,7 +483,7 @@ customCommands:
   - key: "E"
     description: "Add empty commit"
     context: "commits"
-    command: 'git commit --allow-empty -m "empty commit"'
+    command: 'git commit --signoff --allow-empty -m "empty commit"'
     loadingText: "Committing empty commit..."
   - key: "<c-c>"
     context: "global"
@@ -546,5 +546,5 @@ customCommands:
         key: "Confirm"
         title: "Commit"
         body: "Are you sure you want to commit?"
-    command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
+    command: "git commit --signoff  --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
     loadingText: "Creating conventional commit..."

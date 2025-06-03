@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 show_symlink = true
 show_hidden = true
 
@@ -10,6 +10,12 @@ prepend_previewers = [
   { name = "*.ipynb", run = "rich-preview" },
   { name = "*.json", run = "rich-preview" },
   #    { name = "*.lang_type", run = "rich-preview"} # for particular language files eg. .py, .go., .lua, etc.
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
 ]
 
 [opener]
@@ -17,11 +23,15 @@ docs = [
   { run = 'zathura "$@"', orphan = true, for = "unix", desc = "Docs Viewer" },
 ]
 image = [
-  { run = 'feh --scale-down --image-bg "#282A36" --hide-pointer "$@"', orphan = true, for = "unix", desc = "Image Viewer" },
+  { run = 'feh --scale-down --image-bg "#282A36" --hide-pointer "$@"', orphan = true, for = "linux", desc = "Image Viewer" },
+  { run = 'open "$@"', orphan = true, for = "macos", desc = "Image Viewer" },
 ]
 edit = [{ run = 'nvim "$@"', block = true }]
 play = [{ run = 'mpv "$@"', orphan = true, for = "unix" }]
-open = [{ run = 'xdg-open "$@"', desc = "Open" }]
+open = [
+  { run = 'xdg-open "$@"', for = "linux", desc = "Open" },
+  { run = 'open "$@"', for = "macos", desc = "Open" },
+]
 
 [open]
 rules = [
