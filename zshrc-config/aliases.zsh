@@ -27,7 +27,7 @@ alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
 alias edit-git-global="nvim $HOME/.config/git/config"
-alias edit-git="nvim $(git rev-parse --show-toplevel)/.git/config"
+alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
 alias edit-gg="nvim $HOME/.config/lazygit/config.yml"
 alias edit-nvim="nvim $HOME/.config/nvim/"
 alias edit-kba="nvim $HOME/.config/karabiner/assets/complex_modifications/"

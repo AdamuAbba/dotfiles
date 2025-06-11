@@ -12,10 +12,13 @@ del("n", "<leader>gg")
 del("n", "<leader>gG")
 
 --============================================= deactivate defaults =============================================
+------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Down>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
+map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
+------ Deactive macro recording
 map({ "n", "v" }, "q", "<NOP>", { noremap = true })
 
 --============================================= Open URL =============================================
