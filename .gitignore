@@ -42,6 +42,7 @@
 .config/themes/Linux/skins/dracula/gtk/install.sh
 
 #============================================= remaining stuff =============================================
+.config/exercism/
 .config/input-remapper/
 .config/configstore
 .config/.gsd-keyboard.settings-ported
@@ -108,6 +109,7 @@
 .wakatime.cfg
 .config/thefuck/
 .DS_Store
+*.DS_Store
 
 #============================================= obsidian =============================================
 .config/obsidian

@@ -9,7 +9,6 @@ plugins=(
   starship
   docker-compose
   pyenv
-  alias-finder
   ubuntu
   gh
   vi-mode

@@ -20,6 +20,7 @@ config.window_padding = { left = 7.5, right = 0, top = 10, bottom = 0 }
 config.clean_exit_codes = { 130 }
 config.exit_behavior = "CloseOnCleanExit"
 config.exit_behavior_messaging = "Verbose"
+config.max_fps = 120
 config.skip_close_confirmation_for_processes_named = {
   "bash",
   "sh",

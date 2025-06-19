@@ -19,6 +19,7 @@ alias update-brew-pkgs="brew update && brew upgrade && brew cleanup --prune=all"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
 alias gh-mp="gh markdown-preview --dark-mode"
+alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
 
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
@@ -26,6 +27,7 @@ alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
+alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
 alias edit-git-global="nvim $HOME/.config/git/config"
 alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
 alias edit-gg="nvim $HOME/.config/lazygit/config.yml"

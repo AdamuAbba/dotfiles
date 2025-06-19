@@ -1,0 +1,26 @@
+use_nerdfont = true
+
+[theme]
+background = ""
+primary = "#f8f8f2"
+secondary = ""
+title = "#50fa7b"
+playing = "#50fa7b"
+playing_selected = "#50fa7b"
+playing_bg = "#44475a"
+highlight = "black"
+highlight_bg = "#BD93F9"
+error = "white"
+error_bg = "red"
+statusbar_progress = "#50fa7b"
+statusbar = "#50fa7b"
+statusbar_bg = ""
+cmdline = ""
+cmdline_bg = "white"
+search_match = "#ffb86c"
+
+[keybindings]
+"Ctrl+d" = "move down 5"
+"Ctrl+u" = "move up 5"
+# "gg" = "move up 99"
+"G" = "move down 99"
