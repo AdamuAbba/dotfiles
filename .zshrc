@@ -26,6 +26,8 @@ source $HOME/zshrc-config/bat.zsh
 source $HOME/zshrc-config/man.zsh
 #============================================ bitcoin =============================================
 source $HOME/zshrc-config/bitcoin.zsh
+#============================================ bitwarden ===========================================
+source $HOME/zshrc-config/bitwarden.zsh
 #============================================ Yazi ================================================
 source $HOME/zshrc-config/yazi.zsh
 #============================================ zellij ==============================================
@@ -36,6 +38,8 @@ source $HOME/zshrc-config/fzf.zsh
 source $HOME/zshrc-config/git.zsh
 #============================================ Github ==============================================
 source $HOME/zshrc-config/atac.zsh
+#============================================ Sketchy-bar ==============================================
+source $HOME/zshrc-config/sketchy-bar.zsh
 #============================================ nvm =================================================
 # ---- leave above OMZ initialization because of {nvm} ------------------------
 source $HOME/zshrc-config/languages/javascript.zsh

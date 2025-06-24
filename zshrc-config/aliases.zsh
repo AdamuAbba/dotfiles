@@ -1,6 +1,8 @@
-#============================================= Aliases =============================================
+#============================================= ios specifics =============================================
 alias ios-clean-simulator="rm -R ~/Library/Developer/CoreSimulator/Caches"
 alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
+alias hide-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to true"'
+alias show-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to false"'
 
 alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
 alias gg="lazygit"
@@ -20,12 +22,12 @@ alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --f
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
 alias gh-mp="gh markdown-preview --dark-mode"
 alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
+alias crates-tui="crates-tui --config-file $HOME/.config/crates-tui/config.toml --color-file $HOME/.config/crates-tui/dracula.yaml --frame-rate 60"
 
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
 alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
-
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
 alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
 alias edit-git-global="nvim $HOME/.config/git/config"

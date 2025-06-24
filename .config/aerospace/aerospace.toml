@@ -13,6 +13,11 @@
 
 after-login-command = []
 after-startup-command = []
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+]
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -48,8 +53,8 @@ shift-ctrl-k = 'focus up'
 shift-ctrl-l = 'focus right'
 shift-ctrl-minus = 'macos-native-minimize'
 shift-ctrl-q = 'close'
-cmd-shift-h = 'move-node-to-workspace prev'
-cmd-shift-l = 'move-node-to-workspace next'
+cmd-shift-h = 'move-node-to-workspace prev --focus-follows-window'
+cmd-shift-l = 'move-node-to-workspace next --focus-follows-window'
 
 #####################################################################################################
 #                                            workspaces                                             #

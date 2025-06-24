@@ -114,7 +114,7 @@
                                     "key_code": "d",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Legcord'" }],
+                                "to": [{ "shell_command": "open -a 'Discord'" }],
                                 "type": "basic"
                             },
                             {

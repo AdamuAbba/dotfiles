@@ -200,7 +200,7 @@
           },
           "to": [
             {
-              "shell_command": "open -a 'Legcord'"
+              "shell_command": "open -a 'Discord'"
             }
           ]
         },
