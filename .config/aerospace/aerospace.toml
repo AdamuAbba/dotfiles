@@ -30,7 +30,7 @@ automatically-unhide-macos-hidden-apps = true
 #####################################################################################################
 #                                            Window Stuff                                           #
 #####################################################################################################
-accordion-padding = 30
+accordion-padding = 20
 
 [gaps]
 inner.horizontal = 14
@@ -235,6 +235,14 @@ run = "move-node-to-workspace 6:Social"
 
 [[on-window-detected]]
 if.app-id = 'app.legcord.Legcord'
+run = "move-node-to-workspace 6:Social"
+
+[[on-window-detected]]
+if.app-id = "net.whatsapp.WhatsApp"
+run = "move-node-to-workspace 6:Social"
+
+[[on-window-detected]]
+if.app-id = "com.apple.mail"
 run = "move-node-to-workspace 6:Social"
 #============ Second Monitor
 
