@@ -13,15 +13,15 @@ PADDINGS=3 # All paddings use this value (icon, label, background)
 # Setting up and starting the helper process
 HELPER=git.felix.helper
 killall helper
-(cd $CONFIG_DIR/helper && make)
-$CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
+(cd "$CONFIG_DIR"/helper && make)
+"$CONFIG_DIR"/helper/helper $HELPER >/dev/null 2>&1 &
 
 # Unload the macOS on screen indicator overlay for volume change
 launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1 &
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=40
+  height=30
   color="$BAR_COLOR"
   border_width=0
   border_color="$BAR_BORDER_COLOR"
@@ -67,20 +67,19 @@ sketchybar --default "${defaults[@]}"
 
 # Left
 source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/front_app.sh"
+# source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/aerospace.sh"
 
 # Center
 # source "$ITEM_DIR/media.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/brew.sh"
-# source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/front_app.sh"
 # source "$ITEM_DIR/cpu.sh"
 
 sketchybar --hotload on

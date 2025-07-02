@@ -25,6 +25,7 @@ alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
 alias gh-mp="gh markdown-preview --dark-mode"
 alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
 alias crates-tui="crates-tui --config-file $HOME/.config/crates-tui/config.toml --color-file $HOME/.config/crates-tui/dracula.yaml --frame-rate 60"
+alias cs='env CARGO_SELECTOR_CONFIG=$HOME/.config/cargo-selector/config.toml cargo selector'
 
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
