@@ -29,10 +29,31 @@ for m in visual viopp; do
 done
 
 # Bracketed
+
+local group=(
+  # arround
+  "a("
+  "a)"
+  "a["
+  "a]"
+  "a{"
+  "a}"
+  "a<"
+  "a>"
+  # inside
+  "i("
+  "i)"
+  "i["
+  "i]"
+  "i{"
+  "i}"
+  "i<"
+  "i>"
+)
 autoload -U select-bracketed
 zle -N select-bracketed
 for m in visual viopp; do
-  for c in "a)" "i)" "a]" "i]" "a}" "i}" "a(" "i(" "a[" "i[" "a{" "i{"; do
+  for c in "${group[@]}"; do
     bindkey -M $m $c select-bracketed
   done
 done

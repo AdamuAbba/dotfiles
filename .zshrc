@@ -24,6 +24,8 @@ source $HOME/zshrc-config/machine_specifics.zsh
 source $HOME/zshrc-config/bat.zsh
 #============================================ man =================================================
 source $HOME/zshrc-config/man.zsh
+#============================================ man =================================================
+source $HOME/zshrc-config/atuin.zsh
 #============================================ bitcoin =============================================
 source $HOME/zshrc-config/bitcoin.zsh
 #============================================ bitwarden ===========================================
