@@ -12,7 +12,6 @@ plugins=(
   ubuntu
   gh
   vi-mode
-  fzf
   fzf-tab
   nvm
   command-not-found

@@ -24,8 +24,6 @@ source $HOME/zshrc-config/machine_specifics.zsh
 source $HOME/zshrc-config/bat.zsh
 #============================================ man =================================================
 source $HOME/zshrc-config/man.zsh
-#============================================ man =================================================
-source $HOME/zshrc-config/atuin.zsh
 #============================================ bitcoin =============================================
 source $HOME/zshrc-config/bitcoin.zsh
 #============================================ bitwarden ===========================================
@@ -58,3 +56,6 @@ source $HOME/zshrc-config/languages/ruby.zsh
 source $HOME/zshrc-config/languages/go.zsh
 #============================================ keep at bottom (DO NOT TOUCH SHYTYPES) ==============
 source $ZSH/oh-my-zsh.sh
+
+#============================================ atuin =================================================
+source $HOME/zshrc-config/atuin.zsh
