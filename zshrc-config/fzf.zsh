@@ -9,6 +9,7 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="
   --style=full
+  --height 70%
   --border --padding=1,2
   --input-label=' Input ' --header-label=' File Type '
   --bind='result:transform-list-label:
@@ -50,8 +51,21 @@ _fzf_comprun() {
 }
 
 fif() {
-    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-    local file
-    file="$(rga --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux +m --preview="rga --ignore-case --pretty --context 10 '"$*"' {}")" && echo "opening $file" && open "$file" || return 1;
+  if [ "$#" -eq 0 ]; then
+    echo "Need a string to search for!"
+    return 1
+  fi
+
+  local file
+  file="$(rga --ignore-case --files-with-matches --no-messages "$*" |
+    fzf --preview="rga --ignore-case --pretty --context 10 '$*' {}")"
+
+  if [ -n "$file" ]; then
+    echo "opening $file"
+    nvim "$file"
+  else
+    return 1
+  fi
 }
+
 
