@@ -138,10 +138,10 @@ run = "move-node-to-workspace Editor"
 if.app-id = 'com.apple.dt.Xcode'
 run = ["move-node-to-workspace Editor"]
 
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
-run = ["move-node-to-workspace Editor"]
-
+# [[on-window-detected]]
+# if.app-id = 'com.microsoft.VSCode'
+# run = ["move-node-to-workspace Editor"]
+#
 #============ Second Monitor
 
 
@@ -274,3 +274,7 @@ run = ["layout floating"]
 [[on-window-detected]]
 if.app-id = 'com.grammarly.ProjectLlama'
 run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ["layout floating", "move-node-to-workspace Editor"]

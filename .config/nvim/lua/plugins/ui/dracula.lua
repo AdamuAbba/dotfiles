@@ -1,51 +1,65 @@
+local theme_colors = require("config/theme-colors")
+
 return {
   {
     "Mofiqul/dracula.nvim",
     lazy = false,
     opts = {
       italic_comment = true,
-      lualine_bg_color = "#282A36",
+      lualine_bg_color = theme_colors.background,
       overrides = {
         CursorColumn = { bg = "#44475a" },
         CursorLine = { bg = "#44475a" },
         StatusLine = { bg = "white" },
-        Visual = { bg = "#BD93F9", fg = "black" },
-
+        Visual = { bg = theme_colors.purple, fg = "black" },
+        --============================================= Whichkey overrides=============================================
+        WhichKeyBorder = { fg = theme_colors.green, bg = "NONE" },
+        --============================================= Snacks overrides=============================================
+        SnacksPickerInputBorder = { fg = theme_colors.green, bg = "NONE" },
+        SnacksPickerListBorder = { fg = theme_colors.green, bg = "NONE" },
+        SnacksPickerPreviewBorder = { fg = theme_colors.green, bg = "NONE" },
+        SnacksPickerBoxBorder = { fg = theme_colors.green, bg = "NONE" },
+        SnacksPickerBorder = { fg = theme_colors.green, bg = "NONE" },
         --============================================= Bufferline overrides here =============================================
-        BufferLineFill = { bg = "#282A36" },
-        BufferLineBackground = { bg = "#282A36" },
+        BufferLineFill = { bg = theme_colors.background },
+        BufferLineBackground = { bg = theme_colors.background },
 
         --============================================= File Icons =============================================
         --inactive
-        BufferLineMiniIconsAzure = { bg = "#282A36" },
-        BufferLineMiniIconsGrey = { bg = "#282A36" },
-        BufferLineMiniIconsYellow = { bg = "#282A36" },
+        BufferLineMiniIconsAzure = { bg = theme_colors.background },
+        BufferLineMiniIconsGrey = { bg = theme_colors.background },
+        BufferLineMiniIconsYellow = { bg = theme_colors.background },
+        BufferLineMiniIconsOrange = { bg = theme_colors.background },
+        BufferLineMiniIconsGreen = { bg = theme_colors.background },
         --active
-        BufferLineMiniIconsAzureSelected = { bg = "#8265AB", fg = "#A4FFFF" },
-        BufferLineMiniIconsYellowSelected = { bg = "#8265AB", fg = "#F1FA8C" },
-        BufferLineMiniIconsGraySelected = { bg = "#8265AB", fg = "#F8F8F2" },
+        BufferLineMiniIconsAzureSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
+        BufferLineMiniIconsYellowSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
+        BufferLineMiniIconsGraySelected = { bg = theme_colors.purple, fg = theme_colors.foreground },
+        BufferLineMiniIconsGreySelected = { bg = theme_colors.purple, fg = theme_colors.foreground },
+        BufferLineMiniIconsOrangeSelected = { bg = theme_colors.purple, fg = theme_colors.orange },
+        BufferLineMiniIconsGreenSelected = { bg = theme_colors.purple, fg = theme_colors.green },
 
         --============================================= Close Button =============================================
         --inactive
-        BufferLineCloseButton = { bg = "#282A36" },
+        BufferLineCloseButton = { bg = theme_colors.background },
         --active
-        BufferLineCloseButtonSelected = { bg = "#8265AB" },
+        BufferLineCloseButtonSelected = { bg = theme_colors.purple },
 
         --============================================= Separator =============================================
         --inactive
-        BufferLineSeparator = { fg = "#282A36" },
+        BufferLineSeparator = { fg = theme_colors.background },
         --active
-        BufferLineSeparatorSelected = { fg = "#282A36" },
+        BufferLineSeparatorSelected = { fg = theme_colors.background },
 
         --============================================= buffer container =============================================
         --inactive
         BufferLineBufferVisible = {
-          fg = "#282A36",
-          bg = "#282A36",
+          fg = theme_colors.background,
+          bg = theme_colors.background,
         },
         --active
         BufferLineBufferSelected = {
-          bg = "#8265AB",
+          bg = theme_colors.purple,
         },
       },
     },

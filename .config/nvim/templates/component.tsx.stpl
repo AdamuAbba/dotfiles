@@ -1,0 +1,12 @@
+import { Box, Text } from '@gluestack-ui/themed';
+import React from 'react';
+
+const ${1:$TM_FILENAME_BASE} = () => {
+  return (
+    <Box>
+      <Text>${2:$TM_FILENAME_BASE}</Text>
+    </Box>
+  );
+};
+
+export default ${1:$TM_FILENAME_BASE};

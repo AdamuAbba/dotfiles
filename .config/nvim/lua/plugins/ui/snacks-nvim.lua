@@ -37,6 +37,7 @@ return {
 
     --============================================= picker =============================================
     opts.picker = {
+      prompt = " ",
       sources = {
         explorer = {
           hidden = true,
@@ -44,19 +45,24 @@ return {
           follow = true,
           -- auto_close = true,
           follow_file = true,
+          win = {
+            input = {
+              title = "", -- removes the title
+            },
+          },
           layout = {
             layout = {
-              position = "float",
-              width = math.floor(vim.o.columns * 0.6),
+              box = "vertical",
+              position = "right",
+              width = math.floor(vim.o.columns * 0.3),
               height = math.floor(vim.o.lines * 0.8),
               border = "rounded",
-              backdrop = true,
+              backdrop = false,
             },
           },
         },
       },
     }
-    opts.styles = {}
     --============================================= image =============================================
     opts.image = {
       doc = {
