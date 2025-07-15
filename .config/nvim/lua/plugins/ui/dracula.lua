@@ -12,14 +12,32 @@ return {
         CursorLine = { bg = "#44475a" },
         StatusLine = { bg = "white" },
         Visual = { bg = theme_colors.purple, fg = "black" },
+        --============================================= BlinkCmp overrides=============================================
+        BlinkCmpDocBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        BlinkCmpMenuBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        BlinkCmpSignatureHelpBorder = { fg = theme_colors.green, bg = theme_colors.background },
+
+        --============================================= Lsp window overrides =============================================
+        FloatBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        NormalFloat = { bg = theme_colors.background },
+        DiagnosticFloatingError = { fg = theme_colors.red },
+        DiagnosticFloatingWarn = { fg = theme_colors.orange },
+        DiagnosticFloatingInfo = { fg = theme_colors.cyan },
+        DiagnosticFloatingHint = { fg = theme_colors.purple },
         --============================================= Whichkey overrides=============================================
-        WhichKeyBorder = { fg = theme_colors.green, bg = "NONE" },
+        WhichKeyBorder = { fg = theme_colors.green, bg = theme_colors.background },
+
         --============================================= Snacks overrides=============================================
-        SnacksPickerInputBorder = { fg = theme_colors.green, bg = "NONE" },
-        SnacksPickerListBorder = { fg = theme_colors.green, bg = "NONE" },
-        SnacksPickerPreviewBorder = { fg = theme_colors.green, bg = "NONE" },
-        SnacksPickerBoxBorder = { fg = theme_colors.green, bg = "NONE" },
-        SnacksPickerBorder = { fg = theme_colors.green, bg = "NONE" },
+        SnacksPickerFile = { bg = theme_colors.background },
+        SnacksPickerInput = { bg = theme_colors.background },
+        SnacksPickerList = { bg = theme_colors.background },
+        SnacksPickerPreview = { bg = theme_colors.background },
+        SnacksPickerBox = { bg = theme_colors.background },
+        SnacksPickerInputBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        SnacksPickerListBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        SnacksPickerPreviewBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        SnacksPickerBoxBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        SnacksPickerBorder = { fg = theme_colors.green, bg = theme_colors.background },
         --============================================= Bufferline overrides here =============================================
         BufferLineFill = { bg = theme_colors.background },
         BufferLineBackground = { bg = theme_colors.background },

@@ -5,6 +5,11 @@ return {
     opts = {
       ---@diagnostic disable-next-line: undefined-doc-name
       ---@type lspconfig.options
+      diagnostics = {
+        float = {
+          border = "rounded",
+        },
+      },
       servers = {
         kulala_ls = {},
         vtsls = {

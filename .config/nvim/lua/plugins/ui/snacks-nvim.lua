@@ -38,6 +38,11 @@ return {
     --============================================= picker =============================================
     opts.picker = {
       prompt = " ",
+      layout = {
+        layout = {
+          backdrop = false,
+        },
+      },
       sources = {
         explorer = {
           hidden = true,
