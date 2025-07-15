@@ -35,9 +35,35 @@ return {
       return vim.fn.getenv("SHELL")
     end
 
+    --============================================= lazygit =============================================
+    opts.lazygit = {
+      enabled = true,
+      theme = {
+        [241] = { fg = "Special" },
+        activeBorderColor = { fg = "@keyword", bold = true },
+        inactiveBorderColor = { fg = "DiagnosticFloatingHint", bold = true },
+        cherryPickedCommitBgColor = { fg = "Identifier" },
+        cherryPickedCommitFgColor = { fg = "Function" },
+        defaultFgColor = { fg = "Normal" },
+        optionsTextColor = { fg = "Function" },
+        searchingActiveBorderColor = { fg = "MatchParen", bold = true },
+        selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
+        unstagedChangesColor = { fg = "DiagnosticError" },
+      },
+      win = {
+        style = "lazygit",
+        width = math.floor(vim.o.columns * 0.94),
+        height = math.floor(vim.o.lines * 0.92),
+        row = math.floor(vim.o.lines * 0.03),
+        col = math.floor(vim.o.columns * 0.03),
+        border = "rounded",
+        backdrop = false,
+        title = "Lazygit",
+        title_pos = "center",
+      },
+    }
     --============================================= picker =============================================
     opts.picker = {
-      prompt = " ",
       layout = {
         layout = {
           backdrop = false,

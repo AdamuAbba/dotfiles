@@ -8,10 +8,10 @@ return {
       italic_comment = true,
       lualine_bg_color = theme_colors.background,
       overrides = {
-        CursorColumn = { bg = "#44475a" },
-        CursorLine = { bg = "#44475a" },
-        StatusLine = { bg = "white" },
-        Visual = { bg = theme_colors.purple, fg = "black" },
+        CursorColumn = { bg = theme_colors.selection },
+        CursorLine = { bg = theme_colors.selection },
+        StatusLine = { bg = theme_colors.white },
+        Visual = { bg = theme_colors.purple, fg = theme_colors.black },
         --============================================= BlinkCmp overrides=============================================
         BlinkCmpDocBorder = { fg = theme_colors.green, bg = theme_colors.background },
         BlinkCmpMenuBorder = { fg = theme_colors.green, bg = theme_colors.background },
@@ -41,44 +41,44 @@ return {
         --============================================= Bufferline overrides here =============================================
         BufferLineFill = { bg = theme_colors.background },
         BufferLineBackground = { bg = theme_colors.background },
-
-        --============================================= File Icons =============================================
-        --inactive
-        BufferLineMiniIconsAzure = { bg = theme_colors.background },
-        BufferLineMiniIconsGrey = { bg = theme_colors.background },
-        BufferLineMiniIconsYellow = { bg = theme_colors.background },
-        BufferLineMiniIconsOrange = { bg = theme_colors.background },
-        BufferLineMiniIconsGreen = { bg = theme_colors.background },
-        --active
+        --======================== inactive =================
+        BufferLineDiagnostic = { bg = theme_colors.background },
+        BufferLineMiniIconsAzure = { bg = theme_colors.background, fg = theme_colors.cyan },
+        BufferLineMiniIconsGrey = { bg = theme_colors.background, fg = theme_colors.foreground },
+        BufferLineMiniIconsGray = { bg = theme_colors.background, fg = theme_colors.foreground },
+        BufferLineMiniIconsYellow = { bg = theme_colors.background, fg = theme_colors.yellow },
+        BufferLineMiniIconsOrange = { bg = theme_colors.background, fg = theme_colors.orange },
+        BufferLineMiniIconsGreen = { bg = theme_colors.background, fg = theme_colors.green },
+        BufferLineMiniIconsBlue = { bg = theme_colors.background, fg = theme_colors.cyan },
+        BufferLineCloseButton = { bg = theme_colors.background, fg = theme_colors.red },
+        BufferLineSeparator = { fg = theme_colors.background },
+        BufferLineBufferVisible = { fg = theme_colors.background, bg = theme_colors.background },
+        BufferLineModifiedVisible = { fg = theme_colors.white, bg = theme_colors.background },
+        BufferLineModified = { bg = theme_colors.background, fg = theme_colors.yellow },
+        -- Diagnostics
+        BufferLineErrorDiagnostic = { bg = theme_colors.background, fg = theme_colors.red },
+        BufferLineError = { bg = theme_colors.background, fg = theme_colors.white },
+        BufferLineWarning = { bg = theme_colors.background, fg = theme_colors.white },
+        BufferLineWarningDiagnostic = { bg = theme_colors.background, fg = theme_colors.yellow },
+        BufferLineDiagnosticVisible = { fg = theme_colors.white, bg = theme_colors.background },
+        --======================= active ===================
         BufferLineMiniIconsAzureSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
         BufferLineMiniIconsYellowSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
         BufferLineMiniIconsGraySelected = { bg = theme_colors.purple, fg = theme_colors.foreground },
         BufferLineMiniIconsGreySelected = { bg = theme_colors.purple, fg = theme_colors.foreground },
         BufferLineMiniIconsOrangeSelected = { bg = theme_colors.purple, fg = theme_colors.orange },
         BufferLineMiniIconsGreenSelected = { bg = theme_colors.purple, fg = theme_colors.green },
-
-        --============================================= Close Button =============================================
-        --inactive
-        BufferLineCloseButton = { bg = theme_colors.background },
-        --active
-        BufferLineCloseButtonSelected = { bg = theme_colors.purple },
-
-        --============================================= Separator =============================================
-        --inactive
-        BufferLineSeparator = { fg = theme_colors.background },
-        --active
+        BufferLineMiniIconsBlueSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
+        BufferLineCloseButtonSelected = { bg = theme_colors.purple, fg = theme_colors.red },
         BufferLineSeparatorSelected = { fg = theme_colors.background },
-
-        --============================================= buffer container =============================================
-        --inactive
-        BufferLineBufferVisible = {
-          fg = theme_colors.background,
-          bg = theme_colors.background,
-        },
-        --active
-        BufferLineBufferSelected = {
-          bg = theme_colors.purple,
-        },
+        BufferLineModifiedSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
+        BufferLineBufferSelected = { bg = theme_colors.purple },
+        -- Diagnostics
+        BufferLineDiagnosticSelected = { bg = theme_colors.purple },
+        BufferLineErrorDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.red },
+        BufferLineWarningDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
+        BufferLineErrorSelected = { bg = theme_colors.purple },
+        BufferLineWarningSelected = { bg = theme_colors.purple },
       },
     },
     config = true,

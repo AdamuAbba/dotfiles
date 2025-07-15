@@ -12,5 +12,7 @@ M.pink = os.getenv("DRACULA_PINK")
 M.purple = os.getenv("DRACULA_PURPLE")
 M.red = os.getenv("DRACULA_RED")
 M.yellow = os.getenv("DRACULA_YELLOW")
+M.white = os.getenv("DRACULA_WHITE")
+M.black = os.getenv("DRACULA_BLACK")
 
 return M

@@ -8,8 +8,8 @@ local del = vim.keymap.del
 del("n", "<leader>E")
 
 ---- lazygit defaults
-del("n", "<leader>gg")
-del("n", "<leader>gG")
+-- del("n", "<leader>gg")
+-- del("n", "<leader>gG")
 
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
@@ -104,22 +104,22 @@ map(
 
 --============================================= lazygit (Zellij pane) =============================================
 
-local function open_lazygit_in_zellij()
-  vim.fn.jobstart({
-    "zellij",
-    "run",
-    "--name",
-    "LazyGit",
-    "--floating",
-    "--height=98%",
-    "--width=95%",
-    "--x=3%",
-    "--y=3%",
-    "--",
-    "zsh",
-    "-ic",
-    "lazygit && zellij action close-pane",
-  }, { detach = true })
-end
+-- local function open_lazygit_in_zellij()
+--   vim.fn.jobstart({
+--     "zellij",
+--     "run",
+--     "--name",
+--     "LazyGit",
+--     "--floating",
+--     "--height=98%",
+--     "--width=95%",
+--     "--x=3%",
+--     "--y=3%",
+--     "--",
+--     "zsh",
+--     "-ic",
+--     "lazygit && zellij action close-pane",
+--   }, { detach = true })
+-- end
 
-map("n", "<leader>gg", open_lazygit_in_zellij, { desc = "Lazygit (Zellij pane)" })
+-- map("n", "<leader>gg", open_lazygit_in_zellij, { desc = "Lazygit (Zellij pane)" })

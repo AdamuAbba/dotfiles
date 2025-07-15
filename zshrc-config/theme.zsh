@@ -13,4 +13,6 @@ export DRACULA_PINK=#ff79c6
 export DRACULA_PURPLE=#bd93f9
 export DRACULA_RED=#ff5555
 export DRACULA_YELLOW=#f1fa8c
+export DRACULA_WHITE=#ffffff
+export DRACULA_BLACK=#000000
 
