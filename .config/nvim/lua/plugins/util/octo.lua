@@ -6,7 +6,7 @@ return {
       opts.default_remote = { "upstream", "origin" }
       opts.default_merge_method = "commit"
       opts.default_delete_branch = false
-      opts.picker = "telescope"
+      -- opts.picker = "telescope"
       -- opts.picker_config = {
       --   use_emojis = false,
       --   mappings = {

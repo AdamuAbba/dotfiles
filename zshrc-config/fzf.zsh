@@ -3,8 +3,6 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always --long --
 
 export DISABLE_FZF_KEY_BINDINGS=true
 
-# source <(fzf --zsh)
-
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="
@@ -58,7 +56,7 @@ fif() {
 
   local file
   file="$(rga --ignore-case --files-with-matches --no-messages "$*" |
-    fzf --preview="rga --ignore-case --pretty --context 10 '$*' {}")"
+    fzf  --preview="rga --ignore-case --pretty --context 10 '$*' {}")"
 
   if [ -n "$file" ]; then
     echo "opening $file"
@@ -69,3 +67,26 @@ fif() {
 }
 
 
+fid() {
+  if [ "$#" -eq 0 ]; then
+    echo "Need a filename or folder pattern to search for!"
+    return 1
+  fi
+
+  local file
+  file="$(find . -maxdepth 1 \( -type f -o -type d \) -print 2>/dev/null |
+    fzf --query="$*" --preview='
+      if [ -d {} ]; then
+        eza --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions {}
+      else
+        bat --style=numbers --color=always --line-range=:100 {}
+      fi
+    ')"
+
+  if [ -n "$file" ]; then
+    echo "opening $file"
+    nvim "$file"
+  else
+    return 1
+  fi
+}

@@ -26,6 +26,8 @@ source $HOME/zshrc-config/bat.zsh
 source $HOME/zshrc-config/man.zsh
 #============================================ bitcoin =============================================
 source $HOME/zshrc-config/bitcoin.zsh
+#============================================ docker =============================================
+source $HOME/zshrc-config/docker.zsh
 #============================================ bitwarden ===========================================
 source $HOME/zshrc-config/bitwarden.zsh
 #============================================ Yazi ================================================

@@ -178,11 +178,18 @@ run = ["move-node-to-workspace Tools"]
 if.app-id = "org.gimp.gimp-3.0"
 run = ["move-node-to-workspace Tools"]
 
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = ["layout floating", "move-node-to-workspace Tools"]
 #============ Second Monitor
 
 #============================================= Media =============================================
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
+run = "move-node-to-workspace Media"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
 run = "move-node-to-workspace Media"
 
 [[on-window-detected]]
@@ -206,9 +213,6 @@ run = ["move-node-to-workspace Misc"]
 if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace Misc"
 
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "net.freemacsoft.AppCleaner"
@@ -257,7 +261,7 @@ run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = ["layout floating"]
+run = ["layout floating", "move-node-to-workspace Tools"]
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'raycast'

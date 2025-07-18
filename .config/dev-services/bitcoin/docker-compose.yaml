@@ -1,0 +1,23 @@
+services:
+  bitcoin:
+    image: btcpayserver/bitcoin:29.0
+    environment:
+      BITCOIN_NETWORK: regtest
+      BITCOIN_EXTRA_ARGS: |
+        server=1
+        rest=1
+        rpcbind=0.0.0.0:18443
+        rpcallowip=0.0.0.0/0
+        rpcauth=alice:156e6ae4702e03de4b62bb3c29017709$0ca2c0a326b3cb5290086f19c601074cda24942e7fae46d1269df9d2c23d2359
+        debug=1
+        logips=1
+        logtimemicros=1
+        blockmintxfee=0
+        deprecatedrpc=signrawtransaction
+        listenonion=0
+        fallbackfee=0.00001
+        txindex=1
+    ports:
+      - "18443:18443"
+
+      # alicekolala

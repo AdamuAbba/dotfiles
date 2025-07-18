@@ -27,9 +27,16 @@ alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
 alias crates-tui="crates-tui --config-file $HOME/.config/crates-tui/config.toml --color-file $HOME/.config/crates-tui/dracula.yaml --frame-rate 60"
 alias cs='env CARGO_SELECTOR_CONFIG=$HOME/.config/cargo-selector/config.toml cargo selector'
 
+#----------- docker
+alias edit-services="nvim $DEV_SERVICES"
+alias colima-start="colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 4 --memory 4 --disk 64"
+alias oxker="oxker --host $DOCKER_HOST --config-file $HOME/.config/oxker/config.toml"
+#----------- bitcoin
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
 alias bitcoin-cli="$HOME/Documents/bitcoin/build/bin/bitcoin-cli"
 alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind"
+alias rpcauth="python3 $HOME/Documents/bitcoin/share/rpcauth/rpcauth.py"
+
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
 alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
