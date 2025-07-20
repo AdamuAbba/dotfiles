@@ -126,20 +126,20 @@ log_section_toggle = ["\\"]
 # The single line bar at the uppermost of the display. Contains name/state/status headings etc
 [colors.headers_bar]
 # Background color of the entire line
-background = "magenta"
+background = "reset"
 # Animated loading icon at the start of the bar
 loading_spinner = "white"
 # Text color
-text = "black"
+text = "white"
 # Text color of a selected header
 text_selected = "gray"
 
 # The borders around the selectable panels - Containers, Commands, Logs
 [colors.borders]
 # Border when selected
-selected = "lightcyan"
+selected = "#50fa7b"
 # Border when not selected
-unselected = "grey"
+unselected = "#bd93f9"
 
 # The containers sections, in the future more color customization options should be made available in this section
 [colors.containers]
@@ -191,8 +191,8 @@ highlight = "magenta"
 background = "reset"
 pause = "yellow"
 restart = "magenta"
-stop = "red"
-delete = "gray"
+stop = "white"
+delete = "red"
 resume = "blue"
 start = "green"
 
@@ -201,7 +201,7 @@ start = "green"
 # Background color of panel
 background = "reset"
 # Border color
-border = "white"
+border = "#bd93f9"
 # Chart title - only whilst container is running, paused & stopped colors not yet customizable - or could just use state color?
 title = "green"
 # Maximum CPU percentage - again paused & stopped colors not yet customizable
@@ -216,7 +216,7 @@ y_axis = "white"
 # Background color of panel
 background = "reset"
 # Border color
-border = "white"
+border = "#bd93f9"
 # Chart title - only whilst container is running, paused & stopped will use colors.container_state
 title = "green"
 # Maximum memory use - again paused & stopped will use colors.container_state
@@ -231,7 +231,7 @@ y_axis = "white"
 # Background color of panel
 background = "reset"
 # Border color
-border = "white"
+border = "#bd93f9"
 # Chart title - only whilst container is running, paused & stopped will use colors.container_state
 title = "green"
 # Private/Public/IP headings
@@ -241,32 +241,19 @@ text = "white"
 
 # The help popup
 [colors.popup_help]
-# Background color
-background = "magenta"
-# Text color
-text = "black"
-# Highlighted text color
-text_highlight = "white"
+background = "reset"
+text = "white"
+text_highlight = "#50fa7b"
 
-# The info popup - used to display small messages - such as saving logs to disk, or change of mouse capture settings
 [colors.popup_info]
-# Background color
 background = "blue"
-# Text color
 text = "white"
 
-# The delete popup - used to display a confirmation warning when about to delete a container
 [colors.popup_delete]
-# Background color
-background = "white"
-# Text color
-text = "black"
-# Highlighted text color
+background = "reset"
+text = "white"
 text_highlight = "red"
 
-# The error popup - hopefully you'll never have to see this
 [colors.popup_error]
-# Background color
 background = "red"
-# Text color
 text = "white"
