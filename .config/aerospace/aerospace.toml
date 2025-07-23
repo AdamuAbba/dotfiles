@@ -37,7 +37,7 @@ inner.horizontal = 14
 inner.vertical = 14
 outer.left = 17
 outer.bottom = 17
-outer.top = [{ monitor.'built-in.*' = 13 }, 17]
+outer.top = [{ monitor.'built-in.*' = 13 }, 40]
 outer.right = 17
 
 [key-mapping]
@@ -57,6 +57,13 @@ cmd-shift-h = 'move-node-to-workspace prev --focus-follows-window'
 cmd-shift-l = 'move-node-to-workspace next --focus-follows-window'
 
 #####################################################################################################
+#                                            Mode service                                            #
+#####################################################################################################
+# alt-shift-semicolon = 'mode service'
+# [mode.service.binding]
+# esc = ['reload-config', 'mode main']
+
+#####################################################################################################
 #                                            workspaces                                             #
 #####################################################################################################
 #============ first monitor workspaces
@@ -67,11 +74,8 @@ cmd-3 = 'workspace Tools'
 cmd-4 = 'workspace Media'
 cmd-5 = 'workspace Misc'
 cmd-6 = 'workspace Social'
-#============ second monitor workspaces
-# cmd-7 = 'workspace MT2/Browser'
-# cmd-8 = 'workspace MT2/Editor'
-# cmd-9 = 'workspace MT2/VMs'
-# cmd-0 = 'workspace MT2/Tools'
+#============ scratch monitor workspaces
+cmd-7 = 'workspace scratch'
 
 cmd-l = 'workspace next'
 cmd-h = 'workspace prev'
@@ -80,17 +84,14 @@ alt-shift-right = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 
 [workspace-to-monitor-force-assignment]
-"Browser" = 'main'
-"Editor" = 'main'
+"Browser" = 'secondary'
+"Editor" = 'secondary'
 "Sims/VMs" = 'main'
-"Tools" = 'main'
-"Media" = 'main'
-"Misc" = 'main'
-"Social" = 'main'
-# "MT2/Browser" = 'secondary'
-# "MT2/Editor" = 'secondary'
-# "MT2/VMs" = 'secondary'
-# "MT2/Tools" = 'secondary'
+"Tools" = 'secondary'
+"Media" = 'secondary'
+"Misc" = 'secondary'
+"Social" = 'secondary'
+"scratch" = 'main'
 
 #####################################################################################################
 #                                            Mode resize                                            #
@@ -138,10 +139,6 @@ run = "move-node-to-workspace Editor"
 if.app-id = 'com.apple.dt.Xcode'
 run = ["move-node-to-workspace Editor"]
 
-# [[on-window-detected]]
-# if.app-id = 'com.microsoft.VSCode'
-# run = ["move-node-to-workspace Editor"]
-#
 #============ Second Monitor
 
 

@@ -1,8 +1,8 @@
 {
-  "title": "Remap Caps Lock to Control and Escape",
+  "title": "Remap Caps Lock to Control and Escape [external and built-in keyboards]",
   "rules": [
     {
-      "description": "caps_lock → control when held, escape when tapped",
+      "description": "caps_lock → control when held, escape when tapped [external and built-in keyboards]",
       "manipulators": [
         {
           "from": {

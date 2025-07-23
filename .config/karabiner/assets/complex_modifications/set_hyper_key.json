@@ -1,10 +1,21 @@
 {
-  "title": "Set Hyper Key",
+  "title": "Set Hyper Key [built-in and external keyboard]",
   "rules": [
     {
-      "description": "Right Command → Hyper (Cmd + Ctrl + Opt)",
+      "description": "Right Command → Hyper (Cmd + Ctrl + Opt) [external and built-in keyboards]",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1452,
+                  "product_id": 834
+                }
+              ]
+            }
+          ],
           "type": "basic",
           "from": {
             "key_code": "right_command",
@@ -21,6 +32,64 @@
                 "left_command",
                 "left_option"
               ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 49396,
+                  "product_id": 1013
+                }
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "right_option",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_command",
+                "left_option"
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 49396,
+                  "product_id": 1013
+                }
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "left_option",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command"
             }
           ]
         }

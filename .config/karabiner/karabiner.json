@@ -3,15 +3,23 @@
     "profiles": [
         {
             "complex_modifications": {
-                "parameters": {
-                    "basic.simultaneous_threshold_milliseconds": 10,
-                    "basic.to_if_held_down_threshold_milliseconds": 200
-                },
+                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 200 },
                 "rules": [
                     {
-                        "description": "Right Command → Hyper (Cmd + Ctrl + Opt)",
+                        "description": "Right Command → Hyper (Cmd + Ctrl + Opt) [external and built-in keyboards]",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 834,
+                                                "vendor_id": 1452
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "right_command",
                                     "modifiers": { "optional": ["any"] }
@@ -23,13 +31,157 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1013,
+                                                "vendor_id": 49396
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control",
+                                        "modifiers": ["left_command", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1013,
+                                                "vendor_id": 49396
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_command" }],
+                                "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Launch apps with Hyper + key",
+                        "description": "[Script runner] Hyper + s + <key_code>",
                         "manipulators": [
                             {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "s_held",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "s_held",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "s" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "s_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "sh -c \"/opt/homebrew/bin/aerospace reload-config && /opt/homebrew/bin/sketchybar --trigger user_notification LABEL=\\\"aerospace reloaded\\\"\"" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "s_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "sh -c \"/opt/homebrew/bin/sketchybar --reload && /opt/homebrew/bin/sketchybar --trigger user_notification LABEL=\\\"sketchybar reloaded\\\"\"" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Launch apps with Hyper + key [external and built-in keyboards] with 'o' held",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "o_held",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "o_held",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "z",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -38,6 +190,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -46,6 +205,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "g",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -54,14 +220,28 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
-                                    "key_code": "o",
+                                    "key_code": "n",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Obsidian'" }],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -70,6 +250,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -78,6 +265,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
@@ -86,6 +280,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -94,6 +295,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -102,6 +310,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
@@ -110,6 +325,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -118,6 +340,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -126,6 +355,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -134,6 +370,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -142,6 +385,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
@@ -150,6 +400,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -158,6 +415,13 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "name": "o_held",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
@@ -168,7 +432,7 @@
                         ]
                     },
                     {
-                        "description": "left_control → caps_lock",
+                        "description": "left_control → caps_lock [external and built-in keyboards]",
                         "manipulators": [
                             {
                                 "from": {
@@ -181,7 +445,7 @@
                         ]
                     },
                     {
-                        "description": "caps_lock → control when held, escape when tapped",
+                        "description": "caps_lock → control when held, escape when tapped [external and built-in keyboards]",
                         "manipulators": [
                             {
                                 "from": {
@@ -196,7 +460,66 @@
                     }
                 ]
             },
-            "name": "Default profile",
+            "devices": [
+                {
+                    "fn_function_keys": [
+                        {
+                            "from": { "key_code": "f1" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "f2" },
+                            "to": [{ "consumer_key_code": "volume_decrement" }]
+                        },
+                        {
+                            "from": { "key_code": "f3" },
+                            "to": [{ "consumer_key_code": "volume_increment" }]
+                        },
+                        {
+                            "from": { "key_code": "f4" },
+                            "to": [{ "consumer_key_code": "mute" }]
+                        },
+                        {
+                            "from": { "key_code": "f5" },
+                            "to": [{ "consumer_key_code": "play_or_pause" }]
+                        },
+                        {
+                            "from": { "key_code": "f6" },
+                            "to": [{ "consumer_key_code": "rewind" }]
+                        },
+                        {
+                            "from": { "key_code": "f7" },
+                            "to": [{ "consumer_key_code": "play_or_pause" }]
+                        },
+                        {
+                            "from": { "key_code": "f8" },
+                            "to": [{ "consumer_key_code": "fast_forward" }]
+                        },
+                        {
+                            "from": { "key_code": "f9" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "f10" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "f11" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "f12" },
+                            "to": [{ "key_code": "vk_none" }]
+                        }
+                    ],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 1013,
+                        "vendor_id": 49396
+                    }
+                }
+            ],
+            "name": "Default",
             "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }

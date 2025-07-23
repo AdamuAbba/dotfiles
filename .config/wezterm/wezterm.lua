@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 --============================================= events =============================================
 require "events.gui-startup"
 require "events.update-status"
+require "events.config-reloaded"
 
 --============================================= UI =============================================
 config.color_scheme = "Dracula (Official)"
