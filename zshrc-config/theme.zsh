@@ -1,7 +1,8 @@
 export THEME_FONT="ShureTechMono Nerd Font"
 # https://github.com/dracula/dracula-theme#color-palette
 #============================================ Dracula color palette================================================
-export DRACULA_BACKGROUND=#282a36
+# export DRACULA_BACKGROUND=#282a36
+export DRACULA_BACKGROUND=#000000
 export DRACULA_CURRENT_LINE=#44475a
 export DRACULA_SELECTION=#44475a
 export DRACULA_FOREGROUND=#f8f8f2

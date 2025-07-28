@@ -1,0 +1,76 @@
+{
+  "$schema": "https://ale.sh/karabiner-jsonschema.json",
+  "title": "${1:Custom Modifier Combo}",
+  "rules": [
+    {
+      "description": "${1:Custom Modifier Combo}",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "${2:trigger_key}",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "${2:trigger_key}_held",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "${2:trigger_key}_held",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "${2:trigger_key}"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "${3:conditional_key}",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "${2:trigger_key}_held",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "${4:output_key}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -43,6 +43,10 @@
                 {
                   "vendor_id": 49396,
                   "product_id": 1013
+                },
+                {
+                  "vendor_id": 9610,
+                  "product_id": 315
                 }
               ]
             }
@@ -74,6 +78,10 @@
                 {
                   "vendor_id": 49396,
                   "product_id": 1013
+                },
+                {
+                  "vendor_id": 9610,
+                  "product_id": 315
                 }
               ]
             }

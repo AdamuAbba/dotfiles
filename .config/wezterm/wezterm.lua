@@ -10,8 +10,17 @@ require "events.update-status"
 require "events.config-reloaded"
 
 --============================================= UI =============================================
+local scheme = wezterm.get_builtin_color_schemes()["Dracula (Official)"]
+scheme.background = "black"
+
+config.color_schemes = {
+  ["Dracula (Official)"] = scheme,
+}
 config.color_scheme = "Dracula (Official)"
-config.font = wezterm.font("ShureTechMono Nerd Font", { weight = "Regular" })
+wezterm.font_with_fallback {
+  { family = "ShureTechMono Nerd Font", weight = "Regular" },
+  { family = "JetBrainsMono Nerd Fon", weight = "Regular" },
+}
 config.font_size = 17.2
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"

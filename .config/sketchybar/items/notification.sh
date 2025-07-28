@@ -1,7 +1,6 @@
 #!/bin/bash
 
 notification=(
-  icon=""
   icon.drawing=on
   label.max_chars=30
   updates=on

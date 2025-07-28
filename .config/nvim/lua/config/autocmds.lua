@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     -- Map file name patterns to specific template files
     local template_map = {
       ["%.tsx$"] = "component.tsx.stpl",
+      ["%.kbe.json$"] = "kbe.json.stpl",
       ["%.jsx$"] = "component.jsx.stpl",
       ["%.sh$"] = "sh.stpl",
       ["index%.ts$"] = "index.ts.stpl",

@@ -5,6 +5,9 @@ return {
     "Mofiqul/dracula.nvim",
     lazy = false,
     opts = {
+      colors = {
+        bg = theme_colors.background,
+      },
       italic_comment = true,
       lualine_bg_color = theme_colors.background,
       overrides = {

@@ -140,31 +140,6 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "r",
-            "modifiers": {
-              "mandatory": [
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "o_held",
-              "value": 1
-            }
-          ],
-          "to": [
-            {
-              "shell_command": "open 'raycast://extensions'"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
             "key_code": "f",
             "modifiers": {
               "mandatory": [
