@@ -36,7 +36,7 @@ bar=(
   notch_width=188
 )
 
-sketchybar --bar "${bar[@]}"
+sketchybar --bar display=1 "${bar[@]}"
 
 # Setting up default values
 defaults=(

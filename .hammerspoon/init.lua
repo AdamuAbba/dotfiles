@@ -1,0 +1,3 @@
+-- hs.loadSpoon("EmmyLua")
+--
+-- hs.alert.show("Hello World!")

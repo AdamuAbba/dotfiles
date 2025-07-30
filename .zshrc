@@ -26,7 +26,7 @@ source $HOME/zshrc-config/bat.zsh
 source $HOME/zshrc-config/man.zsh
 #============================================ bitcoin =============================================
 source $HOME/zshrc-config/bitcoin.zsh
-#============================================ docker =============================================
+#============================================ docker ==============================================
 source $HOME/zshrc-config/docker.zsh
 #============================================ bitwarden ===========================================
 source $HOME/zshrc-config/bitwarden.zsh
@@ -40,7 +40,7 @@ source $HOME/zshrc-config/fzf.zsh
 source $HOME/zshrc-config/git.zsh
 #============================================ Github ==============================================
 source $HOME/zshrc-config/atac.zsh
-#============================================ Sketchy-bar ==============================================
+#============================================ Sketchy-bar =========================================
 source $HOME/zshrc-config/sketchy-bar.zsh
 #============================================ nvm =================================================
 # ---- leave above OMZ initialization because of {nvm} ------------------------
@@ -49,6 +49,8 @@ source $HOME/zshrc-config/languages/javascript.zsh
 source $HOME/zshrc-config/omz-config.zsh
 #============================================ Aliases =============================================
 source $HOME/zshrc-config/aliases.zsh
+#============================================ scripts =============================================
+source $HOME/zshrc-config/scripts.zsh
 #============================================ Additional completions for zsh ======================
 source $HOME/zshrc-config/zsh-completions.zsh
 #============================================ Lang (Do not remove from bottom) ====================
