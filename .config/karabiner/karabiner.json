@@ -87,6 +87,7 @@
                     },
                     {
                         "description": "Launch apps with Hyper + key [external and built-in keyboards] with 'o' held",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -183,25 +184,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "r",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "shell_command": "open 'raycast://extensions'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "o_held",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
                                     "key_code": "f",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Finder'" }],
+                                "to": [{ "shell_command": "open -a Finder ~" }],
                                 "type": "basic"
                             },
                             {
@@ -373,6 +359,7 @@
                     },
                     {
                         "description": "[Script runner] Hyper + s + <key_code>",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

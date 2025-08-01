@@ -1,7 +1,12 @@
 #!/usr/bin/env sh
 
-sketchybar --set "$NAME" label="${LABEL}"
+label=${LABEL:-"NORMAL MODE"}
+color=${COLOR:-"0xffbd93f9"}
 
-sleep 3
+case "$label" in
+"NORMAL MODE") color="0xffbd93f9" ;;
+"APP MODE") color="0xff50fa7b" ;;
+"SCRIPT MODE") color="0xfff1fa8c" ;;
+esac
 
-sketchybar --set "$NAME" label=""
+sketchybar --set "$NAME" label="$label" background.color="$color"

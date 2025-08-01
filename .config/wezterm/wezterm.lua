@@ -21,6 +21,7 @@ wezterm.font_with_fallback {
   { family = "ShureTechMono Nerd Font", weight = "Regular" },
   { family = "JetBrainsMono Nerd Fon", weight = "Regular" },
 }
+config.disable_default_key_bindings = true
 config.font_size = 17.2
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
@@ -41,12 +42,5 @@ config.skip_close_confirmation_for_processes_named = {
   "powershell.exe",
 }
 config.window_close_confirmation = "AlwaysPrompt"
-config.keys = {
-  {
-    key = "r",
-    mods = "CMD|SHIFT",
-    action = wezterm.action.ReloadConfiguration,
-  },
-}
 
 return config

@@ -2,9 +2,11 @@
 
 notification=(
   icon.drawing=on
-  label.max_chars=30
+  label.font="$FONT:Black:13.0"
+  label.width=145
+  label.align=center
   updates=on
-  label.color="$GREEN"
+  label.color="$BLACK"
   script="$PLUGIN_DIR/notification.sh"
 )
 

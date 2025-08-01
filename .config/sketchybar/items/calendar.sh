@@ -3,6 +3,7 @@
 calendar=(
   icon="󰃰 "
   icon.font="$FONT:Black:16"
+  label.font="$FONT:Black:12"
   icon.padding_right=13
   icon.padding_left=0
   icon.color="$ORANGE"

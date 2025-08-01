@@ -71,6 +71,7 @@ source "$ITEM_DIR/left_container.sh"
 # source "$ITEM_DIR/media.sh"
 
 # Right
+
 source "$ITEM_DIR/right_container.sh"
 # source "$ITEM_DIR/cpu.sh"
 

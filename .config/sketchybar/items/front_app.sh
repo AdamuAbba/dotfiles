@@ -5,6 +5,7 @@ front_app=(
   icon.background.drawing=on
   icon.background.image.scale=0.8
   icon.background.image.y_offset=-1
+  label.align=center
   display=active
   script="$PLUGIN_DIR/front_app.sh"
   click_script="open -a 'Mission Control'"

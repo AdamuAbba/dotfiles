@@ -124,7 +124,6 @@ if.app-id = 'com.google.Chrome'
 run = ["move-node-to-workspace Browser"]
 
 #============================================= Editors/IDEs =========================================
-#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace Editor"
@@ -136,6 +135,10 @@ run = "move-node-to-workspace Editor"
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
 run = ["move-node-to-workspace Editor"]
+
+[[on-window-detected]]
+if.app-id = "org.hammerspoon.Hammerspoon"
+run = ["layout floating", "move-node-to-workspace Editor"]
 
 #============================================= Sims/Vms =============================================
 #============ First Monitor
@@ -225,9 +228,6 @@ run = ["move-node-to-workspace Misc"]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
 run = ["layout floating", "move-node-to-workspace Misc"]
 
-[[on-window-detected]]
-if.app-id = "org.hammerspoon.Hammerspoon"
-run = ["layout floating", "move-node-to-workspace Misc"]
 #============================================= Social =============================================
 #============ First Monitor
 [[on-window-detected]]
@@ -257,7 +257,7 @@ run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = ["layout floating", "move-node-to-workspace Tools"]
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'raycast'

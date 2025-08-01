@@ -8,7 +8,6 @@ container=(
   background.corner_radius=10
   background.height=30
   background.border_color="$PURPLE"
-  background.border_width=1.9
   label.align=center
 )
 

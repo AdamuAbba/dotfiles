@@ -2,16 +2,28 @@ return {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
-    opts = {
+    opts = function(_, opts)
       ---@diagnostic disable-next-line: undefined-doc-name
-      ---@type lspconfig.options
-      diagnostics = {
+      opts.diagnostics = {
         float = {
           border = "rounded",
         },
-      },
-      servers = {
-        kulala_ls = {},
+      }
+
+      opts.servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              workspace = {
+                library = {
+                  ---@diagnostic disable-next-line: undefined-global
+                  vim.fn.expand("~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"),
+                  vim.fn.expand("~/.hammerspoon"),
+                },
+              },
+            },
+          },
+        },
         vtsls = {
           settings = {
             typescript = {
@@ -26,7 +38,9 @@ return {
             },
           },
         },
-      },
-    },
+      }
+
+      return opts
+    end,
   },
 }
