@@ -25,6 +25,4 @@ local SCRIPTS = {
 	},
 }
 
-SCRIPTS.Aerospace.script_func()
-
 return SCRIPTS

@@ -39,6 +39,7 @@ alias rpcauth="python3 $HOME/Documents/bitcoin/share/rpcauth/rpcauth.py"
 
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
+alias edit-hsp="nvim $HOME/.hammerspoon/"
 alias edit-sketchybar="nvim $HOME/.config/sketchybar/"
 alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
 alias edit-git-global="nvim $HOME/.config/git/config"

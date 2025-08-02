@@ -3,10 +3,6 @@ local apps = require("helpers.apps_helper")
 local utils = require("helpers.utils")
 local app_sublayer = hs.hotkey.modal.new()
 
-spoon.SpoonInstall:andUse("Emojis", {
-	hotkeys = { toggle = { { "ctrl", "cmd" }, "space" } },
-})
-
 local function launch_app(app_name, key_code, mod)
 	local modifiers = mod or {}
 	app_sublayer:bind(modifiers, key_code, function()
