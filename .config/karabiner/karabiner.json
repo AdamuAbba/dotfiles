@@ -87,6 +87,7 @@
                     },
                     {
                         "description": "[function key bindings] Hyper + {v|b} + <key_code>",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

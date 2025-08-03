@@ -1,14 +1,16 @@
----@summary Keybindings for running utility scripts like Aerospace, Sketchybar, etc
-
 local utils = require("helpers.utils")
 
 ---@class ScriptBinding
+---@diagnostic disable-next-line: duplicate-doc-field
 ---@field key_code string Key used to trigger the script.
 ---@field script_func fun(): nil script function to execute.
 
----@type table<string, ScriptBinding>
+---@class Apps
+---@field Aerospace ScriptBinding
+---@field Sketchybar ScriptBinding
+
+---@type Apps
 local SCRIPTS = {
-	---@type ScriptBinding
 	Aerospace = {
 		key_code = "a",
 		script_func = function()
@@ -16,7 +18,6 @@ local SCRIPTS = {
 		end,
 	},
 
-	---@type ScriptBinding
 	Sketchybar = {
 		key_code = "k",
 		script_func = function()

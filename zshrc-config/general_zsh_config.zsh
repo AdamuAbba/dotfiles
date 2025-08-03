@@ -36,6 +36,10 @@ setopt hist_find_no_dups
 unsetopt correct_all
 unsetopt correct
 
+# Disable Ctrl+Z
+stty susp undef
+bindkey -r '^Z'
+
 export PATH="/opt/homebrew/opt/trash/bin:$PATH"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

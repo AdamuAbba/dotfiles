@@ -3,6 +3,7 @@ spoon.SpoonInstall:andUse("EmmyLua")
 
 require("modes.script_mode")
 require("modes.app_mode")
+require("modes.display_mode")
 require("pickers.app_picker")
 require("pickers.emoji_picker")
 require("helpers.reload_config")
