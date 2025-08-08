@@ -5,7 +5,8 @@ local script_sublayer = hs.hotkey.modal.new()
 
 ---@param binding ScriptBinding
 local function run_script(binding)
-	script_sublayer:bind({}, binding.key_code, function()
+	local modifiers = binding.mod or {}
+	script_sublayer:bind(modifiers, binding.key_code, function()
 		binding.script_func()
 		script_sublayer:exit()
 	end)

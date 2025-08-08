@@ -8,7 +8,7 @@ local APPS = {
 	Postman = { name = "Postman", key_code = "p", mod = {} },
 	Hammerspoon = { name = "Hammerspoon", key_code = "h", mod = {} },
 	Obsidian = { name = "Obsidian", key_code = "n", mod = {} },
-	Xcode = { name = "Xcode", key_code = "x", mod = {} },
+	-- Xcode = { name = "Xcode", key_code = "x", mod = {} },
 	Bitwarden = { name = "Bitwarden", key_code = "b", mod = {} },
 	KarabinerElements = { name = "Karabiner-Elements", key_code = "k", mod = {} },
 	Discord = { name = "Discord", key_code = "d", mod = {} },

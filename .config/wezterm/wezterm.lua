@@ -21,6 +21,7 @@ wezterm.font_with_fallback {
   { family = "ShureTechMono Nerd Font", weight = "Regular" },
   { family = "JetBrainsMono Nerd Fon", weight = "Regular" },
 }
+config.default_prog = { "/bin/zsh" }
 config.disable_default_key_bindings = true
 config.font_size = 17.2
 config.enable_tab_bar = false

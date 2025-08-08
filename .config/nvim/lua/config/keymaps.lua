@@ -7,10 +7,6 @@ local del = vim.keymap.del
 --============================================= Delete default keymaps =============================================
 del("n", "<leader>E")
 
----- lazygit defaults
--- del("n", "<leader>gg")
--- del("n", "<leader>gG")
-
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
@@ -18,8 +14,6 @@ map({ "n", "i", "v" }, "<Down>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
------- Deactive macro recording
-map({ "n", "v" }, "q", "<NOP>", { noremap = true })
 
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
@@ -83,43 +77,21 @@ end, { desc = "Yank line and diagnostic to system clipboard" })
 --============================================= goto-preview =============================================
 map(
   "n",
-  "qpd",
+  "gbd",
   "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
   { desc = "Preview definition", noremap = true }
 )
 
 map(
   "n",
-  "qpc",
+  "gbq",
   "<cmd>lua require('goto-preview').close_all_win()<CR>",
   { desc = "Close preview windows", noremap = true }
 )
 
 map(
   "n",
-  "qpt",
+  "gbt",
   "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
   { desc = "Preview type definition", noremap = true }
 )
-
---============================================= lazygit (Zellij pane) =============================================
-
--- local function open_lazygit_in_zellij()
---   vim.fn.jobstart({
---     "zellij",
---     "run",
---     "--name",
---     "LazyGit",
---     "--floating",
---     "--height=98%",
---     "--width=95%",
---     "--x=3%",
---     "--y=3%",
---     "--",
---     "zsh",
---     "-ic",
---     "lazygit && zellij action close-pane",
---   }, { detach = true })
--- end
-
--- map("n", "<leader>gg", open_lazygit_in_zellij, { desc = "Lazygit (Zellij pane)" })

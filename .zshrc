@@ -49,8 +49,6 @@ source $HOME/zshrc-config/languages/javascript.zsh
 source $HOME/zshrc-config/omz-config.zsh
 #============================================ Aliases =============================================
 source $HOME/zshrc-config/aliases.zsh
-#============================================ scripts =============================================
-source $HOME/zshrc-config/scripts.zsh
 #============================================ Additional completions for zsh ======================
 source $HOME/zshrc-config/zsh-completions.zsh
 #============================================ Lang (Do not remove from bottom) ====================
