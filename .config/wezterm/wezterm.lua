@@ -1,7 +1,9 @@
 ---@diagnostic disable: undefined-field
 -- local Config = require("utils.class.config"):new()
--- return Config:add("config"):add "mappings"
+---@type Wezterm
 local wezterm = require "wezterm"
+
+---@type Config
 local config = wezterm.config_builder()
 
 --============================================= events =============================================

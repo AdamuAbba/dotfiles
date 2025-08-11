@@ -151,6 +151,7 @@ local helpMenu = "helpMenu"
 -- Applications Menus
 local applicationMenu = "applicationMenu"
 local utilitiesMenu = "utilitiesMenu"
+local aerospaceMenu = "aerospaceMenu"
 
 -- Browser menus
 local browserMenu = "browserMenu"
@@ -167,17 +168,11 @@ local documentsMenu = "documentsMenu"
 -- Finder menu
 local finderMenu = "finderMenu"
 
--- Games menu
-local gamesMenu = "gamesMenu"
-
 -- Hammerspoon menu
 local hammerspoonMenu = "hammerspoonMenu"
 
 -- Help menu
 local helpMenu = "helpMenu"
-
--- Layout menu
-local layoutMenu = "layoutMenu"
 
 -- Media menu
 local mediaMenu = "mediaMenu"
@@ -200,11 +195,11 @@ local toggleMenu = "toggleMenu"
 -- Window menu
 local resizeMenu = "resizeMenu"
 
-menuHammerMenuList = {
+------------------------------------------------------------------------------------------------
+-- Main Menu
+------------------------------------------------------------------------------------------------
 
-	------------------------------------------------------------------------------------------------
-	-- Main Menu
-	------------------------------------------------------------------------------------------------
+menuHammerMenuList = {
 	[mainMenu] = {
 		parentMenu = nil,
 		menuHotkey = { key_helper.hyper, "space" },
@@ -221,33 +216,18 @@ menuHammerMenuList = {
 					{ cons.act.menu, applicationMenu },
 				},
 			},
-			-- { cons.cat.submenu, "", "B", "Browser", {
-			-- 	{ cons.act.menu, browserMenu },
-			-- } },
+			{ cons.cat.submenu, "", "f", "Browser", {
+				{ cons.act.menu, browserMenu },
+			} },
 			{ cons.cat.submenu, "", "b", "Display", {
 				{ cons.act.menu, displayMenu },
 			} },
-			{ cons.cat.submenu, "", "D", "Documents", {
+			{ cons.cat.submenu, "", "d", "Documents", {
 				{ cons.act.menu, documentsMenu },
 			} },
-			{ cons.cat.submenu, "", "F", "Finder", {
-				{ cons.act.menu, finderMenu },
+			{ cons.cat.submenu, "", "u", "Utilities", {
+				{ cons.act.menu, utilitiesMenu },
 			} },
-			{ cons.cat.submenu, "", "G", "Games", {
-				{ cons.act.menu, gamesMenu },
-			} },
-			{
-				cons.cat.submenu,
-				"",
-				"H",
-				"Hammerspoon",
-				{
-					{ cons.act.menu, hammerspoonMenu },
-				},
-			},
-			-- { cons.cat.submenu, "", "L", "Layouts", {
-			-- 	{ cons.act.menu, layoutMenu },
-			-- } },
 			{ cons.cat.submenu, "", "M", "Media Controls", {
 				{ cons.act.menu, mediaMenu },
 			} },
@@ -278,15 +258,6 @@ menuHammerMenuList = {
 			{ cons.cat.submenu, "", "s", "Scripts", {
 				{ cons.act.menu, scriptsMenu },
 			} },
-			{
-				cons.cat.action,
-				"",
-				"space",
-				"Spotlight",
-				{
-					{ cons.act.keycombo, { "cmd" }, "space" },
-				},
-			},
 		},
 	},
 
@@ -419,9 +390,6 @@ menuHammerMenuList = {
 			{ cons.cat.action, "", "v", "Stremio", {
 				{ cons.act.launcher, "Stremio" },
 			} },
-			-- { cons.cat.submenu, "", "U", "Utilities", {
-			-- 	{ cons.act.menu, utilitiesMenu },
-			-- } },
 			{ cons.cat.action, "shift", "w", "WhatsApp", {
 				{ cons.act.launcher, "WhatsApp" },
 			} },
@@ -432,25 +400,25 @@ menuHammerMenuList = {
 	-- Utilities Menu
 	------------------------------------------------------------------------------------------------
 	utilitiesMenu = {
-		parentMenu = applicationMenu,
+		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper, "t" },
 		menuItems = {
 			{
-				cons.cat.action,
+				cons.cat.submenu,
 				"",
-				"K",
-				"Keychain Access",
+				"a",
+				"Aerospace",
 				{
-					{ cons.act.launcher, "Keychain Access" },
+					{ cons.act.menu, aerospaceMenu },
 				},
 			},
 			{
-				cons.cat.action,
+				cons.cat.submenu,
 				"",
-				"S",
-				"System Information",
+				"h",
+				"Hammerspoon",
 				{
-					{ cons.act.launcher, "System Information" },
+					{ cons.act.menu, hammerspoonMenu },
 				},
 			},
 		},
@@ -461,49 +429,26 @@ menuHammerMenuList = {
 	------------------------------------------------------------------------------------------------
 	browserMenu = {
 		parentMenu = mainMenu,
-		meunHotkey = nil,
+		menuHotkey = { key_helper.hyper, "f" },
 		menuItems = {
 			{
 				cons.cat.action,
 				"",
-				"C",
-				"Chrome",
-				{
-					{ cons.act.launcher, "Google Chrome" },
-				},
-			},
-			{ cons.cat.action, "", "F", "Firefox", {
-				{ cons.act.launcher, "Firefox" },
-			} },
-			{
-				cons.cat.action,
-				"",
-				"M",
-				"Movie Lookup",
+				"f",
+				"Web Search",
 				{
 					{
 						cons.act.userinput,
-						"movieLookup",
-						"Movie Lookup",
+						"searchQuery",
+						"Web Search",
 						"Enter search criteria",
 					},
 					{
 						cons.act.openurl,
-						"http://www.google.com/search?q=@@movieLookup@@%20film%20site:wikipedia.org&meta=&btnI",
-					},
-					{
-						cons.act.openurl,
-						"http://www.google.com/search?q=@@movieLookup@@%20site:imdb.com&meta=&btnI",
-					},
-					{
-						cons.act.openurl,
-						"http://www.google.com/search?q=@@movieLookup@@%20site:rottentomatoes.com&meta=&btnI",
+						"https://duckduckgo.com/?q=@@searchQuery@@",
 					},
 				},
 			},
-			{ cons.cat.action, "", "S", "Safari", {
-				{ cons.act.launcher, "Safari" },
-			} },
 		},
 	},
 
@@ -761,28 +706,6 @@ menuHammerMenuList = {
 	},
 
 	------------------------------------------------------------------------------------------------
-	-- Games Menu
-	------------------------------------------------------------------------------------------------
-	[gamesMenu] = {
-		parentMenu = applicationMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"G",
-				"GOG Galaxy",
-				{
-					{ cons.act.launcher, "GOG Galaxy" },
-				},
-			},
-			{ cons.cat.action, "", "S", "Steam", {
-				{ cons.act.launcher, "Steam" },
-			} },
-		},
-	},
-
-	------------------------------------------------------------------------------------------------
 	-- Hammerspoon Menu
 	------------------------------------------------------------------------------------------------
 	hammerspoonMenu = {
@@ -793,7 +716,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"C",
-				"Hammerspoon Console",
+				"HS Console",
 				{
 					{
 						cons.act.func,
@@ -806,8 +729,8 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"H",
-				"Hammerspoon Manual",
+				"d",
+				"HS Manual",
 				{
 					{
 						cons.act.func,
@@ -822,8 +745,8 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"R",
-				"Reload Hammerspoon",
+				"r",
+				"Reload HS",
 				{
 					{
 						cons.act.func,
@@ -836,8 +759,8 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"Q",
-				"Quit Hammerspoon",
+				"q",
+				"Quit HS",
 				{
 					{
 						cons.act.func,
@@ -850,6 +773,66 @@ menuHammerMenuList = {
 		},
 	},
 
+	------------------------------------------------------------------------------------------------
+	-- Aerospace Menu
+	------------------------------------------------------------------------------------------------
+	aerospaceMenu = {
+		parentMenu = mainMenu,
+		menuHotkey = nil,
+		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"C",
+				"Aerospace config",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.toggleConsole()
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"d",
+				"Aerospace Docs",
+				{
+					{
+						-- modify to accept search query
+						cons.act.openurl,
+						"https://nikitabobko.github.io/AeroSpace/guide",
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"r",
+				"Reload Aerospace",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/aerospace/reload.sh",
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"q",
+				"Quit Aerospace",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/aerospace/reload.sh",
+					},
+				},
+			},
+		},
+	},
 	------------------------------------------------------------------------------------------------
 	-- Layout Menu <<don't need this for now>>
 	------------------------------------------------------------------------------------------------
@@ -1073,6 +1056,18 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
+				"p",
+				"Process manager",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/mac-os/process_manager.sh",
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
 				"l",
 				"Lock Screen",
 				{
@@ -1081,7 +1076,7 @@ menuHammerMenuList = {
 			},
 			{
 				cons.cat.action,
-				"shift",
+				"",
 				"r",
 				"Restart",
 				{
@@ -1090,7 +1085,7 @@ menuHammerMenuList = {
 			},
 			{
 				cons.cat.action,
-				"shift",
+				"",
 				"S",
 				"Shutdown",
 				{
@@ -1106,16 +1101,6 @@ menuHammerMenuList = {
 					{ cons.act.system, cons.sys.logoutnow },
 				},
 			},
-			--TODO: write script to run <pik> in floating zellij pane
-			-- {
-			-- 	cons.cat.action,
-			-- 	"",
-			-- 	"V",
-			-- 	"Activity Monitor",
-			-- 	{
-			-- 		{ cons.act.launcher, "Activity Monitor" },
-			-- 	},
-			-- },
 			{
 				cons.cat.action,
 				"",
@@ -1183,20 +1168,6 @@ menuHammerMenuList = {
 		parentMenu = mainMenu,
 		menuHotkey = nil,
 		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"C",
-				"Caffeine",
-				{
-					{
-						cons.act.func,
-						function()
-							toggleCaffeine()
-						end,
-					},
-				},
-			},
 			{
 				cons.cat.action,
 				"",

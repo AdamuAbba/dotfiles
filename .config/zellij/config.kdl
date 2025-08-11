@@ -228,7 +228,7 @@ on_force_close "quit"
 copy_clipboard "system"
 copy_on_select false
 scrollback_editor "nvim"
-session_name "default-session"
+// session_name "default-session"
 attach_to_session true
 auto_layout true
 session_serialization true

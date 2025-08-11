@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "hint.enable": true,
+  "diagnostics.globals": [
+    "menuKeyItemSeparator",
+    "hs",
+    "spoon",
+    "menuHammer",
+    "menuShowInFullscreen",
+    "showMenuBarItem",
+    "menuTextEditor",
+    "askpassLocation",
+    "menuHammerToggleKey",
+    "menuHammerMenuList",
+    "menuNumberOfColumns",
+    "menuMinNumberOfRows",
+    "menuRowHeight",
+    "menuOuterPadding",
+    "menuItemFont",
+    "menuItemFontSize",
+    "menuItemTextAlign",
+    "menuItemPrefix",
+    "menuItemColors",
+    "cons",
+    "tableLength",
+    "resolutionMenuItems"
+  ]
+}
