@@ -1,28 +1,3 @@
---- custom Dracula color palette.
----@class DraculaColors
----@field background string
----@field current_line string
----@field selection string
----@field foreground string
----@field comment string
----@field cyan string
----@field green string
----@field orange string
----@field pink string
----@field glossy_pink string
----@field purple string
----@field red string
----@field yellow string
----@field white string
----@field black string
-
---- Module for configuration utilities
----@class ConfigUtils
----@field HOME string
----@field SCRIPTS string
----@field update_mode fun(msg: string)
----@field colors DraculaColors
-
 local M = {}
 
 --- Absolute path to the user's home directory
@@ -33,11 +8,10 @@ M.SCRIPTS = M.HOME .. "/.config/scripts"
 
 --- Sends a mode update notification using Sketchybar
 ---@param msg string Message to display in the notification
-M.update_mode = function(msg)
-	os.execute(M.SCRIPTS .. "/sketchybar/show_notification.sh '" .. msg .. "'")
+function M:update_mode(msg)
+	os.execute(self.SCRIPTS .. "/sketchybar/show_notification.sh '" .. msg .. "'")
 end
 
----@type DraculaColors
 M.colors = {
 	background = "#000000",
 	current_line = "#44475a",
@@ -57,5 +31,4 @@ M.colors = {
 	black = "#000000",
 }
 
----@type ConfigUtils
 return M

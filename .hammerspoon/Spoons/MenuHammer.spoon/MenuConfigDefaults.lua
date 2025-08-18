@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------------------
 local key_helper = require("helpers.key_helper")
 local display_helper = require("helpers.display_helper")
+local media_helper = require("helpers.media_helper")
 local utils = require("helpers.utils")
 
 -- If enabled, the menus will appear over full screen applications.
@@ -867,27 +868,20 @@ menuHammerMenuList = {
 	------------------------------------------------------------------------------------------------
 	mediaMenu = {
 		parentMenu = mainMenu,
-		menuHotkey = nil,
+		menuHotkey = { key_helper.hyper, "v" },
 		menuItems = {
-			{ cons.cat.action, "", "A", "iTunes", {
-				{ cons.act.launcher, "iTunes" },
-			} },
-			{
-				cons.cat.action,
-				"",
-				"H",
-				"Previous Track",
-				{
-					{ cons.act.mediakey, "previous" },
-				},
-			},
 			{
 				cons.cat.action,
 				"",
 				"J",
 				"Volume Down",
 				{
-					{ cons.act.mediakey, "volume", -10 },
+					{
+						cons.act.func,
+						function()
+							media_helper.set_volume(-25)
+						end,
+					},
 				},
 			},
 			{
@@ -896,40 +890,68 @@ menuHammerMenuList = {
 				"K",
 				"Volume Up",
 				{
-					{ cons.act.mediakey, "volume", 10 },
+					{
+						cons.act.func,
+						function()
+							media_helper.set_volume(25)
+						end,
+					},
 				},
 			},
-			{ cons.cat.action, "", "L", "Next Track", {
-				{ cons.act.mediakey, "next" },
-			} },
-			{ cons.cat.action, "", "X", "Mute/Unmute", {
-				{ cons.act.mediakey, "mute" },
-			} },
 			{
 				cons.cat.action,
 				"",
-				"S",
+				"m",
+				"Mute/Unmute",
+				{
+					{
+						cons.act.func,
+						function()
+							media_helper.volume_mute()
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"l",
+				"Next Track",
+				{
+					{
+						cons.act.func,
+						function()
+							media_helper.next_track()
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"h",
+				"Prev Track",
+				{
+					{
+						cons.act.func,
+						function()
+							media_helper.prev_track()
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"p",
 				"Play/Pause",
 				{
-					{ cons.act.mediakey, "playpause" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"I",
-				"Brightness Down",
-				{
-					{ cons.act.mediakey, "brightness", -10 },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"O",
-				"Brightness Up",
-				{
-					{ cons.act.mediakey, "brightness", 10 },
+					{
+						cons.act.func,
+						function()
+							media_helper.play_pause()
+						end,
+					},
 				},
 			},
 		},

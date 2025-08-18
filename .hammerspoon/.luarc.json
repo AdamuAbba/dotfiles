@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
   "hint.enable": true,
+  "hint.paramName": "All",
+  "hint.paramType": true,
+  "hint.setType": true,
+  "hint.arrayIndex": "Disable",
   "diagnostics.globals": [
     "menuKeyItemSeparator",
     "hs",
