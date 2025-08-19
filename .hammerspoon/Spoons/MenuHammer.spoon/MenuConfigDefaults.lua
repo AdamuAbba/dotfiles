@@ -42,18 +42,18 @@ menuNumberOfColumns = 5
 menuMinNumberOfRows = 4
 
 -- The height of menu rows in pixels
-menuRowHeight = 25
+menuRowHeight = 30
 
 -- The padding to apply to each side of the menu
-menuOuterPadding = 50
+menuOuterPadding = 30
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------- Font options ---------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
 -- The font to apply to menu items.
-menuItemFont = "Courier-Bold"
--- menuItemFont = "ShureTechMono Nerd Font"
+-- menuItemFont = "Courier-Bold"
+menuItemFont = "JetBrainsMono Nerd Font"
 
 -- The font size to apply to menu items.
 menuItemFontSize = 22
@@ -98,16 +98,16 @@ menuItemColors = {
 	},
 	-- The colors to use for action menu items
 	action = {
-		background = "#000000",
+		background = "#ffffff",
 		text = utils.colors.glossy_pink,
 	},
 	menuBarActive = {
 		background = "#ff0000",
-		text = "#000000",
+		text = utils.colors.glossy_pink,
 	},
 	menuBarIdle = {
 		background = "#00ff00",
-		text = "#000000",
+		text = utils.colors.glossy_pink,
 	},
 	display = {
 		background = "#000000",
@@ -126,8 +126,10 @@ menuHammerToggleKey = { { "cmd", "shift", "ctrl" }, "Q" }
 
 -- Menu Prefixes
 menuItemPrefix = {
-	action = "↩",
-	submenu = "→",
+	action = "→",
+	-- action = "↩",
+	submenu = "+",
+	-- submenu = "→",
 	back = "←",
 	exit = "x",
 	navigation = "↩",
@@ -308,7 +310,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"b",
-				"Books",
+				" Books",
 				{
 					{ cons.act.launcher, "Books" },
 				},
@@ -317,7 +319,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"c",
-				"ChatGPT",
+				" ChatGPT",
 				{
 					{ cons.act.launcher, "ChatGPT" },
 				},
@@ -326,31 +328,61 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"d",
-				"Discord",
+				" Discord",
 				{
 					{ cons.act.launcher, "Discord" },
 				},
 			},
-			{ cons.cat.action, "", "F", "Finder", {
-				{ cons.act.launcher, "Finder" },
-			} },
-			{ cons.cat.action, "", "z", "Zen Browser", {
-				{ cons.act.launcher, "Zen" },
-			} },
-			{ cons.cat.action, "", "w", "WezTerm", {
-				{ cons.act.launcher, "WezTerm" },
-			} },
-			{ cons.cat.action, "", "o", "Obsidian", {
-				{ cons.act.launcher, "Obsidian" },
-			} },
-			{ cons.cat.action, "", "h", "Hammerspoon", {
-				{ cons.act.launcher, "Hammerspoon" },
-			} },
+			{
+				cons.cat.action,
+				"",
+				"F",
+				" Finder",
+				{
+					{ cons.act.launcher, "Finder" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"z",
+				" Zen Browser",
+				{
+					{ cons.act.launcher, "Zen" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"w",
+				" WezTerm",
+				{
+					{ cons.act.launcher, "WezTerm" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"o",
+				" Obsidian",
+				{
+					{ cons.act.launcher, "Obsidian" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"h",
+				" Hammerspoon",
+				{
+					{ cons.act.launcher, "Hammerspoon" },
+				},
+			},
 			{
 				cons.cat.action,
 				"",
 				"l",
-				"Karabiner",
+				" Karabiner",
 				{
 					{ cons.act.launcher, "Karabiner-Elements" },
 				},
@@ -359,7 +391,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"s",
-				"Spotify",
+				"󰓇 Spotify",
 				{
 					{ cons.act.launcher, "Spotify" },
 				},
@@ -368,7 +400,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"p",
-				"Postman",
+				" Postman",
 				{
 					{ cons.act.launcher, "Postman" },
 				},
@@ -377,23 +409,47 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"s",
-				"Simulator",
+				" Simulator",
 				{
 					{ cons.act.launcher, "Simulator" },
 				},
 			},
-			{ cons.cat.action, "", "m", "Mail", {
-				{ cons.act.launcher, "Mail" },
-			} },
-			{ cons.cat.action, "", "b", "Bitwarden", {
-				{ cons.act.launcher, "Bitwarden" },
-			} },
-			{ cons.cat.action, "", "v", "Stremio", {
-				{ cons.act.launcher, "Stremio" },
-			} },
-			{ cons.cat.action, "shift", "w", "WhatsApp", {
-				{ cons.act.launcher, "WhatsApp" },
-			} },
+			{
+				cons.cat.action,
+				"",
+				"m",
+				" Mail",
+				{
+					{ cons.act.launcher, "Mail" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"b",
+				" Bitwarden",
+				{
+					{ cons.act.launcher, "Bitwarden" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"v",
+				"󰎁 Stremio",
+				{
+					{ cons.act.launcher, "Stremio" },
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
+				"w",
+				"󰖣 WhatsApp",
+				{
+					{ cons.act.launcher, "WhatsApp" },
+				},
+			},
 		},
 	},
 
