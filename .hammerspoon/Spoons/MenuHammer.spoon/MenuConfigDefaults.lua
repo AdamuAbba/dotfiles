@@ -930,7 +930,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"J",
-				"Volume Down",
+				" Volume Down",
 				{
 					{
 						cons.act.func,
@@ -944,7 +944,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"K",
-				"Volume Up",
+				"  Volume Up",
 				{
 					{
 						cons.act.func,
@@ -958,7 +958,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"m",
-				"Mute/Unmute",
+				"󰝟 Mute/Unmute",
 				{
 					{
 						cons.act.func,
@@ -972,7 +972,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"l",
-				"Next Track",
+				"󰼧 Next Track",
 				{
 					{
 						cons.act.func,
@@ -986,7 +986,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"h",
-				"Prev Track",
+				"󰼨 Prev Track",
 				{
 					{
 						cons.act.func,
@@ -1000,7 +1000,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"p",
-				"Play/Pause",
+				"󰐎 Play/Pause",
 				{
 					{
 						cons.act.func,

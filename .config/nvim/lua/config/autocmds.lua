@@ -11,6 +11,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
+  end,
+})
 --============================================= Template files for nvim =============================================
 -- copied and modified from author/source [https://zignar.net/2024/11/20/template-files-for-nvim/]
 
@@ -42,6 +48,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     for pattern, tmpl_name in pairs(template_map) do
       if fname:match(pattern) then
         local tmpl_path = home .. "/.config/nvim/templates/" .. tmpl_name
+        ---@diagnostic disable-next-line: undefined-field
         if uv.fs_stat(tmpl_path) then
           local f = io.open(tmpl_path, "r")
           if f then
@@ -58,6 +65,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     -- Fallback to name or extension match
     for _, candidate in ipairs(candidates) do
       local tmpl = table.concat({ home, "/.config/nvim/templates/", candidate, ".tpl" })
+      ---@diagnostic disable-next-line: undefined-field
       if uv.fs_stat(tmpl) then
         vim.cmd("0r " .. tmpl)
         return

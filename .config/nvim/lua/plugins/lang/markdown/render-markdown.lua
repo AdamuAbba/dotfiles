@@ -1,0 +1,76 @@
+return {
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      completions = {
+        lsp = {
+          enabled = true,
+        },
+        blink = { enabled = true },
+      },
+      indent = {
+        enabled = true,
+        per_level = 2,
+        skip_level = 1,
+        skip_heading = false,
+        icon = "|",
+        priority = 0,
+      },
+      code = {
+        enabled = true,
+        conceal_delimiters = true,
+        border = "thin",
+        above = "_",
+        below = "-",
+        language_border = "█",
+        language_left = "",
+        highlight_language = "DiagnosticFloatingHint",
+        language_right = "",
+        language = true,
+        position = "left",
+        language_icon = true,
+        language_name = true,
+        language_info = true,
+        sign = true,
+        width = "block",
+        right_pad = 1,
+      },
+      heading = {
+        sign = true,
+        atx = true,
+        setext = true,
+        icons = {},
+        border = true,
+        enabled = true,
+        border_virtual = false,
+        above = "_",
+        below = "-",
+        signs = { "󰫎 " },
+        backgrounds = {
+          "RenderMarkdownH1Bg",
+          "RenderMarkdownH2Bg",
+          "RenderMarkdownH3Bg",
+          "RenderMarkdownH4Bg",
+          "RenderMarkdownH5Bg",
+          "RenderMarkdownH6Bg",
+        },
+        -- Highlight for the heading and sign icons.
+        -- Output is evaluated using the same logic as 'backgrounds'.
+        foregrounds = {
+          "RenderMarkdownH1",
+          "RenderMarkdownH2",
+          "RenderMarkdownH3",
+          "RenderMarkdownH4",
+          "RenderMarkdownH5",
+          "RenderMarkdownH6",
+        },
+        width = "block",
+      },
+      checkbox = {
+        enabled = true,
+        bullet = true,
+        right_pad = 1,
+      },
+    },
+  },
+}

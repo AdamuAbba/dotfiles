@@ -74,21 +74,22 @@ return {
           hidden = true,
           ignored = true,
           follow = true,
-          -- auto_close = true,
           follow_file = true,
           win = {
             input = {
-              title = "", -- removes the title
+              title = "",
             },
           },
           layout = {
             layout = {
               box = "vertical",
-              position = "right",
-              width = math.floor(vim.o.columns * 0.3),
-              height = math.floor(vim.o.lines * 0.8),
+              position = "float",
+              width = math.floor(vim.o.columns * 0.35),
+              height = math.floor(vim.o.lines * 0.93),
               border = "rounded",
               backdrop = false,
+              row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.92)) / 2) - 4, -- move 3 lines up
+              col = vim.o.columns - math.floor(vim.o.columns * 0.2), --
             },
           },
         },

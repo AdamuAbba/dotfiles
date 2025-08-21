@@ -25,3 +25,6 @@ pyenv global "$latest_version"
 echo "Python $latest_version is now set as the global version."
 python --version
 }
+
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

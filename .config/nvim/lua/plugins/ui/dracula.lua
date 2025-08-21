@@ -82,6 +82,17 @@ return {
         BufferLineWarningDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
         BufferLineErrorSelected = { bg = theme_colors.purple },
         BufferLineWarningSelected = { bg = theme_colors.purple },
+
+        RenderMarkdownCodeBorder = { bg = theme_colors.purple, fg = theme_colors.white, bold = true },
+        --H1
+        RenderMarkdownH1 = { fg = theme_colors.white, bold = true },
+        RenderMarkdownH1Bg = { bg = theme_colors.white, fg = theme_colors.black, bold = true },
+        --H2
+        RenderMarkdownH2 = { fg = theme_colors.pink, bold = true },
+        RenderMarkdownH2Bg = { bg = theme_colors.pink, fg = theme_colors.white, bold = true },
+        --H3
+        RenderMarkdownH3 = { fg = theme_colors.cyan, bold = true },
+        RenderMarkdownH3Bg = { bg = theme_colors.cyan, fg = theme_colors.black, bold = true },
       },
     },
     config = true,
