@@ -31,12 +31,23 @@ status_bracket=(
   background.border_color=$BACKGROUND_2
 )
 
-sketchybar --add slider volume right \
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
+sketchybar --add slider volume "$pos" \
   --set volume "${volume_slider[@]}" \
   --subscribe volume volume_change \
   mouse.clicked \
   \
-  --add item volume_icon right \
+  --add item volume_icon "$pos" \
   --set volume_icon "${volume_icon[@]}"
 
 sketchybar --add bracket status brew github.bell wifi volume_icon \

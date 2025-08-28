@@ -6,6 +6,17 @@ local display_helper = require("helpers.display_helper")
 local media_helper = require("helpers.media_helper")
 local utils = require("helpers.utils")
 
+--============================================= Clipboard load early =============================================
+spoon.SpoonInstall:andUse("ClipboardTool", {
+	start = true,
+	config = {
+		paste_on_select = true,
+		show_copied_alert = false,
+		show_in_menubar = false,
+		deduplicate = true,
+	},
+})
+
 -- If enabled, the menus will appear over full screen applications.
 -- However, the Hammerspoon dock icon will also be disabled (required for fullscreen).
 menuShowInFullscreen = false
@@ -155,6 +166,7 @@ local helpMenu = "helpMenu"
 local applicationMenu = "applicationMenu"
 local utilitiesMenu = "utilitiesMenu"
 local aerospaceMenu = "aerospaceMenu"
+local clipboardMenu = "clipboardMenu"
 
 -- Browser menus
 local browserMenu = "browserMenu"
@@ -179,6 +191,7 @@ local helpMenu = "helpMenu"
 
 -- Media menu
 local mediaMenu = "mediaMenu"
+local spotifyMenu = "spotifyMenu"
 
 -- Resolution menu
 local resolutionMenu = "resolutionMenu"
@@ -472,6 +485,15 @@ menuHammerMenuList = {
 			{
 				cons.cat.submenu,
 				"",
+				"c",
+				"Clipboard",
+				{
+					{ cons.act.menu, clipboardMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
 				"h",
 				"Hammerspoon",
 				{
@@ -481,6 +503,28 @@ menuHammerMenuList = {
 		},
 	},
 
+	clipboardMenu = {
+		parentMenu = mainMenu,
+		menuHotkey = { key_helper.hyper, "c" },
+		menuItems = {
+			{
+				cons.cat.submenu,
+				"",
+				"t",
+				" Toggle CB",
+				{
+					{
+						cons.act.func,
+						function()
+							spoon.ClipboardTool:showClipboard()
+							-- find a way to prorammatically
+							-- close menu hammer
+						end,
+					},
+				},
+			},
+		},
+	},
 	------------------------------------------------------------------------------------------------
 	-- Browser Menu
 	------------------------------------------------------------------------------------------------
@@ -492,7 +536,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"f",
-				"Web Search",
+				"󰜏 Web Search",
 				{
 					{
 						cons.act.userinput,
@@ -922,10 +966,119 @@ menuHammerMenuList = {
 	------------------------------------------------------------------------------------------------
 	-- Media Menu
 	------------------------------------------------------------------------------------------------
+	spotifyMenu = {
+		parentMenu = mediaMenu,
+		menuHotkey = nil,
+		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"j",
+				" Volume Down",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.setVolume(hs.spotify.getVolume() - 10)
+							utils:nerd_alert(string.format("  Volume down: %d%%", hs.spotify.getVolume()))
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"K",
+				"  Volume Up",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.setVolume(hs.spotify.getVolume() + 10)
+							utils:nerd_alert(string.format("  Volume Up: %d%%", hs.spotify.getVolume()))
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"m",
+				"󰝟 Mute/Unmute",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.setVolume(0)
+							utils:nerd_alert("󰝟 Mute/Unmute")
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"l",
+				"󰼧 Next Track",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.next()
+							utils:nerd_alert("󰼧 Next Track")
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"h",
+				"󰼨 Prev Track",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.previous()
+							utils:nerd_alert("󰼨 Prev Track")
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"p",
+				"󰐎 Play/Pause",
+				{
+					{
+						cons.act.func,
+						function()
+							hs.spotify.playpause()
+							utils:nerd_alert("󰐎 Play/Pause")
+						end,
+					},
+				},
+			},
+		},
+	},
+
 	mediaMenu = {
 		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper, "v" },
 		menuItems = {
+			{
+				cons.cat.submenu,
+				"",
+				"s",
+				" Spotify",
+				{
+					{
+						cons.act.menu,
+						spotifyMenu,
+					},
+				},
+			},
 			{
 				cons.cat.action,
 				"",

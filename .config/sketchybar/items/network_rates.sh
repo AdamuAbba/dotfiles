@@ -10,6 +10,18 @@ down=(
   script="$PLUGIN_DIR/network_rates.sh"
   update_freq=2
 )
+
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
 sketchybar \
-  --add item net_down right \
+  --add item net_down "$pos" \
   --set net_down "${down[@]}"

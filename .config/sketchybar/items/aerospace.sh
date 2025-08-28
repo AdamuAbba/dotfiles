@@ -1,8 +1,5 @@
-##!/usr/bin/env bash
+#!/usr/bin/env bash
 
-# Add container item for all workspaces
-
-# Add and configure individual workspace items
 sketchybar --add event aerospace_workspace_change
 
 for sid in $(aerospace list-workspaces --all); do
@@ -22,7 +19,18 @@ for sid in $(aerospace list-workspaces --all); do
     script="$CONFIG_DIR/plugins/aerospace.sh $sid"
   )
 
-  sketchybar --add item space."$sid" left \
+  pos="left"
+  MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+  case "$MODE" in
+  desktop)
+    pos="center"
+    ;;
+  *)
+    pos="left"
+    ;;
+  esac
+
+  sketchybar --add item space."$sid" "$pos" \
     --set space."$sid" "${aerospace[@]}" \
     --subscribe space."$sid" aerospace_workspace_change
 done

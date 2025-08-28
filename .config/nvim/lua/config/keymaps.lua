@@ -1,11 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
+local wk = require("which-key")
 local map = vim.keymap.set
-local del = vim.keymap.del
-
---============================================= Delete default keymaps =============================================
-del("n", "<leader>E")
+-- local del = vim.keymap.del
 
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
@@ -15,6 +13,31 @@ map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
 
+map("n", "<C-l>", function()
+  local cur_win = vim.api.nvim_get_current_win()
+  local cur_ft = vim.bo[vim.api.nvim_win_get_buf(cur_win)].filetype
+
+  local priorities = { "codecompanion", "snacks_picker_list" }
+
+  for _, ft in ipairs(priorities) do
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      local wft = vim.bo[buf].filetype
+      local cfg = vim.api.nvim_win_get_config(win)
+
+      -- skip current window's filetype so you can "advance"
+      if cfg.relative ~= "" and wft == ft and wft ~= cur_ft then
+        vim.api.nvim_set_current_win(win)
+        return
+      end
+    end
+  end
+
+  -- fallback: try normal right split
+  pcall(function()
+    vim.cmd("wincmd l")
+  end)
+end, { desc = "Go to right float or window", silent = true, noremap = true })
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
 if vim.fn.has("mac") == 1 then
@@ -74,24 +97,46 @@ map("n", "yd", function()
   vim.notify("Line and diagnostic copied to clipboard", vim.log.levels.INFO)
 end, { desc = "Yank line and diagnostic to system clipboard" })
 
+--============================================= Make file executable =============================================
+local function make_file_executable()
+  local file = vim.fn.expand("%:p")
+  local name = vim.fn.expand("%:t")
+
+  if file == "" then
+    vim.notify("No file loaded", vim.log.levels.ERROR)
+    return
+  end
+
+  local ok = os.execute("chmod +x " .. vim.fn.shellescape(file))
+  if ok then
+    vim.notify("  " .. name .. " made executable", vim.log.levels.INFO)
+  else
+    vim.notify("  Failed to chmod " .. name, vim.log.levels.ERROR)
+  end
+end
+
+map("n", "<leader>fx", make_file_executable, { desc = " Make file executable" })
 --============================================= goto-preview =============================================
-map(
-  "n",
-  "gbd",
-  "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
-  { desc = "Preview definition", noremap = true }
-)
+local go_to_preview = require("goto-preview")
 
-map(
-  "n",
-  "gbq",
-  "<cmd>lua require('goto-preview').close_all_win()<CR>",
-  { desc = "Close preview windows", noremap = true }
-)
+wk.add({
+  { "gb", group = " Goto Preview", mode = { "n" } },
+  { "gbd", go_to_preview.goto_preview_definition, desc = "󰈔 Preview Definition" },
+  { "gbq", go_to_preview.close_all_win, desc = " Close Preview Windows" },
+  {
+    "gbt",
+    go_to_preview.goto_preview_type_definition,
+    desc = "󰙅 Preview Type Definition",
+  },
+})
 
-map(
-  "n",
-  "gbt",
-  "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
-  { desc = "Preview type definition", noremap = true }
-)
+--============================================= substitute =============================================
+local substitute = require("substitute")
+local substitute_exchange = require("substitute.exchange")
+
+wk.add({
+  { "<leader>j", group = "󰯍 Substitute", mode = { "n" } },
+  { "<leader>jo", substitute.operator, desc = "󱞪 Operator" },
+  { "<leader>jj", substitute.line, desc = "󰉺 Line" },
+  { "<leader>jx", substitute_exchange.operator, desc = "󰣁 Exchange" },
+})

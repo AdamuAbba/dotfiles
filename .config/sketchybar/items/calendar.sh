@@ -16,6 +16,17 @@ calendar=(
   script="$PLUGIN_DIR/calendar.sh"
 )
 
-sketchybar --add item calendar right \
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
+sketchybar --add item calendar "$pos" \
   --set calendar "${calendar[@]}" \
   --subscribe calendar system_woke

@@ -7,9 +7,12 @@ hs.loadSpoon("MenuHammer"):enter()
 
 spoon.SpoonInstall:andUse("EmmyLua")
 
-require("pickers.app_picker")
-require("pickers.emoji_picker")
-require("helpers.reload_config")
+require("helpers.auto_cmds_events")
+
+--============================================= pickers =============================================
+require("pickers")
+--============================================= watchers =============================================
+require("watchers")
 
 -- local keylogger = require("helpers.key_logger")
 --========================== Debug zone =========================================

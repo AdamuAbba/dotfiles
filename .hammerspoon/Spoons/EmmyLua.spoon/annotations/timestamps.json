@@ -1,9 +1,14 @@
 {
-  "\/Users\/abba\/.hammerspoon\/Spoons\/ReloadConfiguration.spoon\/docs.json" : 1505420358,
-  "\/Users\/abba\/.hammerspoon\/Spoons\/EmmyLua.spoon\/docs.json" : 1723036822,
-  "\/Users\/abba\/.hammerspoon\/Spoons\/Emojis.spoon\/docs.json" : 1532339229,
   "\/Applications\/Hammerspoon.app\/Contents\/Resources\/docs.json" : 1722910901,
-  "\/Users\/abba\/.hammerspoon\/Spoons\/MenuHammer.spoon\/docs.json" : 1754608084,
   "\/Users\/abba\/.hammerspoon\/Spoons\/SpoonInstall.spoon\/docs.json" : 1566979196,
-  "\/Users\/abba\/.hammerspoon\/Spoons\/Seal.spoon\/docs.json" : 1740676093
+  "\/Users\/abba\/.hammerspoon\/Spoons\/Seal.spoon\/docs.json" : 1740676093,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/ClipboardTool.spoon\/docs.json" : 1677493710,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/HSearch.spoon\/docs.json" : 1642378929,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/FadeLogo.spoon\/docs.json" : 1496781893,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/MouseFollowsFocus.spoon\/docs.json" : 1747090750,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/ReloadConfiguration.spoon\/docs.json" : 1505420358,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/Emojis.spoon\/docs.json" : 1532339229,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/MenuHammer.spoon\/docs.json" : 1754608084,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/MouseCircle.spoon\/docs.json" : 1617723396,
+  "\/Users\/abba\/.hammerspoon\/Spoons\/EmmyLua.spoon\/docs.json" : 1723036822
 }

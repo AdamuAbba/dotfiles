@@ -9,17 +9,31 @@ return {
       ---@module "codecompanion"
       ---@diagnostic disable-next-line: undefined-doc-name
       ---@type CodeCompanion.Config
+      adapters = {
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            schema = {
+              model = {
+                default = "models/gemini-2.5-flash",
+              },
+            },
+            env = {
+              api_key = "cmd: security find-generic-password -a $USER -s gemini_api_key -w 2>/dev/null",
+            },
+          })
+        end,
+      },
       display = {
         chat = {
           show_header_separator = false,
           separator = "-",
           show_context = true,
-          show_settings = true,
+          show_settings = false,
           show_token_count = true,
-          start_in_insert_mode = false,
+          start_in_insert_mode = true,
           window = {
-            layout = "float", -- float|vertical|horizontal|buffer
-            position = "right", -- left|right|top|bottom (nil will default depending on vim.opt.splitright|vim.opt.splitbelow)
+            layout = "float",
+            position = "right",
             border = "rounded",
             height = 0.95,
             width = 0.45,

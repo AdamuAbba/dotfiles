@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh"  # Loads all defined icons
@@ -65,15 +65,19 @@ defaults=(
 
 sketchybar --default "${defaults[@]}"
 
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+source "$ITEM_DIR/center_container.sh"
+  ;;
+*)
 # Left
 source "$ITEM_DIR/left_container.sh"
-# Center
-# source "$ITEM_DIR/media.sh"
 
 # Right
-
 source "$ITEM_DIR/right_container.sh"
-# source "$ITEM_DIR/cpu.sh"
+;;
+esac
 
 sketchybar --hotload on
 

@@ -18,7 +18,11 @@ return {
         --============================================= BlinkCmp overrides=============================================
         BlinkCmpDocBorder = { fg = theme_colors.green, bg = theme_colors.background },
         BlinkCmpMenuBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        BlinkCmpMenu = { bg = theme_colors.background },
+        BlinkCmpLabel = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+        BlinkCmpMenuSelection = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
         BlinkCmpSignatureHelpBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        BlinkCmpKind = { bg = theme_colors.background },
 
         --============================================= Lsp window overrides =============================================
         FloatBorder = { fg = theme_colors.green, bg = theme_colors.background },

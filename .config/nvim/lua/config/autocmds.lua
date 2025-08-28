@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
   end,
 })
+
 --============================================= Template files for nvim =============================================
 -- copied and modified from author/source [https://zignar.net/2024/11/20/template-files-for-nvim/]
 
@@ -28,6 +29,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
       return -- skip if file is not empty on read
     end
 
+    local fpath = args.file
     local home = os.getenv("HOME")
     local fname = vim.fn.fnamemodify(args.file, ":t")
     local ext = vim.fn.fnamemodify(args.file, ":e")
@@ -42,13 +44,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
       ["%.jsx$"] = "component.jsx.stpl",
       ["%.sh$"] = "sh.stpl",
       ["index%.ts$"] = "index.ts.stpl",
+      ["plugins/.*%.lua$"] = "plugin.lua.stpl",
     }
-
-    -- Pattern-matching logic
+    --
+    -- -- Pattern-matching logic
     for pattern, tmpl_name in pairs(template_map) do
-      if fname:match(pattern) then
+      if fpath:match(pattern) or fname:match(pattern) then
         local tmpl_path = home .. "/.config/nvim/templates/" .. tmpl_name
-        ---@diagnostic disable-next-line: undefined-field
         if uv.fs_stat(tmpl_path) then
           local f = io.open(tmpl_path, "r")
           if f then
@@ -85,3 +87,26 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     end
   end,
 })
+
+--============================================= reload keymaps =============================================
+-- local function reload_keymaps()
+--   -- clear cached module
+--   package.loaded["config.keymaps"] = nil
+--
+--   -- reload by module name
+--   require("config.keymaps")
+--
+--   vim.notify("Keymaps reloaded!", vim.log.levels.INFO, {
+--     title = "Neovim",
+--     timeout = 3000,
+--   })
+-- end
+--
+-- vim.api.nvim_create_user_command("ReloadKeymaps", reload_keymaps, {})
+--
+-- local keymaps_file = vim.fn.stdpath("config") .. "/lua/config/keymaps.lua"
+--
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   pattern = keymaps_file,
+--   callback = reload_keymaps,
+-- })

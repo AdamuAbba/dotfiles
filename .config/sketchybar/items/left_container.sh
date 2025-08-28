@@ -1,6 +1,5 @@
 #!/usr/bin
 
-# source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/aerospace.sh"
 
 container=(

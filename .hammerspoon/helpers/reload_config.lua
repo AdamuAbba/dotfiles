@@ -1,3 +1,3 @@
-spoon.SpoonInstall:andUse("ReloadConfiguration")
-
-spoon.ReloadConfiguration:start()
+spoon.SpoonInstall:andUse("ReloadConfiguration", {
+	start = true,
+})

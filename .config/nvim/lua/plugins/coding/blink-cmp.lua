@@ -14,6 +14,14 @@ return {
       },
     },
     opts = {
+      keymap = {
+        preset = "default",
+        ["<Up>"] = false,
+        ["<Down>"] = false,
+        ["<C-e>"] = false,
+        ["<CR>"] = { "accept", "fallback" },
+        ["<Tab>"] = { "fallback" },
+      },
       sources = {
         default = { "conventional_commits", "ecolog", "git", "emoji", "nerdfont", "npm", "dictionary", "env" },
         providers = {
@@ -57,7 +65,6 @@ return {
             name = "npm",
             module = "blink-cmp-npm",
             async = true,
-            -- optional - make blink-cmp-npm completions top priority (see `:h blink.cmp`)
             score_offset = 100,
             opts = {
               ignore = {},
@@ -73,7 +80,7 @@ return {
               insert = true,
               ---@type string|table|fun():table
               trigger = function()
-                return { ":" }
+                return { "nf:" }
               end,
             },
             should_show_items = function()
@@ -83,12 +90,12 @@ return {
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
-            score_offset = 15,
+            score_offset = 20,
             opts = {
               insert = true,
               ---@type string|table|fun():table
               trigger = function()
-                return { ":" }
+                return { "e:" }
               end,
             },
             should_show_items = function()
@@ -107,22 +114,95 @@ return {
           },
         },
       },
+      completion = {
+        trigger = {
+          prefetch_on_insert = true,
+          show_in_snippet = true,
+          show_on_backspace = false,
+          show_on_backspace_in_keyword = false,
+          show_on_backspace_after_accept = true,
+          show_on_backspace_after_insert_enter = true,
+          show_on_keyword = true,
+          show_on_trigger_character = true,
+          show_on_insert = true,
+
+          -- LSPs can indicate when to show the completion window via trigger characters
+          -- however, some LSPs (i.e. tsserver) return characters that would essentially
+          -- always show the window. We block these by default.
+          show_on_blocked_trigger_characters = { " ", "\n", "\t" },
+          -- You can also block per filetype with a function:
+          -- show_on_blocked_trigger_characters = function(ctx)
+          --   if vim.bo.filetype == 'markdown' then return { ' ', '\n', '\t', '.', '/', '(', '[' } end
+          --   return { ' ', '\n', '\t' }
+          -- end,
+
+          show_on_accept_on_trigger_character = true,
+          show_on_insert_on_trigger_character = true,
+
+          -- List of trigger characters (on top of `show_on_blocked_trigger_characters`) that won't trigger
+          -- the completion window when the cursor comes after a trigger character when
+          -- entering insert mode/accepting an item
+          show_on_x_blocked_trigger_characters = { "'", '"', "(" },
+        },
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
+        },
+        ghost_text = {
+          enabled = false,
+        },
+        menu = {
+          auto_show = true,
+          border = "rounded",
+          cmdline_position = function()
+            if vim.g.ui_cmdline_pos ~= nil then
+              local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+              return { pos[1] + 0.4, pos[2] }
+            end
+            local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+            return { vim.o.lines - height, 0 }
+          end,
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+          window = {
+            border = "rounded",
+          },
+        },
+      },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+          show_documentation = false,
+        },
+      },
+      --CMDLINE specific config
       cmdline = {
         enabled = true,
+        keymap = {
+          ["<CR>"] = { "accept", "fallback" },
+          ["<Tab>"] = { "fallback" },
+        },
         completion = {
+          list = {
+            selection = {
+              preselect = true,
+              auto_insert = false,
+            },
+          },
           menu = {
             auto_show = true,
+            border = "rounded",
           },
           ghost_text = {
             enabled = true,
           },
         },
       },
-      completion = {
-        menu = { border = "rounded" },
-        documentation = { window = { border = "rounded" } },
-      },
-      signature = { window = { border = "rounded" } },
     },
   },
 }

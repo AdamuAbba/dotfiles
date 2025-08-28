@@ -9,6 +9,17 @@ wifi=(
   script="$PLUGIN_DIR/wifi.sh"
 )
 
-sketchybar --add item wifi right \
-           --set wifi "${wifi[@]}" \
-           --subscribe wifi wifi_change mouse.clicked
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
+sketchybar --add item wifi "$pos" \
+  --set wifi "${wifi[@]}" \
+  --subscribe wifi wifi_change mouse.clicked

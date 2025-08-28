@@ -149,8 +149,19 @@ spotify_controls=(
   y_offset=-45
 )
 
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
 sketchybar --add event spotify_change $SPOTIFY_EVENT \
-  --add item spotify.anchor right \
+  --add item spotify.anchor "$pos" \
   --set spotify.anchor "${spotify_anchor[@]}" \
   --subscribe spotify.anchor mouse.entered mouse.exited \
   mouse.exited.global \

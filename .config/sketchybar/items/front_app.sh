@@ -11,6 +11,17 @@ front_app=(
   click_script="open -a 'Mission Control'"
 )
 
-sketchybar --add item front_app right \
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
+sketchybar --add item front_app "$pos" \
   --set front_app "${front_app[@]}" \
   --subscribe front_app front_app_switched

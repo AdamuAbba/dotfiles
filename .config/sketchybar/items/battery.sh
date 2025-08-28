@@ -10,6 +10,17 @@ battery=(
   updates=on
 )
 
-sketchybar --add item battery right      \
-           --set battery "${battery[@]}" \
-           --subscribe battery power_source_change system_woke
+pos="right"
+MODE=$(cat "$HOME/.workspace_mode" 2>/dev/null || echo laptop)
+case "$MODE" in
+desktop)
+  pos="center"
+  ;;
+*)
+  pos="right"
+  ;;
+esac
+
+sketchybar --add item battery "$pos" \
+  --set battery "${battery[@]}" \
+  --subscribe battery power_source_change system_woke

@@ -17,6 +17,14 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LAZYPLUGINS="$HOME/.local/share/nvim/site/pack/lazy/start"
 
+#============================================= Hooks =============================================
+autoload -U add-zsh-hook
+
+update_workspace_mode() {
+  export WORKSPACE_MODE="$(cat ~/.workspace_mode 2>/dev/null || echo laptop)"
+}
+
+add-zsh-hook precmd update_workspace_mode
 #============================================= Command History =============================================
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
@@ -35,6 +43,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 unsetopt correct_all
 unsetopt correct
+
 
 # Disable Ctrl+Z
 stty susp undef
