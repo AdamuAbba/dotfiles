@@ -59,7 +59,7 @@ return {
         BufferLineMiniIconsBlue = { bg = theme_colors.background, fg = theme_colors.cyan },
         BufferLineCloseButton = { bg = theme_colors.background, fg = theme_colors.red },
         BufferLineSeparator = { fg = theme_colors.background },
-        BufferLineBufferVisible = { fg = theme_colors.background, bg = theme_colors.background },
+        BufferLineBufferVisible = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
         BufferLineModifiedVisible = { fg = theme_colors.white, bg = theme_colors.background },
         BufferLineModified = { bg = theme_colors.background, fg = theme_colors.yellow },
         -- Diagnostics
@@ -78,15 +78,23 @@ return {
         BufferLineMiniIconsBlueSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
         BufferLineCloseButtonSelected = { bg = theme_colors.purple, fg = theme_colors.red },
         BufferLineSeparatorSelected = { fg = theme_colors.background },
-        BufferLineModifiedSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
-        BufferLineBufferSelected = { bg = theme_colors.purple },
+        BufferLineModifiedSelected = { bg = theme_colors.purple, fg = theme_colors.yellow, bold = true },
+        BufferLineBufferSelected = { bg = theme_colors.purple, fg = theme_colors.black, bold = true },
         -- Diagnostics
-        BufferLineDiagnosticSelected = { bg = theme_colors.purple },
-        BufferLineErrorDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.red },
-        BufferLineWarningDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
-        BufferLineErrorSelected = { bg = theme_colors.purple },
-        BufferLineWarningSelected = { bg = theme_colors.purple },
-
+        BufferLineDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.black, bold = true },
+        --Error
+        BufferLineErrorSelected = { bg = theme_colors.purple, fg = theme_colors.red, bold = true },
+        BufferLineErrorDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.red, bold = true },
+        --Warning
+        BufferLineWarningSelected = { bg = theme_colors.purple, fg = theme_colors.yellow, bold = true },
+        BufferLineWarningDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.yellow, bold = true },
+        --Hint
+        BufferLineHintSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
+        BufferLineHintDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
+        --Info
+        BufferLineInfoSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
+        BufferLineInfoDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
+        --============================================= Render markdown =============================================
         RenderMarkdownCodeBorder = { bg = theme_colors.purple, fg = theme_colors.white, bold = true },
         --H1
         RenderMarkdownH1 = { fg = theme_colors.white, bold = true },

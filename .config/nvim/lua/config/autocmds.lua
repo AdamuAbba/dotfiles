@@ -110,3 +110,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
 --   pattern = keymaps_file,
 --   callback = reload_keymaps,
 -- })
+
+--============================================= git hooks as sh files =============================================
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = {
+    ".git/hooks/*",
+    vim.fn.expand("~/.config/vectorcode/hooks/*"),
+  },
+  callback = function()
+    vim.bo.filetype = "sh"
+  end,
+})

@@ -1,3 +1,5 @@
+local utils = require("helpers.utils")
+
 local m = {}
 -- increase brightness
 m.increase_brightness = function()
@@ -9,7 +11,7 @@ m.increase_brightness = function()
 		local new = math.min(current + 0.2, 1)
 		only:setBrightness(new)
 		local percent = math.floor(only:getBrightness() * 100)
-		hs.alert.show(string.format("󰃞  %d%%", percent))
+		utils:nerd_alert(string.format("󰃠 %d%%  ", percent))
 		return
 	end
 
@@ -20,7 +22,7 @@ m.increase_brightness = function()
 			local new = math.min(current + 0.2, 1)
 			screen:setBrightness(new)
 			local percent = math.floor(screen:getBrightness() * 100)
-			hs.alert.show(string.format("󰃞  %d%%", percent))
+			utils:nerd_alert(string.format("󰃠 %d%%  ", percent))
 		end
 	end
 end
@@ -35,7 +37,7 @@ m.decrease_brightness = function()
 		local new = math.min(current - 0.2, 1)
 		only:setBrightness(new)
 		local percent = math.floor(only:getBrightness() * 100)
-		hs.alert.show(string.format("󰃞  %d%%", percent))
+		utils:nerd_alert(string.format("󰃠  %d%%  ", percent))
 		return
 	end
 
@@ -46,7 +48,7 @@ m.decrease_brightness = function()
 			local new = math.min(current - 0.2, 1)
 			screen:setBrightness(new)
 			local percent = math.floor(screen:getBrightness() * 100)
-			hs.alert.show(string.format("󰃞  %d%%", percent))
+			utils:nerd_alert(string.format("󰃠  %d%%  ", percent))
 		end
 	end
 end

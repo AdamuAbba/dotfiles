@@ -77,6 +77,7 @@ end, { desc = "Snippet: Add" })
 map("n", "yd", function()
   local pos = vim.api.nvim_win_get_cursor(0)
   local line_num = pos[1] - 1 -- 0-indexed
+  ---@diagnostic disable-next-line: unused-local
   local line_text = vim.api.nvim_buf_get_lines(0, line_num, line_num + 1, false)[1]
   local diagnostics = vim.diagnostic.get(0, { lnum = line_num })
   if #diagnostics == 0 then
@@ -128,15 +129,4 @@ wk.add({
     go_to_preview.goto_preview_type_definition,
     desc = "󰙅 Preview Type Definition",
   },
-})
-
---============================================= substitute =============================================
-local substitute = require("substitute")
-local substitute_exchange = require("substitute.exchange")
-
-wk.add({
-  { "<leader>j", group = "󰯍 Substitute", mode = { "n" } },
-  { "<leader>jo", substitute.operator, desc = "󱞪 Operator" },
-  { "<leader>jj", substitute.line, desc = "󰉺 Line" },
-  { "<leader>jx", substitute_exchange.operator, desc = "󰣁 Exchange" },
 })

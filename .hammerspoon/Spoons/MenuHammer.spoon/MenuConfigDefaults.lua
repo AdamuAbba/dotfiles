@@ -67,7 +67,7 @@ menuOuterPadding = 30
 menuItemFont = "JetBrainsMono Nerd Font"
 
 -- The font size to apply to menu items.
-menuItemFontSize = 22
+menuItemFontSize = 20
 
 -- The text alignment to apply to menu items.
 menuItemTextAlign = "left"
@@ -100,7 +100,7 @@ menuItemColors = {
 	-- The colors to use for navigation menu items
 	navigation = {
 		background = "#000000",
-		text = utils.colors.cyan,
+		text = utils.colors.glossy_pink,
 	},
 	-- The colors to use for empty menu items
 	empty = {
@@ -122,7 +122,7 @@ menuItemColors = {
 	},
 	display = {
 		background = "#000000",
-		text = "#48A9A6",
+		text = utils.colors.glossy_pink,
 	},
 }
 
@@ -164,9 +164,12 @@ local helpMenu = "helpMenu"
 
 -- Applications Menus
 local applicationMenu = "applicationMenu"
+
+--============================================= Utilities =============================================
 local utilitiesMenu = "utilitiesMenu"
 local aerospaceMenu = "aerospaceMenu"
 local clipboardMenu = "clipboardMenu"
+local frontmostAppMenu = "frontmostAppMenu"
 
 -- Browser menus
 local browserMenu = "browserMenu"
@@ -394,7 +397,7 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"l",
+				"k",
 				" Karabiner",
 				{
 					{ cons.act.launcher, "Karabiner-Elements" },
@@ -477,7 +480,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"a",
-				"Aerospace",
+				" Aerospace",
 				{
 					{ cons.act.menu, aerospaceMenu },
 				},
@@ -486,7 +489,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"c",
-				"Clipboard",
+				" Clipboard",
 				{
 					{ cons.act.menu, clipboardMenu },
 				},
@@ -495,20 +498,32 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"h",
-				"Hammerspoon",
+				"󰣪 Hammerspoon",
 				{
 					{ cons.act.menu, hammerspoonMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
+				"f",
+				" frontmostApp",
+				{
+					{ cons.act.menu, frontmostAppMenu },
 				},
 			},
 		},
 	},
 
+	------------------------------------------------------------------------------------------------
+	-- clipboard Menu
+	------------------------------------------------------------------------------------------------
 	clipboardMenu = {
 		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper, "c" },
 		menuItems = {
 			{
-				cons.cat.submenu,
+				cons.cat.action,
 				"",
 				"t",
 				" Toggle CB",
@@ -517,8 +532,39 @@ menuHammerMenuList = {
 						cons.act.func,
 						function()
 							spoon.ClipboardTool:showClipboard()
-							-- find a way to prorammatically
-							-- close menu hammer
+						end,
+					},
+				},
+			},
+		},
+	},
+
+	------------------------------------------------------------------------------------------------
+	-- frontmostApp Menu
+	------------------------------------------------------------------------------------------------
+	frontmostAppMenu = {
+		parentMenu = utilitiesMenu,
+		menuHotkey = nil,
+		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"q",
+				"󰯆 Kill App",
+				{
+					{ cons.act.system, cons.sys.forcequit },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"r",
+				"󰜉 Restart App",
+				{
+					{
+						cons.act.func,
+						function()
+							utils:restartFrontmostApp()
 						end,
 					},
 				},
@@ -1177,7 +1223,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"j",
-				"Brightness Down",
+				" Brightness",
 				{
 					{
 						cons.act.func,
@@ -1191,7 +1237,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"k",
-				"Brightness Up",
+				" Brightness",
 				{
 					{
 						cons.act.func,
@@ -1275,15 +1321,7 @@ menuHammerMenuList = {
 		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper_shift, "s" },
 		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"q",
-				"Kill Front App",
-				{
-					{ cons.act.system, cons.sys.forcequit },
-				},
-			},
+
 			{
 				cons.cat.action,
 				"",

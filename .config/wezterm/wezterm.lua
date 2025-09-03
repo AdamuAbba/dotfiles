@@ -19,9 +19,9 @@ config.color_schemes = {
   ["Dracula (Official)"] = scheme,
 }
 config.color_scheme = "Dracula (Official)"
-wezterm.font_with_fallback {
-  { family = "ShureTechMono Nerd Font", weight = "Regular" },
-  { family = "JetBrainsMono Nerd Fon", weight = "Regular" },
+config.font = wezterm.font_with_fallback {
+  { family = "JetBrainsMono Nerd Font", weight = "Medium", italic = false },
+  { family = "Fira Code", weight = "Medium", italic = false },
 }
 config.default_prog = { "/bin/zsh" }
 config.disable_default_key_bindings = true

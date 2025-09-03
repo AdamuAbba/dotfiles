@@ -21,8 +21,8 @@ M.colors = {
 	selection = "#44475a",
 	foreground = "#f8f8f2",
 	comment = "#6272a4",
-	cyan = "#8be9fd",
-	green = "#50fa7b",
+	cyan = "#80D6E7",
+	green = "#3AB75B",
 	orange = "#ffb86c",
 	glossy_pink = "#DD29D4",
 	pink = "#ff79c6",
@@ -59,12 +59,36 @@ function M:nerd_alert(msg, opts)
 		color = opts.color or self.colors:to_rgb().green,
 		traits = { bold = true },
 	})
+	local function with_alpha(rgb, a)
+		rgb.alpha = a
+		return rgb
+	end
 	hs.alert.show(styled, {
-		strokeColor = { alpha = 0 },
-		fillColor = { alpha = 0 },
+		strokeColor = with_alpha(self.colors:to_rgb().green, 1),
+		fillColor = with_alpha(self.colors:to_rgb().black, 1),
 		textStyle = {},
-		radius = 0,
+		radius = 10,
 	}, opts.screen, opts.duration or 2)
+end
+
+function M:restartFrontmostApp()
+	local frontApp = hs.application.frontmostApplication()
+	if not frontApp then
+		return
+	end
+
+	local appName = frontApp:name()
+	local bundleID = frontApp:bundleID()
+	if not bundleID then
+		return
+	end
+
+	self:nerd_alert("󰜉 Restarting " .. appName)
+
+	frontApp:kill9()
+	hs.timer.doAfter(1, function()
+		hs.application.launchOrFocusByBundleID(bundleID)
+	end)
 end
 
 return M

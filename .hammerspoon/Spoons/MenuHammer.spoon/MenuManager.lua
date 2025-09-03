@@ -92,8 +92,8 @@ function MenuManager:enter()
 	self.canvas[1] = {
 		type = "rectangle",
 		action = "strokeAndFill",
-		strokeWidth = 1,
-		frame = { x = "0.8%", y = "1%", w = "98.4%", h = "97%" },
+		strokeWidth = 1.8,
+		frame = { x = "1.5%", y = "2.5%", w = "97%", h = "92.5%" },
 		roundedRectRadii = { xRadius = 5.0, yRadius = 5.0 },
 		strokeColor = { hex = utils.colors.green },
 		fillColor = { hex = menuItemColors.default.background },

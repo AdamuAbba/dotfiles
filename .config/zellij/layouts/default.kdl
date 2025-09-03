@@ -7,7 +7,8 @@ layout {
       //===================================== dracular color scheme =======================================
         color_base "#232136"
         color_surface "#2a273f"
-        color_overlay "#8265AB"
+        // color_overlay "#8265AB"
+        color_overlay "#BD93F9"
         color_overlay_light "#BD93F9"
         color_active "#50FA7B"
         color_muted "#6e6a86"
@@ -53,7 +54,7 @@ layout {
         tab_normal              "#[fg=$text,bold] {name} {floating_indicator} "
         tab_normal_fullscreen   "#[fg=$text,bold] {name} {fullscreen_indicator} "
         tab_normal_sync         "#[fg=$text,bold] {name} {sync_indicator} "
-        tab_active              "#[bg=$overlay,fg=$text,bold] {name} {floating_indicator} "
+        tab_active              "#[bg=$overlay,fg=$black,bold] {name} {floating_indicator} "
         tab_active_fullscreen   "#[bg=$overlay,fg=$text,bold] {name} {fullscreen_indicator} "
         tab_active_sync         "#[bg=$overlay,fg=$text,bold] {name} {sync_indicator} "
         tab_separator           " "

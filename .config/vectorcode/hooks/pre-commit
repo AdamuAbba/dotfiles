@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Pre-commit hook: vectorise only staged files safely
+
+# Get staged files, handle spaces safely
+diff_files=$(git diff --cached --name-only -z)
+
+# Loop over files and vectorise if they exist
+printf '%s\0' "$diff_files" | while IFS= read -r -d '' file; do
+  [ -f "$file" ] || continue
+  vectorcode vectorise "$file" || {
+    echo "[pre-commit] vectorcode vectorise failed on $file"
+    exit 1
+  }
+done
+
+exit 0

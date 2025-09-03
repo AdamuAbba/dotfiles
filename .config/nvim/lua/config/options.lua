@@ -29,5 +29,6 @@ opt.showmode = false
 opt.swapfile = true
 opt.clipboard = "unnamedplus"
 opt.mouse = ""
+opt.winbar = " "
 --=============================================  window scoped ==============================================
 w.relativenumber = false

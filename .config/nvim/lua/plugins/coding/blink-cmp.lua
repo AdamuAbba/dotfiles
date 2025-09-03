@@ -23,7 +23,7 @@ return {
         ["<Tab>"] = { "fallback" },
       },
       sources = {
-        default = { "conventional_commits", "ecolog", "git", "emoji", "nerdfont", "npm", "dictionary", "env" },
+        default = { "conventional_commits", "ecolog", "git", "emoji", "npm", "dictionary", "env" },
         providers = {
           ecolog = {
             name = "ecolog",
@@ -72,28 +72,23 @@ return {
               only_latest_version = false,
             },
           },
-          nerdfont = {
-            module = "blink-nerdfont",
-            name = "Nerd Fonts",
-            score_offset = 15,
-            opts = {
-              insert = true,
-              ---@type string|table|fun():table
-              trigger = function()
-                return { "nf:" }
-              end,
-            },
-            should_show_items = function()
-              return vim.tbl_contains({ "lua", "gitcommit", "markdown" }, vim.o.filetype)
-            end,
-          },
+          -- nerdfont = {
+          --   module = "blink-nerdfont",
+          --   name = "Nerd Fonts",
+          --   score_offset = 15,
+          --   opts = {
+          --     insert = true,
+          --   },
+          --   should_show_items = function()
+          --     return vim.tbl_contains({ "lua", "gitcommit", "markdown" }, vim.o.filetype)
+          --   end,
+          -- },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
-            score_offset = 20,
+            score_offset = 15,
             opts = {
               insert = true,
-              ---@type string|table|fun():table
               trigger = function()
                 return { "e:" }
               end,
@@ -190,7 +185,7 @@ return {
         completion = {
           list = {
             selection = {
-              preselect = true,
+              preselect = false,
               auto_insert = false,
             },
           },
