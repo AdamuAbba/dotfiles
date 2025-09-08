@@ -18,7 +18,7 @@ This setup leverages **LazyVim** for efficient plugin management and a streamlin
 
 ## Getting Started
 
-**shit you should do**
+shit you should do
 
 LazyVim will automatically install the necessary plugins on the first launch.
 
@@ -28,4 +28,4 @@ You can customize this Neovim setup by modifying the Lua files in the `lua` dire
 
 ---
 
-**Note**: This README is a general overview i quickly generated with AI as a placeholder (feeling too lazy to make this robust for now). For detailed information on specific plugins or custom configurations, please refer to `lua/plugins/<plugin-name>.lua` files or the official documentation of the respective plugins.
+**Note**: This README is a general overview i quickly generated with AI as a placeholder (feeling too lazy to make this robust for now). For detailed information on specific plugins or custom configurations, please refer to `lua/plugins/<dir>/<plugin-name>.lua` files or the official documentation of the respective plugins.

@@ -2,16 +2,14 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = {
-      {
-        "Kaiser-Yang/blink-cmp-git",
-        "moyiz/blink-emoji.nvim",
-        "MahanRahmati/blink-nerdfont.nvim",
-        "alexandre-abrioux/blink-cmp-npm.nvim",
-        "archie-judd/blink-cmp-words",
-        "bydlw98/blink-cmp-env",
-        "ph1losof/ecolog.nvim",
-        "disrupted/blink-cmp-conventional-commits",
-      },
+      "Kaiser-Yang/blink-cmp-git",
+      "moyiz/blink-emoji.nvim",
+      "MahanRahmati/blink-nerdfont.nvim",
+      "alexandre-abrioux/blink-cmp-npm.nvim",
+      "archie-judd/blink-cmp-words",
+      "bydlw98/blink-cmp-env",
+      "ph1losof/ecolog.nvim",
+      "disrupted/blink-cmp-conventional-commits",
     },
     opts = {
       keymap = {
@@ -141,7 +139,7 @@ return {
         },
         list = {
           selection = {
-            preselect = true,
+            preselect = false,
             auto_insert = false,
           },
         },
@@ -191,7 +189,6 @@ return {
           },
           menu = {
             auto_show = true,
-            border = "rounded",
           },
           ghost_text = {
             enabled = true,

@@ -33,7 +33,7 @@ hs.hotkey.alertDuration = 0
 hs.hints.showTitleThresh = 0
 
 -- Disable animations
-hs.window.animationDuration = 0
+hs.window.animationDuration = 0.5
 
 -- Editor path
 menuTextEditor = "/opt/homebrew/bin/nvim"
@@ -374,6 +374,15 @@ menuHammerMenuList = {
 				" WezTerm",
 				{
 					{ cons.act.launcher, "WezTerm" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"x",
+				" Xcode",
+				{
+					{ cons.act.launcher, "Xcode" },
 				},
 			},
 			{

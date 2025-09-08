@@ -51,6 +51,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     for pattern, tmpl_name in pairs(template_map) do
       if fpath:match(pattern) or fname:match(pattern) then
         local tmpl_path = home .. "/.config/nvim/templates/" .. tmpl_name
+        ---@diagnostic disable-next-line: undefined-field
         if uv.fs_stat(tmpl_path) then
           local f = io.open(tmpl_path, "r")
           if f then

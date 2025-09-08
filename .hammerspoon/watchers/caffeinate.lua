@@ -22,6 +22,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Parameters:
 ---  * None
 function obj:start()
+	obj:stop() -- stop existing watcher if any
 	local function watcher_function(event)
 		if event == hs.caffeinate.watcher.screensDidUnlock then
 			os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/sketchybar/reload.sh")
@@ -32,4 +33,10 @@ function obj:start()
 	return self
 end
 
+function obj:stop()
+	if self.watcher then
+		self.watcher:stop()
+		self.watcher = nil
+	end
+end
 return obj

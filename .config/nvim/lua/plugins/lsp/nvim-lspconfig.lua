@@ -4,13 +4,19 @@ return {
     ---@class PluginLspOpts
     opts = function(_, opts)
       ---@diagnostic disable-next-line: undefined-doc-name
-      opts.diagnostics = {
+      opts.diagnostics = vim.tbl_deep_extend("force", opts.diagnostics or {}, {
         float = {
           border = "rounded",
         },
-      }
+      })
 
-      opts.servers = {
+      opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
+        bacon_ls = {
+          ---@diagnostic disable-next-line: undefined-global
+          enabled = diagnostics == "bacon-ls",
+        },
+        rust_analyzer = { enabled = false },
+        vectorcode_server = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -38,9 +44,7 @@ return {
             },
           },
         },
-      }
-
-      return opts
+      })
     end,
   },
 }

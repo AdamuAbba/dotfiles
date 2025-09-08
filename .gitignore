@@ -44,6 +44,7 @@
 .config/themes/Linux/skins/dracula/gtk/install.sh
 
 #============================================= remaining stuff =============================================
+.config/.android/
 .config/exercism/
 .config/input-remapper/
 .config/configstore

@@ -11,25 +11,11 @@ update() {
   ICON_COLOR="$([ -n "$IP" ] && echo "$GREEN" || echo "$RED")"
   LABEL="$([ -n "$IP" ] && echo "$SSID ($IP)" || echo "Disconnected")"
 
-  sketchybar --set $NAME icon="$ICON" label="$LABEL" icon.color="$ICON_COLOR"
-}
-
-click() {
-  CURRENT_WIDTH="$(sketchybar --query $NAME | jq -r .label.width)"
-
-  WIDTH=0
-  if [ "$CURRENT_WIDTH" -eq "0" ]; then
-    WIDTH=dynamic
-  fi
-
-  sketchybar --animate sin 20 --set $NAME label.width="$WIDTH"
+  sketchybar --set "$NAME" icon="$ICON" label="$LABEL" icon.color="$ICON_COLOR"
 }
 
 case "$SENDER" in
 "wifi_change")
   update
-  ;;
-"mouse.clicked")
-  click
   ;;
 esac

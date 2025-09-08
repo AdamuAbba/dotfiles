@@ -105,6 +105,8 @@ return {
         --H3
         RenderMarkdownH3 = { fg = theme_colors.cyan, bold = true },
         RenderMarkdownH3Bg = { bg = theme_colors.cyan, fg = theme_colors.black, bold = true },
+        --============================================= Noice =============================================
+        NoiceLspProgressTitle = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
       },
     },
     config = true,
