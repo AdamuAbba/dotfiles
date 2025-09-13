@@ -6,6 +6,9 @@ return {
       "nvim-neotest/neotest-jest",
       "marilari88/neotest-vitest",
       "mrcjkb/rustaceanvim",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = function(_, opts)
       opts.adapters = vim.tbl_deep_extend("force", opts.adapters or {}, {

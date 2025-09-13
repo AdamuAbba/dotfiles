@@ -6,7 +6,6 @@ keybinds clear-defaults=true {
         bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "d" { NewPane "down"; SwitchToMode "locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "h" { MoveFocus "left"; }
         bind "j" { MoveFocus "down"; }
         bind "k" { MoveFocus "up"; }
@@ -76,7 +75,7 @@ keybinds clear-defaults=true {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "n" { Search "down"; }
         bind "o" { SearchToggleOption "WholeWord"; }
-        bind "p" { Search "up"; }
+        bind "N" { Search "up"; }
         bind "w" { SearchToggleOption "Wrap"; }
     }
     session {
@@ -106,10 +105,69 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
-        bind "Ctrl q" {
-          LaunchOrFocusPlugin "zj-quit" {
+        bind "?" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+                "LOAD_ZELLIJ_BINDINGS" "false"
+                floating true
+                focus true
+                // TODO: add keybindings i actually give a damn about
+                "lock"                  "ctrl + g"
+                "unlock"                "ctrl + g"
+                "new pane"              "ctrl + p   n"
+                "change focus of pane"  "ctrl + p   arrow key"
+                "close pane"            "ctrl + p   x"
+                "rename pane"           "ctrl + p   c"
+                "toggle fullscreen"     "ctrl + p   f"
+                "toggle floating pane"  "ctrl + p   w"
+                "toggle embed pane"     "ctrl + p   e"
+                "choose right pane"     "ctrl + p   l"
+                "choose left pane"      "ctrl + p   r"
+                "choose upper pane"     "ctrl + p   k"
+                "choose lower pane"     "ctrl + p   j"
+                "new tab"               "ctrl + t   n"
+                "close tab"             "ctrl + t   x"
+                "change focus of tab"   "ctrl + t   arrow key"
+                "rename tab"            "ctrl + t   r"
+                "sync tab"              "ctrl + t   s"
+                "brake pane to new tab" "ctrl + t   b"
+                "brake pane left"       "ctrl + t   ["
+                "brake pane right"      "ctrl + t   ]"
+                "toggle tab"            "ctrl + t   tab"
+                "increase pane size"    "ctrl + n   +"
+                "decrease pane size"    "ctrl + n   -"
+                "increase pane top"     "ctrl + n   k"
+                "increase pane right"   "ctrl + n   l"
+                "increase pane bottom"  "ctrl + n   j"
+                "increase pane left"    "ctrl + n   h"
+                "decrease pane top"     "ctrl + n   K"
+                "decrease pane right"   "ctrl + n   L"
+                "decrease pane bottom"  "ctrl + n   J"
+                "decrease pane left"    "ctrl + n   H"
+                "move pane to top"      "ctrl + h   k"
+                "move pane to right"    "ctrl + h   l"
+                "move pane to bottom"   "ctrl + h   j"
+                "move pane to left"     "ctrl + h   h"
+                "search"                "ctrl + s   s"
+                "go into edit mode"     "ctrl + s   e"
+                "detach session"        "ctrl + o   w"
+                "open session manager"  "ctrl + o   w"
+                "Quit zellij"  "ctrl + g   q"
+            }
+            SwitchToMode "locked";
+        }
+        bind "f" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zbuffers.wasm" {
             floating true
-          }
+        }
+            SwitchToMode "locked";
+        }
+        bind "q" {
+            LaunchOrFocusPlugin "zj-quit" {
+                floating true
+                confirm_key "Enter"
+                cancel_key "Esc"
+            };
+            SwitchToMode "locked";
         }
     }
     shared_except "locked" "entersearch" {

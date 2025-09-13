@@ -8,6 +8,8 @@
 #============================================ Dracula theme========================================
 #-------- Load dracula color palette before sourcing brew
 source $HOME/zshrc-config/theme.zsh
+#============================================ ai-models ============================================
+source $HOME/zshrc-config/ai-models.zsh
 #============================================ homebrew ============================================
 source $HOME/zshrc-config/homebrew.zsh
 #============================================ List of all plugins =================================

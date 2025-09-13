@@ -2,19 +2,30 @@
 
 This repository contains my personal Neovim configuration.
 
+## Contents
+<!-- mtoc start -->
+
+* [Overview](#overview)
+* [Structure](#structure)
+* [Getting Started](#getting-started)
+* [Customization](#customization)
+* [setup](#setup)
+
+<!-- mtoc end -->
+
 ## Overview
 
 This setup leverages **LazyVim** for efficient plugin management and a streamlined configuration experience.
 
 ## Structure
 
-- **`init.lua`**: The entry point of the configuration, responsible for loading LazyVim and other essential settings.
-- **`lua/config/lazy.lua`**: This file is  where my LazyVim plugin specifications and their configurations reside.
-- **`lazy-lock.json`**: Managed by LazyVim, this file locks the versions of your plugins.
-- **`lazyvim.json`**: Contains LazyVim-specific settings.
-- **`stylua.toml`**: Configuration for `stylua`, a Lua formatter.
-- **`snippets/`**: Contains various snippets for different file types.
-- **`templates/`**: Holds templates for new files.
+* **`init.lua`**: The entry point of the configuration, responsible for loading LazyVim and other essential settings.
+* **`lua/config/lazy.lua`**: This file is  where my LazyVim plugin specifications and their configurations reside.
+* **`lazy-lock.json`**: Managed by LazyVim, this file locks the versions of your plugins.
+* **`lazyvim.json`**: Contains LazyVim-specific settings.
+* **`stylua.toml`**: Configuration for `stylua`, a Lua formatter.
+* **`snippets/`**: Contains various snippets for different file types.
+* **`templates/`**: Holds templates for new files.
 
 ## Getting Started
 
@@ -25,6 +36,8 @@ LazyVim will automatically install the necessary plugins on the first launch.
 ## Customization
 
 You can customize this Neovim setup by modifying the Lua files in the `lua` directory. For LazyVim-specific customizations, refer to the [LazyVim documentation](https://www.lazyvim.org/)।
+
+## setup
 
 ---
 

@@ -36,7 +36,7 @@ case ${PERCENTAGE} in
 esac
 
 if [[ $CHARGING != "" ]]; then
-  ICON=$BATTERY_CHARGING
+  ICON=""
   DRAWING=off
 fi
 

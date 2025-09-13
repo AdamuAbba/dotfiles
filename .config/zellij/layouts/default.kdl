@@ -51,17 +51,17 @@ layout {
         mode_session       "#[fg=$love,bold] SESSION "
         mode_prompt        "#[fg=$love,bold] PROMPT "
 
-        tab_normal              "#[fg=$text,bold] {name} {floating_indicator} "
+        tab_normal              "#[fg=$text,bold] {name} {floating_indicator} "
         tab_normal_fullscreen   "#[fg=$text,bold] {name} {fullscreen_indicator} "
         tab_normal_sync         "#[fg=$text,bold] {name} {sync_indicator} "
-        tab_active              "#[bg=$overlay,fg=$black,bold] {name} {floating_indicator} "
+        tab_active              "#[bg=$overlay,fg=$black,bold] {name} {floating_indicator} "
         tab_active_fullscreen   "#[bg=$overlay,fg=$text,bold] {name} {fullscreen_indicator} "
         tab_active_sync         "#[bg=$overlay,fg=$text,bold] {name} {sync_indicator} "
         tab_separator           " "
 
         tab_sync_indicator       ""
         tab_fullscreen_indicator "󰊓"
-        tab_floating_indicator   "󰹙"
+        tab_floating_indicator   "󰹙 "
 
         notification_format_unread "#[bg=$orange,fg=$bg1]#[bg=$orange,fg=$bg1] {message} #[bg=$bg1,fg=$orange]"
         notification_format_no_notifications ""
@@ -79,5 +79,16 @@ layout {
 
             }
         }
+    }
+    tab name=" Diary" {
+    pane {
+        command "nvim"
+        args "/Users/abba/Documents/shytypes-obs-vault/Todo.md"
+        cwd "/Users/abba/Documents/shytypes-obs-vault"
+        close_on_exit true
+    }
+    }
+    // first default tab
+    tab focus=true {
     }
 }

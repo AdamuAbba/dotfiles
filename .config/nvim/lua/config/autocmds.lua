@@ -1,6 +1,7 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
+local wk = require("which-key")
 
 -- Disable the concealing in some file formats
 -- The default conceallevel is 3 in LazyVim
@@ -120,5 +121,21 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   },
   callback = function()
     vim.bo.filetype = "sh"
+  end,
+})
+
+--============================================= auto cwd =============================================
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local args = vim.fn.argv()
+    if #args > 0 then
+      local arg = args[1]
+      local stat = vim.loop.fs_stat(arg)
+      if stat and stat.type == "directory" then
+        vim.cmd("cd " .. arg)
+      else
+        vim.cmd("cd " .. vim.fn.fnamemodify(arg, ":p:h"))
+      end
+    end
   end,
 })

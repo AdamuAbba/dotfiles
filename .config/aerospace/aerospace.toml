@@ -73,6 +73,7 @@ cmd-3 = 'workspace Tools'
 cmd-4 = 'workspace Media'
 cmd-5 = 'workspace Misc'
 cmd-6 = 'workspace Social'
+cmd-8 = 'workspace Games'
 #============ scratch monitor workspaces
 cmd-7 = 'workspace scratch'
 
@@ -90,6 +91,7 @@ alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 "Media" = 'main'
 "Misc" = 'main'
 "Social" = 'main'
+"Games" = 'main'
 "scratch" = 'secondary'
 
 #####################################################################################################
@@ -119,11 +121,13 @@ run = ["layout floating", "move-node-to-workspace Browser"]
 if.app-id = 'app.zen-browser.zen'
 run = ["move-node-to-workspace Browser"]
 
-#============ Second Monitor
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = ["move-node-to-workspace Browser"]
 
+[[on-window-detected]]
+if.app-id = "com.apple.Safari"
+run = ["move-node-to-workspace Browser"]
 #============================================= Editors/IDEs =========================================
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
@@ -254,6 +258,11 @@ run = "move-node-to-workspace Social"
 [[on-window-detected]]
 if.app-id = "com.apple.mail"
 run = "move-node-to-workspace Social"
+
+#============================================= Games =============================================
+[[on-window-detected]]
+if.app-id = "com.now.gg.BlueStacks"
+run = "move-node-to-workspace Games"
 
 #============================================= Detached (Floating) =============================================
 [[on-window-detected]]

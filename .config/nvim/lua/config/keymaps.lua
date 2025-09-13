@@ -3,8 +3,9 @@
 
 local wk = require("which-key")
 local map = vim.keymap.set
--- local del = vim.keymap.del
+local del = vim.keymap.del
 
+del("n", "<leader>fT")
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
@@ -52,16 +53,25 @@ local function url_repo()
   return cursorword or ""
 end
 
-map("n", "gl", function()
-  vim.fn.jobstart({ open_command, url_repo() }, { detach = true })
-end, {
-  desc = " Open link under cursor",
-  silent = true,
+wk.add({
+  {
+    "gl",
+    function()
+      vim.fn.jobstart({ open_command, url_repo() }, { detach = true })
+    end,
+    icon = " ",
+    desc = "Open link under cursor",
+    silent = true,
+    mode = { "n" },
+  },
 })
 
 --============================================= Create Blank Newline =============================================
-map("n", "<leader>o", "o<ESC>k", { desc = "↓ Create Blank Newline below and stay in Normal mode", silent = true })
-map("n", "<leader>O", "o<ESC>j", { desc = "↑ Create Blank Newline above and stay in Normal mode", silent = true })
+wk.add({
+  { "<leader>o", group = "Add Blank Line", icon = " ", mode = { "n" } },
+  { "<leader>oj", "o<ESC>k", desc = "Blank Newline below", icon = "↓" },
+  { "<leader>ok", "O<ESC>j", desc = "Blank Newline above", icon = "↑" },
+})
 
 --============================================= nvim-scissors =============================================
 map("n", "<leader>he", function()
@@ -116,17 +126,48 @@ local function make_file_executable()
   end
 end
 
-map("n", "<leader>fx", make_file_executable, { desc = " Make file executable" })
---============================================= goto-preview =============================================
-local go_to_preview = require("goto-preview")
-
 wk.add({
-  { "gb", group = " Goto Preview", mode = { "n" } },
-  { "gbd", go_to_preview.goto_preview_definition, desc = "󰈔 Preview Definition" },
-  { "gbq", go_to_preview.close_all_win, desc = " Close Preview Windows" },
-  {
-    "gbt",
-    go_to_preview.goto_preview_type_definition,
-    desc = "󰙅 Preview Type Definition",
-  },
+  { "<leader>fx", make_file_executable, icon = "", desc = "Make file executable", mode = { "n" } },
+})
+--============================================= user commands =============================================
+vim.api.nvim_create_user_command("LazySpec", function(opts)
+  local plugin = opts.args
+  local spec = require("lazy.core.config").plugins[plugin]
+  if not spec then
+    vim.notify("No plugin spec found for " .. plugin, vim.log.levels.ERROR)
+    return
+  end
+
+  -- scratch buffer
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+  vim.api.nvim_set_option_value("filetype", "lua", { buf = buf })
+
+  local lines = vim.split(vim.inspect(spec), "\n")
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+  -- floating win
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = math.floor(vim.o.columns * 0.90),
+    height = math.floor(vim.o.lines * 0.90),
+    row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.90)) / 2) - 1,
+    col = math.floor((vim.o.columns - math.floor(vim.o.columns * 0.90)) / 2),
+    style = "minimal",
+    border = "rounded",
+    title = "LazySpec",
+    title_pos = "center",
+  })
+
+  -- map q to close
+  vim.keymap.set("n", "q", function()
+    if vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_win_close(win, true)
+    end
+  end, { buffer = buf, nowait = true, silent = true })
+end, {
+  nargs = 1,
+  complete = function(_, _)
+    return vim.tbl_keys(require("lazy.core.config").plugins)
+  end,
 })

@@ -189,7 +189,7 @@ local finderMenu = "finderMenu"
 -- Hammerspoon menu
 local hammerspoonMenu = "hammerspoonMenu"
 
--- Help menu
+--============================================= Utilities =============================================
 local helpMenu = "helpMenu"
 
 -- Media menu
@@ -223,9 +223,15 @@ menuHammerMenuList = {
 		parentMenu = nil,
 		menuHotkey = { key_helper.hyper, "space" },
 		menuItems = {
-			{ cons.cat.submenu, "shift", "/", "Help", {
-				{ cons.act.menu, helpMenu },
-			} },
+			{
+				cons.cat.submenu,
+				"",
+				"b",
+				"Display",
+				{
+					{ cons.act.menu, displayMenu },
+				},
+			},
 			{
 				cons.cat.submenu,
 				"",
@@ -235,28 +241,49 @@ menuHammerMenuList = {
 					{ cons.act.menu, applicationMenu },
 				},
 			},
-			{ cons.cat.submenu, "", "f", "Browser", {
-				{ cons.act.menu, browserMenu },
-			} },
-			{ cons.cat.submenu, "", "b", "Display", {
-				{ cons.act.menu, displayMenu },
-			} },
-			{ cons.cat.submenu, "", "d", "Documents", {
-				{ cons.act.menu, documentsMenu },
-			} },
-			{ cons.cat.submenu, "", "u", "Utilities", {
-				{ cons.act.menu, utilitiesMenu },
-			} },
-			{ cons.cat.submenu, "", "M", "Media Controls", {
-				{ cons.act.menu, mediaMenu },
-			} },
 			{
 				cons.cat.submenu,
 				"",
-				"R",
-				"Resolution",
+				"f",
+				"Browser",
 				{
-					{ cons.act.menu, resolutionMenu },
+					{ cons.act.menu, browserMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
+				"d",
+				"Documents",
+				{
+					{ cons.act.menu, documentsMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
+				"u",
+				"Utilities",
+				{
+					{ cons.act.menu, utilitiesMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
+				"M",
+				"Media Controls",
+				{
+					{ cons.act.menu, mediaMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"",
+				"h",
+				"Help",
+				{
+					{ cons.act.menu, helpMenu },
 				},
 			},
 			{
@@ -285,13 +312,13 @@ menuHammerMenuList = {
 	------------------------------------------------------------------------------------------------
 	helpMenu = {
 		parentMenu = mainMenu,
-		menuHotkey = nil,
+		menuHotkey = { key_helper.hyper, "h" },
 		menuItems = {
 			{
 				cons.cat.action,
 				"",
-				"H",
-				"Hammerspoon Manual",
+				"h",
+				" HS docs",
 				{
 					{
 						cons.act.func,
@@ -306,10 +333,37 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"M",
-				"MenuHammer Documentation",
+				"m",
+				"󰧺 MH docs",
 				{
 					{ cons.act.openurl, "https://github.com/FryJay/MenuHammer" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"l",
+				"󰒲 LazyVim docs",
+				{
+					{ cons.act.openurl, "https://www.lazyvim.org/" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"w",
+				" Wezterm docs",
+				{
+					{ cons.act.openurl, "https://wezterm.org/" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"z",
+				" Zellij docs",
+				{
+					{ cons.act.openurl, "https://zellij.dev/" },
 				},
 			},
 		},
@@ -358,15 +412,7 @@ menuHammerMenuList = {
 					{ cons.act.launcher, "Finder" },
 				},
 			},
-			{
-				cons.cat.action,
-				"",
-				"z",
-				" Zen Browser",
-				{
-					{ cons.act.launcher, "Zen" },
-				},
-			},
+
 			{
 				cons.cat.action,
 				"",
@@ -469,10 +515,28 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"shift",
+				"v",
+				" VSCode",
+				{
+					{ cons.act.launcher, "Visual Studio Code" },
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
 				"w",
 				"󰖣 WhatsApp",
 				{
 					{ cons.act.launcher, "WhatsApp" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"z",
+				" Zen Browser",
+				{
+					{ cons.act.launcher, "Zen" },
 				},
 			},
 		},

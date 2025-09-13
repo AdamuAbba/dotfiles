@@ -107,6 +107,11 @@ return {
         RenderMarkdownH3Bg = { bg = theme_colors.cyan, fg = theme_colors.black, bold = true },
         --============================================= Noice =============================================
         NoiceLspProgressTitle = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
+        --============================================= Telescope =============================================
+        TelescopePromptBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        TelescopeResultsBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        TelescopePreviewBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        TelescopeSelection = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
       },
     },
     config = true,

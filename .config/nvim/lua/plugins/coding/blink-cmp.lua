@@ -1,14 +1,19 @@
 return {
   {
+    "saghen/blink.compat",
+    version = "*",
+    lazy = true,
+    opts = {},
+  },
+  {
     "saghen/blink.cmp",
     dependencies = {
       "Kaiser-Yang/blink-cmp-git",
       "moyiz/blink-emoji.nvim",
-      "MahanRahmati/blink-nerdfont.nvim",
-      "alexandre-abrioux/blink-cmp-npm.nvim",
       "archie-judd/blink-cmp-words",
       "bydlw98/blink-cmp-env",
       "ph1losof/ecolog.nvim",
+      "alexandre-abrioux/blink-cmp-npm.nvim",
       "disrupted/blink-cmp-conventional-commits",
     },
     opts = {
@@ -21,7 +26,15 @@ return {
         ["<Tab>"] = { "fallback" },
       },
       sources = {
-        default = { "conventional_commits", "ecolog", "git", "emoji", "npm", "dictionary", "env" },
+        default = {
+          "npm",
+          "conventional_commits",
+          "ecolog",
+          "git",
+          "emoji",
+          "dictionary",
+          "env",
+        },
         providers = {
           ecolog = {
             name = "ecolog",
@@ -61,14 +74,9 @@ return {
           },
           npm = {
             name = "npm",
+            -- module = "blink.compat.source",
             module = "blink-cmp-npm",
             async = true,
-            score_offset = 100,
-            opts = {
-              ignore = {},
-              only_semantic_versions = true,
-              only_latest_version = false,
-            },
           },
           -- nerdfont = {
           --   module = "blink-nerdfont",
