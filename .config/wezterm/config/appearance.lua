@@ -1,83 +1,33 @@
-local Utils = require "utils"
-local color = Utils.fn.color
+---@diagnostic disable: undefined-field
+-- local Config = require("utils.class.config"):new()
+---@type Wezterm
 local wezterm = require "wezterm"
 
----@diagnostic disable-next-line: undefined-field
-local G = require("wezterm").GLOBAL
+---@type Config
+local config = wezterm.config_builder()
 
-local Config = {}
-
-Config.color_schemes = color.get_schemes()
-Config.color_scheme = color.get_scheme()
-
-local theme = Config.color_schemes[Config.color_scheme]
-
-Config.background = {
-  {
-    source = { Color = theme.background },
-    width = "100%",
-    height = "100%",
-    opacity = G.opacity or 1,
-  },
+--============================================= UI =============================================
+local scheme = wezterm.get_builtin_color_schemes()["Dracula (Official)"]
+scheme.background = "black"
+config.color_schemes = {
+  ["Dracula (Official)"] = scheme,
 }
-
-Config.bold_brightens_ansi_colors = "BrightAndBold"
-
----char select and command palette
-Config.char_select_bg_color = theme.brights[6]
-Config.char_select_fg_color = theme.background
-Config.char_select_font_size = 14
-
-Config.command_palette_bg_color = theme.brights[6]
-Config.command_palette_fg_color = theme.background
-Config.command_palette_font_size = 14
-Config.command_palette_rows = 20
-
-Config.enable_scroll_bar = true
-Config.hide_mouse_cursor_when_typing = true
-
--- mouse bindings
-Config.mouse_bindings = {
-  {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = "CTRL",
-    action = wezterm.action.OpenLinkAtMouseCursor,
-  },
+config.color_scheme = "Dracula (Official)"
+config.font = wezterm.font_with_fallback {
+  { family = "JetBrainsMono Nerd Font", weight = "Medium", italic = false },
+  { family = "Fira Code", weight = "Medium", italic = false },
 }
-
-Config.colors = {
-  selection_fg = "black",
-  selection_bg = "yellow",
-}
-
----text blink
-Config.text_blink_ease_in = "EaseIn"
-Config.text_blink_ease_out = "EaseOut"
-Config.text_blink_rapid_ease_in = "Linear"
-Config.text_blink_rapid_ease_out = "Linear"
-Config.text_blink_rate = 500
-Config.text_blink_rate_rapid = 250
-
----visual bell
-Config.audible_bell = "SystemBeep"
-Config.visual_bell = {
-  fade_in_function = "EaseOut",
-  fade_in_duration_ms = 200,
-  fade_out_function = "EaseIn",
-  fade_out_duration_ms = 200,
-}
-
----window appearance
-Config.window_padding = { left = 2, right = 2, top = 2, bottom = 1 }
-Config.integrated_title_button_alignment = "Right"
-Config.integrated_title_button_style = "Windows"
-Config.integrated_title_buttons = { "Hide", "Maximize", "Close" }
-
----exit behavior
-Config.clean_exit_codes = { 130 }
-Config.exit_behavior = "CloseOnCleanExit"
-Config.exit_behavior_messaging = "Verbose"
-Config.skip_close_confirmation_for_processes_named = {
+config.default_prog = { "/bin/zsh" }
+config.disable_default_key_bindings = true
+config.font_size = 17.2
+config.enable_tab_bar = false
+config.window_decorations = "RESIZE"
+config.window_padding = { left = 7.5, right = 0, top = 10, bottom = 0 }
+config.clean_exit_codes = { 130 }
+config.exit_behavior = "CloseOnCleanExit"
+config.exit_behavior_messaging = "Verbose"
+config.max_fps = 120
+config.skip_close_confirmation_for_processes_named = {
   "bash",
   "sh",
   "zsh",
@@ -88,8 +38,6 @@ Config.skip_close_confirmation_for_processes_named = {
   "pwsh.exe",
   "powershell.exe",
 }
-Config.window_close_confirmation = "AlwaysPrompt"
+config.window_close_confirmation = "AlwaysPrompt"
 
-color.set_tab_button(Config, theme)
-
-return Config
+return config

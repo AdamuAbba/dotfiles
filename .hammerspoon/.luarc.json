@@ -5,6 +5,9 @@
   "hint.paramType": true,
   "hint.setType": true,
   "hint.arrayIndex": "Disable",
+  "workspace.library": [
+    "./Spoons/EmmyLua.spoon/annotations"
+  ],
   "diagnostics.globals": [
     "menuKeyItemSeparator",
     "hs",

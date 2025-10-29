@@ -171,3 +171,56 @@ end, {
     return vim.tbl_keys(require("lazy.core.config").plugins)
   end,
 })
+
+--======================================== get the focused win highlight groups ===========================================
+--  user command to get the focused win highlight groups
+vim.api.nvim_create_user_command("GetFocusedWinHL", function()
+  local win = vim.api.nvim_get_current_win()
+  local hl_str = vim.api.nvim_get_option_value("winhighlight", { win = win })
+
+  local lines = {}
+  if hl_str == "" then
+    table.insert(lines, "No winhighlight overrides set")
+  else
+    for from, to in string.gmatch(hl_str, "(%w+):(%w+)") do
+      local id = vim.api.nvim_get_hl_id_by_name(to)
+      local hl = vim.api.nvim_get_hl(0, { id = id })
+
+      table.insert(lines, from .. " -> " .. to)
+
+      -- split vim.inspect output into lines
+      for s in vim.inspect(hl):gmatch("[^\n]+") do
+        table.insert(lines, "  " .. s)
+      end
+
+      table.insert(lines, "")
+    end
+  end
+
+  -- always create a new scratch buffer
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+  -- open floating window
+  local width = math.floor(vim.o.columns * 0.5)
+  local height = math.floor(vim.o.lines * 0.5)
+
+  local float_win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = math.floor((vim.o.lines - height) / 2),
+    col = math.floor((vim.o.columns - width) / 2),
+    style = "minimal",
+    border = "rounded",
+    title = "WinHighlight",
+    title_pos = "center",
+  })
+
+  -- add 'q' to close
+  vim.keymap.set("n", "q", function()
+    if vim.api.nvim_win_is_valid(float_win) then
+      vim.api.nvim_win_close(float_win, true)
+    end
+  end, { buffer = buf, nowait = true, noremap = true, silent = true })
+end, {})

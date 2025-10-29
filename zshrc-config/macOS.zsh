@@ -1,4 +1,3 @@
-  export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Documents/Monexus/firebase-cloud-credentials/money-transfer-aad55-aada2e3c24d5.json"
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
   export MANPATH="/usr/local/man:$MANPATH"
   export ZSH="$HOME/.oh-my-zsh"

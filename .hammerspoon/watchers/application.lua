@@ -13,13 +13,15 @@ obj.author = "shytypes <shytypes1028@gmail.com>"
 obj.homepage = ""
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
--- default apps;
 obj.appsToCenter = {
 	"Finder",
 	"Karabiner-Elements",
 	"Hammerspoon",
 	"System Settings",
 	"Free Download Manager",
+	"Activity Monitor",
+	"The Unarchiver",
+	"Safari",
 }
 
 --- ApplicationWatcher:start()

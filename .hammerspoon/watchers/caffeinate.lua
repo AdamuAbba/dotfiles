@@ -25,7 +25,7 @@ function obj:start()
 	obj:stop() -- stop existing watcher if any
 	local function watcher_function(event)
 		if event == hs.caffeinate.watcher.screensDidUnlock then
-			os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/sketchybar/reload.sh")
+			-- os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/sketchybar/reload.sh")
 		end
 	end
 

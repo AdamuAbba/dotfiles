@@ -19,6 +19,8 @@ g.loaded_python3_provider = 0
 -- g.python3_host_prog = "/Users/abba/.pyenv/versions/neovim/bin/python"
 g.lazyvim_prettier_needs_config = true
 g.lazyvim_blink_main = true
+g.ai_cmp = false
+g.trouble_lualine = false
 --=============================================  Options ==============================================
 opt.termguicolors = true
 opt.cursorline = true
@@ -29,6 +31,6 @@ opt.showmode = false
 opt.swapfile = true
 opt.clipboard = "unnamedplus"
 opt.mouse = ""
-opt.winbar = " "
+opt.winbar = ""
 --=============================================  window scoped ==============================================
 w.relativenumber = false

@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     config = function()
       local miniSplitJoin = require("mini.splitjoin")
       local wk = require("which-key")
@@ -18,7 +18,7 @@ return {
           icon = "󱤗",
         },
         {
-          "<leader>cbj",
+          "<leader>cbk",
           function()
             miniSplitJoin.join()
           end,
@@ -27,7 +27,7 @@ return {
           mode = { "n", "x" },
         },
         {
-          "<leader>cbs",
+          "<leader>cbj",
           function()
             miniSplitJoin.split()
           end,

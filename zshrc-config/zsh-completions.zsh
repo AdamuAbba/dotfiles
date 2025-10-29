@@ -4,7 +4,17 @@ if type brew &>/dev/null; then
 fi
 
 #============ custom completions ====================
-if type uv &>/dev/null; then
+tools=(uv rvm)
+missing=()
+
+for tool in "${tools[@]}"; do
+  if ! type "$tool" &>/dev/null; then
+    missing+=("$tool")
+    echo "Error: $tool is not installed."
+  fi
+done
+
+if [[ ${#missing[@]} -eq 0 ]]; then
   fpath=($HOME/Documents/dotfiles/zshrc-config/completions $fpath)
 fi
 

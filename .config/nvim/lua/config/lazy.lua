@@ -1,6 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
----@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   -- bootstrap lazy.nvim
   -- stylua: ignore
@@ -86,6 +85,8 @@ require("lazy").setup({
     --============================================= ai extras =================================================
     { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+    -- { import = "lazyvim.plugins.extras.ai.copilot-native" },
+    { import = "lazyvim.plugins.extras.ai.sidekick" },
 
     --============================================= ui extras =================================================
     { import = "lazyvim.plugins.extras.ui.smear-cursor" },
@@ -112,7 +113,15 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "dracula" } },
+  install = {
+    colorscheme = { "dracula" },
+  },
+  ui = {
+    border = "rounded",
+    backdrop = 100,
+    title = "Lazy",
+    title_pos = "center",
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

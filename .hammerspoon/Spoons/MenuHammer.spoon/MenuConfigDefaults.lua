@@ -317,6 +317,15 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
+				"a",
+				" Aerospace docs",
+				{
+					{ cons.act.openurl, "https://nikitabobko.github.io/AeroSpace/guide#installation" },
+				},
+			},
+			{
+				cons.cat.action,
+				"",
 				"h",
 				" HS docs",
 				{
@@ -376,6 +385,30 @@ menuHammerMenuList = {
 		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper, "o" },
 		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"a",
+				"󰀴 Android studio",
+				{
+					{
+						cons.act.script,
+						"open -a 'Android Studio'",
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
+				"a",
+				"  AVD",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/mac-os/launch_avd.sh",
+					},
+				},
+			},
 			{
 				cons.cat.action,
 				"shift",
@@ -505,20 +538,23 @@ menuHammerMenuList = {
 			},
 			{
 				cons.cat.action,
+				"shift",
+				"v",
+				" VSCode",
+				{
+					{
+						cons.act.launcher,
+						"Visual Studio Code",
+					},
+				},
+			},
+			{
+				cons.cat.action,
 				"",
 				"v",
 				"󰎁 Stremio",
 				{
 					{ cons.act.launcher, "Stremio" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"v",
-				" VSCode",
-				{
-					{ cons.act.launcher, "Visual Studio Code" },
 				},
 			},
 			{
@@ -1034,8 +1070,15 @@ menuHammerMenuList = {
 				"Reload Aerospace",
 				{
 					{
-						cons.act.script,
-						utils.SCRIPTS .. "/aerospace/reload.sh",
+						cons.act.func,
+						function()
+							local output, status = hs.execute("/opt/homebrew/bin/aerospace reload-config")
+							if status then
+								utils:nerd_alert(string.format(" Aerospace config reloaded"))
+							else
+								utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
+							end
+						end,
 					},
 				},
 			},
@@ -1047,7 +1090,7 @@ menuHammerMenuList = {
 				{
 					{
 						cons.act.script,
-						utils.SCRIPTS .. "/aerospace/reload.sh",
+						"killall aerospace",
 					},
 				},
 			},

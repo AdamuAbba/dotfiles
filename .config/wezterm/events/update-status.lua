@@ -28,4 +28,9 @@ end
 
 wezterm.on("update-status", function(window)
   center_window_once(window)
+  -- local leader = ""
+  -- if window:leader_is_active() then
+  --   leader = "LEADER"
+  -- end
+  -- window:set_right_status(leader)
 end)

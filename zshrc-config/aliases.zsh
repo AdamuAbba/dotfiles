@@ -32,14 +32,22 @@ alias bitcoind="$HOME/Documents/bitcoin/build/bin/bitcoind -conf=$HOME/Library/A
 alias edit-lnd="nvim ~/Library/Application\ Support/Lnd/lnd.conf"
 alias lnd="lnd --configfile=$HOME/Library/Application\ Support/Lnd/lnd.conf"
 
-#============================================= tools =============================================
-alias ls="eza --grid --no-quotes --color=always --long --sort=type --all --git --icons=always --no-filesize --no-time --no-user --no-permissions"
+#============================================= github =============================================
+alias copilot="copilot --banner"
 alias gg="lazygit"
+alias edit-git-global="nvim $HOME/.config/git/config"
+alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
+alias edit-gg="nvim $HOME/.config/lazygit/config.yml"
+
+#============================================= tools =============================================
+alias ls="eza --group-directories-first --grid --no-quotes --color=always --long --sort=type --all --icons=always --no-time --no-user --no-permissions --show-symlinks"
+alias fm="fzf-make"
 alias rm='trash'
 alias koji="koji --config=$HOME/.config/koji/config.toml"
 alias update-node="nvm install --reinstall-packages-from=default --latest-npm 'lts/*'"
 alias update-npm="npm install -g npm@latest"
 alias update-brew-pkgs="brew update && brew upgrade && brew cleanup --prune=all"
+alias tp="taproom"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
 alias gh-mp="gh markdown-preview --dark-mode"
@@ -52,13 +60,11 @@ alias edit-scripts="nvim $HOME/.config/scripts/"
 alias edit-hsp="nvim $HOME/.hammerspoon"
 alias edit-sketchybar="nvim $HOME/.config/sketchybar/"
 alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
-alias edit-git-global="nvim $HOME/.config/git/config"
-alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
-alias edit-gg="nvim $HOME/.config/lazygit/config.yml"
 alias edit-nvim="nvim $HOME/.config/nvim/"
 alias edit-kbe="nvim $HOME/.config/karabiner/assets/complex_modifications/"
 alias edit-yz="nvim $HOME/.config/yazi/yazi.toml"
 alias edit-alias="nvim $HOME/zshrc-config/aliases.zsh"
+alias edit-dotfiles="nvim $HOME/Documents/dotfiles/"
 alias edit-starship="nvim $HOME/.config/starship.toml"
 alias edit-wezterm="nvim $HOME/.config/wezterm/wezterm.lua"
 alias edit-hx="hx $HOME/.config/helix/config.toml"

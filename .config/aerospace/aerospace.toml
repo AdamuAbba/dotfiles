@@ -16,13 +16,13 @@
 # blacklist=\"Simulator\" 
 
 after-startup-command = [
-  "exec-and-forget borders style=round width=6.0 hidpi=on active_color=0xffbd93f9 inactive_color=0xff000000",
+  "exec-and-forget borders style=uniform width=6.0 hidpi=on active_color=0xffbd93f9 inactive_color=0xff000000",
 ]
 
 exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  # '/bin/bash',
+  # '-c',
+  # 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 start-at-login = true
 enable-normalization-flatten-containers = true
@@ -120,18 +120,37 @@ run = ["layout floating", "move-node-to-workspace Browser"]
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = ["move-node-to-workspace Browser"]
+#===========floating zen windows
+# Not working for some reason....
+# [[on-window-detected]]
+# if.app-id = "app.zen-browser.zen"
+# if.app-name-regex-substring = "Zen"
+# if.window-title-regex-substring = "Library"
+# run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = ["move-node-to-workspace Browser"]
 
 [[on-window-detected]]
+if.app-id = "com.openai.atlas.web"
+run = ["layout floating", "move-node-to-workspace Browser"]
+
+[[on-window-detected]]
+if.app-id = "com.openai.atlas"
+run = ["layout floating", "move-node-to-workspace Browser"]
+
+[[on-window-detected]]
 if.app-id = "com.apple.Safari"
-run = ["move-node-to-workspace Browser"]
+run = ["layout floating", "move-node-to-workspace Browser"]
 #============================================= Editors/IDEs =========================================
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace Editor"
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ["move-node-to-workspace Editor"]
 
 [[on-window-detected]]
 if.app-id = 'com.google.android.studio'
@@ -164,6 +183,10 @@ run = ["layout floating", "move-node-to-workspace Sims/VMs"]
 #============ First Monitor
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
+run = "move-node-to-workspace Tools"
+
+[[on-window-detected]]
+if.app-id = "com.lemon.lvoverseas"
 run = "move-node-to-workspace Tools"
 
 [[on-window-detected]]
@@ -211,6 +234,10 @@ run = "move-node-to-workspace Media"
 #============================================= Misc =============================================
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
+run = ["move-node-to-workspace Misc"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.helpviewer"
 run = ["move-node-to-workspace Misc"]
 
 [[on-window-detected]]
@@ -270,11 +297,43 @@ if.app-id = 'com.apple.Preview'
 run = ["layout floating"]
 
 [[on-window-detected]]
+if.app-id = "io.ente.auth.mac"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.UserNotificationCenter"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.jetbrains.toolbox"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.ActivityMonitor"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.notificationcenterui"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.elegracer.NetSpeedMonitor"
+run = ["layout floating"]
+
+[[on-window-detected]]
 if.app-id = "com.apple.DigitalColorMeter"
 run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.macpaw.site.theunarchiver"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.wifi.WiFiAgent"
 run = ["layout floating"]
 
 [[on-window-detected]]
@@ -292,7 +351,3 @@ run = ["layout floating"]
 [[on-window-detected]]
 if.app-id = 'com.grammarly.ProjectLlama'
 run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
-run = ["layout floating", "move-node-to-workspace Editor"]

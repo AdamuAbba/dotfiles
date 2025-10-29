@@ -38,10 +38,12 @@ source $HOME/zshrc-config/yazi.zsh
 source $HOME/zshrc-config/zellij.zsh
 #============================================ fzf =================================================
 source $HOME/zshrc-config/fzf.zsh
+#============================================= ssh ================================================
+source $HOME/zshrc-config/ssh.zsh
 #============================================ Github ==============================================
 source $HOME/zshrc-config/git.zsh
 #============================================ atac ==============================================
-source $HOME/zshrc-config/atac.zsh
+# source $HOME/zshrc-config/atac.zsh
 #============================================ Sketchy-bar =========================================
 source $HOME/zshrc-config/sketchy-bar.zsh
 #============================================ nvm =================================================
@@ -56,8 +58,12 @@ source $HOME/zshrc-config/zsh-completions.zsh
 #============================================ Lang (Do not remove from bottom) ====================
 source $HOME/zshrc-config/languages/python.zsh
 source $HOME/zshrc-config/languages/rust.zsh
-source $HOME/zshrc-config/languages/ruby.zsh
-source $HOME/zshrc-config/languages/go.zsh
+
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+export PATH="$PATH:$HOME/.rvm/bin"
+export rvm_path="$HOME/.rvm"
+[[ -s "$rvm_path/scripts/rvm" ]] && source "$rvm_path/scripts/rvm"
 #============================================ keep at bottom (DO NOT TOUCH SHYTYPES) ==============
 source $ZSH/oh-my-zsh.sh
 

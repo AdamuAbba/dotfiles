@@ -15,14 +15,3 @@ spoon.SpoonInstall:andUse("FadeLogo", {
 		zoom = true,
 	},
 })
-
-spoon.SpoonInstall:andUse("MouseCircle", {
-	config = {
-		color = utils.colors:to_rgb().purple,
-	},
-})
-
-local wf = hs.window.filter.new():setDefaultFilter({})
-wf:subscribe(hs.window.filter.windowFocused, function()
-	spoon.MouseCircle:show()
-end)

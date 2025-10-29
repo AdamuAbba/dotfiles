@@ -31,7 +31,7 @@ function obj:start()
 			file:write(mode)
 			file:close()
 		end
-		os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/sketchybar/reload.sh")
+		-- os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/sketchybar/reload.sh")
 	end
 
 	self.watcher = hs.screen.watcher.new(watcher_function):start()

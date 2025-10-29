@@ -112,6 +112,16 @@ return {
         TelescopeResultsBorder = { fg = theme_colors.green, bg = theme_colors.background },
         TelescopePreviewBorder = { fg = theme_colors.green, bg = theme_colors.background },
         TelescopeSelection = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
+        --============================================= Lazy =============================================
+        LazyButton = { bg = theme_colors.background, bold = true },
+        LazyButtonActive = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
+        --============================================= splits =============================================
+        VertSplit = { fg = theme_colors.background, bg = "none" },
+        WinSeparator = {
+          fg = theme_colors.purple,
+          bg = "none",
+          bold = true,
+        },
       },
     },
     config = true,

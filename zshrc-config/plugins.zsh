@@ -1,3 +1,14 @@
+#============================================= plugin dependencies  ===========================
+#============================================= configure early ================================
+
+# --- ruby (rvm) ---
+source $HOME/zshrc-config/languages/ruby.zsh
+# --- rust ---
+source $HOME/zshrc-config/languages/rust.zsh
+# --- js/ts ---
+source $HOME/zshrc-config/languages/javascript.zsh
+
+#============================================= plugins ===========================
 plugins=(
   zoxide
   pip

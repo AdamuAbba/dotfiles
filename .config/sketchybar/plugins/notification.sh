@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-label=${LABEL:-"NORMAL MODE"}
+label=${LABEL:-""}
 color=${COLOR:-"0xffbd93f9"}
 
 case "$label" in
@@ -9,6 +9,7 @@ case "$label" in
 "SCRIPT MODE") color="0xfff1fa8c" ;;
 "MEDIA MODE") color="0xffff79c6" ;;
 "DISPLAY MODE") color="0xff8be9fd" ;;
+"") color="" ;;
 esac
 
 sketchybar --set "$NAME" label="$label" background.color="$color"

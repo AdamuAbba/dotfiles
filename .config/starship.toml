@@ -32,6 +32,7 @@ style_user = "bold cyan"
 
 [cmd_duration]
 style = "bold yellow"
+disabled = true
 
 [aws]
 symbol = "  "
@@ -54,6 +55,8 @@ symbol = " "
 
 [dart]
 symbol = " "
+style = "bold fg:#5CB4F0"
+format = '\[[${symbol}dart:$version]($style)\] '
 
 [directory]
 read_only = " 󰌾"
@@ -74,15 +77,22 @@ symbol = " "
 [fossil_branch]
 symbol = " "
 
-[git_branch]
-symbol = " "
-style = "bold pink"
-
+# [git_branch]
+# symbol = " "
+# style = "bold pink"
+#
 [git_commit]
 tag_symbol = '  '
 
+# [git_status]
+# style = "bold red"
+
+[git_branch]
+symbol = ""
+format = '[\[](white)[$symbol git:$branch]($style) '
+
 [git_status]
-style = "bold red"
+format = '[$all_status$ahead_behind](red)[\]](white) '
 
 [golang]
 symbol = " "
@@ -129,6 +139,8 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+style = "bold green"
+format = '\[[${symbol}node:$version]($style)\] '
 
 [ocaml]
 symbol = " "
@@ -182,6 +194,7 @@ Windows = "󰍲 "
 
 [package]
 symbol = "󰏗 "
+format = '\[[${symbol}pkg:$version]($style)\] '
 
 [perl]
 symbol = " "
@@ -200,9 +213,14 @@ symbol = "󰟔 "
 
 [ruby]
 symbol = " "
+style = "bold red"
+format = '\[[${symbol}ruby:$version]($style)\] '
 
 [rust]
-symbol = "󱘗 "
+# symbol = "󱘗 "
+symbol = "🦀 "
+style = "bold fg:208"
+format = "via [$symbol($version )]($style)"
 
 [scala]
 symbol = " "

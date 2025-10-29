@@ -14,7 +14,12 @@ require "events.config-reloaded"
 --============================================= UI =============================================
 local scheme = wezterm.get_builtin_color_schemes()["Dracula (Official)"]
 scheme.background = "black"
-
+-- config.status_update_interval = 1000
+-- config.colors = {
+--   compose_cursor = "#ff79c6",
+--   selection_fg = "black",
+--   selection_bg = "#fffacd",
+-- }
 config.color_schemes = {
   ["Dracula (Official)"] = scheme,
 }
@@ -25,6 +30,23 @@ config.font = wezterm.font_with_fallback {
 }
 config.default_prog = { "/bin/zsh" }
 config.disable_default_key_bindings = true
+-- config.leader = {
+--   key = "a",
+--   mods = "CTRL",
+--   timeout_milliseconds = 2000,
+-- }
+-- config.keys = {
+--   -- {
+--   --   key = "[",
+--   --   mods = "LEADER",
+--   --   action = wezterm.action.ActivateCopyMode,
+--   -- },
+--   {
+--     key = "l",
+--     mods = "LEADER",
+--     action = wezterm.action.ShowDebugOverlay,
+--   },
+-- }
 config.font_size = 17.2
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"

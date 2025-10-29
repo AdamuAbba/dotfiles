@@ -3,7 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = function(_, opts)
-      ---@diagnostic disable-next-line: undefined-doc-name
       opts.diagnostics = vim.tbl_deep_extend("force", opts.diagnostics or {}, {
         float = {
           border = "rounded",
@@ -22,10 +21,9 @@ return {
             Lua = {
               workspace = {
                 library = {
-                  ---@diagnostic disable-next-line: undefined-global
-                  vim.fn.expand("~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"),
-                  vim.fn.expand("~/.hammerspoon"),
+                  vim.env.VIMRUNTIME,
                 },
+                checkThirdParty = false,
               },
             },
           },

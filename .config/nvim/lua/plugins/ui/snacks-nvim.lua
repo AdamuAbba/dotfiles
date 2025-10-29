@@ -29,7 +29,7 @@ return {
         {
           "<leader>n",
           function()
-            Snacks.picker.notifications({ layout = "select" })
+            Snacks.picker.notifications({ layout = "select_with_preview" })
           end,
           desc = "Notification History",
         },
@@ -37,28 +37,28 @@ return {
         {
           "<leader>gl",
           function()
-            Snacks.picker.git_log({ layout = "select" })
+            Snacks.picker.git_log({ layout = "select_with_preview" })
           end,
           desc = "Lazygit Log",
         },
         {
           "<leader>gd",
           function()
-            Snacks.picker.git_diff({ layout = "select" })
+            Snacks.picker.git_diff({ layout = "select_with_preview" })
           end,
           desc = "Git Diff (hunks)",
         },
         {
           "<leader>gs",
           function()
-            Snacks.picker.git_status({ layout = "select" })
+            Snacks.picker.git_status({ layout = "select_with_preview" })
           end,
           desc = "Git Status",
         },
         {
           "<leader>gS",
           function()
-            Snacks.picker.git_stash({ layout = "select" })
+            Snacks.picker.git_stash({ layout = "select_with_preview" })
           end,
           desc = "Git Stash",
         },
@@ -66,7 +66,7 @@ return {
         {
           "<leader>sp",
           function()
-            Snacks.picker.lazy({ layout = "select" })
+            Snacks.picker.lazy({ layout = "select_with_preview" })
           end,
           desc = "Search for Plugin Spec",
         },
@@ -80,7 +80,7 @@ return {
         {
           "<leader>sa",
           function()
-            Snacks.picker.autocmds({ layout = "select" })
+            Snacks.picker.autocmds({ layout = "select_with_preview" })
           end,
           desc = "Autocmds",
         },
@@ -97,7 +97,7 @@ return {
           "<leader>sC",
           function()
             Snacks.picker.commands({
-              layout = "select",
+              layout = "select_with_preview",
             })
           end,
           desc = "Commands",
@@ -105,21 +105,21 @@ return {
         {
           "<leader>sd",
           function()
-            Snacks.picker.diagnostics({ layout = "select" })
+            Snacks.picker.diagnostics({ layout = "select_with_preview" })
           end,
           desc = "Diagnostics",
         },
         {
           "<leader>sD",
           function()
-            Snacks.picker.diagnostics_buffer({ layout = "select" })
+            Snacks.picker.diagnostics_buffer({ layout = "select_with_preview" })
           end,
           desc = "Buffer Diagnostics",
         },
         {
           "<leader>sh",
           function()
-            Snacks.picker.help({ layout = "select" })
+            Snacks.picker.help({ layout = "select_with_preview" })
           end,
           desc = "Help Pages",
         },
@@ -142,7 +142,7 @@ return {
         {
           "<leader>sk",
           function()
-            Snacks.picker.keymaps({ layout = "select" })
+            Snacks.picker.keymaps({ layout = "select_with_preview" })
           end,
           desc = "Keymaps",
         },
@@ -177,9 +177,13 @@ return {
         },
 
         --============================================= find =============================================
-        { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-        { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
-        { "<leader>fr", LazyVim.pick("oldfiles"), desc = "Recent" },
+        { "<leader>fF", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
+        {
+          "<leader>ff",
+          LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
+          desc = "Find Files (cwd)",
+        },
+        { "<leader>fr", LazyVim.pick("oldfiles", { layout = "select_with_preview" }), desc = "Recent" },
         {
           "<leader>fp",
           function()
@@ -188,11 +192,21 @@ return {
           desc = "Projects",
         },
         --============================================= Grep =============================================
-        { "<leader>fg", LazyVim.pick("grep"), desc = "Grep (Root Dir)" },
-        { "<leader>sw", LazyVim.pick("grep_word"), desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
+        { "<leader>fG", LazyVim.pick("grep", { layout = "select_with_preview" }), desc = "Grep (Root Dir)" },
+        {
+          "<leader>fg",
+          LazyVim.pick("live_grep", { root = false, layout = "select_with_preview" }),
+          desc = "Grep (cwd)",
+        },
+        {
+          "<leader>sw",
+          LazyVim.pick("grep_word", { layout = "select_with_preview" }),
+          desc = "Visual selection or word (Root Dir)",
+          mode = { "n", "x" },
+        },
         {
           "<leader>sW",
-          LazyVim.pick("grep_word", { root = false }),
+          LazyVim.pick("grep_word", { root = false, layout = "select_with_preview" }),
           desc = "Visual selection or word (cwd)",
           mode = { "n", "x" },
         },
@@ -200,10 +214,13 @@ return {
         {
           "<leader>ft",
           function()
+            local current_dir = vim.fn.getcwd()
             vim.fn.jobstart({
               "zellij",
               "action",
               "new-pane",
+              "--cwd",
+              current_dir,
               "--floating",
               "--width=83%",
               "--height=86%",
@@ -215,6 +232,7 @@ return {
         },
       })
     end,
+    ---@param opts snacks.Config
     opts = function(_, opts)
       local function getWinManager()
         if vim.fn.has("mac") == 1 then
@@ -302,7 +320,7 @@ return {
               { win = "preview", title = "{preview}", height = 0.4, border = "top" },
             },
           },
-          select = {
+          select_with_preview = {
             preview = true,
             layout = {
               backdrop = false,
@@ -333,16 +351,17 @@ return {
                 title = "",
               },
             },
+            ---@class snacks.layout.Config
             layout = {
               layout = {
                 box = "vertical",
-                position = "float",
+                position = "right",
                 width = math.floor(vim.o.columns * 0.35),
-                height = math.floor(vim.o.lines * 0.93),
+                height = math.floor(vim.o.lines * 0.99),
                 border = "rounded",
                 backdrop = false,
-                row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.92)) / 2) - 4, -- move 3 lines up
-                col = vim.o.columns - math.floor(vim.o.columns * 0.2), --
+                -- row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.92)) / 2),
+                col = vim.o.columns - math.floor(vim.o.columns * 0.2),
               },
             },
           },

@@ -15,18 +15,28 @@ return {
       "ph1losof/ecolog.nvim",
       "alexandre-abrioux/blink-cmp-npm.nvim",
       "disrupted/blink-cmp-conventional-commits",
+      "marcoSven/blink-cmp-yanky",
+      {
+        "bydlw98/blink-cmp-sshconfig",
+        build = "make",
+      },
     },
-    opts = {
-      keymap = {
-        preset = "default",
+    ---@module 'blink.cmp'
+    ---@param _ any
+    ---@param opts blink.cmp.Config
+    opts = function(_, opts)
+      opts.keymap = vim.tbl_deep_extend("force", opts.keymap or {}, {
         ["<Up>"] = false,
         ["<Down>"] = false,
         ["<C-e>"] = false,
         ["<CR>"] = { "accept", "fallback" },
-        ["<Tab>"] = { "fallback" },
-      },
-      sources = {
-        default = {
+        ["<Tab>"] = false,
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+      })
+      opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
+        ---@diagnostic disable-next-line: param-type-mismatch
+        default = vim.list_extend(opts.sources.default or {}, {
           "npm",
           "conventional_commits",
           "ecolog",
@@ -34,8 +44,24 @@ return {
           "emoji",
           "dictionary",
           "env",
-        },
-        providers = {
+          "sshconfig",
+          -- "yank",
+        }),
+        providers = vim.tbl_deep_extend("force", opts.sources.providers or {}, {
+          -- yank = {
+          --   name = "yank",
+          --   module = "blink-yanky",
+          --   opts = {
+          --     minLength = 5,
+          --     onlyCurrentFiletype = true,
+          --     trigger_characters = { ";;;" },
+          --     kind_icon = "󰅍",
+          --   },
+          -- },
+          sshconfig = {
+            name = "SshConfig",
+            module = "blink-cmp-sshconfig",
+          },
           ecolog = {
             name = "ecolog",
             module = "ecolog.integrations.cmp.blink_cmp",
@@ -74,21 +100,9 @@ return {
           },
           npm = {
             name = "npm",
-            -- module = "blink.compat.source",
             module = "blink-cmp-npm",
             async = true,
           },
-          -- nerdfont = {
-          --   module = "blink-nerdfont",
-          --   name = "Nerd Fonts",
-          --   score_offset = 15,
-          --   opts = {
-          --     insert = true,
-          --   },
-          --   should_show_items = function()
-          --     return vim.tbl_contains({ "lua", "gitcommit", "markdown" }, vim.o.filetype)
-          --   end,
-          -- },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
@@ -113,9 +127,9 @@ return {
             --- @type blink-cmp-git.Options
             opts = {},
           },
-        },
-      },
-      completion = {
+        }),
+      })
+      opts.completion = vim.tbl_deep_extend("force", opts.completion or {}, {
         trigger = {
           prefetch_on_insert = true,
           show_in_snippet = true,
@@ -126,24 +140,8 @@ return {
           show_on_keyword = true,
           show_on_trigger_character = true,
           show_on_insert = true,
-
-          -- LSPs can indicate when to show the completion window via trigger characters
-          -- however, some LSPs (i.e. tsserver) return characters that would essentially
-          -- always show the window. We block these by default.
-          show_on_blocked_trigger_characters = { " ", "\n", "\t" },
-          -- You can also block per filetype with a function:
-          -- show_on_blocked_trigger_characters = function(ctx)
-          --   if vim.bo.filetype == 'markdown' then return { ' ', '\n', '\t', '.', '/', '(', '[' } end
-          --   return { ' ', '\n', '\t' }
-          -- end,
-
           show_on_accept_on_trigger_character = true,
           show_on_insert_on_trigger_character = true,
-
-          -- List of trigger characters (on top of `show_on_blocked_trigger_characters`) that won't trigger
-          -- the completion window when the cursor comes after a trigger character when
-          -- entering insert mode/accepting an item
-          show_on_x_blocked_trigger_characters = { "'", '"', "(" },
         },
         list = {
           selection = {
@@ -173,16 +171,21 @@ return {
             border = "rounded",
           },
         },
-      },
-      signature = {
+      })
+      opts.signature = vim.tbl_deep_extend("force", opts.signature or {}, {
         enabled = true,
         window = {
           border = "rounded",
           show_documentation = false,
         },
-      },
+      })
       --CMDLINE specific config
-      cmdline = {
+      opts.cmdline = vim.tbl_deep_extend("force", opts.cmdline or {}, {
+        -- sources = {
+        --   default = {
+        --     [";"] = { "yank" },
+        --   },
+        -- },
         enabled = true,
         keymap = {
           ["<CR>"] = { "accept", "fallback" },
@@ -202,7 +205,7 @@ return {
             enabled = true,
           },
         },
-      },
-    },
+      })
+    end,
   },
 }

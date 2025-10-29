@@ -289,7 +289,6 @@ os:
   # editCommandTemplate: ""
   # OpenCommand is the command for opening a file
   # Deprecated: use Open instead.
-  openCommand: ""
   # OpenLinkCommand is the command for opening a link
   # Deprecated: use OpenLink instead.
   # openLinkCommand: ""
@@ -407,7 +406,7 @@ keybinding:
     viewResetOptions: D
     fetch: f
     toggleTreeView: "`"
-    openMergeTool: M
+    openMergeOptions: M
     openStatusFilter: <c-b>
     copyFileInfoToClipboard: "y"
     collapseAll: "-"

@@ -34,7 +34,12 @@ function obj:start()
 	self.watchers[self.watch_paths[1]] = hs.pathwatcher.new(self.watch_paths[1], hs.reload):start()
 	self.watchers[self.watch_paths[2]] = hs.pathwatcher
 		.new(self.watch_paths[2], function()
-			os.execute("/usr/bin/env" .. " " .. utils.SCRIPTS .. "/aerospace/reload.sh")
+			local output, status = hs.execute("/opt/homebrew/bin/aerospace reload-config")
+			if status then
+				utils:nerd_alert(string.format(" Aerospace config reloaded"))
+			else
+				utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
+			end
 		end)
 		:start()
 	return self

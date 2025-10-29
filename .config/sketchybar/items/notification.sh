@@ -3,7 +3,7 @@
 notification=(
   icon.drawing=on
   label.font="$FONT:Black:13.0"
-  label.width=145
+  # label.width=145
   label.align=center
   updates=on
   label.color="$BLACK"
