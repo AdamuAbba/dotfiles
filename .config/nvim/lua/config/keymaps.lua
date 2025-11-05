@@ -4,6 +4,7 @@
 local wk = require("which-key")
 local map = vim.keymap.set
 local del = vim.keymap.del
+local icons = require("lib.icons")
 
 del("n", "<leader>fT")
 --============================================= deactivate defaults =============================================
@@ -74,14 +75,28 @@ wk.add({
 })
 
 --============================================= nvim-scissors =============================================
-map("n", "<leader>he", function()
-  require("scissors").editSnippet()
-end, { desc = "Snippet: Edit" })
+local Scissors = require("scissors")
 
--- when used in visual mode, prefills the selection as snippet body
-map({ "n", "x" }, "<leader>ha", function()
-  require("scissors").addNewSnippet()
-end, { desc = "Snippet: Add" })
+wk.add({
+  { "<leader>h", group = "scissors", icon = icons.ui.Scissors, mode = { "n" } },
+  {
+    "<leader>he",
+    function()
+      Scissors.editSnippet()
+    end,
+    desc = "Edit snippet",
+    icon = icons.ui.Edit,
+  },
+  {
+    "<leader>ha",
+    function()
+      Scissors.addNewSnippet()
+    end,
+    desc = "Add new snippet",
+    icon = icons.ui.AddAlt,
+    mode = { "n", "x" },
+  },
+})
 
 --============================================= Yank Line + Diagnostic (maodified to yank just diagnostic) ===========
 map("n", "yd", function()

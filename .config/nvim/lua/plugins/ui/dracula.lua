@@ -117,11 +117,10 @@ return {
         LazyButtonActive = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
         --============================================= splits =============================================
         VertSplit = { fg = theme_colors.background, bg = "none" },
-        WinSeparator = {
-          fg = theme_colors.purple,
-          bg = "none",
-          bold = true,
-        },
+        WinSeparator = { fg = theme_colors.purple, bg = "none", bold = true },
+        --============================================= CopilotChat =============================================
+        Pmenu = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+        PmenuSel = { fg = theme_colors.black, bg = theme_colors.purple, bold = true },
       },
     },
     config = true,

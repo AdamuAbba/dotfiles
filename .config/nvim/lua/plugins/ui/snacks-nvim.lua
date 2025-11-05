@@ -177,11 +177,16 @@ return {
         },
 
         --============================================= find =============================================
-        { "<leader>fF", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
+        { "<leader>ff", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
         {
-          "<leader>ff",
+          "<leader>fF",
           LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
           desc = "Find Files (cwd)",
+        },
+        {
+          "<leader>fc",
+          LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
+          desc = "Find Config File",
         },
         { "<leader>fr", LazyVim.pick("oldfiles", { layout = "select_with_preview" }), desc = "Recent" },
         {

@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "context7": {
+      "disabled": false,
+      "type": "streamable-http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "github": {
+      "disabled": false,
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "vectorcode-mcp-server": {
+      "args": [],
+      "command": "vectorcode-mcp-server"
+    }
+  }
+}

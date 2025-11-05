@@ -1,1 +1,66 @@
-{"name":"user-snippets","contributes":{"snippets":[{"path":"./plaintext.json","language":["plaintext"]},{"path":"./javascript.json","language":["javascript","typescript","javascriptreact","typescriptreact"]},{"path":"./lua.json","language":["lua"]},{"path":"./bash.json","language":["bash","sh","toml"]},{"path":"./kdl.json","language":["kdl"]},{"path":"./yaml.json","language":["yaml"]},{"path":"./markdown.json","language":["markdown"]},{"path":"./zsh.json","language":["zsh"]}]}}
+{
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext"
+        ],
+        "path": "./plaintext.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "path": "./javascript.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "bash",
+          "sh",
+          "toml"
+        ],
+        "path": "./bash.json"
+      },
+      {
+        "language": [
+          "kdl"
+        ],
+        "path": "./kdl.json"
+      },
+      {
+        "language": [
+          "yaml"
+        ],
+        "path": "./yaml.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "zsh"
+        ],
+        "path": "./zsh.json"
+      },
+      {
+        "language": [
+          "snacks_dashboard"
+        ],
+        "path": "./snacks_dashboard.json"
+      }
+    ]
+  },
+  "name": "user-snippets"
+}

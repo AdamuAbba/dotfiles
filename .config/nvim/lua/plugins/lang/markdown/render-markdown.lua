@@ -1,22 +1,26 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    opts = {
-      completions = {
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    ---@param _ any
+    ---@param opts render.md.UserConfig
+    opts = function(_, opts)
+      opts.completions = vim.tbl_deep_extend("force", opts.completions or {}, {
         lsp = {
           enabled = true,
         },
         blink = { enabled = true },
-      },
-      indent = {
+      })
+      opts.indent = vim.tbl_deep_extend("force", opts.indent or {}, {
         enabled = true,
         per_level = 2,
         skip_level = 1,
         skip_heading = false,
         icon = "|",
         priority = 0,
-      },
-      code = {
+      })
+      opts.code = vim.tbl_deep_extend("force", opts.code or {}, {
         enabled = true,
         conceal_delimiters = true,
         border = "thin",
@@ -34,8 +38,8 @@ return {
         sign = true,
         width = "block",
         right_pad = 1,
-      },
-      heading = {
+      })
+      opts.heading = vim.tbl_deep_extend("force", opts.heading or {}, {
         sign = true,
         atx = true,
         setext = true,
@@ -54,8 +58,6 @@ return {
           "RenderMarkdownH5Bg",
           "RenderMarkdownH6Bg",
         },
-        -- Highlight for the heading and sign icons.
-        -- Output is evaluated using the same logic as 'backgrounds'.
         foregrounds = {
           "RenderMarkdownH1",
           "RenderMarkdownH2",
@@ -65,12 +67,13 @@ return {
           "RenderMarkdownH6",
         },
         width = "block",
-      },
-      checkbox = {
+      })
+      opts.checkbox = vim.tbl_deep_extend("force", opts.checkbox or {}, {
         enabled = true,
         bullet = true,
         right_pad = 1,
-      },
-    },
+      })
+      return opts
+    end,
   },
 }
