@@ -125,6 +125,7 @@ return {
     NewFile = " ",
     None = " ",
     Note = " ",
+    Task = " ",
     Outgoing = " ",
     Package = " ",
     Paint = " ",

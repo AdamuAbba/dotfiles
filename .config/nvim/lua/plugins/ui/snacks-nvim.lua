@@ -49,6 +49,13 @@ return {
           desc = "Git Diff (hunks)",
         },
         {
+          "<leader>gD",
+          function()
+            Snacks.picker.git_diff({ base = "origin", group = true, layout = "select_with_preview" })
+          end,
+          desc = "Git Diff (origin)",
+        },
+        {
           "<leader>gs",
           function()
             Snacks.picker.git_status({ layout = "select_with_preview" })
@@ -164,30 +171,38 @@ return {
         {
           "<leader>fE",
           function()
-            Snacks.explorer({ cwd = LazyVim.root() })
+            Snacks.explorer({
+              cwd = LazyVim.root(),
+              layout = "horizontal_side_bar",
+            })
           end,
           desc = "Explorer Snacks (root dir)",
         },
         {
           "<leader>fe",
           function()
-            Snacks.explorer()
+            Snacks.explorer({
+              layout = "horizontal_side_bar",
+            })
           end,
           desc = "Explorer Snacks (cwd)",
         },
 
         --============================================= find =============================================
-        { "<leader>ff", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
+        { "<leader>fF", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
         {
-          "<leader>fF",
+          "<leader>ff",
           LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
           desc = "Find Files (cwd)",
         },
         {
-          "<leader>fc",
-          LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
-          desc = "Find Config File",
+          "<leader>fb",
+          function()
+            Snacks.picker.buffers({ layout = "select_with_preview" })
+          end,
+          desc = "Buffers",
         },
+        { "<leader>fc", LazyVim.pick.config_files(), desc = "Find Config File" },
         { "<leader>fr", LazyVim.pick("oldfiles", { layout = "select_with_preview" }), desc = "Recent" },
         {
           "<leader>fp",
@@ -308,6 +323,37 @@ return {
           },
         },
         layouts = {
+          horizontal_side_bar = {
+            preview = true,
+            layout = {
+              backdrop = false,
+              width = math.floor(vim.o.columns * 0.60),
+              height = 0,
+              position = "right",
+              border = "none",
+              box = "horizontal",
+              {
+                border = "rounded",
+                win = "preview",
+                title = "{preview}",
+                title_pos = "center",
+                height = 0.6,
+              },
+              {
+                box = "vertical",
+                border = "rounded",
+                width = 0.4,
+                {
+                  win = "input",
+                  height = 1,
+                  border = true,
+                  title = "{title} {live} {flags}",
+                  title_pos = "center",
+                },
+                { win = "list", border = "none" },
+              },
+            },
+          },
           select_no_preview = {
             preview = false,
             layout = {
@@ -351,6 +397,7 @@ return {
             ignored = true,
             follow = true,
             follow_file = true,
+            trash = true,
             win = {
               input = {
                 title = "",

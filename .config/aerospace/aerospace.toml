@@ -133,6 +133,10 @@ if.app-id = 'com.google.Chrome'
 run = ["move-node-to-workspace Browser"]
 
 [[on-window-detected]]
+if.app-id = "org.qutebrowser.qutebrowser"
+run = ["move-node-to-workspace Browser"]
+
+[[on-window-detected]]
 if.app-id = "com.openai.atlas.web"
 run = ["layout floating", "move-node-to-workspace Browser"]
 
@@ -209,6 +213,10 @@ run = ["layout floating", "move-node-to-workspace Tools"]
 #============================================= Media =============================================
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
+run = "move-node-to-workspace Media"
+
+[[on-window-detected]]
+if.app-id = "com.apple.Photos"
 run = "move-node-to-workspace Media"
 
 [[on-window-detected]]
@@ -291,6 +299,13 @@ run = "move-node-to-workspace Social"
 if.app-id = "com.now.gg.BlueStacks"
 run = "move-node-to-workspace Games"
 
+[[on-window-detected]]
+if.app-id = "com.riotgames.RiotGames.RiotClient"
+run = ["layout floating", "move-node-to-workspace Games"]
+
+[[on-window-detected]]
+if.app-id = "com.riotgames.LeagueofLegends.LeagueClientUx"
+run = "move-node-to-workspace Games"
 #============================================= Detached (Floating) =============================================
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'

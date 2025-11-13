@@ -90,29 +90,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   end,
 })
 
---============================================= reload keymaps =============================================
--- local function reload_keymaps()
---   -- clear cached module
---   package.loaded["config.keymaps"] = nil
---
---   -- reload by module name
---   require("config.keymaps")
---
---   vim.notify("Keymaps reloaded!", vim.log.levels.INFO, {
---     title = "Neovim",
---     timeout = 3000,
---   })
--- end
---
--- vim.api.nvim_create_user_command("ReloadKeymaps", reload_keymaps, {})
---
--- local keymaps_file = vim.fn.stdpath("config") .. "/lua/config/keymaps.lua"
---
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   pattern = keymaps_file,
---   callback = reload_keymaps,
--- })
-
 --============================================= git hooks as sh files =============================================
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = {
@@ -137,5 +114,55 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 --         vim.cmd("cd " .. vim.fn.fnamemodify(arg, ":p:h"))
 --       end
 --     end
+--   end,
+-- })
+
+--============================================= open README or Todo on dir open ======================
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     if vim.fn.argc() ~= 1 then
+--       return
+--     end
+--     local dir = vim.fn.argv(0)
+--     if vim.fn.isdirectory(dir) ~= 1 then
+--       return
+--     end
+--
+--     local function exists(path)
+--       return vim.loop.fs_stat(path) ~= nil
+--     end
+--
+--     local try_files = {
+--       -- README priority (common variants)
+--       "README.md",
+--       "README.markdown",
+--       "README.MD",
+--       "README",
+--       -- Todo priority (common variants)
+--       "Todo.md",
+--       "TODO.md",
+--       "todo.md",
+--     }
+--
+--     for _, name in ipairs(try_files) do
+--       local path = dir .. "/" .. name
+--       if exists(path) then
+--         -- open the file as the active buffer
+--         vim.cmd("edit " .. vim.fn.fnameescape(path))
+--
+--         -- try to tell snacks.explorer to reveal/highlight the file (no-op if API differs)
+--         -- local ok, explorer = pcall(require, "snacks.explorer")
+--         -- if ok and explorer then
+--         --   if type(explorer.reveal) == "function" then
+--         --     pcall(explorer.reveal, path)
+--         --   elseif type(explorer.open) == "function" then
+--         --     pcall(explorer.open) -- fallback: open explorer
+--         --   end
+--         -- end
+--
+--         return
+--       end
+--     end
+--     -- otherwise leave default behavior
 --   end,
 -- })

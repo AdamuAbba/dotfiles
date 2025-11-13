@@ -15,7 +15,7 @@
 *.pyo
 
 # AI stuff
-# .vectorcode
+.vectorcode
 
 # Flutter stuff #
 ###################
