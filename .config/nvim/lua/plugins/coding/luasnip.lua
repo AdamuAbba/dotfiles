@@ -86,6 +86,40 @@ return {
         table.insert(snippets, create_callout_snippet(callout))
       end
 
+      -- dream template snippet
+      table.insert(
+        snippets,
+        s({
+          trig = ";dreamtemplate",
+          name = "Insert dream template",
+          desc = "Insert dream template with frontmatter and sections",
+        }, {
+          t({
+            "---",
+            "title: ",
+          }),
+          f(function()
+            return vim.fn.expand("%:t:r"):gsub("%-", " ")
+          end, {}),
+          t({
+            "",
+            "date: ",
+          }),
+          f(function()
+            return os.date("%Y-%m-%d %-I:%M:%S %p")
+          end, {}),
+          t({
+            "",
+            "tags:",
+            "  - dream",
+            "location: Abuja, Nigeria",
+            "---",
+            "",
+            "## Narration",
+            "",
+          }),
+        })
+      )
       -- Blog post template snippet
       table.insert(
         snippets,

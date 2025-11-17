@@ -15,11 +15,11 @@ map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
 
-map("n", "<C-l>", function()
+map("n", "<C-j>", function()
   local cur_win = vim.api.nvim_get_current_win()
   local cur_ft = vim.bo[vim.api.nvim_win_get_buf(cur_win)].filetype
 
-  local priorities = { "codecompanion", "snacks_picker_list" }
+  local priorities = { "snacks_picker_list" }
 
   for _, ft in ipairs(priorities) do
     for _, win in ipairs(vim.api.nvim_list_wins()) do

@@ -102,20 +102,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 --============================================= auto cwd =============================================
--- vim.api.nvim_create_autocmd("VimEnter", {
---   callback = function()
---     local args = vim.fn.argv()
---     if #args > 0 then
---       local arg = args[1]
---       local stat = vim.loop.fs_stat(arg)
---       if stat and stat.type == "directory" then
---         vim.cmd("cd " .. arg)
---       else
---         vim.cmd("cd " .. vim.fn.fnamemodify(arg, ":p:h"))
---       end
---     end
---   end,
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local args = vim.fn.argv()
+    if #args > 0 then
+      local arg = args[1]
+      local stat = vim.loop.fs_stat(arg)
+      if stat and stat.type == "directory" then
+        vim.cmd("cd " .. arg)
+      else
+        vim.cmd("cd " .. vim.fn.fnamemodify(arg, ":p:h"))
+      end
+    end
+  end,
+})
 
 --============================================= open README or Todo on dir open ======================
 -- vim.api.nvim_create_autocmd("VimEnter", {

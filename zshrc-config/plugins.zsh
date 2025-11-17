@@ -10,6 +10,7 @@ source $HOME/zshrc-config/languages/javascript.zsh
 
 #============================================= plugins ===========================
 plugins=(
+  tmux
   zoxide
   pip
   golang

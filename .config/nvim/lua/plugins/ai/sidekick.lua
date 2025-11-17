@@ -5,7 +5,7 @@ return {
       opts.cli = vim.tbl_deep_extend("force", opts.cli or {}, {
         mux = {
           enabled = true,
-          backend = "zellij",
+          backend = "tmux",
         },
       })
     end,
