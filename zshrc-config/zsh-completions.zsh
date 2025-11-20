@@ -4,7 +4,7 @@ if type brew &>/dev/null; then
 fi
 
 #============ custom completions ====================
-tools=(uv rvm)
+tools=(uv)
 missing=()
 
 for tool in "${tools[@]}"; do

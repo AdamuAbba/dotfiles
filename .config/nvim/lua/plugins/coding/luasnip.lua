@@ -96,7 +96,7 @@ return {
         }, {
           t({
             "---",
-            "title: ",
+            "title:'' ",
           }),
           f(function()
             return vim.fn.expand("%:t:r"):gsub("%-", " ")
@@ -106,7 +106,7 @@ return {
             "date: ",
           }),
           f(function()
-            return os.date("%Y-%m-%d %-I:%M:%S %p")
+            return os.date("%Y-%m-%dT%H:%M:%S")
           end, {}),
           t({
             "",
@@ -139,6 +139,10 @@ return {
             "",
             "description: ",
           }),
+          t({
+            "",
+            "draft: false",
+          }),
           i(2, ""),
           t({
             "",
@@ -150,15 +154,13 @@ return {
             "date: ",
           }),
           f(function()
-            return os.date("%Y-%m-%d %-I:%M:%S %p")
+            return os.date("%Y-%m-%dT%H:%M:%S")
           end, {}),
           t({
             "",
-            "tags:",
-            "  - macos",
-            "  - tutorial",
-            "  - youtube",
-            "  - video",
+            "author: ",
+            "category:[]",
+            "tags:[]",
             "---",
             "## Contents",
             "",

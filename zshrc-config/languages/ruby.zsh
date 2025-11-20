@@ -1,10 +1,5 @@
-export GEM_HOME="$HOME/.gem"
-export PATH="$GEM_HOME/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin"
+# Disabled for now since using omz chruby plugin
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
-update_rvm() {
-  rvm get stable
-  rvm install ruby --latest
-  rvm --default use ruby
-  ruby -v
-}
+chruby ruby-3.3.6

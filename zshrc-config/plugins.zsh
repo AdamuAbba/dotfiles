@@ -1,8 +1,6 @@
 #============================================= plugin dependencies  ===========================
-#============================================= configure early ================================
+#---- configure early because of plugins
 
-# --- ruby (rvm) ---
-source $HOME/zshrc-config/languages/ruby.zsh
 # --- rust ---
 source $HOME/zshrc-config/languages/rust.zsh
 # --- js/ts ---
@@ -32,8 +30,6 @@ plugins=(
   react-native
   safe-paste
   nodenv
-  rvm
-  ruby
   ssh
   direnv
   gradle

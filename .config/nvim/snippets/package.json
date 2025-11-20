@@ -65,6 +65,18 @@
           "tmux"
         ],
         "path": "./tmux.json"
+      },
+      {
+        "language": [
+          "kitty"
+        ],
+        "path": "./kitty.json"
+      },
+      {
+        "language": [
+          "gitignore"
+        ],
+        "path": "./gitignore.json"
       }
     ]
   },

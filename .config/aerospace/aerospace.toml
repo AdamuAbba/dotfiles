@@ -147,9 +147,14 @@ run = ["layout floating", "move-node-to-workspace Browser"]
 [[on-window-detected]]
 if.app-id = "com.apple.Safari"
 run = ["layout floating", "move-node-to-workspace Browser"]
+
 #============================================= Editors/IDEs =========================================
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
+run = "move-node-to-workspace Editor"
+
+[[on-window-detected]]
+if.app-id = "net.kovidgoyal.kitty"
 run = "move-node-to-workspace Editor"
 
 [[on-window-detected]]

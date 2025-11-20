@@ -77,6 +77,8 @@ alias edit-atac-theme="nvim $ATAC_THEME"
 alias edit-atac-kb="nvim $ATAC_KEY_BINDINGS"
 alias edit-skhd="nvim $HOME/.config/skhd/skhdrc"
 alias edit-aero="nvim $HOME/.config/aerospace/aerospace.toml"
+alias edit-kitty="nvim $HOME/.config/kitty/kitty.conf"
+alias edit-vault="nvim $HOME/Documents/shytypes-obs-vault/"
 
 #============================================= zsh =============================================
 alias edit-zsh="nvim $HOME/.zshrc"

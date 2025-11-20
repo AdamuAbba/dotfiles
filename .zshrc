@@ -69,3 +69,6 @@ source $HOME/zshrc-config/atuin.zsh
 export rvm_path="$HOME/.rvm"
 [[ -s "$rvm_path/scripts/rvm" ]] && source "$rvm_path/scripts/rvm"
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

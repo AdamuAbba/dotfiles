@@ -445,16 +445,15 @@ menuHammerMenuList = {
 					{ cons.act.launcher, "Finder" },
 				},
 			},
-
-			{
-				cons.cat.action,
-				"",
-				"w",
-				" WezTerm",
-				{
-					{ cons.act.launcher, "WezTerm" },
-				},
-			},
+			-- {
+			-- 	cons.cat.action,
+			-- 	"",
+			-- 	"w",
+			-- 	" WezTerm",
+			-- 	{
+			-- 		{ cons.act.launcher, "WezTerm" },
+			-- 	},
+			-- },
 			{
 				cons.cat.action,
 				"",
@@ -485,6 +484,15 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
+				"k",
+				"󰄛 Kitty",
+				{
+					{ cons.act.launcher, "Kitty" },
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
 				"k",
 				" Karabiner",
 				{
