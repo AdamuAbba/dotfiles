@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   end,
 })
 
---============================================= git hooks as sh files =============================================
+--============================================= set filetypes =============================================
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = {
     ".git/hooks/*",
@@ -100,6 +100,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = {
+    "*/Podfile",
+  },
+  callback = function()
+    vim.bo.filetype = "ruby"
+  end,
+})
 --============================================= auto cwd =============================================
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()

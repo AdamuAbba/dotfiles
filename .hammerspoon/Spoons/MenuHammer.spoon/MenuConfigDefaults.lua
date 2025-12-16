@@ -445,6 +445,15 @@ menuHammerMenuList = {
 					{ cons.act.launcher, "Finder" },
 				},
 			},
+			{
+				cons.cat.action,
+				"",
+				"g",
+				"󰊠 Ghostty",
+				{
+					{ cons.act.launcher, "Ghostty" },
+				},
+			},
 			-- {
 			-- 	cons.cat.action,
 			-- 	"",
@@ -481,15 +490,15 @@ menuHammerMenuList = {
 					{ cons.act.launcher, "Hammerspoon" },
 				},
 			},
-			{
-				cons.cat.action,
-				"",
-				"k",
-				"󰄛 Kitty",
-				{
-					{ cons.act.launcher, "Kitty" },
-				},
-			},
+			-- {
+			-- 	cons.cat.action,
+			-- 	"",
+			-- 	"k",
+			-- 	"󰄛 Kitty",
+			-- 	{
+			-- 		{ cons.act.launcher, "Kitty" },
+			-- 	},
+			-- },
 			{
 				cons.cat.action,
 				"shift",
@@ -1445,19 +1454,6 @@ menuHammerMenuList = {
 		parentMenu = mainMenu,
 		menuHotkey = { key_helper.hyper_shift, "s" },
 		menuItems = {
-
-			{
-				cons.cat.action,
-				"",
-				"p",
-				"Process manager",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/mac-os/process_manager.sh",
-					},
-				},
-			},
 			{
 				cons.cat.action,
 				"",

@@ -15,6 +15,9 @@ return {
         CursorLine = { bg = theme_colors.selection },
         StatusLine = { bg = theme_colors.white },
         Visual = { bg = theme_colors.purple, fg = theme_colors.black },
+        --============================================= lualine =============================================
+        lualine_transitional_lualine_a_normal_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
+        lualine_transitional_lualine_a_insert_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
         --============================================= BlinkCmp overrides=============================================
         BlinkCmpDocBorder = { fg = theme_colors.green, bg = theme_colors.background },
         BlinkCmpMenuBorder = { fg = theme_colors.green, bg = theme_colors.background },
@@ -58,7 +61,7 @@ return {
         BufferLineMiniIconsGreen = { bg = theme_colors.background, fg = theme_colors.green },
         BufferLineMiniIconsBlue = { bg = theme_colors.background, fg = theme_colors.cyan },
         BufferLineCloseButton = { bg = theme_colors.background, fg = theme_colors.red },
-        BufferLineSeparator = { fg = theme_colors.background },
+        BufferLineSeparator = { fg = theme_colors.purple, bg = theme_colors.purple },
         BufferLineBufferVisible = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
         BufferLineModifiedVisible = { fg = theme_colors.white, bg = theme_colors.background },
         BufferLineModified = { bg = theme_colors.background, fg = theme_colors.yellow },
@@ -77,7 +80,7 @@ return {
         BufferLineMiniIconsGreenSelected = { bg = theme_colors.purple, fg = theme_colors.green },
         BufferLineMiniIconsBlueSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
         BufferLineCloseButtonSelected = { bg = theme_colors.purple, fg = theme_colors.red },
-        BufferLineSeparatorSelected = { fg = theme_colors.background },
+        BufferLineSeparatorSelected = { fg = theme_colors.purple, bg = theme_colors.purple },
         BufferLineModifiedSelected = { bg = theme_colors.purple, fg = theme_colors.yellow, bold = true },
         BufferLineBufferSelected = { bg = theme_colors.purple, fg = theme_colors.black, bold = true },
         -- Diagnostics

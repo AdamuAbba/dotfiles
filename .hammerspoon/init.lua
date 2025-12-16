@@ -20,4 +20,3 @@ require("watchers")
 -- keylogger.flagTap:start()
 
 --================================== Do not re-order...shit breaks ================
--- require("helpers.caps2esc")

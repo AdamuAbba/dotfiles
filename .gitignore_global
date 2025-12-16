@@ -1,72 +1,113 @@
-# An example global gitignore file
-#
 # Place a copy if this at ~/.gitignore_global
 # Run `git config --global core.excludesfile ~/.gitignore_global`
 
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.pyc
-*.pyo
-
-# AI stuff
+#============================================ AI stuff ===========================================
 .vectorcode
 
-# Flutter stuff #
-###################
+#============================================ flutter ===========================================
 pubspec.lock
-
-# swift stuff #
-###################
-Package.resolved
-
-# Packages #
-############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.msi
-
-# Logs and databases #
-######################
+*.class
 *.log
-# *.sql
-# *.sqlite
+*.pyc
+*.swp
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+app.*.symbols
+app.*.map.json
 
-# OS generated files #
-######################
+#============================================ Text Editor ===========================================
+.vscode
+.idea
+.iml
+*.sublime-workspace
+/.vs
+*.iml
+*.ipr
+*.iws
+.idea/
+
+#============================================ OSX ===========================================
 .DS_Store
-.DS_Store?
-._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 desktop.ini
+Package.resolved
+.DS_Store
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+**/.xcode.env.local
+*.hprof
+ios/*.xcworkspace/xcuserdata
+ios/*.xcodeproj/xcuserdata
+ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+**/fastlane/test_output
+ios/fastlane
+*.jsbundle
 
-# Temporary files #
-###################
-*.bak
-*.swp
-*.swo
-*~
-*#
+#============================================ Android ===========================================
+.kotlin/
+.cxx/
+*.keystore
+!debug.keystore
+build/
+.gradle
+*.iml
+/coverage
+android/.gradle
+android/.idea
+android/local.properties
+android/app/debug
+android/app/profile
+android/app/release
+android/app/.project
+android/app/.classpath
+android/.settings/org.eclipse.buildship.core.prefs
+android/.project
+android/.settings/org.eclipse.buildship.core.prefs
+android/app/.classpath
+android/app/.project
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/res/drawable-*/node_modules_*
+android/app/src/main/res/drawable-*/assets_images_*
+android/app/src/main/res/raw/
 
-# IDE files #
-#############
-.vscode
-.idea
-.iml
-*.sublime-workspace
+#============================================ Node js ===========================================
+node_modules/
+npm-debug.log
+yarn-error.log
+.metro-health-check*
+artifacts/
+
+#============================================ Ruby & Coocaopods ===========================================
+**/Pods/
+/vendor/bundle/

@@ -16,7 +16,7 @@
 # blacklist=\"Simulator\" 
 
 after-startup-command = [
-  "exec-and-forget borders style=uniform width=6.0 hidpi=on active_color=0xffbd93f9 inactive_color=0xff000000",
+  # "exec-and-forget borders style=uniform width=6.0 hidpi=on active_color=0xffbd93f9 inactive_color=0xff000000",
 ]
 
 exec-on-workspace-change = [
@@ -155,6 +155,10 @@ run = "move-node-to-workspace Editor"
 
 [[on-window-detected]]
 if.app-id = "net.kovidgoyal.kitty"
+run = "move-node-to-workspace Editor"
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace Editor"
 
 [[on-window-detected]]

@@ -77,6 +77,12 @@
           "gitignore"
         ],
         "path": "./gitignore.json"
+      },
+      {
+        "language": [
+          "conf"
+        ],
+        "path": "./conf.json"
       }
     ]
   },

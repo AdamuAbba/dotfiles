@@ -8,7 +8,10 @@ return {
         indicator = {
           style = "none",
         },
+        show_close_icon = false,
+        show_buffer_close_icons = false,
         color_icons = true,
+        separator_style = { "", "" },
       })
       return opts
     end,
