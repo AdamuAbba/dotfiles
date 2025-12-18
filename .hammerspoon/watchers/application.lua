@@ -25,6 +25,8 @@ obj.appsToCenter = {
 	"Ghostty",
 	"Zen",
 	"Stremio",
+	"Figma",
+	"Xcode",
 }
 
 --- ApplicationWatcher:start()

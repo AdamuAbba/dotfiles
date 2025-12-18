@@ -544,3 +544,12 @@ wk.add({
     icon = icons.ui.AddAlt,
   },
 })
+
+--============================================= open picker =============================================
+vim.api.nvim_create_user_command("SnacksFilePicker", function()
+  local ok, snacks = pcall(require, "snacks")
+  if not ok then
+    return
+  end
+  snacks.picker("files", { root = false, layout = "select_with_preview" })
+end, { nargs = 0 })

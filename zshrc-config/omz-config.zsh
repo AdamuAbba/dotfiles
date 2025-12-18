@@ -25,9 +25,9 @@ zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' 
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-min-height 15
-# switch group using `<` and `>`
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' popup-min-size 70 30
 zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:*' fzf-pad 4
 
 #============================================= Text object stuff ================================
 # Text object for matching characters between a particular delimiter

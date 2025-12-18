@@ -19,8 +19,9 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- List of directories to watch for changes, defaults to hs.configdir
 obj.watch_paths = {
 	hs.configdir,
-	-- aerospace config directory
 	"~/.config/aerospace/",
+	"~/.config/ghostty/",
+	-- "~/.config/tmux/",
 }
 
 --- PathWatcher:start()
@@ -42,6 +43,23 @@ function obj:start()
 			end
 		end)
 		:start()
+	self.watchers[self.watch_paths[3]] = hs.pathwatcher
+		.new(self.watch_paths[3], function()
+			local ghostty_app = hs.application.find("Ghostty")
+			ghostty_app:selectMenuItem("Reload Configuration")
+			utils:nerd_alert(string.format("󰊠 Ghostty config reloaded"))
+		end)
+		:start()
+	-- self.watchers[self.watch_paths[4]] = hs.pathwatcher
+	-- 	.new(self.watch_paths[4], function()
+	-- 		local output, status = hs.execute("/opt/homebrew/bin/tmux source-file ~/.config/tmux/tmux.conf")
+	-- 		if status then
+	-- 			utils:nerd_alert(string.format(" tmux config sourced"))
+	-- 		else
+	-- 			utils:nerd_alert(string.format(" tmux config reload failed: %s", output))
+	-- 		end
+	-- 	end)
+	-- 	:start()
 	return self
 end
 

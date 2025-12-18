@@ -7,9 +7,8 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="
   --style=full
-  --height 70%
-  --border --padding=1,2
-  --input-label=' Input ' --header-label=' File Type '
+  --height 100%
+  --input-label=' Input '
   --bind='result:transform-list-label:
     if [[ -z \$FZF_QUERY ]]; then
       echo \" \$FZF_MATCH_COUNT items \"
@@ -23,6 +22,7 @@ export FZF_DEFAULT_OPTS="
   --color=list-border:#bd93f9,list-label:#ffffff
   --color=input-border:#bd93f9,input-label:#ffffff 
   --color=header-border:#bd93f9,header-label:#ffffff 
+  --color=bg:#000000
 "
 
 _fzf_compgen_path() {
@@ -37,16 +37,18 @@ _fzf_compgen_dir() {
 _fzf_comprun() {
   local command=$1
   shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-    ls)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-    eza)          fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
+ 
+  # case "$command" in
+  #   cd)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
+  #   ls)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
+  #   eza)          fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
+  #   export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+  #   ssh)          fzf --preview 'dig {}'                   "$@" ;;
+  #   *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  # esac
 }
+
+
 
 fif() {
   if [ "$#" -eq 0 ]; then

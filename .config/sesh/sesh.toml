@@ -1,0 +1,32 @@
+#============================================= Configs =============================================
+[[session]]
+name = "tmux config"
+path = "~/Documents/dotfiles/.config/tmux"
+startup_command = "nvim tmux.conf"
+preview_command = "bat --color=always ~/Documents/dotfiles/.config/tmux/tmux.conf"
+
+[[session]]
+name = "sesh config"
+path = "~/Documents/dotfiles/.config/sesh/"
+startup_command = "nvim sesh.toml"
+preview_command = "bat --color=always ~/Documents/dotfiles/.config/tmux/tmux.conf"
+
+#============================================= React Native =============================================
+[[session]]
+name = "JoinQ Business"
+path = "~/Documents/join-queue-business/"
+startup_command = "~/.config/sesh/scripts/react-native-dev.sh"
+
+[[session]]
+name = "JoinQ Customer"
+path = "~/Documents/join-queue-customer/"
+startup_command = "~/.config/sesh/scripts/react-native-dev.sh"
+
+#============================================= windows =============================================
+[[window]]
+name = "git"
+startup_script = "lazygit"
+
+[[window]]
+name = "split-window"
+startup_script = "~/.config/sesh/scripts/split-window.sh"
