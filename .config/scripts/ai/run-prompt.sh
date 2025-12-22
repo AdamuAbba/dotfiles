@@ -85,7 +85,7 @@ y | Y | yes | YES)
   # prefill editor by using -F with --edit so editor opens with message
   TMPMSG="$(mktemp)" || exit 1
   printf '%s\n' "$COMMIT_MSG" >"$TMPMSG"
-  git commit --edit --signoff -F "$TMPMSG"
+  tmux display-popup -E -w 80% -h 80% -T "Git Commit" -d "#{pane_current_path}" git commit --edit --signoff -F "$TMPMSG"
   ;;
 *)
   printf 'Cancelled.\n'

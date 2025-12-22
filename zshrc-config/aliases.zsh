@@ -37,10 +37,12 @@ alias lnd="lnd --configfile=$HOME/Library/Application\ Support/Lnd/lnd.conf"
 alias run-prompt="$HOME/.config/scripts/ai/run-prompt.sh"
 
 #============================================= github =============================================
-alias gg="lazygit"
 alias edit-git-global="nvim $HOME/.config/git/config"
 alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
-alias edit-gg="nvim $HOME/.config/lazygit/config.yml"
+alias gbd='tmux display-popup -E -w 50% -h 50% -T "Delete branch  " -d "#{pane_current_path}" $HOME/.config/scripts/git/delete-branch.sh'
+
+#============================================= bat =============================================
+alias -g -- cat="bat"
 
 #============================================= tools =============================================
 alias kpp="gruyere --details"
