@@ -48,9 +48,12 @@ return {
         SnacksPickerPreviewBorder = { fg = theme_colors.green, bg = theme_colors.background },
         SnacksPickerBoxBorder = { fg = theme_colors.green, bg = theme_colors.background },
         SnacksPickerBorder = { fg = theme_colors.green, bg = theme_colors.background },
+
         --============================================= Bufferline overrides here =============================================
         BufferLineFill = { bg = theme_colors.background },
         BufferLineBackground = { bg = theme_colors.background },
+        BufferlineIndicatorSelected = { bg = theme_colors.purple },
+        BufferlineIndicatorVisible = { bg = theme_colors.black },
         --======================== inactive =================
         BufferLineDiagnostic = { bg = theme_colors.background },
         BufferLineMiniIconsAzure = { bg = theme_colors.background, fg = theme_colors.cyan },
@@ -61,16 +64,11 @@ return {
         BufferLineMiniIconsGreen = { bg = theme_colors.background, fg = theme_colors.green },
         BufferLineMiniIconsBlue = { bg = theme_colors.background, fg = theme_colors.cyan },
         BufferLineCloseButton = { bg = theme_colors.background, fg = theme_colors.red },
-        BufferLineSeparator = { fg = theme_colors.purple, bg = theme_colors.purple },
+        BufferLineSeparator = { fg = theme_colors.background, bg = theme_colors.background },
+        BufferLineSeparatorVisible = { fg = theme_colors.background, bg = theme_colors.background },
         BufferLineBufferVisible = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
         BufferLineModifiedVisible = { fg = theme_colors.white, bg = theme_colors.background },
         BufferLineModified = { bg = theme_colors.background, fg = theme_colors.yellow },
-        -- Diagnostics
-        BufferLineErrorDiagnostic = { bg = theme_colors.background, fg = theme_colors.red },
-        BufferLineError = { bg = theme_colors.background, fg = theme_colors.white },
-        BufferLineWarning = { bg = theme_colors.background, fg = theme_colors.white },
-        BufferLineWarningDiagnostic = { bg = theme_colors.background, fg = theme_colors.yellow },
-        BufferLineDiagnosticVisible = { fg = theme_colors.white, bg = theme_colors.background },
         --======================= active ===================
         BufferLineMiniIconsAzureSelected = { bg = theme_colors.purple, fg = theme_colors.cyan },
         BufferLineMiniIconsYellowSelected = { bg = theme_colors.purple, fg = theme_colors.yellow },
@@ -83,7 +81,13 @@ return {
         BufferLineSeparatorSelected = { fg = theme_colors.purple, bg = theme_colors.purple },
         BufferLineModifiedSelected = { bg = theme_colors.purple, fg = theme_colors.yellow, bold = true },
         BufferLineBufferSelected = { bg = theme_colors.purple, fg = theme_colors.black, bold = true },
-        -- Diagnostics
+
+        ------------------------ Diagnostics
+        BufferLineErrorDiagnostic = { bg = theme_colors.background, fg = theme_colors.red },
+        BufferLineError = { bg = theme_colors.background, fg = theme_colors.white },
+        BufferLineWarning = { bg = theme_colors.background, fg = theme_colors.white },
+        BufferLineWarningDiagnostic = { bg = theme_colors.background, fg = theme_colors.yellow },
+        BufferLineDiagnosticVisible = { fg = theme_colors.white, bg = theme_colors.background },
         BufferLineDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.black, bold = true },
         --Error
         BufferLineErrorSelected = { bg = theme_colors.purple, fg = theme_colors.red, bold = true },
@@ -97,6 +101,7 @@ return {
         --Info
         BufferLineInfoSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
         BufferLineInfoDiagnosticSelected = { bg = theme_colors.purple, fg = theme_colors.cyan, bold = true },
+
         --============================================= Render markdown =============================================
         RenderMarkdownCodeBorder = { bg = theme_colors.purple, fg = theme_colors.white, bold = true },
         --H1

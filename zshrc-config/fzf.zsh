@@ -1,6 +1,3 @@
-# -- Use fd instead of fzf --
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {}  | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
 export DISABLE_FZF_KEY_BINDINGS=true
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -8,6 +5,10 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_DEFAULT_OPTS="
   --style=full
   --height 100%
+  --ansi
+  --no-scrollbar
+  --pointer ''
+  --marker ''
   --input-label=' Input '
   --bind='result:transform-list-label:
     if [[ -z \$FZF_QUERY ]]; then
@@ -16,13 +17,13 @@ export FZF_DEFAULT_OPTS="
       echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
     fi'
   --bind='focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-  --bind='focus:+transform-header:file --brief {} || echo \"No file selected\"'
   --color=border:#50fa7b,label:#ffffff
   --color=preview-border:#50fa7b,preview-label:#ffffff
   --color=list-border:#bd93f9,list-label:#ffffff
   --color=input-border:#bd93f9,input-label:#ffffff 
-  --color=header-border:#bd93f9,header-label:#ffffff 
+  --color=header-border:#bd93f9,header-label:#ffffff,header:#ffffff
   --color=bg:#000000
+  --color=bg+:#bd93f9,fg+:#000000
 "
 
 _fzf_compgen_path() {
@@ -32,20 +33,6 @@ _fzf_compgen_path() {
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
-}
-
-_fzf_comprun() {
-  local command=$1
-  shift
- 
-  # case "$command" in
-  #   cd)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-  #   ls)           fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-  #   eza)          fzf --preview 'eza --tree --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions {} | head -200' "$@" ;;
-  #   export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-  #   ssh)          fzf --preview 'dig {}'                   "$@" ;;
-  #   *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  # esac
 }
 
 

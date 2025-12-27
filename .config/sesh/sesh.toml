@@ -22,6 +22,12 @@ name = "JoinQ Customer"
 path = "~/Documents/join-queue-customer/"
 startup_command = "~/.config/sesh/scripts/react-native-dev.sh"
 
+#============================================= tools =============================================
+[[session]]
+name = "HTTP Client"
+path = "~/Documents/api-collections/"
+startup_command = "nvim ."
+
 #============================================= windows =============================================
 [[window]]
 name = "git"

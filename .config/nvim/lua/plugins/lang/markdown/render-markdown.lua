@@ -5,7 +5,9 @@ return {
     ---@type render.md.UserConfig
     ---@param _ any
     ---@param opts render.md.UserConfig
+    ft = { "copilot-chat" },
     opts = function(_, opts)
+      table.insert(opts.file_types, "copilot-chat")
       opts.completions = vim.tbl_deep_extend("force", opts.completions or {}, {
         lsp = {
           enabled = true,

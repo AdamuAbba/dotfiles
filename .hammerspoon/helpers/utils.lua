@@ -91,4 +91,21 @@ function M:restartFrontmostApp()
 	end)
 end
 
+function M:maximizeAppWindow()
+	local frontApp = hs.application.frontmostApplication()
+	if not frontApp then
+		return
+	end
+
+	local bundleID = frontApp:bundleID()
+	if not bundleID then
+		return
+	end
+
+	hs.timer.doAfter(0.2, function()
+		if frontApp:mainWindow():isMaximizable() then
+			frontApp:mainWindow():maximize(0.2)
+		end
+	end)
+end
 return M

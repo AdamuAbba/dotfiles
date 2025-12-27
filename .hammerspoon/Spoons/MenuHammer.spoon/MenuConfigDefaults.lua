@@ -675,6 +675,20 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
+				"m",
+				"󰘖 Maximize",
+				{
+					{
+						cons.act.func,
+						function()
+							utils:maximizeAppWindow()
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
 				"q",
 				"󰯆 Kill App",
 				{

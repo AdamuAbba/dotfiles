@@ -24,7 +24,20 @@ return {
       opts.model = "gpt-5-mini"
       opts.prompts = vim.tbl_deep_extend("force", opts.prompts or {}, {
         Explain = {
-          prompt = "Explain the following code in detail [vectorcode ctx]:\n$input",
+          prompt = [[
+Explain the following code.
+
+Requirements:
+- format the explanation in markdown using headings, bullet points, and code blocks.
+- Use bullet points.
+- Be clear and easy to understand.
+- Avoid jargon.
+- Keep it concise and straight to the point.
+- Cover: purpose, key logic/flow, inputs/outputs, side effects.
+
+[vectorcode ctx]:
+$input
+]],
           context = { "selection", "vectorcode" },
         },
       })
