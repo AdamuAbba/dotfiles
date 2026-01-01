@@ -53,7 +53,7 @@ menuNumberOfColumns = 5
 menuMinNumberOfRows = 4
 
 -- The height of menu rows in pixels
-menuRowHeight = 30
+menuRowHeight = 34
 
 -- The padding to apply to each side of the menu
 menuOuterPadding = 30
@@ -64,10 +64,10 @@ menuOuterPadding = 30
 
 -- The font to apply to menu items.
 -- menuItemFont = "Courier-Bold"
-menuItemFont = "JetBrainsMono Nerd Font"
+menuItemFont = "Iosevka NF"
 
 -- The font size to apply to menu items.
-menuItemFontSize = 20
+menuItemFontSize = 19
 
 -- The text alignment to apply to menu items.
 menuItemTextAlign = "left"

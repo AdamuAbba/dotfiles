@@ -15,6 +15,9 @@ return {
         CursorLine = { bg = theme_colors.selection },
         StatusLine = { bg = theme_colors.white },
         Visual = { bg = theme_colors.purple, fg = theme_colors.black },
+        --============================================= mini-files =============================================
+        MiniFilesNormal = { bg = theme_colors.background },
+        MiniFilesBorder = { fg = theme_colors.green, bg = theme_colors.background },
         --============================================= lualine =============================================
         lualine_transitional_lualine_a_normal_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
         lualine_transitional_lualine_a_insert_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
@@ -48,6 +51,7 @@ return {
         SnacksPickerPreviewBorder = { fg = theme_colors.green, bg = theme_colors.background },
         SnacksPickerBoxBorder = { fg = theme_colors.green, bg = theme_colors.background },
         SnacksPickerBorder = { fg = theme_colors.green, bg = theme_colors.background },
+        SnacksIndentScope = { fg = theme_colors.pink },
 
         --============================================= Bufferline overrides here =============================================
         BufferLineFill = { bg = theme_colors.background },

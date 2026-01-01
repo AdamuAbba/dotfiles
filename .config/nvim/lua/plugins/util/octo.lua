@@ -4,7 +4,6 @@ return {
     opts = function(_, opts)
       opts.use_local_fs = false
       opts.default_remote = { "upstream", "origin" }
-      opts.default_merge_method = "commit"
       opts.default_delete_branch = false
       -- opts.picker = "telescope"
       -- opts.picker_config = {

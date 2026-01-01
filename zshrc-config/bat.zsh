@@ -1,6 +1,7 @@
 export BAT_THEME="Dracula"
 export MANPAGER="bat -plman"
 alias bathelp='bat --plain --language=help'
+
 help() {
   if [ $# -eq 0 ]; then
     printf '%s\n' "usage: help <command> [subcommand ...]" >&2

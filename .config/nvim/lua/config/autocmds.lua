@@ -1,9 +1,7 @@
 -- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- Default autocmds https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 
--- Disable the concealing in some file formats
--- The default conceallevel is 3 in LazyVim
+--============================================= Disable the concealing in some file formats =========================
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "json", "jsonc" },
   callback = function()
@@ -15,6 +13,15 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
     vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
+  end,
+})
+
+--============================================= no continue comments on new line ====================================
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end,
 })
 
@@ -108,6 +115,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo.filetype = "ruby"
   end,
 })
+
 --============================================= auto cwd =============================================
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
@@ -123,53 +131,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
-
---============================================= open README or Todo on dir open ======================
--- vim.api.nvim_create_autocmd("VimEnter", {
---   callback = function()
---     if vim.fn.argc() ~= 1 then
---       return
---     end
---     local dir = vim.fn.argv(0)
---     if vim.fn.isdirectory(dir) ~= 1 then
---       return
---     end
---
---     local function exists(path)
---       return vim.loop.fs_stat(path) ~= nil
---     end
---
---     local try_files = {
---       -- README priority (common variants)
---       "README.md",
---       "README.markdown",
---       "README.MD",
---       "README",
---       -- Todo priority (common variants)
---       "Todo.md",
---       "TODO.md",
---       "todo.md",
---     }
---
---     for _, name in ipairs(try_files) do
---       local path = dir .. "/" .. name
---       if exists(path) then
---         -- open the file as the active buffer
---         vim.cmd("edit " .. vim.fn.fnameescape(path))
---
---         -- try to tell snacks.explorer to reveal/highlight the file (no-op if API differs)
---         -- local ok, explorer = pcall(require, "snacks.explorer")
---         -- if ok and explorer then
---         --   if type(explorer.reveal) == "function" then
---         --     pcall(explorer.reveal, path)
---         --   elseif type(explorer.open) == "function" then
---         --     pcall(explorer.open) -- fallback: open explorer
---         --   end
---         -- end
---
---         return
---       end
---     end
---     -- otherwise leave default behavior
---   end,
--- })

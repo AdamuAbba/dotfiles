@@ -25,6 +25,8 @@ return {
         { "<leader>sB", false },
         { "<leader>su", false },
         { "<leader>sM", false },
+        { "<leader>fe", false },
+        { "<leader>fE", false },
 
         {
           "<leader>n",
@@ -168,25 +170,25 @@ return {
           desc = "Quickfix List",
         },
         --============================================= Explorer =============================================
-        {
-          "<leader>fE",
-          function()
-            Snacks.explorer({
-              cwd = LazyVim.root(),
-              layout = "horizontal_side_bar",
-            })
-          end,
-          desc = "Explorer Snacks (root dir)",
-        },
-        {
-          "<leader>fe",
-          function()
-            Snacks.explorer({
-              layout = "horizontal_side_bar",
-            })
-          end,
-          desc = "Explorer Snacks (cwd)",
-        },
+        -- {
+        --   "<leader>fE",
+        --   function()
+        --     Snacks.explorer({
+        --       cwd = LazyVim.root(),
+        --       layout = "horizontal_side_bar",
+        --     })
+        --   end,
+        --   desc = "Explorer Snacks (root dir)",
+        -- },
+        -- {
+        --   "<leader>fe",
+        --   function()
+        --     Snacks.explorer({
+        --       layout = "horizontal_side_bar",
+        --     })
+        --   end,
+        --   desc = "Explorer Snacks (cwd)",
+        -- },
 
         --============================================= find =============================================
         { "<leader>fF", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
@@ -230,26 +232,6 @@ return {
           desc = "Visual selection or word (cwd)",
           mode = { "n", "x" },
         },
-        --============================================= terminal =============================================
-        {
-          "<leader>ft",
-          function()
-            local current_dir = vim.fn.getcwd()
-            vim.fn.jobstart({
-              "zellij",
-              "action",
-              "new-pane",
-              "--cwd",
-              current_dir,
-              "--floating",
-              "--width=83%",
-              "--height=86%",
-              "--x=9%",
-              "--y=10%",
-            }, { detach = true })
-          end,
-          desc = "Terminal (Zellij Pane)",
-        },
       })
     end,
     ---@param opts snacks.Config
@@ -287,6 +269,80 @@ return {
         return vim.fn.getenv("SHELL")
       end
 
+      --============================================= indent =============================================
+      opts.indent = {
+        enabled = true,
+        priority = 1,
+        char = "╎",
+        only_scope = false, -- only show indent guides of the scope
+        only_current = false, -- only show indent guides in the current window
+        hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+        -- can be a list of hl groups to cycle through
+        -- hl = {
+        --     "SnacksIndent1",
+        --     "SnacksIndent2",
+        --     "SnacksIndent3",
+        --     "SnacksIndent4",
+        --     "SnacksIndent5",
+        --     "SnacksIndent6",
+        --     "SnacksIndent7",
+        --     "SnacksIndent8",
+        -- },
+        -- animate scopes. Enabled by default for Neovim >= 0.10
+        -- Works on older versions but has to trigger redraws during animation.
+        ---@class snacks.indent.animate: snacks.animate.Config
+        ---@diagnostic disable-next-line: duplicate-doc-field
+        ---@field enabled? boolean
+        --- * out: animate outwards from the cursor
+        --- * up: animate upwards from the cursor
+        --- * down: animate downwards from the cursor
+        --- * up_down: animate up or down based on the cursor position
+        ---@diagnostic disable-next-line: duplicate-doc-field
+        ---@field style? "out"|"up_down"|"down"|"up"
+        animate = {
+          enabled = true,
+          style = "up_down",
+          easing = "linear",
+          duration = {
+            step = 40, -- ms per step
+            total = 1000, -- maximum duration
+          },
+        },
+        ---@class snacks.indent.Scope.Config: snacks.scope.Config
+        scope = {
+          enabled = true, -- enable highlighting the current scope
+          priority = 200,
+          char = "╎",
+          underline = false, -- underline the start of the scope
+          only_current = false, -- only show scope in the current window
+          hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+        },
+        chunk = {
+          -- when enabled, scopes will be rendered as chunks, except for the
+          -- top-level scope which will be rendered as a scope.
+          enabled = false,
+          -- only show chunk scopes in the current window
+          only_current = false,
+          priority = 200,
+          hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
+          char = {
+            corner_top = "┌",
+            corner_bottom = "└",
+            -- corner_top = "╭",
+            -- corner_bottom = "╰",
+            horizontal = "─",
+            vertical = "╎",
+            arrow = ">",
+          },
+        },
+        -- filter for buffers to enable indent guides
+        ---@param buf number
+        ---@param win number
+        filter = function(buf, win)
+          return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+        end,
+      }
+
       --============================================= lazygit =============================================
       opts.lazygit = {
         enabled = true,
@@ -313,6 +369,11 @@ return {
           title = "Lazygit",
           title_pos = "center",
         },
+      }
+
+      --============================================= explorer =============================================
+      opts.explorer = {
+        enabled = false,
       }
       --============================================= picker =============================================
       opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
@@ -485,7 +546,7 @@ return {
         },
       })
       --============================================= image =============================================
-      opts.image = {
+      opts.image = vim.tbl_deep_extend("force", opts.image or {}, {
         enabled = true,
         doc = {
           max_height = 20,
@@ -493,12 +554,12 @@ return {
           float = false,
           inline = true,
         },
-      }
+      })
       --============================================= statuscolumn =============================================
       opts.statuscolumn = { enabled = true }
+
       --============================================= terminal =============================================
       opts.terminal = {
-        -- for now zellij floating panes get the job done 🤔
         enabled = false,
         win = {
           style = "float",
@@ -551,10 +612,10 @@ return {
               desc = "Edit Nvim Config",
               action = function()
                 local nvim_config = vim.fn.expand("~/.config/nvim")
-                vim.cmd("edit " .. nvim_config .. "/README.md")
                 vim.cmd("cd " .. nvim_config)
-                require("snacks.explorer").open({
-                  cwd = nvim_config,
+                Snacks.picker.files({
+                  root = false,
+                  layout = "select_with_preview",
                 })
               end,
             },
@@ -564,10 +625,10 @@ return {
               desc = "Edit Wezterm Config",
               action = function()
                 local wezterm_config = vim.fn.expand("~/.config/wezterm")
-                vim.cmd("edit " .. wezterm_config .. "/wezterm.lua")
                 vim.cmd("cd " .. wezterm_config)
-                require("snacks.explorer").open({
-                  cwd = wezterm_config,
+                Snacks.picker.files({
+                  root = false,
+                  layout = "select_with_preview",
                 })
               end,
             },
@@ -577,10 +638,10 @@ return {
               desc = "Edit diary",
               action = function()
                 local obs_config = vim.fn.expand("~/Documents/shytypes-obs-vault/")
-                vim.cmd("edit " .. obs_config .. "/Todo.md")
                 vim.cmd("cd " .. obs_config)
-                require("snacks.explorer").open({
-                  cwd = obs_config,
+                Snacks.picker.files({
+                  root = false,
+                  layout = "select_with_preview",
                 })
               end,
             },
@@ -590,10 +651,10 @@ return {
               desc = "Edit Starship config",
               action = function()
                 local starship_config = vim.fn.expand("~/.config")
-                vim.cmd("edit " .. starship_config .. "/starship.toml")
                 vim.cmd("cd " .. starship_config)
-                require("snacks.explorer").open({
-                  cwd = starship_config,
+                Snacks.picker.files({
+                  root = false,
+                  layout = "select_with_preview",
                 })
               end,
             },
@@ -635,6 +696,7 @@ return {
           },
         },
       }
+      return opts
     end,
   },
 }

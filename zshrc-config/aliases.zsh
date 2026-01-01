@@ -42,7 +42,7 @@ alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
 alias gbd='tmux display-popup -E -w 50% -h 50% -T "Delete branch  " -d "#{pane_current_path}" $HOME/.config/scripts/git/delete-branch.sh'
 
 #============================================= bat =============================================
-alias -g -- cat="bat"
+alias -g -- cat="$HOME/.config/scripts/mac-os/view.sh"
 
 #============================================= tools =============================================
 alias kpp="gruyere --details"

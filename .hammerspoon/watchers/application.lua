@@ -17,7 +17,6 @@ obj.appsToCenter = {
 	"Finder",
 	"Karabiner-Elements",
 	"Hammerspoon",
-	"System Settings",
 	"Free Download Manager",
 	"Activity Monitor",
 	"The Unarchiver",
@@ -27,6 +26,7 @@ obj.appsToCenter = {
 	"Stremio",
 	"Figma",
 	"Xcode",
+	"Bitwarden",
 }
 
 --- ApplicationWatcher:start()

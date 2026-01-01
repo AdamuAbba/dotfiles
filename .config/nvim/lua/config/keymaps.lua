@@ -15,31 +15,6 @@ map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
 
-map("n", "<C-j>", function()
-  local cur_win = vim.api.nvim_get_current_win()
-  local cur_ft = vim.bo[vim.api.nvim_win_get_buf(cur_win)].filetype
-
-  local priorities = { "snacks_picker_list" }
-
-  for _, ft in ipairs(priorities) do
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-      local buf = vim.api.nvim_win_get_buf(win)
-      local wft = vim.bo[buf].filetype
-      local cfg = vim.api.nvim_win_get_config(win)
-
-      -- skip current window's filetype so you can "advance"
-      if cfg.relative ~= "" and wft == ft and wft ~= cur_ft then
-        vim.api.nvim_set_current_win(win)
-        return
-      end
-    end
-  end
-
-  -- fallback: try normal right split
-  pcall(function()
-    vim.cmd("wincmd l")
-  end)
-end, { desc = "Go to right float or window", silent = true, noremap = true })
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
 if vim.fn.has("mac") == 1 then
