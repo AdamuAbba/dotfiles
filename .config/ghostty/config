@@ -1,5 +1,7 @@
+# vim: ft=ghostty
+
+# ============================================= General config =============================================
 theme = Dracula
-background = 000000
 font-family = Iosevka NF
 font-size = 18
 macos-titlebar-style = hidden
@@ -10,3 +12,15 @@ window-padding-x = 5
 window-padding-balance = true
 window-inherit-working-directory = true
 maximize = true
+cursor-style-blink = true
+shell-integration-features = no-cursor
+quit-after-last-window-closed = true
+
+# ============================================= colors =============================================
+background = #000000
+cursor-color = #85F789
+cursor-text = #000000
+selection-background = #bd93f9
+selection-foreground = #000000
+shell-integration = zsh
+

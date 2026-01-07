@@ -169,43 +169,23 @@ return {
           end,
           desc = "Quickfix List",
         },
-        --============================================= Explorer =============================================
-        -- {
-        --   "<leader>fE",
-        --   function()
-        --     Snacks.explorer({
-        --       cwd = LazyVim.root(),
-        --       layout = "horizontal_side_bar",
-        --     })
-        --   end,
-        --   desc = "Explorer Snacks (root dir)",
-        -- },
-        -- {
-        --   "<leader>fe",
-        --   function()
-        --     Snacks.explorer({
-        --       layout = "horizontal_side_bar",
-        --     })
-        --   end,
-        --   desc = "Explorer Snacks (cwd)",
-        -- },
 
         --============================================= find =============================================
-        { "<leader>fF", LazyVim.pick("files", { layout = "select_with_preview" }), desc = "Find Files (Root Dir)" },
+        { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
         {
           "<leader>ff",
-          LazyVim.pick("files", { root = false, layout = "select_with_preview" }),
+          LazyVim.pick("files", { root = false }),
           desc = "Find Files (cwd)",
         },
         {
           "<leader>fb",
           function()
-            Snacks.picker.buffers({ layout = "select_with_preview" })
+            Snacks.picker.buffers()
           end,
           desc = "Buffers",
         },
         { "<leader>fc", LazyVim.pick.config_files(), desc = "Find Config File" },
-        { "<leader>fr", LazyVim.pick("oldfiles", { layout = "select_with_preview" }), desc = "Recent" },
+        { "<leader>fr", LazyVim.pick("oldfiles"), desc = "Recent" },
         {
           "<leader>fp",
           function()
@@ -213,22 +193,23 @@ return {
           end,
           desc = "Projects",
         },
+
         --============================================= Grep =============================================
-        { "<leader>fG", LazyVim.pick("grep", { layout = "select_with_preview" }), desc = "Grep (Root Dir)" },
+        { "<leader>fG", LazyVim.pick("grep"), desc = "Grep (Root Dir)" },
         {
           "<leader>fg",
-          LazyVim.pick("live_grep", { root = false, layout = "select_with_preview" }),
+          LazyVim.pick("live_grep"),
           desc = "Grep (cwd)",
         },
         {
           "<leader>sw",
-          LazyVim.pick("grep_word", { layout = "select_with_preview" }),
+          LazyVim.pick("grep_word"),
           desc = "Visual selection or word (Root Dir)",
           mode = { "n", "x" },
         },
         {
           "<leader>sW",
-          LazyVim.pick("grep_word", { root = false, layout = "select_with_preview" }),
+          LazyVim.pick("grep_word", { root = false }),
           desc = "Visual selection or word (cwd)",
           mode = { "n", "x" },
         },
@@ -270,14 +251,13 @@ return {
       end
 
       --============================================= indent =============================================
-      opts.indent = {
+      opts.indent = vim.tbl_deep_extend("force", opts.indent or {}, {
         enabled = true,
         priority = 1,
         char = "╎",
-        only_scope = false, -- only show indent guides of the scope
-        only_current = false, -- only show indent guides in the current window
+        only_scope = false,
+        only_current = false,
         hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
-        -- can be a list of hl groups to cycle through
         -- hl = {
         --     "SnacksIndent1",
         --     "SnacksIndent2",
@@ -310,7 +290,7 @@ return {
         },
         ---@class snacks.indent.Scope.Config: snacks.scope.Config
         scope = {
-          enabled = true, -- enable highlighting the current scope
+          enabled = true,
           priority = 200,
           char = "╎",
           underline = false, -- underline the start of the scope
@@ -320,16 +300,16 @@ return {
         chunk = {
           -- when enabled, scopes will be rendered as chunks, except for the
           -- top-level scope which will be rendered as a scope.
-          enabled = false,
+          enabled = true,
           -- only show chunk scopes in the current window
           only_current = false,
           priority = 200,
           hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
           char = {
-            corner_top = "┌",
-            corner_bottom = "└",
-            -- corner_top = "╭",
-            -- corner_bottom = "╰",
+            -- corner_top = "┌",
+            -- corner_bottom = "└",
+            corner_top = "╭",
+            corner_bottom = "╰",
             horizontal = "─",
             vertical = "╎",
             arrow = ">",
@@ -337,14 +317,13 @@ return {
         },
         -- filter for buffers to enable indent guides
         ---@param buf number
-        ---@param win number
-        filter = function(buf, win)
+        filter = function(buf, _)
           return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
         end,
-      }
+      })
 
       --============================================= lazygit =============================================
-      opts.lazygit = {
+      opts.lazygit = vim.tbl_deep_extend("force", opts.lazygit or {}, {
         enabled = true,
         theme = {
           [241] = { fg = "Special" },
@@ -369,12 +348,12 @@ return {
           title = "Lazygit",
           title_pos = "center",
         },
-      }
+      })
 
       --============================================= explorer =============================================
-      opts.explorer = {
+      opts.explorer = vim.tbl_deep_extend("force", opts.explorer or {}, {
         enabled = false,
-      }
+      })
       --============================================= picker =============================================
       opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
         layout = {
@@ -408,35 +387,6 @@ return {
                 border = "left",
               },
             },
-            -- layout = {
-            --   width = math.floor(vim.o.columns * 0.60),
-            --   -- row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.92)) / 2),
-            --   -- col = vim.o.columns - math.floor(vim.o.columns),
-            --   position = "right",
-            --   backdrop = false,
-            --   border = "none",
-            --   box = "horizontal",
-            --   {
-            --     border = "rounded",
-            --     win = "preview",
-            --     title = "{preview}",
-            --     title_pos = "center",
-            --     height = 0.6,
-            --   },
-            --   {
-            --     box = "vertical",
-            --     border = "rounded",
-            --     width = 0.4,
-            --     {
-            --       win = "input",
-            --       height = 1,
-            --       border = true,
-            --       title = "{title} {live} {flags}",
-            --       title_pos = "center",
-            --     },
-            --     { win = "list", border = "none" },
-            --   },
-            -- },
           },
           select_no_preview = {
             preview = false,
@@ -512,35 +462,6 @@ return {
                   border = "left",
                 },
               },
-              -- layout = {
-              --   width = math.floor(vim.o.columns * 0.60),
-              --   -- row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.92)) / 2),
-              --   -- col = vim.o.columns - math.floor(vim.o.columns),
-              --   position = "right",
-              --   backdrop = false,
-              --   border = "none",
-              --   box = "horizontal",
-              --   {
-              --     border = "rounded",
-              --     win = "preview",
-              --     title = "{preview}",
-              --     title_pos = "center",
-              --     height = 0.6,
-              --   },
-              --   {
-              --     box = "vertical",
-              --     border = "rounded",
-              --     width = 0.4,
-              --     {
-              --       win = "input",
-              --       height = 1,
-              --       border = true,
-              --       title = "{title} {live} {flags}",
-              --       title_pos = "center",
-              --     },
-              --     { win = "list", border = "none" },
-              --   },
-              -- },
             },
           },
         },
@@ -555,11 +476,14 @@ return {
           inline = true,
         },
       })
+
       --============================================= statuscolumn =============================================
-      opts.statuscolumn = { enabled = true }
+      opts.statuscolumn = vim.tbl_deep_extend("force", opts.statuscolumn or {}, {
+        enabled = true,
+      })
 
       --============================================= terminal =============================================
-      opts.terminal = {
+      opts.terminal = vim.tbl_deep_extend("force", opts.terminal or {}, {
         enabled = false,
         win = {
           style = "float",
@@ -569,7 +493,13 @@ return {
           title = get_shell(),
           title_pos = "center",
         },
-      }
+      })
+
+      --============================================= gh =============================================
+      opts.gh = vim.tbl_deep_extend("force", opts.gh or {}, {
+        enabled = true,
+      })
+
       --============================================= dashboard =============================================
       opts.dashboard = {
         enabled = true,
@@ -615,7 +545,6 @@ return {
                 vim.cmd("cd " .. nvim_config)
                 Snacks.picker.files({
                   root = false,
-                  layout = "select_with_preview",
                 })
               end,
             },
@@ -628,20 +557,6 @@ return {
                 vim.cmd("cd " .. wezterm_config)
                 Snacks.picker.files({
                   root = false,
-                  layout = "select_with_preview",
-                })
-              end,
-            },
-            {
-              icon = "󰙏 ",
-              key = "d",
-              desc = "Edit diary",
-              action = function()
-                local obs_config = vim.fn.expand("~/Documents/shytypes-obs-vault/")
-                vim.cmd("cd " .. obs_config)
-                Snacks.picker.files({
-                  root = false,
-                  layout = "select_with_preview",
                 })
               end,
             },
@@ -654,7 +569,6 @@ return {
                 vim.cmd("cd " .. starship_config)
                 Snacks.picker.files({
                   root = false,
-                  layout = "select_with_preview",
                 })
               end,
             },

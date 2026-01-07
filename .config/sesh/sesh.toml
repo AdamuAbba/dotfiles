@@ -1,29 +1,34 @@
 #============================================= Configs =============================================
 [[session]]
-name = "tmux config"
-path = "~/Documents/dotfiles/.config/tmux"
-startup_command = "nvim tmux.conf"
-preview_command = "bat --color=always ~/Documents/dotfiles/.config/tmux/tmux.conf"
-
-[[session]]
-name = "sesh config"
+name = "sesh-config"
 path = "~/Documents/dotfiles/.config/sesh/"
 startup_command = "nvim sesh.toml"
-preview_command = "bat --color=always ~/Documents/dotfiles/.config/tmux/tmux.conf"
 
-#============================================= React Native =============================================
+#============================================= Projects =============================================
+#---- React Native ----
 [[session]]
-name = "JoinQ Business"
+name = "join-queue-business"
 path = "~/Documents/join-queue-business/"
-startup_command = "~/.config/sesh/scripts/react-native-dev.sh"
+startup_command = "~/.config/sesh/scripts/three-splits.sh"
 
 [[session]]
-name = "JoinQ Customer"
+name = "join-queue-customer"
 path = "~/Documents/join-queue-customer/"
-startup_command = "~/.config/sesh/scripts/react-native-dev.sh"
+startup_command = "~/.config/sesh/scripts/three-splits.sh"
+
+#---- rust ----
+[[session]]
+name = "bdk_wallet"
+path = "~/Documents/bdk_wallet/"
+startup_command = "~/.config/sesh/scripts/two-splits.sh"
 
 #============================================= tools =============================================
 [[session]]
-name = "HTTP Client"
+name = "http-client"
 path = "~/Documents/api-collections/"
 startup_command = "~/.config/sesh/scripts/open-in-nvim.sh"
+
+[[session]]
+name = "notes"
+path = "~/Documents/shytypes-obs-vault/"
+startup_command = "kvim -c 'lua require(\"persistence\").load()'"

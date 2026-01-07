@@ -83,6 +83,12 @@
           "conf"
         ],
         "path": "./conf.json"
+      },
+      {
+        "language": [
+          "ghostty"
+        ],
+        "path": "./ghostty.json"
       }
     ]
   },

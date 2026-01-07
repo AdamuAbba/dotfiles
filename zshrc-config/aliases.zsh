@@ -1,3 +1,7 @@
+CONFIG_DIR="$HOME/.config"
+SCRIPT_DIR="$CONFIG_DIR/scripts"
+BITCOIN_DIR="$HOME/Library/Application\ Support/Bitcoin/"
+
 #============================================= ios =============================================
 alias sim-clean="rm -r $HOME/Library/Developer/CoreSimulator/Caches"
 alias xcode-clean="rm -r $HOME/Library/Developer/Xcode/DerivedData"
@@ -62,9 +66,8 @@ alias speedtest="speedtest -u decimal-bytes"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
 alias edit-scripts="nvim $HOME/.config/scripts/"
-alias edit-hsp="nvim $HOME/.hammerspoon"
+alias edit-hsp="cd $HOME/.hammerspoon && nvim -c 'lua require(\"snacks\").picker(\"files\", { root = false })'"
 alias edit-sketchybar="nvim $HOME/.config/sketchybar/"
-alias edit-ncspot="nvim $HOME/.config/ncspot/config.toml"
 alias edit-nvim="nvim $HOME/.config/nvim/"
 alias edit-kbe="nvim $HOME/.config/karabiner/assets/complex_modifications/"
 alias edit-yz="nvim $HOME/.config/yazi/yazi.toml"
@@ -85,6 +88,7 @@ alias edit-aero="nvim $HOME/.config/aerospace/aerospace.toml"
 alias edit-kitty="nvim $HOME/.config/kitty/kitty.conf"
 alias edit-vault="nvim $HOME/Documents/shytypes-obs-vault/"
 alias edit-ghostty="nvim $HOME/.config/ghostty/config"
+alias mini-trash="cd ~/.local/share/nvim/mini.files/trash/ && ls"
 
 #============================================= zsh =============================================
 alias edit-zsh="nvim $HOME/.zshrc"

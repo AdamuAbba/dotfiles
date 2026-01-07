@@ -14,7 +14,6 @@ return {
     },
     opts = {
       provider_patterns = true,
-      -- monorepo = true,
       load_shell = {
         enabled = true,
         override = false,

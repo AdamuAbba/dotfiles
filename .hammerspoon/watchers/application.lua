@@ -27,6 +27,7 @@ obj.appsToCenter = {
 	"Figma",
 	"Xcode",
 	"Bitwarden",
+	"Apple Music",
 }
 
 --- ApplicationWatcher:start()

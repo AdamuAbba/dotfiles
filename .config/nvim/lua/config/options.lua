@@ -16,12 +16,27 @@ g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
--- g.python3_host_prog = "/Users/abba/.pyenv/versions/neovim/bin/python"
 g.lazyvim_prettier_needs_config = true
 g.lazyvim_blink_main = true
 g.ai_cmp = false
 g.trouble_lualine = false
 --=============================================  Options ==============================================
+opt.guicursor = "n:block-blinkon500-blinkoff500,"
+  -- visual mode
+  .. "v:block-blinkon500-blinkoff500,"
+  -- insert mode
+  .. "i-ci-ve:ver75-blinkon500-blinkoff500,"
+  -- command mode
+  .. "c:block-blinkon500-blinkoff500,"
+  .. "c-ci-ve:ver25-blinkon500-blinkoff500,"
+  -- replace mode
+  .. "r-cr-o:hor20-blinkon500-blinkoff500,"
+  -- showmatch mode
+  .. "sm:block-blinkon500-blinkoff500,"
+  -- terminal mode
+  .. "t:block-blinkon500-blinkoff500-TermCursor,"
+  .. "a:SmearCursorHideable"
+
 opt.termguicolors = true
 opt.cursorline = true
 opt.cursorcolumn = true

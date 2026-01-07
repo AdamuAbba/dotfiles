@@ -8,6 +8,7 @@ echo "[*] Focus simulator"
 open -a Simulator
 
 echo "[*] Fetching frontmost app bundle ID..."
+
 KNOWN_FRONT_APP_BUNDLE_ID=(
   com.mindful.insights
   com.joinq.business
@@ -34,7 +35,7 @@ fi
 echo "[*] Terminating app: $FRONT_APP_BUNDLE_ID"
 xcrun simctl terminate "$BOOTED_UDID" "$FRONT_APP_BUNDLE_ID"
 
-echo "[*] Relaunching app: $FRONT_APP_BUNDLE_ID"
-xcrun simctl launch "$BOOTED_UDID" "$FRONT_APP_BUNDLE_ID"
+echo "[*] uninstalling app: $FRONT_APP_BUNDLE_ID"
+xcrun simctl uninstall "$BOOTED_UDID" "$FRONT_APP_BUNDLE_ID"
 
 echo "[✓] Done."

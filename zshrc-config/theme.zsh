@@ -17,3 +17,17 @@ export DRACULA_YELLOW=#f1fa8c
 export DRACULA_WHITE=#ffffff
 export DRACULA_BLACK=#000000
 
+#============================================= 256-color numbers =============================================
+# - zle_highlight only supports:
+#   - 256-color numbers (0–255)
+#   - Named colors (red, blue, etc.)
+
+# Convert hex →  nearest 256-color value
+hex_to_256() {
+  local hex=${1#\#}
+  local r=$((16#${hex:0:2}))
+  local g=$((16#${hex:2:2}))
+  local b=$((16#${hex:4:2}))
+
+  printf '%d\n' $((16 + 36 * (r / 51) + 6 * (g / 51) + (b / 51)))
+}

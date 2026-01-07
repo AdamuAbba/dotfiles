@@ -68,7 +68,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.dot" },
-    { import = "lazyvim.plugins.extras.util.octo" },
+    -- { import = "lazyvim.plugins.extras.util.octo" },
     { import = "lazyvim.plugins.extras.util.rest" },
 
     --============================================= coding extras =============================================
@@ -76,6 +76,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.blink" },
     { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    { import = "lazyvim.plugins.extras.coding.mini-comment" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
 
     --============================================= test extras ===============================================

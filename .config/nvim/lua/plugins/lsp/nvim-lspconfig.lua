@@ -14,6 +14,9 @@ return {
           ---@diagnostic disable-next-line: undefined-global
           enabled = diagnostics == "bacon-ls",
         },
+        bashls = {
+          filetypes = { "zsh" },
+        },
         rust_analyzer = { enabled = false },
         vectorcode_server = {},
         lua_ls = {

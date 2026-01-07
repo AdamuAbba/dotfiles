@@ -3,6 +3,16 @@
 command_timeout = 1000
 add_newline = true
 
+format = """
+$directory\
+$git_branch\
+$git_status\
+$git_state\
+$all\
+$line_break\
+$character
+"""
+
 # Use the color palette
 palette = "dracula"
 
@@ -13,18 +23,27 @@ current_line = "#44475a"
 foreground = "#f8f8f2"
 comment = "#6272a4"
 cyan = "#8be9fd"
+cyan_dark = "#1f3a44"
 green = "#50fa7b"
-orange = "#ffb86c"
+green_dark = "#0f2a18"
+orange = "#EC834A"
+orange_dark = "#3a2608"
 pink = "#ff79c6"
 purple = "#bd93f9"
+purple_dark = "#1e1636"
 red = "#ff5555"
+red_dark = "#3a0b0b"
 yellow = "#f1fa8c"
+black = "#000000"
 
 
 [character]
-error_symbol = "[✖  ](bold red)"
-success_symbol = "[I  ](bold green)"
-vimcmd_symbol = "[N  ](bold purple)"
+success_symbol = "[I  ](bold fg:green)"
+error_symbol = '[✘   ](bold fg:red)'
+vimcmd_symbol = "[N  ](bold fg:purple)"
+vimcmd_replace_one_symbol = "[󰝿   ](bold fg:purple)"
+vimcmd_replace_symbol = "[   ](bold fg:purple)"
+vimcmd_visual_symbol = "[   ](bold fg:cyan)"
 
 [username]
 format = "[$user]($style) on "
@@ -53,14 +72,27 @@ symbol = " "
 [crystal]
 symbol = " "
 
+#============================================= dart =============================================
 [dart]
-symbol = " "
-style = "bold fg:#5CB4F0"
-format = '\[[${symbol}dart:$version]($style)\] '
+symbol = "[](cyan_dark) "
+style = "fg:cyan bold bg:cyan_dark"
+format = ' [$symbol$version]($style)[](cyan_dark)'
 
+#============================================= Directory =============================================
 [directory]
 read_only = " 󰌾"
 style = "bold green"
+read_only_style = "bold red"
+format = '[$path]($style)[$read_only]($read_only_style) '
+home_symbol = "/Users/abba"
+truncation_length = 0
+
+[directory.substitutions]
+"documents" = "Documents 󰈙 "
+"Downloads" = "Downloads  "
+"Music" = "Music  "
+"Pictures" = "Pictures  "
+"others" = " "
 
 [docker_context]
 symbol = " "
@@ -77,25 +109,34 @@ symbol = " "
 [fossil_branch]
 symbol = " "
 
-# [git_branch]
-# symbol = " "
-# style = "bold pink"
-#
+#============================================= Git =============================================
 [git_commit]
 tag_symbol = '  '
 
-# [git_status]
-# style = "bold red"
-
 [git_branch]
-symbol = ""
-format = '[\[](white)[$symbol git:$branch]($style) '
+symbol = "   "
+style = "fg:purple bold bg:purple_dark"
+format = "[](purple_dark)[$symbol$branch]($style)"
 
 [git_status]
-format = '[$all_status$ahead_behind](red)[\]](white) '
+format = '[ ](bg:purple_dark)[(fg:white bg:purple_dark)[$all_status]($style)](fg:white bg:purple_dark)[](purple_dark)'
+style = "bg:purple_dark"
+conflicted = "[= ](fg:red bold bg:purple_dark)"
+stashed = '[\$$count ](fg:orange bg:purple_dark)'
+deleted = '[-$count ](fg:red bold bg:purple_dark)'
+renamed = '[»$count ](fg:purple bold bg:purple_dark)'
+modified = '[!$count ](fg:cyan bold bg:purple_dark)'
+staged = '[+$count ](fg:green bold bg:purple_dark)'
+untracked = '[?$count ](fg:yellow bold bg:purple_dark)'
+ahead = '[⇡ $count ](fg:green bold bg:purple_dark)'
+behind = '[⇣ $count ](fg:red bold bg:purple_dark)'
+diverged = '[⇕ \(⇡ $ahead_count⇣ $behind_count\) ](fg:orange bold bg:purple_dark)'
 
+#============================================= Golang =============================================
 [golang]
-symbol = " "
+symbol = "[](cyan_dark) "
+style = "fg:cyan bold bg:cyan_dark"
+format = ' [$symbol$version]($style)[](cyan_dark)'
 
 [guix_shell]
 symbol = " "
@@ -137,10 +178,11 @@ symbol = "󰆥 "
 [nix_shell]
 symbol = " "
 
+#============================================= node =============================================
 [nodejs]
-symbol = " "
-style = "bold green"
-format = '\[[${symbol}node:$version]($style)\] '
+symbol = "[](green_dark) "
+style = "fg:green bold bg:green_dark"
+format = ' [$symbol$version]($style)[](green_dark)'
 
 [ocaml]
 symbol = " "
@@ -192,9 +234,11 @@ Unknown = " "
 Void = " "
 Windows = "󰍲 "
 
+#============================================= package =============================================
 [package]
-symbol = "󰏗 "
-format = '\[[${symbol}pkg:$version]($style)\] '
+symbol = "[](orange_dark)󰏗 "
+style = "fg:orange bold bg:orange_dark"
+format = ' [$symbol$version]($style)[](orange_dark)'
 
 [perl]
 symbol = " "
@@ -211,16 +255,17 @@ symbol = " "
 [rlang]
 symbol = "󰟔 "
 
+#============================================= ruby =============================================
 [ruby]
-symbol = " "
-style = "bold red"
-format = '\[[${symbol}ruby:$version]($style)\] '
+symbol = "[](red_dark) "
+style = "fg:red bold bg:red_dark"
+format = ' [$symbol$version]($style)[](red_dark)'
 
+#============================================= rust =============================================
 [rust]
-# symbol = "󱘗 "
-symbol = "🦀 "
-style = "bold fg:208"
-format = "via [$symbol($version )]($style)"
+symbol = "[](orange_dark)🦀 "
+style = "fg:orange bold bg:orange_dark"
+format = ' [$symbol$version]($style)[](orange_dark)'
 
 [scala]
 symbol = " "

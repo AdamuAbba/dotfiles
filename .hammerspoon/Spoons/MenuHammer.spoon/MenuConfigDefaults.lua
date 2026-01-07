@@ -170,6 +170,7 @@ local utilitiesMenu = "utilitiesMenu"
 local aerospaceMenu = "aerospaceMenu"
 local clipboardMenu = "clipboardMenu"
 local frontmostAppMenu = "frontmostAppMenu"
+local simulatorMenu = "simulatorMenu"
 
 -- Browser menus
 local browserMenu = "browserMenu"
@@ -508,15 +509,15 @@ menuHammerMenuList = {
 					{ cons.act.launcher, "Karabiner-Elements" },
 				},
 			},
-			{
-				cons.cat.action,
-				"",
-				"s",
-				"󰓇 Spotify",
-				{
-					{ cons.act.launcher, "Spotify" },
-				},
-			},
+			-- {
+			-- 	cons.cat.action,
+			-- 	"",
+			-- 	"s",
+			-- 	"󰓇 Spotify",
+			-- 	{
+			-- 		{ cons.act.launcher, "Spotify" },
+			-- 	},
+			-- },
 			{
 				cons.cat.action,
 				"",
@@ -542,6 +543,15 @@ menuHammerMenuList = {
 				" Mail",
 				{
 					{ cons.act.launcher, "Mail" },
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
+				"m",
+				"  Apple Music",
+				{
+					{ cons.act.launcher, "Apple Music" },
 				},
 			},
 			{
@@ -638,6 +648,15 @@ menuHammerMenuList = {
 					{ cons.act.menu, frontmostAppMenu },
 				},
 			},
+			{
+				cons.cat.submenu,
+				"",
+				"s",
+				" Simulator",
+				{
+					{ cons.act.menu, simulatorMenu },
+				},
+			},
 		},
 	},
 
@@ -711,6 +730,68 @@ menuHammerMenuList = {
 			},
 		},
 	},
+
+	------------------------------------------------------------------------------------------------
+	-- simulator Menu
+	------------------------------------------------------------------------------------------------
+	simulatorMenu = {
+		parentMenu = utilitiesMenu,
+		menuHotkey = nil,
+		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"r",
+				"󰜉 Restart app",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/mac-os/restart_sim_app.sh",
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"",
+				"u",
+				"󰆴 uninstall app",
+				{
+					{
+						cons.act.script,
+						utils.SCRIPTS .. "/mac-os/uninstall-sim-app.sh",
+					},
+				},
+			},
+		},
+	},
+	------------------------------------------------------------------------------------------------
+	-- Browser Menu
+	------------------------------------------------------------------------------------------------
+	browserMenu = {
+		parentMenu = mainMenu,
+		menuHotkey = { key_helper.hyper, "f" },
+		menuItems = {
+			{
+				cons.cat.action,
+				"",
+				"f",
+				"󰜏 Web Search",
+				{
+					{
+						cons.act.userinput,
+						"searchQuery",
+						"Web Search",
+						"Enter search criteria",
+					},
+					{
+						cons.act.openurl,
+						"https://duckduckgo.com/?q=@@searchQuery@@",
+					},
+				},
+			},
+		},
+	},
+
 	------------------------------------------------------------------------------------------------
 	-- Browser Menu
 	------------------------------------------------------------------------------------------------
