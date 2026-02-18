@@ -11,12 +11,8 @@
 
 # All possible modifiers: cmd, alt, ctrl, shift
 
-# deprecated
-# after-login-command = []
-# blacklist=\"Simulator\" 
-
 after-startup-command = [
-  # "exec-and-forget borders style=uniform width=6.0 hidpi=on active_color=0xffbd93f9 inactive_color=0xff000000",
+  "exec-and-forget borders style=round background_color=0xff000000 width=7 hidpi=on active_color=0xff50fa7b inactive_color=0x00000000 blacklist=\"ghostty,JetBrains Toolbox\"",
 ]
 
 exec-on-workspace-change = [
@@ -27,11 +23,11 @@ exec-on-workspace-change = [
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-default-root-container-layout = 'accordion'
-default-root-container-orientation = 'vertical'
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ["move-mouse window-lazy-center"]
-automatically-unhide-macos-hidden-apps = true
+automatically-unhide-macos-hidden-apps = false
 
 #####################################################################################################
 #                                            Window Stuff                                           #
@@ -41,10 +37,10 @@ accordion-padding = 20
 [gaps]
 inner.horizontal = 14
 inner.vertical = 14
-outer.left = 17
-outer.bottom = 17
-outer.top = [{ monitor.'built-in.*' = 13 }, 40]
-outer.right = 17
+outer.left = 10
+outer.bottom = 10
+outer.top = [{ monitor.'built-in.*' = 12 }, 40]
+outer.right = 10
 
 [key-mapping]
 preset = 'qwerty'
@@ -67,15 +63,14 @@ cmd-shift-l = 'move-node-to-workspace next --focus-follows-window'
 #####################################################################################################
 #============ first monitor workspaces
 cmd-0 = 'workspace Browser'
-cmd-1 = 'workspace Editor'
-cmd-2 = 'workspace Sims/VMs'
-cmd-3 = 'workspace Tools'
-cmd-4 = 'workspace Media'
-cmd-5 = 'workspace Misc'
-cmd-6 = 'workspace Social'
+cmd-1 = 'workspace Terminal'
+cmd-2 = 'workspace Editor'
+cmd-3 = 'workspace Sims/VMs'
+cmd-4 = 'workspace Tools'
+cmd-5 = 'workspace Media'
+cmd-6 = 'workspace Misc'
+cmd-7 = 'workspace Social'
 cmd-8 = 'workspace Games'
-#============ scratch monitor workspaces
-cmd-7 = 'workspace scratch'
 
 cmd-l = 'workspace next'
 cmd-h = 'workspace prev'
@@ -85,14 +80,14 @@ alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 
 [workspace-to-monitor-force-assignment]
 "Browser" = 'main'
+"Terminal" = 'main'
 "Editor" = 'main'
-"Sims/VMs" = 'secondary'
+"Sims/VMs" = 'main'
 "Tools" = 'main'
 "Media" = 'main'
 "Misc" = 'main'
 "Social" = 'main'
 "Games" = 'main'
-"scratch" = 'secondary'
 
 #####################################################################################################
 #                                            Mode resize                                            #
@@ -112,24 +107,13 @@ alt-shift-left = 'move-workspace-to-monitor --wrap-around prev'
 #                                            Callbacks                                              #
 #####################################################################################################
 #============================================= Browsers =============================================
-#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'org.freedownloadmanager.fdm6'
 run = ["layout floating", "move-node-to-workspace Browser"]
 
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ["move-node-to-workspace Browser"]
-#===========floating zen windows
-# Not working for some reason....
-# [[on-window-detected]]
-# if.app-id = "app.zen-browser.zen"
-# if.app-name-regex-substring = "Zen"
-# if.window-title-regex-substring = "Library"
-# run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-name-regex-substring = "Zen"
 run = ["move-node-to-workspace Browser"]
 
 [[on-window-detected]]
@@ -147,6 +131,11 @@ run = ["layout floating", "move-node-to-workspace Browser"]
 [[on-window-detected]]
 if.app-id = "com.apple.Safari"
 run = ["layout floating", "move-node-to-workspace Browser"]
+
+#============================================= Terminal =============================================
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["move-node-to-workspace Terminal", "macos-native-fullscreen on"]
 
 #============================================= Editors/IDEs =========================================
 [[on-window-detected]]
@@ -175,10 +164,9 @@ run = ["move-node-to-workspace Editor"]
 
 [[on-window-detected]]
 if.app-id = "org.hammerspoon.Hammerspoon"
-run = ["layout floating", "move-node-to-workspace Editor"]
+run = ["move-node-to-workspace Editor"]
 
 #============================================= Sims/Vms =============================================
-#============ First Monitor
 [[on-window-detected]]
 if.app-name-regex-substring = 'qemu-system-aarch64'
 run = ["layout floating", "move-node-to-workspace Sims/VMs"]
@@ -187,13 +175,15 @@ run = ["layout floating", "move-node-to-workspace Sims/VMs"]
 if.app-id = 'com.apple.iphonesimulator'
 run = ["move-node-to-workspace Sims/VMs"]
 
-#============ Second Monitor
 [[on-window-detected]]
 if.app-name-regex-substring = 'UTM'
 run = ["layout floating", "move-node-to-workspace Sims/VMs"]
 
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ["layout floating", "move-node-to-workspace Sims/VMs"]
+
 #============================================= Tools ================================================
-#============ First Monitor
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = "move-node-to-workspace Tools"
@@ -217,7 +207,6 @@ run = ["move-node-to-workspace Tools"]
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = ["layout floating", "move-node-to-workspace Tools"]
-#============ Second Monitor
 
 #============================================= Media =============================================
 [[on-window-detected]]
@@ -315,6 +304,7 @@ run = ["layout floating", "move-node-to-workspace Games"]
 [[on-window-detected]]
 if.app-id = "com.riotgames.LeagueofLegends.LeagueClientUx"
 run = "move-node-to-workspace Games"
+
 #============================================= Detached (Floating) =============================================
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
@@ -358,10 +348,6 @@ run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "com.apple.wifi.WiFiAgent"
-run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'raycast'
 run = ["layout floating"]
 
 [[on-window-detected]]

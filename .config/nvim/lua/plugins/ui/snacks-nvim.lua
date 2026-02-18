@@ -27,119 +27,71 @@ return {
         { "<leader>sM", false },
         { "<leader>fe", false },
         { "<leader>fE", false },
+        -------- search
+        { "<leader>sk", false },
+        { "<leader>sm", false },
+        { "<leader>sC", false },
+        { "<leader>sc", false },
+        { "<leader>sa", false },
+        { "<leader>s/", false },
+        { "<leader>sq", false },
+        -------- find
+        { "<leader>fb", false },
+        { "<leader>ff", false },
+        { "<leader>fF", false },
+        { "<leader>fh", false },
+        { "<leader>fr", false },
+        { "<leader>fc", false },
+        { "<leader>fp", false },
+        -------- grep
+        { "<leader>fg", false },
+        { "<leader>sw", false },
+        { "<leader>sW", false },
+        -------- terminal
+        { "<leader>ft", false },
+        { "<leader>fT", false },
+        { "<c-/>", false },
+        { "<c-_>", false },
+        -------- search
+        { "<leader>sh", false },
+        { "<leader>sH", false },
+        { "<leader>sp", false },
+        -------- git
+        { "<leader>gi", false },
+        { "<leader>gI", false },
+        { "<leader>go", false },
+        { "<leader>gd", false },
+        { "<leader>gD", false },
+        { "<leader>gs", false },
+        { "<leader>gS", false },
+        { "<leader>gb", false },
+        { "<leader>gB", false },
+        { "<leader>gf", false },
+        { "<leader>gl", false },
+        { "<leader>gL", false },
+        { "<leader>gY", false },
+        { "<leader>gy", false },
+        { "<leader>gp", false },
+        { "<leader>gP", false },
+        -------- diagnostics
+        { "<leader>sd", false },
+        { "<leader>sD", false },
+        ---------- lsp (disable Snacks lsp bindings here also just incase)
+        { "gd", false },
+        { "gD", false },
+        { "gr", false },
+        { "gI", false },
+        { "gy", false },
+        { "<leader>ss", false },
+        { "<leader>sS", false },
 
+        --============================================= Notification =============================================
         {
           "<leader>n",
           function()
-            Snacks.picker.notifications({ layout = "select_with_preview" })
+            Snacks.notifier.show_history()
           end,
           desc = "Notification History",
-        },
-        --============================================= git =============================================
-        {
-          "<leader>gl",
-          function()
-            Snacks.picker.git_log({ layout = "select_with_preview" })
-          end,
-          desc = "Lazygit Log",
-        },
-        {
-          "<leader>gd",
-          function()
-            Snacks.picker.git_diff({ layout = "select_with_preview" })
-          end,
-          desc = "Git Diff (hunks)",
-        },
-        {
-          "<leader>gD",
-          function()
-            Snacks.picker.git_diff({ base = "origin", group = true, layout = "select_with_preview" })
-          end,
-          desc = "Git Diff (origin)",
-        },
-        {
-          "<leader>gs",
-          function()
-            Snacks.picker.git_status({ layout = "select_with_preview" })
-          end,
-          desc = "Git Status",
-        },
-        {
-          "<leader>gS",
-          function()
-            Snacks.picker.git_stash({ layout = "select_with_preview" })
-          end,
-          desc = "Git Stash",
-        },
-        --============================================= Search =============================================
-        {
-          "<leader>sp",
-          function()
-            Snacks.picker.lazy({ layout = "select_with_preview" })
-          end,
-          desc = "Search for Plugin Spec",
-        },
-        {
-          "<leader>s/",
-          function()
-            Snacks.picker.search_history({ layout = "select_no_preview" })
-          end,
-          desc = "Search History",
-        },
-        {
-          "<leader>sa",
-          function()
-            Snacks.picker.autocmds({ layout = "select_with_preview" })
-          end,
-          desc = "Autocmds",
-        },
-        {
-          "<leader>sc",
-          function()
-            Snacks.picker.command_history({
-              layout = "select_no_preview",
-            })
-          end,
-          desc = "Command History",
-        },
-        {
-          "<leader>sC",
-          function()
-            Snacks.picker.commands({
-              layout = "select_with_preview",
-            })
-          end,
-          desc = "Commands",
-        },
-        {
-          "<leader>sd",
-          function()
-            Snacks.picker.diagnostics({ layout = "select_with_preview" })
-          end,
-          desc = "Diagnostics",
-        },
-        {
-          "<leader>sD",
-          function()
-            Snacks.picker.diagnostics_buffer({ layout = "select_with_preview" })
-          end,
-          desc = "Buffer Diagnostics",
-        },
-        {
-          "<leader>sh",
-          function()
-            Snacks.picker.help({ layout = "select_with_preview" })
-          end,
-          desc = "Help Pages",
-        },
-        {
-          "<leader>sH",
-          function()
-            -- modify to copy highlight group name to primary
-            -- register (the goal is to be lazy bruh 🙄)
-            Snacks.picker.highlights()
-          end,
-          desc = "Highlights",
         },
         {
           "<leader>si",
@@ -148,75 +100,44 @@ return {
           end,
           desc = "Icons",
         },
-        {
-          "<leader>sk",
-          function()
-            Snacks.picker.keymaps({ layout = "select_with_preview" })
-          end,
-          desc = "Keymaps",
-        },
-        {
-          "<leader>sm",
-          function()
-            Snacks.picker.marks()
-          end,
-          desc = "Marks",
-        },
-        {
-          "<leader>sq",
-          function()
-            Snacks.picker.qflist()
-          end,
-          desc = "Quickfix List",
-        },
-
-        --============================================= find =============================================
-        { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-        {
-          "<leader>ff",
-          LazyVim.pick("files", { root = false }),
-          desc = "Find Files (cwd)",
-        },
-        {
-          "<leader>fb",
-          function()
-            Snacks.picker.buffers()
-          end,
-          desc = "Buffers",
-        },
-        { "<leader>fc", LazyVim.pick.config_files(), desc = "Find Config File" },
-        { "<leader>fr", LazyVim.pick("oldfiles"), desc = "Recent" },
-        {
-          "<leader>fp",
-          function()
-            Snacks.picker.projects({ dev = { "~/Documents" } })
-          end,
-          desc = "Projects",
-        },
-
-        --============================================= Grep =============================================
-        { "<leader>fG", LazyVim.pick("grep"), desc = "Grep (Root Dir)" },
-        {
-          "<leader>fg",
-          LazyVim.pick("live_grep"),
-          desc = "Grep (cwd)",
-        },
-        {
-          "<leader>sw",
-          LazyVim.pick("grep_word"),
-          desc = "Visual selection or word (Root Dir)",
-          mode = { "n", "x" },
-        },
-        {
-          "<leader>sW",
-          LazyVim.pick("grep_word", { root = false }),
-          desc = "Visual selection or word (cwd)",
-          mode = { "n", "x" },
-        },
       })
     end,
     ---@param opts snacks.Config
     opts = function(_, opts)
+      local custom_border = require("lib..icons").custom_border
+
+      ---@type table<string, snacks.win.Config>
+      opts.styles = vim.tbl_deep_extend("force", opts.styles or {}, {
+        notification = {
+          border = custom_border,
+          zindex = 100,
+          ft = "markdown",
+          wo = {
+            winblend = 0,
+            wrap = false,
+            conceallevel = 2,
+            colorcolumn = "",
+          },
+          bo = { filetype = "snacks_notif" },
+        },
+        notification_history = {
+          border = custom_border,
+          zindex = 100,
+          width = 0.7,
+          height = 0.7,
+          minimal = false,
+          title = " Notification History ",
+          title_pos = "left",
+          ft = "markdown",
+          bo = { filetype = "snacks_notif_history", modifiable = false },
+          wo = { winhighlight = "Normal:SnacksNotifierHistory" },
+          keys = {
+            q = "close",
+            ["<Esc>"] = "close",
+          },
+        },
+      })
+
       local function getWinManager()
         if vim.fn.has("mac") == 1 then
           return {
@@ -246,9 +167,39 @@ return {
           }
         end
       end
-      local function get_shell()
-        return vim.fn.getenv("SHELL")
-      end
+
+      --============================================= gitbrowse =============================================
+      opts.gitbrowse = {
+        enabled = false,
+      }
+      --============================================= bigfile =============================================
+      opts.bigfile = vim.tbl_deep_extend("force", opts.bigfile or {}, {
+        enabled = true,
+      })
+      --============================================= animate =============================================
+      opts.animate = vim.tbl_deep_extend("force", opts.animate or {}, {
+        enabled = true,
+      })
+
+      --============================================= input =============================================
+      opts.input = vim.tbl_deep_extend("force", opts.input or {}, {
+        enabled = true,
+      })
+
+      --============================================= scope =============================================
+      opts.scope = vim.tbl_deep_extend("force", opts.scope or {}, {
+        enabled = true,
+      })
+
+      --============================================= notifier =============================================
+      opts.notifier = vim.tbl_deep_extend("force", opts.notifier or {}, {
+        enabled = true,
+      })
+
+      --============================================= words =============================================
+      opts.words = {
+        enabled = false,
+      }
 
       --============================================= indent =============================================
       opts.indent = vim.tbl_deep_extend("force", opts.indent or {}, {
@@ -257,17 +208,6 @@ return {
         char = "╎",
         only_scope = false,
         only_current = false,
-        hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
-        -- hl = {
-        --     "SnacksIndent1",
-        --     "SnacksIndent2",
-        --     "SnacksIndent3",
-        --     "SnacksIndent4",
-        --     "SnacksIndent5",
-        --     "SnacksIndent6",
-        --     "SnacksIndent7",
-        --     "SnacksIndent8",
-        -- },
         -- animate scopes. Enabled by default for Neovim >= 0.10
         -- Works on older versions but has to trigger redraws during animation.
         ---@class snacks.indent.animate: snacks.animate.Config
@@ -281,11 +221,11 @@ return {
         ---@field style? "out"|"up_down"|"down"|"up"
         animate = {
           enabled = true,
-          style = "up_down",
+          style = "out",
           easing = "linear",
           duration = {
-            step = 40, -- ms per step
-            total = 1000, -- maximum duration
+            step = 40,
+            total = 1000,
           },
         },
         ---@class snacks.indent.Scope.Config: snacks.scope.Config
@@ -293,25 +233,22 @@ return {
           enabled = true,
           priority = 200,
           char = "╎",
-          underline = false, -- underline the start of the scope
-          only_current = false, -- only show scope in the current window
-          hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+          underline = false,
+          only_current = false,
+          ---@type string|string[] hl group for scopes
+          hl = "SnacksIndentScope",
         },
         chunk = {
-          -- when enabled, scopes will be rendered as chunks, except for the
-          -- top-level scope which will be rendered as a scope.
           enabled = true,
-          -- only show chunk scopes in the current window
           only_current = false,
           priority = 200,
-          hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
+          ---@type string|string[] hl group for chunk scopes
+          hl = "SnacksIndentChunk",
           char = {
-            -- corner_top = "┌",
-            -- corner_bottom = "└",
             corner_top = "╭",
             corner_bottom = "╰",
-            horizontal = "─",
-            vertical = "╎",
+            horizontal = "",
+            vertical = "|",
             arrow = ">",
           },
         },
@@ -324,7 +261,7 @@ return {
 
       --============================================= lazygit =============================================
       opts.lazygit = vim.tbl_deep_extend("force", opts.lazygit or {}, {
-        enabled = true,
+        enabled = false,
         theme = {
           [241] = { fg = "Special" },
           activeBorderColor = { fg = "@keyword", bold = true },
@@ -343,7 +280,7 @@ return {
           height = math.floor(vim.o.lines * 0.92),
           row = math.floor(vim.o.lines * 0.03),
           col = math.floor(vim.o.columns * 0.03),
-          border = "rounded",
+          border = custom_border,
           backdrop = false,
           title = "Lazygit",
           title_pos = "center",
@@ -351,11 +288,12 @@ return {
       })
 
       --============================================= explorer =============================================
-      opts.explorer = vim.tbl_deep_extend("force", opts.explorer or {}, {
+      opts.explorer = {
         enabled = false,
-      })
+      }
       --============================================= picker =============================================
       opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
+        hidden = true,
         layout = {
           cycle = false,
           layout = {
@@ -371,12 +309,12 @@ return {
               row = -1,
               width = 0,
               height = 0.5,
-              border = "rounded",
+              border = custom_border,
               title = "",
               title_pos = "left",
               {
                 box = "vertical",
-                { win = "input", height = 1, border = "rounded" },
+                { win = "input", height = 1, border = custom_border },
                 { win = "list", border = "none" },
               },
               {
@@ -397,7 +335,7 @@ return {
               min_width = 80,
               min_height = 3,
               box = "vertical",
-              border = "rounded",
+              border = custom_border,
               title = "{title}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
@@ -416,7 +354,7 @@ return {
               min_width = 80,
               min_height = 3,
               box = "vertical",
-              border = "rounded",
+              border = custom_border,
               title = "{title}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
@@ -446,7 +384,7 @@ return {
                 row = -1,
                 width = 0,
                 height = 0.5,
-                border = "rounded",
+                border = custom_border,
                 title = "",
                 title_pos = "left",
                 {
@@ -457,7 +395,6 @@ return {
                 {
                   win = "preview",
                   title = "{preview}",
-                  -- title_pos = "center",
                   width = 0.7,
                   border = "left",
                 },
@@ -466,43 +403,75 @@ return {
           },
         },
       })
+      --============================================= zen =============================================
+      opts.zen = {
+        enabled = false,
+      }
+
+      --============================================= dim =============================================
+      opts.dim = {
+        enabled = false,
+      }
+
       --============================================= image =============================================
       opts.image = vim.tbl_deep_extend("force", opts.image or {}, {
         enabled = true,
+        force = true,
         doc = {
           max_height = 20,
           max_width = 40,
           float = false,
+          enabled = true,
           inline = true,
         },
+        env = {
+          SNACKS_GHOSTTY = true,
+        },
+      })
+
+      --============================================= quickfile =============================================
+      opts.quickfile = vim.tbl_deep_extend("force", opts.quickfile or {}, {
+        enabled = true,
+      })
+
+      --============================================= toggle =============================================
+      opts.toggle = {
+        enabled = false,
+      }
+
+      --============================================= scroll =============================================
+      opts.scroll = vim.tbl_deep_extend("force", opts.scroll or {}, {
+        enabled = true,
       })
 
       --============================================= statuscolumn =============================================
       opts.statuscolumn = vim.tbl_deep_extend("force", opts.statuscolumn or {}, {
         enabled = true,
+        left = {},
+        right = { "sign", "fold" },
+        folds = {
+          open = true,
+          git_hl = true,
+        },
+        git = {
+          patterns = { "GitSign", "MiniDiffSign" },
+        },
+        refresh = 50,
       })
 
       --============================================= terminal =============================================
-      opts.terminal = vim.tbl_deep_extend("force", opts.terminal or {}, {
+      opts.terminal = {
         enabled = false,
-        win = {
-          style = "float",
-          width = math.floor(vim.o.columns * 0.7),
-          height = math.floor(vim.o.lines * 0.7),
-          border = "rounded",
-          title = get_shell(),
-          title_pos = "center",
-        },
-      })
+      }
 
       --============================================= gh =============================================
-      opts.gh = vim.tbl_deep_extend("force", opts.gh or {}, {
-        enabled = true,
-      })
+      opts.gh = {
+        enabled = false,
+      }
 
       --============================================= dashboard =============================================
       opts.dashboard = {
-        enabled = true,
+        enabled = false,
         width = 60,
         row = nil,
         col = nil,

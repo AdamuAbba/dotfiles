@@ -89,62 +89,45 @@ function Menu:buildMenu()
     assert(self.menuItemDefinitions, "Menu " .. self.name .. " has no menu items")
     assert(self.menuManager, "Menu " .. self.name .. " has nil menu manager")
 
-    -- Set the number of columns and number of rows
-    self.numberOfColumns = menuNumberOfColumns
-    self.numberOfRows = math.ceil(tableLength(self.menuItemDefinitions) / (self.numberOfColumns - 1))
+    -- Vertical layout: single column
+    self.numberOfColumns = 1
+    self.numberOfRows = tableLength(self.menuItemDefinitions)
 
     -- Make sure we have the minimum number of rows
     if self.numberOfRows < menuMinNumberOfRows then
         self.numberOfRows = menuMinNumberOfRows
     end
 
-    -- Set the window height
+    -- Set the window height based on number of items
     self.windowHeight = menuRowHeight * self.numberOfRows
 
-    -- Set the entry width
-    self.entryWidth = 1 / self.numberOfColumns
+    -- Fixed width from config (in pixels)
+    self.entryWidth = menuWidth
 
-    -- Set the entry height
+    -- Set the entry height as percentage for canvas
     self.entryHeight = 1 / self.numberOfRows
 
     -- Build the menu items
     self:buildMenuItemList()
+    
+    -- Bind ESC and DELETE keys directly (not shown in menu but still functional)
+    self.modal:bind('', 'escape', 'Exit Menu', function() 
+        self.menuManager:closeMenu() 
+    end)
+    
+    if self.parentMenu ~= nil then
+        self.modal:bind('', 'delete', 'Parent Menu', function() 
+            self.menuManager:switchMenu(self.parentMenu) 
+        end)
+    end
 end
 
 ----------------------------------------------------------------------------------------------------
 -- Build the list of menu items
 function Menu:buildMenuItemList()
-
-    -- Start with an exit button
-    local menuItemList = {
-        {cons.cat.exit, '', 'escape', 'Exit', {
-             {cons.act.func, function() self.menuManager:closeMenu() end }
-        }},
-    }
-
-    -- If there is a parent menu, append a back button
-    if self.parentMenu ~= nil then
-        table.insert(
-            menuItemList,
-            {cons.cat.back, '', 'delete', 'Parent Menu', {
-                 {cons.act.func, function() self.menuManager:switchMenu(self.parentMenu) end }
-            }}
-        )
-    end
-
-    -- Add blank spaces to the first column until it's full
-    while #menuItemList < self.numberOfRows do
-        table.insert(
-            menuItemList,
-            {cons.cat.navigation, nil, nil, ''}
-        )
-    end
-
-    -- Add all the defined menu items
-    for _, newMenuItem in pairs(self.menuItemDefinitions) do table.insert(menuItemList, newMenuItem) end
-
-    self.menuItemDefinitions = menuItemList
-
+    -- Vertical layout: no Exit/Back buttons displayed, no spacers
+    -- ESC and DELETE bindings are handled in buildMenu() directly on the modal
+    -- Just use the defined menu items directly
     self:createMenuItems()
 end
 
@@ -189,11 +172,9 @@ function Menu:createMenuItems()
             boundKeys[keyCombo] = true
         end
 
-        -- Calculate the row number
-        local column = math.floor(adjustedIndex / self.numberOfRows)
-
-        -- Calculate the column number
-        local row = adjustedIndex % self.numberOfRows
+        -- Vertical layout: items stack top to bottom in single column
+        local column = 0  -- Always first (and only) column
+        local row = adjustedIndex  -- Sequential: 0, 1, 2, 3...
 
         -- Create the menuItem object
         self:createMenuItem(category,
@@ -266,15 +247,12 @@ function Menu:bindToMenu(menuItem,
         end
     end
 
-    local displayTitle = menuItem:displayTitle()
-
     -- If we have a key defined, bind it
     if menuItem.key ~= nil then
-        local newModalBind = self.modal:bind(menuItem.modifier,
-                                             menuItem.key,
-                                             displayTitle,
-                                             finalFunction)
-        menuItem.desc = newModalBind.keys[tableLength(newModalBind.keys)].msg
+        self.modal:bind(menuItem.modifier,
+                        menuItem.key,
+                        menuItem:displayTitle(),
+                        finalFunction)
     end
 
 end
@@ -292,11 +270,13 @@ function Menu:getMenuFrame()
     -- Calculate the dimensions using the size of the main screen.
     local cscreen = hs.screen.mainScreen()
     local cres = cscreen:frame()
+    
+    -- Vertical layout: fixed width, positioned at bottom-left
     local menuFrame = {
-        x = cres.x,
-        y = cres.y + (cres.h - windowHeight),
-        w = cres.w,
-        h = windowHeight
+        x = cres.x + menuPaddingX,  -- Left edge + padding
+        y = cres.y + (cres.h - windowHeight) - menuPaddingY,  -- Bottom edge + padding
+        w = menuWidth,  -- Fixed width from config
+        h = windowHeight  -- Dynamic based on number of items
     }
 
     return menuFrame

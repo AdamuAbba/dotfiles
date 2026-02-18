@@ -49,17 +49,49 @@ function MenuItem.new(category, modifier, key, desc, row, column, width, height,
 	self.desc = desc
 	self.row = row
 	self.column = column
-	self.width = tostring(width)
 	self.height = tostring(height)
 
-	self.xValue = tostring(self.column * self.width)
-	self.yValue = tostring(self.height * self.row)
+	-- Vertical layout: use percentage-based positioning within the fixed-width canvas
+	self.width = "100%"  -- Full width of menu container
+	self.xValue = "0%"   -- Always at left edge (single column)
+	self.yValue = tostring(height * row)  -- Sequential vertical positioning
 
 	self.commands = commands
 	self.menuManager = menuManager
 	self.menu = menu
 
 	return self
+end
+
+----------------------------------------------------------------------------------------------------
+-- Convert modifier keys to symbols
+function MenuItem:modifierToSymbol()
+	if self.modifier == nil or self.modifier == "" then
+		return ""
+	end
+	
+	local symbols = {
+		shift = "⇧",
+		cmd = "⌘",
+		alt = "⌥",
+		ctrl = "⌃",
+	}
+	
+	-- Handle string modifier (e.g., "shift")
+	if type(self.modifier) == "string" then
+		return symbols[self.modifier] or ""
+	end
+	
+	-- Handle table of modifiers (e.g., {"cmd", "shift"})
+	if type(self.modifier) == "table" then
+		local result = ""
+		for _, mod in ipairs(self.modifier) do
+			result = result .. (symbols[mod] or "")
+		end
+		return result
+	end
+	
+	return ""
 end
 
 function MenuItem:prefix()
@@ -105,7 +137,7 @@ function MenuItem:getTextCanvas()
 
 	return {
 		type = "text",
-		text = "    " .. self:getDisplayValue(),
+		text = " " .. self:getWhichKeyDisplayText(),
 		textFont = menuItemFont,
 		textSize = menuItemFontSize,
 		textColor = { hex = self:textColor(), alpha = 1 },
@@ -118,6 +150,42 @@ function MenuItem:getTextCanvas()
 			h = self.height,
 		},
 	}
+end
+
+----------------------------------------------------------------------------------------------------
+-- Format display text in WhichKey style: "⇧a: + Description" or "a: Description"
+function MenuItem:getWhichKeyDisplayText()
+	-- Handle display-only items (no keybinding)
+	if self.category == cons.cat.display then
+		local displayString = nil
+		for _, command in ipairs(self.commands) do
+			displayString = command()
+		end
+		return displayString or self.desc
+	end
+	
+	-- Build the key portion with modifier symbols
+	local modSymbol = self:modifierToSymbol()
+	local keyPart = ""
+	
+	if self.key ~= nil then
+		-- Align on the key letter, modifiers extend to the left
+		-- Keys without modifiers get leading space so letters align
+		local hasModifier = #modSymbol > 0
+		if hasModifier then
+			keyPart = modSymbol .. self.key .. " │ "
+		else
+			keyPart = "  " .. self.key .. " │ "
+		end
+	end
+	
+	-- Add prefix for submenus (+ symbol)
+	local prefix = ""
+	if self.category == cons.cat.submenu then
+		prefix = self:prefix() .. ""
+	end
+	
+	return keyPart .. prefix .. self.desc
 end
 
 ----------------------------------------------------------------------------------------------------

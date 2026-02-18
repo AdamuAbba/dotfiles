@@ -1,4 +1,5 @@
 return {
+  custom_border = { "╭", "-", "╮", "|", "╯", "-", "╰", "|" },
   diagnostics = {
     Error = " ",
     Hint = "󰠠 ",
@@ -17,6 +18,9 @@ return {
     SymLink = " ",
     SymlinkFolder = " ",
     Import = " ",
+    Buffer = " ",
+    SearchInFile = "󰱼 ",
+    Help = "󰘥  ",
   },
   git = {
     Add = " ",

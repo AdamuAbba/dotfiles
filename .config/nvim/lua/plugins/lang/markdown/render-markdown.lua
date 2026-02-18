@@ -1,13 +1,12 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "snacks_notif_history" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     ---@param _ any
     ---@param opts render.md.UserConfig
-    ft = { "copilot-chat" },
     opts = function(_, opts)
-      table.insert(opts.file_types, "copilot-chat")
       opts.completions = vim.tbl_deep_extend("force", opts.completions or {}, {
         lsp = {
           enabled = true,
@@ -22,21 +21,21 @@ return {
         icon = "|",
         priority = 0,
       })
+      opts.pipe_table = vim.tbl_deep_extend("force", opts.pipe_table or {}, {
+        enabled = true,
+        preset = "round",
+      })
       opts.code = vim.tbl_deep_extend("force", opts.code or {}, {
         enabled = true,
-        conceal_delimiters = true,
-        border = "thin",
+        border = "thick",
         above = "_",
         below = "-",
+        style = "full",
         language_border = "█",
         language_left = "",
-        highlight_language = "DiagnosticFloatingHint",
         language_right = "",
         language = true,
         position = "left",
-        language_icon = true,
-        language_name = true,
-        language_info = true,
         sign = true,
         width = "block",
         right_pad = 1,

@@ -1,13 +1,12 @@
 export BAT_THEME="Dracula"
-export MANPAGER="bat -plman"
-alias bathelp='bat --plain --language=help'
 
 help() {
   if [ $# -eq 0 ]; then
     printf '%s\n' "usage: help <command> [subcommand ...]" >&2
     return 1
   fi
-  cmd=$1; shift
+  cmd=$1
+  shift
 
   # try --help
   if command -v "$cmd" >/dev/null 2>&1 && "$cmd" "$@" --help >/dev/null 2>&1; then

@@ -6,7 +6,23 @@ local map = vim.keymap.set
 local del = vim.keymap.del
 local icons = require("lib.icons")
 
+------ lazyvim terminal defaults
 del("n", "<leader>fT")
+del("n", "<leader>ft")
+del("n", "<c-/>")
+del("n", "<c-_>")
+
+------ lazyvim defaults
+del("n", "<leader>gb")
+del("n", "<leader>gB")
+del("n", "<leader>gl")
+del("n", "<leader>gL")
+del("n", "<leader>gY")
+del("n", "<leader>gf")
+del("n", "<leader>go")
+del("i", "<Tab>")
+-- del({ "i", "x", "n", "s" }, "<C-s>")
+
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
@@ -14,6 +30,7 @@ map({ "n", "i", "v" }, "<Down>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
+map({ "n", "v" }, "q", "<NOP>", { noremap = true })
 
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
@@ -47,30 +64,6 @@ wk.add({
   { "<leader>o", group = "Add Blank Line", icon = " ", mode = { "n" } },
   { "<leader>oj", "o<ESC>k", desc = "Blank Newline below", icon = "↓" },
   { "<leader>ok", "O<ESC>j", desc = "Blank Newline above", icon = "↑" },
-})
-
---============================================= nvim-scissors =============================================
-local Scissors = require("scissors")
-
-wk.add({
-  { "<leader>h", group = "scissors", icon = icons.ui.Scissors, mode = { "n" } },
-  {
-    "<leader>he",
-    function()
-      Scissors.editSnippet()
-    end,
-    desc = "Edit snippet",
-    icon = icons.ui.Edit,
-  },
-  {
-    "<leader>ha",
-    function()
-      Scissors.addNewSnippet()
-    end,
-    desc = "Add new snippet",
-    icon = icons.ui.AddAlt,
-    mode = { "n", "x" },
-  },
 })
 
 --============================================= Yank Line + Diagnostic (maodified to yank just diagnostic) ===========
@@ -119,101 +112,6 @@ end
 wk.add({
   { "<leader>fx", make_file_executable, icon = "", desc = "Make file executable", mode = { "n" } },
 })
---============================================= user commands =============================================
-vim.api.nvim_create_user_command("LazySpec", function(opts)
-  local plugin = opts.args
-  local spec = require("lazy.core.config").plugins[plugin]
-  if not spec then
-    vim.notify("No plugin spec found for " .. plugin, vim.log.levels.ERROR)
-    return
-  end
-
-  -- scratch buffer
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
-  vim.api.nvim_set_option_value("filetype", "lua", { buf = buf })
-
-  local lines = vim.split(vim.inspect(spec), "\n")
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-
-  -- floating win
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = math.floor(vim.o.columns * 0.90),
-    height = math.floor(vim.o.lines * 0.90),
-    row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.90)) / 2) - 1,
-    col = math.floor((vim.o.columns - math.floor(vim.o.columns * 0.90)) / 2),
-    style = "minimal",
-    border = "rounded",
-    title = "LazySpec",
-    title_pos = "center",
-  })
-
-  -- map q to close
-  vim.keymap.set("n", "q", function()
-    if vim.api.nvim_win_is_valid(win) then
-      vim.api.nvim_win_close(win, true)
-    end
-  end, { buffer = buf, nowait = true, silent = true })
-end, {
-  nargs = 1,
-  complete = function(_, _)
-    return vim.tbl_keys(require("lazy.core.config").plugins)
-  end,
-})
-
---======================================== get the focused win highlight groups ===========================================
---  user command to get the focused win highlight groups
-vim.api.nvim_create_user_command("GetFocusedWinHL", function()
-  local win = vim.api.nvim_get_current_win()
-  local hl_str = vim.api.nvim_get_option_value("winhighlight", { win = win })
-
-  local lines = {}
-  if hl_str == "" then
-    table.insert(lines, "No winhighlight overrides set")
-  else
-    for from, to in string.gmatch(hl_str, "(%w+):(%w+)") do
-      local id = vim.api.nvim_get_hl_id_by_name(to)
-      local hl = vim.api.nvim_get_hl(0, { id = id })
-
-      table.insert(lines, from .. " -> " .. to)
-
-      -- split vim.inspect output into lines
-      for s in vim.inspect(hl):gmatch("[^\n]+") do
-        table.insert(lines, "  " .. s)
-      end
-
-      table.insert(lines, "")
-    end
-  end
-
-  -- always create a new scratch buffer
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-
-  -- open floating window
-  local width = math.floor(vim.o.columns * 0.5)
-  local height = math.floor(vim.o.lines * 0.5)
-
-  local float_win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = width,
-    height = height,
-    row = math.floor((vim.o.lines - height) / 2),
-    col = math.floor((vim.o.columns - width) / 2),
-    style = "minimal",
-    border = "rounded",
-    title = "WinHighlight",
-    title_pos = "center",
-  })
-
-  -- add 'q' to close
-  vim.keymap.set("n", "q", function()
-    if vim.api.nvim_win_is_valid(float_win) then
-      vim.api.nvim_win_close(float_win, true)
-    end
-  end, { buffer = buf, nowait = true, noremap = true, silent = true })
-end, {})
 
 --============================================= markdown task manager stuff =============================================
 -- Copied and tweaked a little bit from Linkarzu's Neobean config (DUDE IS A FREAKING LEGEND 🔥)
@@ -484,6 +382,7 @@ local function new_task_by_date()
     return
   end
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   local date = os.date("%Y-%m-%d-%A"):lower()
   local filename = tasks_dir .. "/" .. date .. ".md"
 
@@ -519,12 +418,3 @@ wk.add({
     icon = icons.ui.AddAlt,
   },
 })
-
---============================================= open picker =============================================
-vim.api.nvim_create_user_command("SnacksFilePicker", function()
-  local ok, snacks = pcall(require, "snacks")
-  if not ok then
-    return
-  end
-  snacks.picker("files", { root = false, layout = "select_with_preview" })
-end, { nargs = 0 })

@@ -1,8 +1,8 @@
 #============================================= Configs =============================================
 [[session]]
-name = "sesh-config"
-path = "~/Documents/dotfiles/.config/sesh/"
-startup_command = "nvim sesh.toml"
+name = "dotfiles"
+path = "~/Documents/dotfiles/"
+startup_command = "~/.config/sesh/scripts/open-in-nvim.sh '  Editor' && nvim -c 'lua require(\"persistence\").load()'"
 
 #============================================= Projects =============================================
 #---- React Native ----
@@ -20,15 +20,45 @@ startup_command = "~/.config/sesh/scripts/three-splits.sh"
 [[session]]
 name = "bdk_wallet"
 path = "~/Documents/bdk_wallet/"
-startup_command = "~/.config/sesh/scripts/two-splits.sh"
+startup_command = "~/.config/sesh/scripts/two-splits.sh -w"
+
+[[session]]
+name = "btc_test_area"
+path = "~/Documents/btc_test_area/"
+startup_command = "~/.config/sesh/scripts/open-in-nvim.sh '  Editor' && nvim -c 'lua require(\"persistence\").load()'"
+
+[[session]]
+name = "rust-esplora-client"
+path = "~/Documents/rust-esplora-client/"
+startup_command = "~/.config/sesh/scripts/two-splits.sh -w"
 
 #============================================= tools =============================================
 [[session]]
 name = "http-client"
 path = "~/Documents/api-collections/"
-startup_command = "~/.config/sesh/scripts/open-in-nvim.sh"
+startup_command = "~/.config/sesh/scripts/open-in-nvim.sh '  HTTP Client'"
+
+[[session]]
+name = "btop"
+path = "~"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  btop' && btop"
 
 [[session]]
 name = "notes"
 path = "~/Documents/shytypes-obs-vault/"
-startup_command = "kvim -c 'lua require(\"persistence\").load()'"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '󰠮  notes' && nvim -c 'lua require(\"persistence\").load()'"
+
+[[session]]
+name = "email"
+path = "~"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '󰇮  Email' && mbsync -a && neomutt"
+
+[[session]]
+name = "opencode"
+path = "~"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  opencode' && opencode"
+
+[[session]]
+name = "spf"
+path = "~"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  superfile' && spf"

@@ -17,9 +17,6 @@ return {
         },
         json_decode = require("json5").parse,
         extensions = {
-          avante = {
-            make_slash_commands = true,
-          },
           copilotchat = {
             enabled = true,
             convert_tools_to_functions = true,

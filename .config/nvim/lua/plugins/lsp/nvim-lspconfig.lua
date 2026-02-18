@@ -1,51 +1,101 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = function(_, opts)
-      opts.diagnostics = vim.tbl_deep_extend("force", opts.diagnostics or {}, {
-        float = {
-          border = "rounded",
+    opts = {
+      autoformat = false,
+      servers = {
+        marksman = {
+          enabled = false,
         },
-      })
-
-      opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
-        bacon_ls = {
-          ---@diagnostic disable-next-line: undefined-global
-          enabled = diagnostics == "bacon-ls",
-        },
-        bashls = {
-          filetypes = { "zsh" },
-        },
-        rust_analyzer = { enabled = false },
-        vectorcode_server = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = {
-                library = {
-                  vim.env.VIMRUNTIME,
-                },
-                checkThirdParty = false,
-              },
+        ["*"] = {
+          keys = {
+            {
+              "gd",
+              function()
+                vim.lsp.buf.definition({
+                  on_list = function(data)
+                    if #data.items == 0 then
+                      vim.notify("No definitions found", vim.log.levels.WARN)
+                    elseif #data.items == 1 then
+                      -- Jump directly
+                      local item = data.items[1]
+                      vim.cmd(string.format("edit %s", vim.fn.fnameescape(item.filename)))
+                      vim.api.nvim_win_set_cursor(0, { item.lnum, item.col - 1 })
+                    else
+                      require("mini.extra").pickers.lsp({ scope = "definition" })
+                    end
+                  end,
+                })
+              end,
+              desc = "[LSP] Definition",
+            },
+            {
+              "gD",
+              function()
+                vim.lsp.buf.declaration({
+                  on_list = function(data)
+                    if #data.items == 0 then
+                      vim.notify("No declarations found", vim.log.levels.WARN)
+                    elseif #data.items == 1 then
+                      -- Jump directly
+                      local item = data.items[1]
+                      vim.cmd(string.format("edit %s", vim.fn.fnameescape(item.filename)))
+                      vim.api.nvim_win_set_cursor(0, { item.lnum, item.col - 1 })
+                    else
+                      require("mini.extra").pickers.lsp({ scope = "declaration" })
+                    end
+                  end,
+                })
+              end,
+              desc = "[LSP] Declaration",
+            },
+            {
+              "gr",
+              function()
+                require("mini.extra").pickers.lsp({ scope = "references" })
+              end,
+              nowait = true,
+              desc = "[LSP] +References",
+            },
+            {
+              "gI",
+              function()
+                require("mini.extra").pickers.lsp({ scope = "implementation" })
+              end,
+              desc = "[LSP] Implementation",
+            },
+            {
+              "gy",
+              function()
+                require("mini.extra").pickers.lsp({ scope = "type_definition" })
+              end,
+              desc = "[LSP] Type Definition",
+            },
+            {
+              "<leader>ss",
+              function()
+                require("mini.extra").pickers.lsp({ scope = "document_symbol" })
+              end,
+              desc = "[LSP] buffer Symbols",
+            },
+            {
+              "<leader>sS",
+              function()
+                require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
+              end,
+              desc = "[LSP] Workspace Symbols",
+            },
+            {
+              "gai",
+              false,
+            },
+            {
+              "gao",
+              false,
             },
           },
         },
-        vtsls = {
-          settings = {
-            typescript = {
-              inlayHints = {
-                enumMemberValues = { enabled = true },
-                functionLikeReturnTypes = { enabled = false },
-                parameterNames = { enabled = "literals" },
-                parameterTypes = { enabled = false },
-                propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = false },
-              },
-            },
-          },
-        },
-      })
-    end,
+      },
+    },
   },
 }

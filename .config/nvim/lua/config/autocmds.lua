@@ -1,13 +1,4 @@
--- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
-
---============================================= Disable the concealing in some file formats =========================
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "json", "jsonc" },
-  callback = function()
-    vim.opt.conceallevel = 0
-  end,
-})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
@@ -16,20 +7,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
---============================================= tmux-language-server =============================================
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "tmux.conf", ".tmux.conf" },
-  callback = function()
-    vim.lsp.start({
-      name = "tmux",
-      cmd = { "tmux-language-server" },
-    })
-  end,
-})
-
 --============================================= no continue comments on new line ====================================
-
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("no_auto_comment", {}),
   callback = function()
@@ -105,26 +83,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
         return
       end
     end
-  end,
-})
-
---============================================= set filetypes =============================================
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = {
-    ".git/hooks/*",
-    vim.fn.expand("~/.config/vectorcode/hooks/*"),
-  },
-  callback = function()
-    vim.bo.filetype = "sh"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = {
-    "*/Podfile",
-  },
-  callback = function()
-    vim.bo.filetype = "ruby"
   end,
 })
 

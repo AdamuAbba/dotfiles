@@ -2,7 +2,7 @@ local M = {}
 
 M.background = os.getenv("DRACULA_BACKGROUND")
 M.current_line = os.getenv("DRACULA_CURRENT_LINE")
-M.selection = os.getenv("DRACULA_SELECTION")
+M.gray = os.getenv("DRACULA_SELECTION")
 M.foreground = os.getenv("DRACULA_FOREGROUND")
 M.comment = os.getenv("DRACULA_COMMENT")
 M.cyan = os.getenv("DRACULA_CYAN")
@@ -14,5 +14,6 @@ M.red = os.getenv("DRACULA_RED")
 M.yellow = os.getenv("DRACULA_YELLOW")
 M.white = os.getenv("DRACULA_WHITE")
 M.black = os.getenv("DRACULA_BLACK")
+M.gray = os.getenv("DRACULA_GRAY")
 
 return M

@@ -1,0 +1,76 @@
+##############################################
+#                                            #
+#                Dracula Theme               #
+#                                            #
+##############################################
+
+# This theme was created by: https://github.com/BeanieBarrow ! Thank you <3
+
+# This contains the theme config file for superfile! For more details see:
+# https://superfile.dev/configure/custom-theme/
+
+###############################################################################
+#                           Code Syntax Highlighting                          #
+###############################################################################
+
+# Find one you like at: https://github.com/alecthomas/chroma/blob/master/styles.
+
+code_syntax_highlight = "dracula"
+
+###############################################################################
+#                                 Base Colors                                 #
+###############################################################################
+
+#-- Full Screen
+full_screen_fg = "#ffffff"
+full_screen_bg = "#000000"
+
+#-- Gradient
+# Note: This currently only supports two colors.
+gradient_color = ["#50fa7b", "#ff5555"]
+
+#-- File Panel
+file_panel_fg = "#ffffff"
+file_panel_bg = "#000000"
+file_panel_border = "#ffffff"
+file_panel_border_active = "#50fa7b"
+file_panel_top_directory_icon = "#50fa7b"
+file_panel_top_path = "#8be9fd"
+file_panel_item_selected_fg = "#000000"
+file_panel_item_selected_bg = "#bd93f9"
+
+#-- Footer
+footer_fg = "#ffffff"
+footer_bg = "#000000"
+footer_border = "#ffffff"
+footer_border_active = "#50fa7b"
+
+#-- Sidebar
+sidebar_fg = "#ffffff"
+sidebar_bg = "#000000"
+sidebar_title = "#bd93f9"
+sidebar_border = "#ffffff"
+sidebar_border_active = "#50fa7b"
+sidebar_item_selected_fg = "#000000"
+sidebar_item_selected_bg = "#bd93f9"
+sidebar_divider = "#ffffff"
+
+#-- Modals
+modal_fg = "#ffffff"
+modal_bg = "#000000"
+modal_border_active = "#50fa7b"
+modal_cancel_fg = "#000000"
+modal_cancel_bg = "#ff5555"
+modal_confirm_fg = "#000000"
+modal_confirm_bg = "#50fa7b"
+
+#-- Help Menu
+help_menu_hotkey = "#ffb86c"
+help_menu_title = "#bd93f9"
+
+#-- Special
+cursor = "#ff79c6"
+correct = "#50fa7b"
+error = "#ff5555"
+hint = "#8be9fd"
+cancel = "#6272a4"

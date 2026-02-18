@@ -7,6 +7,9 @@ export FZF_DEFAULT_OPTS="
   --height 100%
   --ansi
   --no-scrollbar
+  --list-border=none
+  --info=hidden
+  --preview-window=right:50%:border-left
   --pointer ''
   --marker ''
   --input-label=' Input '
@@ -16,14 +19,11 @@ export FZF_DEFAULT_OPTS="
     else
       echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
     fi'
-  --bind='focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-  --color=border:#50fa7b,label:#ffffff
-  --color=preview-border:#50fa7b,preview-label:#ffffff
-  --color=list-border:#bd93f9,list-label:#ffffff
-  --color=input-border:#bd93f9,input-label:#ffffff 
-  --color=header-border:#bd93f9,header-label:#ffffff,header:#ffffff
-  --color=bg:#000000
-  --color=bg+:#bd93f9,fg+:#000000
+  --bind='focus:transform-preview-label:[[ -n {} ]] && printf \" [%s] \" {}'
+  --color=border:${DRACULA_WHITE},label:${DRACULA_WHITE}
+  --color=preview-border:${DRACULA_WHITE},preview-label:${DRACULA_WHITE}
+  --color=input-border:${DRACULA_WHITE},input-label:${DRACULA_WHITE}
+  --color=bg+:${DRACULA_GREEN},fg+:${DRACULA_WHITE},fg:${DRACULA_WHITE},prompt:${DRACULA_WHITE}
 "
 
 _fzf_compgen_path() {
@@ -34,8 +34,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
-
-
 
 fif() {
   if [ "$#" -eq 0 ]; then

@@ -1,4 +1,3 @@
-#!/bin/bash
 export GIT_PAGER=delta
 
 gnr() {

@@ -8,8 +8,7 @@ PRESDIR="${XDG_CONFIG_HOME:-$HOME/.config}/.copilot/presets"
 }
 
 CHOICE="$(
-  ls -1A "$PRESDIR" | fzf-tmux -p 55%,44% \
-    --no-sort --ansi \
+  ls -1A "$PRESDIR" | fzf --tmux 55%,44% \
     --border-label ' Prompt Picker ' \
     --prompt '   ' \
     --input-border \

@@ -4,13 +4,12 @@ hs.loadSpoon("SpoonInstall")
 -- i swear dude is a legend, respect 🫡
 ---@diagnostic disable-next-line: undefined-field
 hs.loadSpoon("MenuHammer"):enter()
+hs.dockicon.hide()
 
 spoon.SpoonInstall:andUse("EmmyLua")
 
 require("helpers.auto_cmds_events")
 
---============================================= pickers =============================================
-require("pickers")
 --============================================= watchers =============================================
 require("watchers")
 

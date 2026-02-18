@@ -12,60 +12,71 @@ return {
       "moyiz/blink-emoji.nvim",
       "archie-judd/blink-cmp-words",
       "bydlw98/blink-cmp-env",
-      "ph1losof/ecolog.nvim",
       "alexandre-abrioux/blink-cmp-npm.nvim",
       "disrupted/blink-cmp-conventional-commits",
-      "marcoSven/blink-cmp-yanky",
       {
         "bydlw98/blink-cmp-sshconfig",
         build = "make",
+      },
+      {
+        "mikavilpas/blink-ripgrep.nvim",
+        version = "*",
       },
     },
     ---@module 'blink.cmp'
     ---@param _ any
     ---@param opts blink.cmp.Config
     opts = function(_, opts)
+      local custom_border = require("lib.icons").custom_border
+
       opts.keymap = vim.tbl_deep_extend("force", opts.keymap or {}, {
         ["<Up>"] = false,
         ["<Down>"] = false,
+        ["<Tab>"] = {},
         ["<C-e>"] = false,
         ["<CR>"] = { "accept", "fallback" },
-        ["<Tab>"] = false,
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
       })
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
         ---@diagnostic disable-next-line: param-type-mismatch
         default = vim.list_extend(opts.sources.default or {}, {
-          "npm",
-          "conventional_commits",
           "ecolog",
+          "npm",
+          "ripgrep",
+          "conventional_commits",
           "git",
           "emoji",
           "dictionary",
           "env",
           "sshconfig",
-          -- "yank",
         }),
         providers = vim.tbl_deep_extend("force", opts.sources.providers or {}, {
-          -- yank = {
-          --   name = "yank",
-          --   module = "blink-yanky",
-          --   opts = {
-          --     minLength = 5,
-          --     onlyCurrentFiletype = true,
-          --     trigger_characters = { ";;;" },
-          --     kind_icon = "󰅍",
-          --   },
-          -- },
-          sshconfig = {
-            name = "SshConfig",
-            module = "blink-cmp-sshconfig",
-          },
           ecolog = {
             name = "ecolog",
             module = "ecolog.integrations.cmp.blink_cmp",
-            enabled = true,
+          },
+          ripgrep = {
+            module = "blink-ripgrep",
+            score_offset = -10,
+            name = "Ripgrep",
+            ---@module "blink-ripgrep"
+            ---@type blink-ripgrep.Options
+            opts = {
+              project_root_marker = vim.fs.root(0, ".git") or vim.fn.getcwd(),
+              transform_items = function(_, items)
+                for _, item in ipairs(items) do
+                  item.labelDetails = {
+                    description = "(rg)",
+                  }
+                end
+                return items
+              end,
+            },
+          },
+          sshconfig = {
+            name = "SshConfig",
+            module = "blink-cmp-sshconfig",
           },
           conventional_commits = {
             name = "Conventional Commits",
@@ -91,8 +102,6 @@ return {
               return vim.tbl_contains({ "markdown" }, vim.bo.filetype)
             end,
             opts = {
-              -- The number of characters required to trigger completion.
-              -- Set this higher if completion is slow, 3 is default.
               dictionary_search_threshold = 3,
               score_offset = 0,
               definition_pointers = { "!", "&", "^" },
@@ -154,7 +163,7 @@ return {
         },
         menu = {
           auto_show = true,
-          border = "rounded",
+          border = custom_border,
           cmdline_position = function()
             if vim.g.ui_cmdline_pos ~= nil then
               local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
@@ -168,24 +177,19 @@ return {
           auto_show = true,
           auto_show_delay_ms = 500,
           window = {
-            border = "rounded",
+            border = custom_border,
           },
         },
       })
       opts.signature = vim.tbl_deep_extend("force", opts.signature or {}, {
         enabled = true,
         window = {
-          border = "rounded",
+          border = custom_border,
           show_documentation = false,
         },
       })
       --CMDLINE specific config
       opts.cmdline = vim.tbl_deep_extend("force", opts.cmdline or {}, {
-        -- sources = {
-        --   default = {
-        --     [";"] = { "yank" },
-        --   },
-        -- },
         enabled = true,
         keymap = {
           ["<CR>"] = { "accept", "fallback" },
@@ -206,6 +210,7 @@ return {
           },
         },
       })
+      return opts
     end,
   },
 }

@@ -15,6 +15,10 @@
 # .config/nvim/README.md
 .config/nvim/LICENSE
 
+#============================================= aerc =============================================
+.config/aerc/accounts.conf
+aerc/accounts.conf
+
 #============================================= posting =============================================
 .config/posting/
 

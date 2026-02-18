@@ -15,18 +15,16 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 
 #============================================= fzf-tab ==========================================
 zstyle ':fzf-tab:*' continuous-trigger '/'
-# set descriptions format to enable group support
-# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
-zstyle ':completion:*:descriptions' format '[%d]'
-# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*:descriptions' format ''
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'eza -1 --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions $realpath'
-zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
+zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'eza --group-directories-first --long --no-quotes --color=never --sort=type --all --icons=always --no-filesize --no-time --no-user --no-permissions --show-symlinks $realpath'
+zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview ''
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:*' fzf-min-height 15
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' popup-min-size 70 30
+zstyle ':fzf-tab:*' fzf-min-height 15
+zstyle ':fzf-tab:*' popup-min-size 60 20
+zstyle ':fzf-tab:*' show-group false
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 #============================================= Text object stuff ================================

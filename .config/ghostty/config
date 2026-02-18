@@ -18,9 +18,9 @@ quit-after-last-window-closed = true
 
 # ============================================= colors =============================================
 background = #000000
-cursor-color = #85F789
+cursor-color = #ffffff
 cursor-text = #000000
-selection-background = #bd93f9
+selection-background = #ff79c6
 selection-foreground = #000000
 shell-integration = zsh
 

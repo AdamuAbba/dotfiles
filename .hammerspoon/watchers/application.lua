@@ -14,20 +14,20 @@ obj.homepage = ""
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 obj.appsToCenter = {
-	"Finder",
-	"Karabiner-Elements",
-	"Hammerspoon",
-	"Free Download Manager",
-	"Activity Monitor",
-	"The Unarchiver",
-	"Safari",
-	"Ghostty",
-	"Zen",
-	"Stremio",
-	"Figma",
-	"Xcode",
-	"Bitwarden",
-	"Apple Music",
+	-- "Finder",
+	-- "Karabiner-Elements",
+	-- "Hammerspoon",
+	-- "Free Download Manager",
+	-- "Activity Monitor",
+	-- "The Unarchiver",
+	-- "Safari",
+	-- "Ghostty",
+	-- "Zen",
+	-- "Stremio",
+	-- "Figma",
+	-- "Xcode",
+	-- "Bitwarden",
+	-- "Apple Music",
 }
 
 --- ApplicationWatcher:start()

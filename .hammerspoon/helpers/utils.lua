@@ -22,7 +22,7 @@ M.colors = {
 	foreground = "#f8f8f2",
 	comment = "#6272a4",
 	cyan = "#80D6E7",
-	green = "#3AB75B",
+	green = "#404F3C",
 	orange = "#ffb86c",
 	glossy_pink = "#DD29D4",
 	pink = "#ff79c6",
@@ -55,8 +55,8 @@ end
 function M:nerd_alert(msg, opts)
 	opts = opts or {}
 	local styled = hs.styledtext.new(msg, {
-		font = { name = "JetBrainsMono Nerd Font", size = opts.size or 30 },
-		color = opts.color or self.colors:to_rgb().green,
+		font = { name = "Iosevka NF", size = opts.size or 30 },
+		color = opts.color or self.colors:to_rgb().white,
 		traits = { bold = true },
 	})
 	local function with_alpha(rgb, a)
@@ -64,10 +64,10 @@ function M:nerd_alert(msg, opts)
 		return rgb
 	end
 	hs.alert.show(styled, {
-		strokeColor = with_alpha(self.colors:to_rgb().green, 1),
+		strokeColor = with_alpha(self.colors:to_rgb().white, 1),
 		fillColor = with_alpha(self.colors:to_rgb().black, 1),
 		textStyle = {},
-		radius = 10,
+		radius = 8,
 	}, opts.screen, opts.duration or 2)
 end
 

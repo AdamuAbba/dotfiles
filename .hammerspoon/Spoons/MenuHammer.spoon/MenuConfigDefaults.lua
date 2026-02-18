@@ -27,7 +27,7 @@ showMenuBarItem = false
 
 -- The number of seconds that a hotkey alert will stay on screen.
 -- 0 = alerts are disabled.
-hs.hotkey.alertDuration = 0
+hs.hotkey.alertDuration = nil
 
 -- Show no titles for Hammerspoon windows.
 hs.hints.showTitleThresh = 0
@@ -45,18 +45,27 @@ askpassLocation = "/usr/local/bin/ssh-askpass"
 ----------------------------------------- Menu options ---------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
--- The number of columns to display in the menus.  Setting this too high or too low will
--- probably have odd results.
-menuNumberOfColumns = 5
+-- The number of columns to display in the menus (vertical layout = 1)
+menuNumberOfColumns = 1
 
 -- The minimum number of rows to show in menus
 menuMinNumberOfRows = 4
 
 -- The height of menu rows in pixels
-menuRowHeight = 34
+menuRowHeight = 30
 
 -- The padding to apply to each side of the menu
-menuOuterPadding = 30
+menuOuterPadding = 0
+
+-- Menu width in pixels for vertical layout
+menuWidth = 250
+
+-- Menu positioning (bottom-left corner)
+menuPaddingX = 30  -- Distance from left edge
+menuPaddingY = 60  -- Distance from bottom edge
+
+-- Extra vertical padding inside the menu (top and bottom)
+menuVerticalPadding = 0
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------- Font options ---------------------------------------------
@@ -67,7 +76,7 @@ menuOuterPadding = 30
 menuItemFont = "Iosevka NF"
 
 -- The font size to apply to menu items.
-menuItemFontSize = 19
+menuItemFontSize = 18
 
 -- The text alignment to apply to menu items.
 menuItemTextAlign = "left"
@@ -80,27 +89,27 @@ menuItemColors = {
 	-- The default colors to use.
 	default = {
 		background = "#000000",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 	-- The colors to use for the Exit menu item
 	exit = {
 		background = utils.colors.black,
-		text = utils.colors.red,
+		text = utils.colors.white,
 	},
 	-- The colors to use for the Back menu items
 	back = {
 		background = utils.colors.black,
-		text = utils.colors.yellow,
+		text = utils.colors.white,
 	},
 	-- The colors to use for menu menu items
 	submenu = {
 		background = "#000000",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 	-- The colors to use for navigation menu items
 	navigation = {
 		background = "#000000",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 	-- The colors to use for empty menu items
 	empty = {
@@ -110,19 +119,19 @@ menuItemColors = {
 	-- The colors to use for action menu items
 	action = {
 		background = "#ffffff",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 	menuBarActive = {
 		background = "#ff0000",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 	menuBarIdle = {
-		background = "#00ff00",
-		text = utils.colors.glossy_pink,
+		background = "#ffffff",
+		text = utils.colors.white,
 	},
 	display = {
 		background = "#000000",
-		text = utils.colors.glossy_pink,
+		text = utils.colors.white,
 	},
 }
 
@@ -137,12 +146,12 @@ menuHammerToggleKey = { { "cmd", "shift", "ctrl" }, "Q" }
 
 -- Menu Prefixes
 menuItemPrefix = {
-	action = "→",
+	action = " ",
 	-- action = "↩",
 	submenu = "+",
 	-- submenu = "→",
-	back = "←",
-	exit = "x",
+	back = " ",
+	exit = "󰛉",
 	navigation = "↩",
 	-- navigation = '⎋',
 	empty = "",
@@ -150,19 +159,14 @@ menuItemPrefix = {
 }
 
 -- Menu item separator
-menuKeyItemSeparator = ": "
+menuKeyItemSeparator = ":"
 
 ----------------------------------------------------------------------------------------------------
 --------------------------------------- Default Menus ----------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
--- Menus
 local mainMenu = "mainMenu"
-
--- Help menu
 local helpMenu = "helpMenu"
-
--- Applications Menus
 local applicationMenu = "applicationMenu"
 
 --============================================= Utilities =============================================
@@ -172,14 +176,8 @@ local clipboardMenu = "clipboardMenu"
 local frontmostAppMenu = "frontmostAppMenu"
 local simulatorMenu = "simulatorMenu"
 
--- Browser menus
-local browserMenu = "browserMenu"
-
 -- Display menus
 local displayMenu = "displayMenu"
-
--- Display menus
-local powerMenu = "powerMenu"
 
 -- Documents menu
 local documentsMenu = "documentsMenu"
@@ -190,9 +188,6 @@ local finderMenu = "finderMenu"
 -- Hammerspoon menu
 local hammerspoonMenu = "hammerspoonMenu"
 
---============================================= Utilities =============================================
-local helpMenu = "helpMenu"
-
 -- Media menu
 local mediaMenu = "mediaMenu"
 local spotifyMenu = "spotifyMenu"
@@ -200,20 +195,8 @@ local spotifyMenu = "spotifyMenu"
 -- Resolution menu
 local resolutionMenu = "resolutionMenu"
 
--- Scripts menu
-local scriptsMenu = "scriptsMenu"
-
 -- System menus
 local systemMenu = "systemMenu"
-
--- Text menu
-local textMenu = "textMenu"
-
--- Toggles menu
-local toggleMenu = "toggleMenu"
-
--- Window menu
-local resizeMenu = "resizeMenu"
 
 ------------------------------------------------------------------------------------------------
 -- Main Menu
@@ -240,15 +223,6 @@ menuHammerMenuList = {
 				"Applications",
 				{
 					{ cons.act.menu, applicationMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"f",
-				"Browser",
-				{
-					{ cons.act.menu, browserMenu },
 				},
 			},
 			{
@@ -287,24 +261,6 @@ menuHammerMenuList = {
 					{ cons.act.menu, helpMenu },
 				},
 			},
-			{
-				cons.cat.submenu,
-				"shift",
-				"s",
-				"System Prefs",
-				{
-					{ cons.act.menu, systemMenu },
-				},
-			},
-			{ cons.cat.submenu, "", "T", "Toggles", {
-				{ cons.act.menu, toggleMenu },
-			} },
-			{ cons.cat.submenu, "", "X", "Text", {
-				{ cons.act.menu, textMenu },
-			} },
-			{ cons.cat.submenu, "", "s", "Scripts", {
-				{ cons.act.menu, scriptsMenu },
-			} },
 		},
 	},
 
@@ -319,7 +275,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"a",
-				" Aerospace docs",
+				"Aerospace docs",
 				{
 					{ cons.act.openurl, "https://nikitabobko.github.io/AeroSpace/guide#installation" },
 				},
@@ -328,7 +284,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"h",
-				" HS docs",
+				"HS docs",
 				{
 					{
 						cons.act.func,
@@ -344,7 +300,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"m",
-				"󰧺 MH docs",
+				"MH docs",
 				{
 					{ cons.act.openurl, "https://github.com/FryJay/MenuHammer" },
 				},
@@ -353,7 +309,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"l",
-				"󰒲 LazyVim docs",
+				"LazyVim docs",
 				{
 					{ cons.act.openurl, "https://www.lazyvim.org/" },
 				},
@@ -362,7 +318,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"w",
-				" Wezterm docs",
+				"Wezterm docs",
 				{
 					{ cons.act.openurl, "https://wezterm.org/" },
 				},
@@ -371,7 +327,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"z",
-				" Zellij docs",
+				"Zellij docs",
 				{
 					{ cons.act.openurl, "https://zellij.dev/" },
 				},
@@ -390,7 +346,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"a",
-				"󰀴 Android studio",
+				"Android studio",
 				{
 					{
 						cons.act.script,
@@ -402,7 +358,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"a",
-				"  AVD",
+				"AVD",
 				{
 					{
 						cons.act.script,
@@ -414,7 +370,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"b",
-				" Books",
+				"Books",
 				{
 					{ cons.act.launcher, "Books" },
 				},
@@ -423,7 +379,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"c",
-				" ChatGPT",
+				"ChatGPT",
 				{
 					{ cons.act.launcher, "ChatGPT" },
 				},
@@ -432,7 +388,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"d",
-				" Discord",
+				"Discord",
 				{
 					{ cons.act.launcher, "Discord" },
 				},
@@ -441,16 +397,25 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"F",
-				" Finder",
+				"Finder",
 				{
 					{ cons.act.launcher, "Finder" },
 				},
 			},
 			{
 				cons.cat.action,
+				"shift",
+				"F",
+				"Figma",
+				{
+					{ cons.act.launcher, "Figma" },
+				},
+			},
+			{
+				cons.cat.action,
 				"",
 				"g",
-				"󰊠 Ghostty",
+				"Ghostty",
 				{
 					{ cons.act.launcher, "Ghostty" },
 				},
@@ -459,7 +424,7 @@ menuHammerMenuList = {
 			-- 	cons.cat.action,
 			-- 	"",
 			-- 	"w",
-			-- 	" WezTerm",
+			-- 	"WezTerm",
 			-- 	{
 			-- 		{ cons.act.launcher, "WezTerm" },
 			-- 	},
@@ -468,7 +433,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"x",
-				" Xcode",
+				"Xcode",
 				{
 					{ cons.act.launcher, "Xcode" },
 				},
@@ -477,7 +442,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"o",
-				" Obsidian",
+				"Obsidian",
 				{
 					{ cons.act.launcher, "Obsidian" },
 				},
@@ -486,7 +451,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"h",
-				" Hammerspoon",
+				"Hammerspoon",
 				{
 					{ cons.act.launcher, "Hammerspoon" },
 				},
@@ -495,7 +460,7 @@ menuHammerMenuList = {
 			-- 	cons.cat.action,
 			-- 	"",
 			-- 	"k",
-			-- 	"󰄛 Kitty",
+			-- 	"Kitty",
 			-- 	{
 			-- 		{ cons.act.launcher, "Kitty" },
 			-- 	},
@@ -504,7 +469,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"k",
-				" Karabiner",
+				"Karabiner",
 				{
 					{ cons.act.launcher, "Karabiner-Elements" },
 				},
@@ -513,7 +478,7 @@ menuHammerMenuList = {
 			-- 	cons.cat.action,
 			-- 	"",
 			-- 	"s",
-			-- 	"󰓇 Spotify",
+			-- 	"Spotify",
 			-- 	{
 			-- 		{ cons.act.launcher, "Spotify" },
 			-- 	},
@@ -522,7 +487,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"p",
-				" Postman",
+				"Postman",
 				{
 					{ cons.act.launcher, "Postman" },
 				},
@@ -530,8 +495,17 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"shift",
+				"p",
+				"Settings",
+				{
+					{ cons.act.launcher, "System Preferences" },
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
 				"s",
-				" Simulator",
+				"Simulator",
 				{
 					{ cons.act.launcher, "Simulator" },
 				},
@@ -540,7 +514,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"m",
-				" Mail",
+				"Mail",
 				{
 					{ cons.act.launcher, "Mail" },
 				},
@@ -549,7 +523,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"m",
-				"  Apple Music",
+				"Apple Music",
 				{
 					{ cons.act.launcher, "Apple Music" },
 				},
@@ -558,7 +532,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"b",
-				" Bitwarden",
+				"Bitwarden",
 				{
 					{ cons.act.launcher, "Bitwarden" },
 				},
@@ -567,7 +541,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"v",
-				" VSCode",
+				"VSCode",
 				{
 					{
 						cons.act.launcher,
@@ -579,7 +553,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"v",
-				"󰎁 Stremio",
+				"Stremio",
 				{
 					{ cons.act.launcher, "Stremio" },
 				},
@@ -588,7 +562,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"shift",
 				"w",
-				"󰖣 WhatsApp",
+				"WhatsApp",
 				{
 					{ cons.act.launcher, "WhatsApp" },
 				},
@@ -597,7 +571,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"z",
-				" Zen Browser",
+				"Zen Browser",
 				{
 					{ cons.act.launcher, "Zen" },
 				},
@@ -616,7 +590,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"a",
-				" Aerospace",
+				"Aerospace",
 				{
 					{ cons.act.menu, aerospaceMenu },
 				},
@@ -625,7 +599,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"c",
-				" Clipboard",
+				"Clipboard",
 				{
 					{ cons.act.menu, clipboardMenu },
 				},
@@ -634,7 +608,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"h",
-				"󰣪 Hammerspoon",
+				"Hammerspoon",
 				{
 					{ cons.act.menu, hammerspoonMenu },
 				},
@@ -643,7 +617,7 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"f",
-				" frontmostApp",
+				"frontmostApp",
 				{
 					{ cons.act.menu, frontmostAppMenu },
 				},
@@ -652,9 +626,18 @@ menuHammerMenuList = {
 				cons.cat.submenu,
 				"",
 				"s",
-				" Simulator",
+				"Simulator",
 				{
 					{ cons.act.menu, simulatorMenu },
+				},
+			},
+			{
+				cons.cat.submenu,
+				"shift",
+				"s",
+				"System",
+				{
+					{ cons.act.menu, systemMenu },
 				},
 			},
 		},
@@ -671,7 +654,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"t",
-				" Toggle CB",
+				"Toggle CB",
 				{
 					{
 						cons.act.func,
@@ -695,7 +678,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"m",
-				"󰘖 Maximize",
+				"Maximize",
 				{
 					{
 						cons.act.func,
@@ -709,7 +692,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"q",
-				"󰯆 Kill App",
+				"Kill App",
 				{
 					{ cons.act.system, cons.sys.forcequit },
 				},
@@ -718,7 +701,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"r",
-				"󰜉 Restart App",
+				"Restart App",
 				{
 					{
 						cons.act.func,
@@ -742,7 +725,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"r",
-				"󰜉 Restart app",
+				"Restart app",
 				{
 					{
 						cons.act.script,
@@ -754,7 +737,7 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"u",
-				"󰆴 uninstall app",
+				"uninstall app",
 				{
 					{
 						cons.act.script,
@@ -764,62 +747,6 @@ menuHammerMenuList = {
 			},
 		},
 	},
-	------------------------------------------------------------------------------------------------
-	-- Browser Menu
-	------------------------------------------------------------------------------------------------
-	browserMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "f" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"f",
-				"󰜏 Web Search",
-				{
-					{
-						cons.act.userinput,
-						"searchQuery",
-						"Web Search",
-						"Enter search criteria",
-					},
-					{
-						cons.act.openurl,
-						"https://duckduckgo.com/?q=@@searchQuery@@",
-					},
-				},
-			},
-		},
-	},
-
-	------------------------------------------------------------------------------------------------
-	-- Browser Menu
-	------------------------------------------------------------------------------------------------
-	browserMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "f" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"f",
-				"󰜏 Web Search",
-				{
-					{
-						cons.act.userinput,
-						"searchQuery",
-						"Web Search",
-						"Enter search criteria",
-					},
-					{
-						cons.act.openurl,
-						"https://duckduckgo.com/?q=@@searchQuery@@",
-					},
-				},
-			},
-		},
-	},
-
 	------------------------------------------------------------------------------------------------
 	-- Documents Menu
 	------------------------------------------------------------------------------------------------
@@ -1151,20 +1078,6 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"C",
-				"Aerospace config",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.toggleConsole()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
 				"d",
 				"Aerospace Docs",
 				{
@@ -1186,9 +1099,28 @@ menuHammerMenuList = {
 						function()
 							local output, status = hs.execute("/opt/homebrew/bin/aerospace reload-config")
 							if status then
-								utils:nerd_alert(string.format(" Aerospace config reloaded"))
+								utils:nerd_alert(string.format(" Aerospace config reloaded"))
 							else
-								utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
+								utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
+							end
+						end,
+					},
+				},
+			},
+			{
+				cons.cat.action,
+				"shift",
+				"r",
+				"Restart Aerospace",
+				{
+					{
+						cons.act.func,
+						function()
+							local output, status = hs.execute("killall AeroSpace && sleep 1 && open -a AeroSpace")
+							if status then
+								utils:nerd_alert(string.format(" Aerospace restarted"))
+							else
+								utils:nerd_alert(string.format(" error restarting aerospace: %s", output))
 							end
 						end,
 					},
@@ -1198,44 +1130,16 @@ menuHammerMenuList = {
 				cons.cat.action,
 				"",
 				"q",
-				"Quit Aerospace",
+				"Kill Aerospace",
 				{
 					{
 						cons.act.script,
-						"killall aerospace",
+						"killall AeroSpace",
 					},
 				},
 			},
 		},
 	},
-	------------------------------------------------------------------------------------------------
-	-- Layout Menu <<don't need this for now>>
-	------------------------------------------------------------------------------------------------
-	-- [layoutMenu] = {
-	-- 	parentMenu = mainMenu,
-	-- 	menuHotkey = nil,
-	-- 	menuItems = {
-	-- 		{
-	-- 			cons.cat.action,
-	-- 			"",
-	-- 			"E",
-	-- 			"Split Safari/iTunes",
-	-- 			{
-	-- 				{
-	-- 					cons.act.func,
-	-- 					function()
-	-- 						-- See Hammerspoon layout documentation for more info on this
-	-- 						local mainScreen = hs.screen({ x = 0, y = 0 })
-	-- 						hs.layout.apply({
-	-- 							{ "Safari", nil, mainScreen, hs.layout.left50, nil, nil },
-	-- 							{ "iTunes", nil, mainScreen, hs.layout.right50, nil, nil },
-	-- 						})
-	-- 					end,
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 
 	------------------------------------------------------------------------------------------------
 	-- Media Menu
@@ -1497,57 +1401,11 @@ menuHammerMenuList = {
 	},
 
 	------------------------------------------------------------------------------------------------
-	-- Scripts Menu
-	------------------------------------------------------------------------------------------------
-	[scriptsMenu] = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "s" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"shift",
-				"s",
-				"Restart sim app",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/mac-os/restart_sim_app.sh",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"a",
-				"Aerospace Reload",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/aerospace/reload.sh",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"s",
-				"Sketchybar Reload",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/sketchybar/reload.sh",
-					},
-				},
-			},
-		},
-	},
-
-	------------------------------------------------------------------------------------------------
 	-- System Menu
 	------------------------------------------------------------------------------------------------
 	systemMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper_shift, "s" },
+		parentMenu = utilitiesMenu,
+		menuHotkey = nil,
 		menuItems = {
 			{
 				cons.cat.action,
@@ -1588,74 +1446,7 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"x",
-				"System Prefs",
-				{
-					{ cons.act.launcher, "System Preferences" },
-				},
-			},
-		},
-	},
-
-	------------------------------------------------------------------------------------------------
-	-- Text Menu
-	------------------------------------------------------------------------------------------------
-	[textMenu] = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"C",
-				"Remove clipboard format",
-				{
-					{
-						cons.act.func,
-						function()
-							local pasteboardContents = hs.pasteboard.getContents()
-							hs.pasteboard.setContents(pasteboardContents)
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"E",
-				"Empty the clipboard",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.pasteboard.setContents("")
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"T",
-				"Type clipboard contents",
-				{
-					{ cons.act.typetext, "@@mhClipboardText@@" },
-				},
-			},
-		},
-	},
-
-	------------------------------------------------------------------------------------------------
-	-- Toggle menu
-	------------------------------------------------------------------------------------------------
-	[toggleMenu] = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"D",
+				"d",
 				"Hide/Show Dock",
 				{
 					{ cons.act.keycombo, { "cmd", "alt" }, "d" },
@@ -1663,17 +1454,8 @@ menuHammerMenuList = {
 			},
 			{
 				cons.cat.action,
-				"",
-				"S",
-				"Start Screensaver",
-				{
-					{ cons.act.system, cons.sys.screensaver },
-				},
-			},
-			{
-				cons.cat.action,
 				"shift",
-				"W",
+				"w",
 				"Disable wi-fi",
 				{
 					{
@@ -1687,7 +1469,7 @@ menuHammerMenuList = {
 			{
 				cons.cat.action,
 				"",
-				"W",
+				"w",
 				"Enable wi-fi",
 				{
 					{

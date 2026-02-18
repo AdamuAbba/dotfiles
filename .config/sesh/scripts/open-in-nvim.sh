@@ -1,3 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-tmux send-keys "nvim -c 'lua require(\"snacks\").picker(\"files\", { root = false })'" Enter
+WINDOW_NAME="$1"
+
+tmux select-window -t 1
+tmux rename-window "$WINDOW_NAME"

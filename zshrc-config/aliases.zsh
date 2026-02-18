@@ -43,14 +43,15 @@ alias run-prompt="$HOME/.config/scripts/ai/run-prompt.sh"
 #============================================= github =============================================
 alias edit-git-global="nvim $HOME/.config/git/config"
 alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
-alias gbd='tmux display-popup -E -w 50% -h 50% -T "Delete branch  " -d "#{pane_current_path}" $HOME/.config/scripts/git/delete-branch.sh'
+alias gbd="$SCRIPT_DIR/git/delete-branch.sh"
 
-#============================================= bat =============================================
-alias -g -- cat="$HOME/.config/scripts/mac-os/view.sh"
+#============================================= POSIX/Unix util (enhancements) ========================================
+alias -g -- cat="$SCRIPT_DIR/mac-os/view.sh"
+alias man="$SCRIPT_DIR/mac-os/manpopup.sh"
+alias ls="eza --group-directories-first --grid --no-quotes --color=always --sort=type --all --icons=always --no-filesize --no-time --no-user --no-permissions --show-symlinks"
 
 #============================================= tools =============================================
 alias kpp="gruyere --details"
-alias ls="eza --group-directories-first --grid --no-quotes --color=always --long --sort=type --all --icons=always --no-time --no-user --no-permissions --show-symlinks"
 alias fm="fzf-make"
 alias rm='trash'
 alias koji="koji --config=$HOME/.config/koji/config.toml"
@@ -61,35 +62,12 @@ alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --f
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
 alias gh-mp="gh markdown-preview --dark-mode"
 alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
-alias cs='env CARGO_SELECTOR_CONFIG=$HOME/.config/cargo-selector/config.toml cargo selector'
 alias speedtest="speedtest -u decimal-bytes"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
-alias edit-pt="nvim $HOME/.config/presenterm/config.yaml"
-alias edit-scripts="nvim $HOME/.config/scripts/"
-alias edit-hsp="cd $HOME/.hammerspoon && nvim -c 'lua require(\"snacks\").picker(\"files\", { root = false })'"
-alias edit-sketchybar="nvim $HOME/.config/sketchybar/"
-alias edit-nvim="nvim $HOME/.config/nvim/"
-alias edit-kbe="nvim $HOME/.config/karabiner/assets/complex_modifications/"
-alias edit-yz="nvim $HOME/.config/yazi/yazi.toml"
-alias edit-alias="nvim $HOME/zshrc-config/aliases.zsh"
-alias edit-dotfiles="nvim $HOME/Documents/dotfiles/"
-alias edit-starship="nvim $HOME/.config/starship.toml"
-alias edit-wezterm="nvim $HOME/.config/wezterm/wezterm.lua"
-alias edit-hx="hx $HOME/.config/helix/config.toml"
-alias edit-hx-lang="hx $HOME/.config/helix/languages.toml"
-alias edit-zellij="nvim $HOME/.config/zellij/config.kdl"
-alias edit-tmux="nvim $HOME/.config/tmux/tmux.conf"
-alias edit-plugins="nvim $HOME/zshrc-config/plugins.zsh"
+alias edit-dotfiles="cd $HOME/Documents/dotfiles && nvim -c 'lua require(\"snacks\").picker(\"files\", { root = false, hidden = true, ignored = true })'"
 alias edit-z-layout="nvim $HOME/.config/zellij/layouts/default.kdl"
-alias edit-atac-theme="nvim $ATAC_THEME"
-alias edit-atac-kb="nvim $ATAC_KEY_BINDINGS"
-alias edit-skhd="nvim $HOME/.config/skhd/skhdrc"
-alias edit-aero="nvim $HOME/.config/aerospace/aerospace.toml"
-alias edit-kitty="nvim $HOME/.config/kitty/kitty.conf"
 alias edit-vault="nvim $HOME/Documents/shytypes-obs-vault/"
-alias edit-ghostty="nvim $HOME/.config/ghostty/config"
 alias mini-trash="cd ~/.local/share/nvim/mini.files/trash/ && ls"
 
 #============================================= zsh =============================================
-alias edit-zsh="nvim $HOME/.zshrc"
-alias reload-zsh="source ~/.zshrc"
+alias reload-zsh="omz reload"

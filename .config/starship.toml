@@ -35,7 +35,8 @@ red = "#ff5555"
 red_dark = "#3a0b0b"
 yellow = "#f1fa8c"
 black = "#000000"
-
+beige = "#F9F0E1"
+beige_dark = "#6E644E"
 
 [character]
 success_symbol = "[I  ](bold fg:green)"
@@ -81,7 +82,7 @@ format = ' [$symbol$version]($style)[](cyan_dark)'
 #============================================= Directory =============================================
 [directory]
 read_only = " 󰌾"
-style = "bold green"
+style = "fg:white bold bg:black"
 read_only_style = "bold red"
 format = '[$path]($style)[$read_only]($read_only_style) '
 home_symbol = "/Users/abba"
@@ -177,6 +178,12 @@ symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
+
+#============================================= bun =============================================
+[bun]
+symbol = "[](beige_dark) "
+style = "fg:beige bold bg:beige_dark"
+format = ' [$symbol$version]($style)[](beige_dark)'
 
 #============================================= node =============================================
 [nodejs]
