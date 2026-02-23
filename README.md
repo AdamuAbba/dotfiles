@@ -172,7 +172,7 @@ The entire setup uses the **Dracula** color scheme consistently across all tools
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/AdamuAbba/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
