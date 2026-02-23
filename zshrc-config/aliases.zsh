@@ -44,6 +44,7 @@ alias run-prompt="$HOME/.config/scripts/ai/run-prompt.sh"
 alias edit-git-global="nvim $HOME/.config/git/config"
 alias edit-git='nvim "$(git rev-parse --show-toplevel)/.git/config"'
 alias gbd="$SCRIPT_DIR/git/delete-branch.sh"
+alias ga="$SCRIPT_DIR/git/git-add-confirm.sh"
 
 #============================================= POSIX/Unix util (enhancements) ========================================
 alias -g -- cat="$SCRIPT_DIR/mac-os/view.sh"
@@ -60,7 +61,7 @@ alias update-npm="npm install -g npm@latest"
 alias update-brew-pkgs="brew update && brew upgrade && brew cleanup --prune=all"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias presenterm="$HOME/Documents/presenterm/target/release/presenterm"
-alias gh-mp="gh markdown-preview --dark-mode"
+alias ghmp="gh markdown-preview --dark-mode"
 alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
 alias speedtest="speedtest -u decimal-bytes"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"

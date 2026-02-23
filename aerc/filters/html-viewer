@@ -1,0 +1,3 @@
+#!/bin/bash
+
+w3m -T text/html -I UTF-8 | nvim -R -c 'set wrap linebreak nonumber norelativenumber laststatus=0 filetype=markdown' -

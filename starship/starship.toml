@@ -1,0 +1,277 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 1000
+add_newline = true
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$git_state\
+$all\
+$line_break\
+$character
+"""
+
+# Use the color palette
+palette = "dracula"
+
+# Define Dracula color palette
+[palettes.dracula]
+white = "#ffffff"
+background = "#282a36"
+current_line = "#44475a"
+gray = "#313243"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+black = "#000000"
+beige = "#F9F0E1"
+beige_dark = "#6E644E"
+
+[character]
+success_symbol = "[I  ](bold fg:green)"
+error_symbol = '[✘   ](bold fg:red)'
+vimcmd_symbol = "[N  ](bold fg:purple)"
+vimcmd_replace_one_symbol = "[󰝿   ](bold fg:purple)"
+vimcmd_replace_symbol = "[   ](bold fg:purple)"
+vimcmd_visual_symbol = "[   ](bold fg:cyan)"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold cyan"
+
+[cmd_duration]
+style = "bold yellow"
+disabled = true
+
+[aws]
+symbol = "  "
+style = "bold orange"
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+#============================================= dart =============================================
+[dart]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+#============================================= Directory =============================================
+[directory]
+read_only = " 󰌾"
+style = "fg:white bold bg:black"
+read_only_style = "bold red"
+format = '[$path]($style)[$read_only]($read_only_style) '
+home_symbol = "/Users/abba"
+truncation_length = 0
+
+[directory.substitutions]
+"documents" = "Documents 󰈙 "
+"Downloads" = "Downloads  "
+"Music" = "Music  "
+"Pictures" = "Pictures  "
+"others" = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+#============================================= Git =============================================
+[git_commit]
+tag_symbol = '  '
+
+[git_branch]
+symbol = "   "
+style = "fg:white bold bg:gray"
+format = "[](gray)[$symbol$branch]($style)"
+
+[git_status]
+format = '[ ](bg:gray)[(fg:white bg:gray)[$all_status]($style)](fg:white bg:gray)[](gray)'
+style = "bg:gray"
+conflicted = "[= ](fg:red bold bg:gray)"
+stashed = '[\$$count ](fg:orange bg:gray)'
+deleted = '[-$count ](fg:red bold bg:gray)'
+renamed = '[»$count ](fg:purple bold bg:gray)'
+modified = '[!$count ](fg:cyan bold bg:gray)'
+staged = '[+$count ](fg:green bold bg:gray)'
+untracked = '[?$count ](fg:yellow bold bg:gray)'
+ahead = '[⇡ $count ](fg:green bold bg:gray)'
+behind = '[⇣ $count ](fg:red bold bg:gray)'
+diverged = '[⇕ \(⇡ $ahead_count⇣ $behind_count\) ](fg:orange bold bg:gray)'
+
+#============================================= Golang =============================================
+[golang]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+style = "bold purple"
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+#============================================= bun =============================================
+[bun]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+#============================================= node =============================================
+[nodejs]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+#============================================= package =============================================
+[package]
+symbol = "[](gray)󰏗 "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+[rlang]
+symbol = "󰟔 "
+
+#============================================= ruby =============================================
+[ruby]
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+#============================================= rust =============================================
+[rust]
+symbol = "[](gray)🦀 "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "

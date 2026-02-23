@@ -1,9 +1,5 @@
 export GIT_PAGER=delta
 
-gnr() {
-  gh repo create '$1' --add-readme --public --description '$2' --disable-wiki --license mit --clone
-}
-
 gcb() {
   url="$1"
   repo="${url##*/}"

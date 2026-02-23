@@ -1,0 +1,8 @@
+Respond with ONLY the commit message formatted as a gitcommit fenced code block. No explanation, no meta text, no extra lines.
+
+Requirements:
+- Use Commitizen format: type(scope): short imperative title
+- Title <= 50 characters
+- Body wrapped at 72 characters
+- If no body needed, output only the title line
+- If breaking change, include a footer line starting with "BREAKING CHANGE: "
