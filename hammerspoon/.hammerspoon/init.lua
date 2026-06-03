@@ -1,7 +1,15 @@
+---@diagnostic disable: need-check-nil, undefined-field
+local utils = require("helpers.utils")
+
 hs.loadSpoon("SpoonInstall")
+local KSheet = hs.loadSpoon("KSheet")
+KSheet:init()
+KSheet:bindHotkeys({
+  hide = { {"ctrl"}, "[" },
+})
 
 -- downloaded and modified from https://github.com/FryJay/MenuHammer
--- i swear dude is a legend, respect 🫡
+-- I swear dude is a legend, respect 🫡
 ---@diagnostic disable-next-line: undefined-field
 hs.loadSpoon("MenuHammer"):enter()
 hs.dockicon.hide()
@@ -13,9 +21,10 @@ require("helpers.auto_cmds_events")
 --============================================= watchers =============================================
 require("watchers")
 
--- local keylogger = require("helpers.key_logger")
 --========================== Debug zone =========================================
+-- local keylogger = require("helpers.key_logger")
 -- keylogger.keyTap:start()
 -- keylogger.flagTap:start()
 
---================================== Do not re-order...shit breaks ================
+--================================== Do not re-order shit breaks ================
+-- utils.initFocus()

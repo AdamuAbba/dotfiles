@@ -12,7 +12,6 @@ export FZF_DEFAULT_OPTS="
   --preview-window=right:50%:border-left
   --pointer ''
   --marker ''
-  --input-label=' Input '
   --bind='result:transform-list-label:
     if [[ -z \$FZF_QUERY ]]; then
       echo \" \$FZF_MATCH_COUNT items \"
@@ -21,9 +20,9 @@ export FZF_DEFAULT_OPTS="
     fi'
   --bind='focus:transform-preview-label:[[ -n {} ]] && printf \" [%s] \" {}'
   --color=border:${DRACULA_WHITE},label:${DRACULA_WHITE}
-  --color=preview-border:${DRACULA_WHITE},preview-label:${DRACULA_WHITE}
+  --color=preview-border:${DRACULA_WHITE},preview-label:${DRACULA_STEEL_GRAY}
   --color=input-border:${DRACULA_WHITE},input-label:${DRACULA_WHITE}
-  --color=bg+:${DRACULA_GREEN},fg+:${DRACULA_WHITE},fg:${DRACULA_WHITE},prompt:${DRACULA_WHITE}
+  --color=bg+:${DRACULA_GRAY},fg+:${DRACULA_WHITE},fg:${DRACULA_WHITE},prompt:${DRACULA_WHITE}
 "
 
 _fzf_compgen_path() {

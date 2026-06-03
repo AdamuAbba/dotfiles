@@ -1,10 +1,55 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "mfussenegger/nvim-lint",
+    },
     event = "VeryLazy",
     opts = function(_, opts)
       local theme_colors = require("config/theme-colors")
       local icons = LazyVim.config.icons
+
+      local separators = {
+        left = "",
+        right = "",
+      }
+
+      local show_linters = function()
+        local ft = vim.bo.filetype
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
+        local linters = require("lint").linters_by_ft[ft] or {}
+
+        for _, client in ipairs(clients) do
+          if client.name == "eslint" then
+            table.insert(linters, "eslint")
+          end
+        end
+
+        if ft == "rust" then
+          table.insert(linters, "ra:Clippy")
+        end
+
+        if #linters == 0 then
+          return "LNT:[None]"
+        end
+
+        return "LNT:[" .. table.concat(linters, ", ") .. "]"
+      end
+
+      local formatters_for_buf = function()
+        if vim.bo.filetype == "rust" then
+          return "FMT:[ra:rustfmt]"
+        end
+        local ret = require("conform").list_formatters(0)
+        if #ret == 0 then
+          return "FMT:[None]"
+        end
+        local names = {}
+        for _, f in ipairs(ret) do
+          table.insert(names, f.name)
+        end
+        return "FMT:[" .. table.concat(names, ", ") .. "]"
+      end
 
       local custom_dracula_theme = {
         normal = {
@@ -16,36 +61,36 @@ return {
           z = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
         },
         insert = {
-          a = { fg = theme_colors.white, bg = "#58514E", bold = true, gui = "bold" },
+          a = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
           b = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
-          c = { bg = theme_colors.black, bold = true },
+          c = { bg = theme_colors.black },
           x = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
-          y = { fg = theme_colors.white, bg = "#58514E", bold = true },
-          z = { fg = theme_colors.white, bg = "#58514E", bold = true },
+          y = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          z = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
         },
         visual = {
-          a = { fg = theme_colors.black, bg = theme_colors.pink, gui = "bold", bold = true },
-          b = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          c = { bg = theme_colors.black, gui = "bold" },
-          x = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          y = { fg = theme_colors.black, bg = theme_colors.pink, gui = "bold", bold = true },
-          z = { fg = theme_colors.black, bg = theme_colors.pink, gui = "bold", bold = true },
+          a = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          b = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          c = { bg = theme_colors.black },
+          x = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          y = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          z = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
         },
         command = {
-          a = { fg = theme_colors.black, bg = theme_colors.orange, bold = true, gui = "bold" },
-          b = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          c = { bg = theme_colors.black, gui = "bold", bold = true },
-          x = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          y = { fg = theme_colors.black, bg = theme_colors.orange, gui = "bold", bold = true },
-          z = { fg = theme_colors.black, bg = theme_colors.orange, gui = "bold", bold = true },
+          a = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          b = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          c = { bg = theme_colors.black },
+          x = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          y = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          z = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
         },
         replace = {
-          a = { fg = theme_colors.black, bg = theme_colors.yellow, bold = true },
-          b = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          c = { bg = theme_colors.black, gui = "bold", bold = true },
-          x = { fg = theme_colors.white, bg = theme_colors.gray, gui = "bold", bold = true },
-          y = { fg = theme_colors.black, bg = theme_colors.yellow, gui = "bold", bold = true },
-          z = { fg = theme_colors.black, bg = theme_colors.yellow, gui = "bold", bold = true },
+          a = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          b = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          c = { bg = theme_colors.black },
+          x = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          y = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+          z = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
         },
         inactive = {
           a = { bg = theme_colors.black },
@@ -66,11 +111,11 @@ return {
         lualine_a = {
           {
             "mode",
-            separator = { left = "", right = "" },
+            separator = { left = separators.left, right = separators.right },
           },
         },
         lualine_b = {
-          { "branch", separator = { right = "" } },
+          { "branch", separator = { right = separators.right } },
           {
             "diagnostics",
             symbols = {
@@ -94,7 +139,7 @@ return {
                 bold = true,
               }
             end,
-            separator = { right = "" },
+            separator = { right = separators.right },
           },
         },
 
@@ -105,15 +150,31 @@ return {
         lualine_z = {
           {
             "lsp_status",
-            icon = "󰘿 ",
+            icon = "",
             symbols = {
               spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
               done = "✓",
-              separator = ", ",
+              separator = ",",
             },
             show_name = true,
+            draw_empty = true,
+            separator = { left = separators.left },
+            fmt = function(str)
+              if #str == 0 then
+                return "LSP:[None]"
+              end
+              return "LSP:[" .. str .. "]"
+            end,
+          },
+          {
+            show_linters,
             draw_empty = false,
-            separator = { left = "", right = "" },
+            separator = { right = separators.right },
+          },
+          {
+            formatters_for_buf,
+            draw_empty = false,
+            separator = { right = separators.right },
           },
         },
       })
@@ -130,11 +191,12 @@ return {
           return ""
         end,
         draw_empty = true,
-        separator = { left = "" },
+        separator = { left = separators.left },
         color = { gui = "bold" },
       })
 
       local lualine_x_section = opts.sections.lualine_x or {}
+      -- Remove the FIRST entry (assumes Copilot is always first)
       local new = {}
 
       for _, comp in ipairs(lualine_x_section) do
@@ -143,6 +205,8 @@ return {
         end
       end
 
+      table.remove(new, 1)
+      table.remove(new, 2)
       opts.sections.lualine_x = new
 
       --============================================= Lualine y =============================================
@@ -151,7 +215,7 @@ return {
           return ""
         end,
         draw_empty = false,
-        separator = { left = "" },
+        separator = { left = separators.left },
         color = { gui = "bold" },
       })
 

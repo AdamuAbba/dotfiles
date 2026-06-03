@@ -1,5 +1,5 @@
 return {
-  custom_border = { "╭", "-", "╮", "|", "╯", "-", "╰", "|" },
+  custom_border = { "╭", "─", "╮", "|", "╯", "─", "╰", "|" },
   diagnostics = {
     Error = " ",
     Hint = "󰠠 ",

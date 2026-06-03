@@ -12,18 +12,33 @@ if [ "$current_session" = "$SESSION" ]; then
   exit 0
 fi
 
+# sesh connect "$(
+#   sesh list -t -c --hide-duplicates | fzf --tmux 50%,50% \
+#     --padding=0,0,0,1.5% \
+#     --preview-window hidden \
+#     --border=rounded \
+#     --border-label=" Sesh " \
+#     --color=label:bold:"${DRACULA_STEEL_GRAY}" \
+#     --color=border:bold:${DRACULA_WHITE} \
+#     --color=input-border:${DRACULA_WHITE},input-label:${DRACULA_WHITE} \
+#     --color=prompt:${DRACULA_WHITE} \
+#     --border-label-pos=3 \
+#     --input-border \
+#     --prompt " " \
+#     --bind "ctrl-d:execute(tmux kill-session -t {})+reload(sesh list -t -c --hide-duplicates)"
+# )"
+
+
 sesh connect "$(
-  sesh list -t -c --hide-duplicates | fzf --tmux 50%,50% \
+  sesh list -t -c --hide-duplicates | fzf \
     --padding=0,0,0,1.5% \
     --preview-window hidden \
-    --border=rounded \
-    --border-label=" Sesh " \
-    --color=label:bold:${DRACULA_WHITE} \
+    --border=none \
+    --color=label:bold:"${DRACULA_STEEL_GRAY}" \
     --color=border:bold:${DRACULA_WHITE} \
     --color=input-border:${DRACULA_WHITE},input-label:${DRACULA_WHITE} \
     --color=prompt:${DRACULA_WHITE} \
-    --border-label-pos=3 \
     --input-border \
-    --prompt "⚡ " \
-    --bind "ctrl-d:execute(tmux kill-session -t {2..})+reload(sesh list -t -c --hide-duplicates)"
+    --prompt " " \
+    --bind "ctrl-d:execute(tmux kill-session -t {})+reload(sesh list -t -c --hide-duplicates)"
 )"

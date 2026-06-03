@@ -4,8 +4,8 @@ local m = {}
 
 -- increase volume
 local function get_volume()
-	---@diagnostic disable-next-line: undefined-field
-	local volume = hs.audiodevice.defaultOutputDevice():volume()
+	local outputDevice = hs.audiodevice.defaultOutputDevice()
+	local volume = outputDevice:volume()
 	return volume
 end
 

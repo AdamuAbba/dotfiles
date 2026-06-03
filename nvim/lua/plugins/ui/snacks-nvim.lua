@@ -2,90 +2,23 @@
 return {
   {
     "folke/snacks.nvim",
-    keys = function(_, keys)
-      vim.list_extend(keys, {
-        { "<leader>,", false },
-        { "<leader>:", false },
-        { "<leader>/", false },
-        { "<leader>e", false },
-        { "<leader>E", false },
-        { '<leader>s"', false },
-        { "<leader><space>", false },
-        { "<leader>sg", false },
-        { "<leader>sG", false },
-        { "<leader>sa", false },
-        { "<leader>sj", false },
-        { "<leader>sR", false },
-        { "<leader>sl", false },
-        { "<leader>uC", false },
-        { "<leader>fB", false },
-        { "<leader>fR", false },
-        { "<leader>fT", false },
-        { "<leader>sb", false },
-        { "<leader>sB", false },
-        { "<leader>su", false },
-        { "<leader>sM", false },
-        { "<leader>fe", false },
-        { "<leader>fE", false },
-        -------- search
-        { "<leader>sk", false },
-        { "<leader>sm", false },
-        { "<leader>sC", false },
-        { "<leader>sc", false },
-        { "<leader>sa", false },
-        { "<leader>s/", false },
-        { "<leader>sq", false },
-        -------- find
-        { "<leader>fb", false },
-        { "<leader>ff", false },
-        { "<leader>fF", false },
-        { "<leader>fh", false },
-        { "<leader>fr", false },
-        { "<leader>fc", false },
-        { "<leader>fp", false },
-        -------- grep
-        { "<leader>fg", false },
-        { "<leader>sw", false },
-        { "<leader>sW", false },
-        -------- terminal
-        { "<leader>ft", false },
-        { "<leader>fT", false },
-        { "<c-/>", false },
-        { "<c-_>", false },
-        -------- search
-        { "<leader>sh", false },
-        { "<leader>sH", false },
-        { "<leader>sp", false },
-        -------- git
-        { "<leader>gi", false },
-        { "<leader>gI", false },
-        { "<leader>go", false },
-        { "<leader>gd", false },
-        { "<leader>gD", false },
-        { "<leader>gs", false },
-        { "<leader>gS", false },
-        { "<leader>gb", false },
-        { "<leader>gB", false },
-        { "<leader>gf", false },
-        { "<leader>gl", false },
-        { "<leader>gL", false },
-        { "<leader>gY", false },
-        { "<leader>gy", false },
-        { "<leader>gp", false },
-        { "<leader>gP", false },
-        -------- diagnostics
-        { "<leader>sd", false },
-        { "<leader>sD", false },
-        ---------- lsp (disable Snacks lsp bindings here also just incase)
-        { "gd", false },
-        { "gD", false },
-        { "gr", false },
-        { "gI", false },
-        { "gy", false },
-        { "<leader>ss", false },
-        { "<leader>sS", false },
-
-        --============================================= Notification =============================================
+    keys = function()
+      --============================================= Notification =============================================
+      return {
+        {
+          "<leader>.",
+          function()
+            Snacks.scratch()
+          end,
+          desc = "Toggle Scratch Buffer",
+        },
+        {
+          "<leader>S",
+          function()
+            Snacks.scratch.select()
+          end,
+          desc = "Select Scratch Buffer",
+        },
         {
           "<leader>n",
           function()
@@ -100,11 +33,11 @@ return {
           end,
           desc = "Icons",
         },
-      })
+      }
     end,
     ---@param opts snacks.Config
     opts = function(_, opts)
-      local custom_border = require("lib..icons").custom_border
+      local custom_border = require("lib.icons").custom_border
 
       ---@type table<string, snacks.win.Config>
       opts.styles = vim.tbl_deep_extend("force", opts.styles or {}, {
@@ -184,6 +117,10 @@ return {
       --============================================= input =============================================
       opts.input = vim.tbl_deep_extend("force", opts.input or {}, {
         enabled = true,
+        win = {
+          border = custom_border,
+          backdrop = false,
+        },
       })
 
       --============================================= scope =============================================
@@ -293,6 +230,7 @@ return {
       }
       --============================================= picker =============================================
       opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
+        enabled = false,
         hidden = true,
         layout = {
           cycle = false,
@@ -448,13 +386,10 @@ return {
       opts.statuscolumn = vim.tbl_deep_extend("force", opts.statuscolumn or {}, {
         enabled = true,
         left = {},
-        right = { "sign", "fold" },
+        right = {"fold" },
         folds = {
           open = true,
           git_hl = true,
-        },
-        git = {
-          patterns = { "GitSign", "MiniDiffSign" },
         },
         refresh = 50,
       })

@@ -19,6 +19,7 @@ palette = "dracula"
 # Define Dracula color palette
 [palettes.dracula]
 white = "#ffffff"
+steel_gray = "#989FA3"
 background = "#282a36"
 current_line = "#44475a"
 gray = "#313243"
@@ -34,9 +35,9 @@ beige = "#F9F0E1"
 beige_dark = "#6E644E"
 
 [character]
-success_symbol = "[I  ](bold fg:green)"
+success_symbol = "[I  ](bold fg:steel_gray)"
 error_symbol = '[✘   ](bold fg:red)'
-vimcmd_symbol = "[N  ](bold fg:purple)"
+vimcmd_symbol = "[N  ](bold fg:steel_gray)"
 vimcmd_replace_one_symbol = "[󰝿   ](bold fg:purple)"
 vimcmd_replace_symbol = "[   ](bold fg:purple)"
 vimcmd_visual_symbol = "[   ](bold fg:cyan)"
@@ -60,7 +61,9 @@ symbol = " "
 symbol = " "
 
 [cmake]
-symbol = " "
+symbol = "[](gray) "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
 
 [conda]
 symbol = " "
@@ -77,18 +80,11 @@ format = ' [$symbol$version]($style)[](gray)'
 #============================================= Directory =============================================
 [directory]
 read_only = " 󰌾"
-style = "fg:white bold bg:black"
+style = "fg:steel_gray bold bg:black"
 read_only_style = "bold red"
 format = '[$path]($style)[$read_only]($read_only_style) '
 home_symbol = "/Users/abba"
 truncation_length = 0
-
-[directory.substitutions]
-"documents" = "Documents 󰈙 "
-"Downloads" = "Downloads  "
-"Music" = "Music  "
-"Pictures" = "Pictures  "
-"others" = " "
 
 [docker_context]
 symbol = " "
@@ -268,7 +264,9 @@ style = "fg:white bold bg:gray"
 format = ' [$symbol$version]($style)[](gray)'
 
 [swift]
-symbol = " "
+symbol = "[](gray)  "
+style = "fg:white bold bg:gray"
+format = ' [$symbol$version]($style)[](gray)'
 
 [zig]
 symbol = " "

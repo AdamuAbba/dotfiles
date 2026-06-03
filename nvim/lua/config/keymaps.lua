@@ -6,23 +6,99 @@ local map = vim.keymap.set
 local del = vim.keymap.del
 local icons = require("lib.icons")
 
------- lazyvim terminal defaults
+--============================================= Lazy defaults =============================================
+------ terminal defaults
 del("n", "<leader>fT")
 del("n", "<leader>ft")
 del("n", "<c-/>")
 del("n", "<c-_>")
 
------- lazyvim defaults
+------ Git
 del("n", "<leader>gb")
 del("n", "<leader>gB")
 del("n", "<leader>gl")
 del("n", "<leader>gL")
 del("n", "<leader>gY")
 del("n", "<leader>gf")
-del("n", "<leader>go")
 del("i", "<Tab>")
--- del({ "i", "x", "n", "s" }, "<C-s>")
 
+------ Snacks Toggle module
+del("n", "<leader>uf")
+del("n", "<leader>uF")
+-- del("n", "<leader>uG")
+del("n", "<leader>ug")
+del("n", "<leader>uh")
+del("n", "<leader>uz")
+del("n", "<leader>uZ")
+del("n", "<leader>ui")
+del("n", "<leader>uI")
+del("n", "<leader>up")
+del("n", "<leader>ur")
+del("n", "<leader>us")
+del("n", "<leader>uS")
+del("n", "<leader>uL")
+del("n", "<leader>ul")
+del("n", "<leader>ud")
+del("n", "<leader>uD")
+del("n", "<leader>uc")
+del("n", "<leader>uA")
+del("n", "<leader>ua")
+del("n", "<leader>uT")
+del("n", "<leader>ub")
+del("n", "<leader>uw")
+
+------ diagnostics/quickfix
+del("n", "<leader>xl")
+del("n", "<leader>xq")
+
+------ tabs
+del("n", "<leader><tab>l")
+del("n", "<leader><tab>o")
+del("n", "<leader><tab>f")
+del("n", "<leader><tab><tab>")
+del("n", "<leader><tab>]")
+del("n", "<leader><tab>d")
+del("n", "<leader><tab>[")
+
+------ keywordprg
+del("n", "<leader>K")
+
+------ lazy
+del("n", "<leader>l")
+del("n", "<leader>L")
+
+wk.add({
+  { "<leader>l", group = "Lazy", mode = { "n" } },
+  { "<leader>ll", "<cmd>Lazy<cr>", desc = "Plugin manager" },
+  {
+    "<leader>lc",
+    function()
+      LazyVim.news.changelog()
+    end,
+    desc = "LazyVim Changelog",
+  },
+})
+
+----- window
+del("n", "<leader>-")
+del("n", "<leader>|")
+
+wk.add({
+  { "<leader>wb", "<C-W>s", desc = "Split Window Below", remap = true },
+  { "<leader>wr", "<C-W>v", desc = "Split Window Right", remap = true },
+})
+
+---- buffer
+del("n", "[b")
+del("n", "]b")
+del("n", "<leader>bb")
+del("n", "<leader>`")
+del("n", "<leader>bD")
+del("n", "<leader>bd")
+
+wk.add({
+  { mode = "n", "<leader>bd", "<cmd>:bd<cr>", desc = "Delete Buffer" },
+})
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
@@ -31,33 +107,6 @@ map({ "n", "i", "v" }, "<Left>", "<NOP>", { noremap = true })
 map({ "n", "i", "v" }, "<Right>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "<C-g>", "<NOP>", { noremap = true })
 map({ "n", "v" }, "q", "<NOP>", { noremap = true })
-
---============================================= Open URL =============================================
-local open_command = "xdg-open"
-if vim.fn.has("mac") == 1 then
-  open_command = "open"
-end
-
-local function url_repo()
-  local cursorword = vim.fn.expand("<cfile>")
-  if string.find(cursorword, "^[a-zA-Z0-9-_.]*/[a-zA-Z0-9-_.]*$") then
-    cursorword = "https://github.com/" .. cursorword
-  end
-  return cursorword or ""
-end
-
-wk.add({
-  {
-    "gl",
-    function()
-      vim.fn.jobstart({ open_command, url_repo() }, { detach = true })
-    end,
-    icon = " ",
-    desc = "Open link under cursor",
-    silent = true,
-    mode = { "n" },
-  },
-})
 
 --============================================= Create Blank Newline =============================================
 wk.add({
@@ -410,7 +459,7 @@ local function new_task_by_date()
 end
 
 wk.add({
-  { "<leader>m", group = "Tasks", icon = icons.ui.Task, mode = { "n" } },
+  { "<leader>m", group = "tasks", icon = icons.ui.Task, mode = { "n" } },
   {
     "<leader>mn",
     new_task_by_date,

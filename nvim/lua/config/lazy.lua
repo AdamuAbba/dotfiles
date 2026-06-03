@@ -34,15 +34,14 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     --============================================= languages extras ==========================================
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.toml" },
+    { import = "lazyvim.plugins.extras.lang.typescript.oxc" },
+    { import = "lazyvim.plugins.extras.lang.typescript.tsgo" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
+    -- rust configured manually no need for extra
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.sql" },
     { import = "lazyvim.plugins.extras.lang.git" },
@@ -50,35 +49,29 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.kotlin" },
     { import = "lazyvim.plugins.extras.lang.ruby" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
-    { import = "lazyvim.plugins.extras.lang.prisma" },
-    { import = "lazyvim.plugins.extras.lang.vue" },
 
     --============================================= linting extras ============================================
     { import = "lazyvim.plugins.extras.linting.eslint" },
 
     --============================================= formatting extras =========================================
     { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.formatting.biome" },
     { import = "lazyvim.plugins.extras.formatting.black" },
 
     --============================================= editor extras =============================================
-    { import = "lazyvim.plugins.extras.editor.mini-move" },
-    { import = "lazyvim.plugins.extras.editor.mini-diff" },
-    { import = "lazyvim.plugins.extras.editor.snacks_picker" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
 
     --============================================= util extras ===============================================
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.dot" },
+    { import = "lazyvim.plugins.extras.util.rest" },
 
     --============================================= coding extras =============================================
-    { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.coding.blink" },
     { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
-    { import = "lazyvim.plugins.extras.coding.luasnip" },
+    { import = "lazyvim.plugins.extras.coding.mini-snippets" },
 
     --============================================= test extras ===============================================
     { import = "lazyvim.plugins.extras.test.core" },
@@ -87,14 +80,14 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.core" },
 
     --============================================= ai extras =================================================
-    { import = "lazyvim.plugins.extras.ai.copilot" },
+    { import = "lazyvim.plugins.extras.ai.copilot-native" },
 
     --============================================= ui extras =================================================
-    { import = "lazyvim.plugins.extras.ui.smear-cursor" },
 
     --============================================= import my plugins =====================================
     { import = "plugins" },
     { import = "plugins.linting" },
+    { import = "plugins.formatting" },
     { import = "plugins.ui" },
     { import = "plugins.editor" },
     { import = "plugins.coding" },
@@ -115,7 +108,8 @@ require("lazy").setup({
     version = false,
   },
   install = {
-    colorscheme = { "dracula" },
+    missing = true,
+    colorscheme = { "zenbones" },
   },
   ui = {
     border = custom_border,
@@ -125,6 +119,10 @@ require("lazy").setup({
   },
   checker = {
     enabled = vim.env.NVIM_VIEWER ~= "1",
+  },
+  change_detection = {
+    enabled = true,
+    notify = false,
   },
   performance = {
     rtp = {

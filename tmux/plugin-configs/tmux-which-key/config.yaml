@@ -1,0 +1,235 @@
+# yaml-language-server: $schema=../../../../../.config/tmux/plugins/tmux-which-key/config.schema.yaml
+command_alias_start_index: 200
+keybindings:
+  root_table: C-m
+  prefix_table: m
+title:
+  style: align=center,bold
+  prefix: "          tmux          "
+  prefix_style: fg=white,align=center,bold
+position:
+  x: C
+  y: C
+custom_variables:
+  - name: log_info
+    value: "#[fg=green,italics] [info]#[default]#[italics]"
+macros:
+  - name: reload-config
+    commands:
+      - source-file $HOME/.config/tmux/tmux.conf
+      - display "config reloaded"
+  - name: restart-pane
+    commands:
+      - display "#{log_info} Restarting pane"
+      - "respawnp -k -c #{pane_current_path}"
+items:
+  - name: Run
+    key: space
+    command: command-prompt
+  - name: +Windows
+    key: w
+    menu:
+      - name: Choose
+        key: w
+        command: choose-tree -Zwy
+      - name: floating
+        key: f
+        command: run-shell -b "$HOME/.config/tmux/scripts/scratch-popup-toggle.sh"
+      - name: Previous
+        key: p
+        command: previous-window
+      - name: Next
+        key: n
+        command: next-window
+      - name: New
+        key: c
+        command: "neww -c #{pane_current_path}"
+      - name: +Layout
+        key: l
+        menu:
+          - name: Next
+            key: l
+            command: nextl
+            transient: true
+          - name: Tiled
+            key: t
+            command: selectnl tiled
+          - name: Horizontal
+            key: h
+            command: selectl even-horizontal
+          - name: Vertical
+            key: v
+            command: selectl even-vertical
+          - name: Horizontal main
+            key: H
+            command: selectl main-horizontal
+          - name: Vertical main
+            key: V
+            command: selectl main-vertical
+      - name: Split horizontal
+        key: /
+        command: "splitw -h -c #{pane_current_path}"
+      - name: Split vertical
+        key: "-"
+        command: "splitw -v -c #{pane_current_path}"
+      - name: Rotate
+        key: o
+        command: rotatew
+        transient: true
+      - name: Rotate reverse
+        key: O
+        command: rotatew -D
+        transient: true
+      - separator: true
+      - name: Rename
+        key: R
+        command: command-prompt -I "#W" "renamew -- \"%%\""
+      - name: Kill
+        key: x
+        command: killw
+  - name: +Panes
+    key: p
+    menu:
+      - name: Last
+        key: tab
+        command: lastp
+      - name: Choose
+        key: p
+        command: displayp -d 0
+      - separator: true
+      - name: Left
+        key: h
+        command: selectp -L
+      - name: Down
+        key: j
+        command: selectp -D
+      - name: Up
+        key: k
+        command: selectp -U
+      - name: Right
+        key: l
+        command: selectp -R
+      - name: Zoom
+        key: z
+        command: resizep -Z
+      - name: +Resize
+        key: r
+        menu:
+          - name: Left
+            key: h
+            command: resizep -L
+            transient: true
+          - name: Down
+            key: j
+            command: resizep -D
+            transient: true
+          - name: Up
+            key: k
+            command: resizep -U
+            transient: true
+          - name: Right
+            key: l
+            command: resizep -R
+            transient: true
+          - name: Left more
+            key: H
+            command: resizep -L 10
+            transient: true
+          - name: Down more
+            key: J
+            command: resizep -D 10
+            transient: true
+          - name: Up more
+            key: K
+            command: resizep -U 10
+            transient: true
+          - name: Right more
+            key: L
+            command: resizep -R 10
+            transient: true
+      - name: Swap left
+        key: H
+        command: swapp -t "{left-of}"
+      - name: Swap down
+        key: J
+        command: swapp -t "{down-of}"
+      - name: Swap up
+        key: K
+        command: swapp -t "{up-of}"
+      - name: Swap right
+        key: L
+        command: swapp -t "{right-of}"
+      - name: Break
+        key: "!"
+        command: break-pane
+      - name: Mark
+        key: m
+        command: selectp -m
+      - name: Unmark
+        key: M
+        command: selectp -M
+      - name: Capture
+        key: C
+        command: capture-pane
+      - name: Respawn pane
+        key: R
+        macro: restart-pane
+      - name: Kill
+        key: x
+        command: killp
+  - name: sesh
+    key: s
+    command: run-shell $HOME/.config/tmux/scripts/sesh.sh
+  - name: fzf-url
+    key: x
+    command: run-shell $HOME/.config/tmux/plugins/tmux-fzf-url/fzf-url.sh
+  - name: +Client
+    key: c
+    menu:
+      - name: Choose
+        key: c
+        command: choose-client -Z
+      - name: Last
+        key: l
+        command: switchc -l
+      - name: Previous
+        key: p
+        command: switchc -p
+      - name: Next
+        key: n
+        command: switchc -n
+      - name: Refresh
+        key: R
+        command: refresh
+      - name: +Plugins
+        key: P
+        menu:
+          - name: Install
+            key: i
+            command:
+              run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/install_plugins
+          - name: Update
+            key: u
+            command:
+              run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/update_plugins
+          - name: Clean
+            key: c
+            command:
+              run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/clean_plugins
+      - name: Detach
+        key: D
+        command: detach
+      - name: Suspend
+        key: Z
+        command: suspendc
+      - name: Reload config
+        key: r
+        macro: reload-config
+      - name: Customize
+        key: ","
+        command: customize-mode -Z
+  - separator: true
+    command: clock-mode
+  - name: +Keys
+    key: "?"
+    command: list-keys -N

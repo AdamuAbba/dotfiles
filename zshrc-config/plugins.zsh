@@ -1,10 +1,10 @@
 #============================================= plugin dependencies  ===========================
-#---- configure early because of plugins
-
-# --- rust ---
-source $HOME/zshrc-config/languages/rust.zsh
-# --- js/ts ---
-source $HOME/zshrc-config/languages/javascript.zsh
+#---- configure languages early because of plugins
+source "$HOME/zshrc-config/languages/rust.zsh"
+source "$HOME/zshrc-config/languages/python.zsh"
+source "$HOME/zshrc-config/languages/ruby.zsh"
+source "$HOME/zshrc-config/languages/go.zsh"
+source "$HOME/zshrc-config/languages/javascript.zsh"
 
 #============================================= plugins ===========================
 plugins=(
@@ -23,13 +23,11 @@ plugins=(
   gh
   vi-mode
   fzf-tab
-  nvm
   command-not-found
   colored-man-pages
   rust
   react-native
   safe-paste
-  nodenv
   ssh
   direnv
   gradle

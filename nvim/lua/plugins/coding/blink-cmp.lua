@@ -1,12 +1,7 @@
 return {
   {
-    "saghen/blink.compat",
-    version = "*",
-    lazy = true,
-    opts = {},
-  },
-  {
     "saghen/blink.cmp",
+    version = "1.*",
     dependencies = {
       "Kaiser-Yang/blink-cmp-git",
       "moyiz/blink-emoji.nvim",
@@ -14,6 +9,8 @@ return {
       "bydlw98/blink-cmp-env",
       "alexandre-abrioux/blink-cmp-npm.nvim",
       "disrupted/blink-cmp-conventional-commits",
+      "barrettruth/blink-cmp-ghostty",
+      "barrettruth/blink-cmp-tmux",
       {
         "bydlw98/blink-cmp-sshconfig",
         build = "make",
@@ -28,7 +25,7 @@ return {
     ---@param opts blink.cmp.Config
     opts = function(_, opts)
       local custom_border = require("lib.icons").custom_border
-
+      opts.fuzzy = { implementation = "rust" }
       opts.keymap = vim.tbl_deep_extend("force", opts.keymap or {}, {
         ["<Up>"] = false,
         ["<Down>"] = false,
@@ -42,6 +39,8 @@ return {
         ---@diagnostic disable-next-line: param-type-mismatch
         default = vim.list_extend(opts.sources.default or {}, {
           "ecolog",
+          "filemention",
+          "tmux",
           "npm",
           "ripgrep",
           "conventional_commits",
@@ -50,8 +49,31 @@ return {
           "dictionary",
           "env",
           "sshconfig",
+          "ghostty",
         }),
         providers = vim.tbl_deep_extend("force", opts.sources.providers or {}, {
+          filemention = {
+            name = "filemention",
+            module = "filemention.sources.blink",
+          },
+          ghostty = {
+            name = "Ghostty",
+            module = "blink-cmp-ghostty",
+          },
+          lsp = {
+            score_offset = 100,
+          },
+          snippets = {
+            override = {
+              get_trigger_characters = function()
+                return { ";" }
+              end,
+            },
+          },
+          tmux = {
+            name = "Tmux",
+            module = "blink-cmp-tmux",
+          },
           ecolog = {
             name = "ecolog",
             module = "ecolog.integrations.cmp.blink_cmp",
@@ -139,18 +161,9 @@ return {
         }),
       })
       opts.completion = vim.tbl_deep_extend("force", opts.completion or {}, {
+        keyword = { range = "full" },
         trigger = {
-          prefetch_on_insert = true,
-          show_in_snippet = true,
-          show_on_backspace = false,
-          show_on_backspace_in_keyword = false,
-          show_on_backspace_after_accept = true,
-          show_on_backspace_after_insert_enter = true,
-          show_on_keyword = true,
-          show_on_trigger_character = true,
           show_on_insert = true,
-          show_on_accept_on_trigger_character = true,
-          show_on_insert_on_trigger_character = true,
         },
         list = {
           selection = {
@@ -163,6 +176,33 @@ return {
         },
         menu = {
           auto_show = true,
+          draw = {
+            columns = {
+              { "label" },
+              { "kind_icon", "kind", "source_name" },
+            },
+            components = {
+              label = {
+                width = { fill = true, max = 30 },
+                text = function(ctx)
+                  return require("colorful-menu").blink_components_text(ctx)
+                end,
+                highlight = function(ctx)
+                  return require("colorful-menu").blink_components_highlight(ctx)
+                end,
+              },
+              kind_icon = {
+                text = function(ctx)
+                  return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+                end,
+              },
+              source_name = {
+                text = function(ctx)
+                  return " [" .. ctx.source_name .. "]"
+                end,
+              },
+            },
+          },
           border = custom_border,
           cmdline_position = function()
             if vim.g.ui_cmdline_pos ~= nil then
@@ -192,14 +232,14 @@ return {
       opts.cmdline = vim.tbl_deep_extend("force", opts.cmdline or {}, {
         enabled = true,
         keymap = {
-          ["<CR>"] = { "accept", "fallback" },
+          ["<CR>"] = { "select_accept_and_enter", "fallback" },
           ["<Tab>"] = { "fallback" },
         },
         completion = {
           list = {
             selection = {
               preselect = false,
-              auto_insert = false,
+              auto_insert = true,
             },
           },
           menu = {

@@ -12,8 +12,9 @@
 # All possible modifiers: cmd, alt, ctrl, shift
 
 after-startup-command = [
-  "exec-and-forget borders style=round background_color=0xff000000 width=7 hidpi=on active_color=0xff50fa7b inactive_color=0x00000000 blacklist=\"ghostty,JetBrains Toolbox\"",
+  "exec-and-forget borders style=round background_color=0xff000000 width=7 hidpi=on active_color=0xffffffff inactive_color=0x00000000 blacklist=\"ghostty,JetBrains Toolbox\"",
 ]
+# active_color=0xff50fa7b
 
 exec-on-workspace-change = [
   # '/bin/bash',
@@ -112,17 +113,8 @@ if.app-id = 'org.freedownloadmanager.fdm6'
 run = ["layout floating", "move-node-to-workspace Browser"]
 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
-if.app-name-regex-substring = "Zen"
-run = ["move-node-to-workspace Browser","macos-native-fullscreen on"]
-
-[[on-window-detected]]
-if.app-id = "org.qutebrowser.qutebrowser"
-run = ["move-node-to-workspace Browser"]
-
-[[on-window-detected]]
 if.app-id = "com.apple.Safari"
-run = ["layout floating", "move-node-to-workspace Browser"]
+run = ["move-node-to-workspace Browser", "macos-native-fullscreen on"]
 
 #============================================= Terminal =============================================
 [[on-window-detected]]
@@ -168,6 +160,10 @@ if.app-id = 'com.apple.iphonesimulator'
 run = ["move-node-to-workspace Sims/VMs"]
 
 [[on-window-detected]]
+if.app-id = "dev.reactnative.devtools"
+run = ["layout floating", "move-node-to-workspace Sims/VMs"]
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'UTM'
 run = ["layout floating", "move-node-to-workspace Sims/VMs"]
 
@@ -202,6 +198,14 @@ run = ["layout floating", "move-node-to-workspace Tools"]
 
 #============================================= Media =============================================
 [[on-window-detected]]
+if.app-id = "com.colliderli.iina"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.QuickTimePlayerX"
+run = ["layout floating"]
+
+[[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace Media"
 
@@ -226,12 +230,16 @@ if.app-id = 'org.videolan.vlc'
 run = "move-node-to-workspace Media"
 
 [[on-window-detected]]
-if.app-id = 'com.smartcodeltd.stremio'
-run = "move-node-to-workspace Media"
+if.app-id = "com.westbridge.stremio5-mac"
+run = ["move-node-to-workspace Media"]
 
 #============================================= Misc =============================================
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
+run = ["move-node-to-workspace Misc"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.Notes"
 run = ["move-node-to-workspace Misc"]
 
 [[on-window-detected]]
@@ -269,8 +277,8 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace Social"
 
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = "move-node-to-workspace Social"
+if.app-id = "com.hnc.Discord"
+run = ["move-node-to-workspace Social"]
 
 [[on-window-detected]]
 if.app-id = 'app.legcord.Legcord'
@@ -284,18 +292,13 @@ run = "move-node-to-workspace Social"
 if.app-id = "com.apple.mail"
 run = "move-node-to-workspace Social"
 
-#============================================= Games =============================================
 [[on-window-detected]]
-if.app-id = "com.now.gg.BlueStacks"
-run = "move-node-to-workspace Games"
+if.app-id = "com.apple.FaceTime"
+run = ["layout floating", "move-node-to-workspace Social"]
 
 [[on-window-detected]]
-if.app-id = "com.riotgames.RiotGames.RiotClient"
-run = ["layout floating", "move-node-to-workspace Games"]
-
-[[on-window-detected]]
-if.app-id = "com.riotgames.LeagueofLegends.LeagueClientUx"
-run = "move-node-to-workspace Games"
+if.app-id = "com.apple.MobileSMS"
+run = ["layout floating", "move-node-to-workspace Social"]
 
 #============================================= Detached (Floating) =============================================
 [[on-window-detected]]

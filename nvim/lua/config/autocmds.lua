@@ -1,9 +1,33 @@
--- Default autocmds https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+local theme_colors = require("config.theme-colors")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  pattern = "*",
+  callback = function(args)
+    local ft = vim.bo.filetype
+    if ft == "markdown" then
+      vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
+      vim.diagnostic.enable(false, { bufnr = args.buf })
+    else
+      vim.api.nvim_set_hl(0, "CursorColumn", { bg = theme_colors.gray })
+    end
+  end,
+})
+
+--============================================= Force set buffer options =============================================
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+  pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
+    vim.opt_local.spell = false
+  end,
+})
+--============================================= Disable diagnostic for help buffers =================================
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+  pattern = "markdown",
+  callback = function(args)
+    local file_path = vim.api.nvim_buf_get_name(args.buf)
+    if file_path:find("^/Users/abba/%.local/state/nvim/") then
+      vim.diagnostic.enable(false, { bufnr = args.buf })
+    end
   end,
 })
 
@@ -32,7 +56,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     local ext = vim.fn.fnamemodify(args.file, ":e")
     local candidates = { fname, ext }
     local uv = vim.uv
-    local luasnip = require("luasnip")
+    local mini_snips = require("mini.snippets")
 
     -- Map file name patterns to specific template files
     local template_map = {
@@ -54,8 +78,9 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
           if f then
             local content = f:read("*a")
             f:close()
-            luasnip.lsp_expand(content)
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "n", false)
+            vim.schedule(function()
+              mini_snips.default_insert({ body = content })
+            end)
             return
           end
         end
@@ -78,8 +103,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
       if f then
         local content = f:read("*a")
         f:close()
-        luasnip.lsp_expand(content)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "n", false)
+        vim.schedule(function()
+          mini_snips.default_insert({ body = content })
+        end)
+
         return
       end
     end

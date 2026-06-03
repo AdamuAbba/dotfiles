@@ -33,10 +33,11 @@ return {
         end,
       },
     },
-    keys = {
-      { "<leader>sp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Telescope: Plugins configurations" },
-      { "<leader>fp", false },
-    },
+    keys = function()
+      return {
+        { "<leader>sp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Plugins Spec" },
+      }
+    end,
     opts = function(_, opts)
       local custom_border = require("lib.icons").custom_border
       local lp_actions = require("telescope").extensions.lazy_plugins.actions

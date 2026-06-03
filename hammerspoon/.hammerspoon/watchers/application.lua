@@ -14,11 +14,12 @@ obj.homepage = ""
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 obj.appsToCenter = {
-	-- "Finder",
+	"Finder",
 	-- "Karabiner-Elements",
 	-- "Hammerspoon",
 	-- "Free Download Manager",
 	-- "Activity Monitor",
+	"System Settings",
 	-- "The Unarchiver",
 	-- "Safari",
 	-- "Ghostty",
@@ -27,7 +28,6 @@ obj.appsToCenter = {
 	-- "Figma",
 	-- "Xcode",
 	-- "Bitwarden",
-	-- "Apple Music",
 }
 
 --- ApplicationWatcher:start()
@@ -49,12 +49,12 @@ function obj:start()
 			if name == target then
 				hs.timer.doAfter(0.2, function()
 					local win = app:mainWindow() or hs.window.frontmostWindow()
-					if win and win:isStandard() then
-						win:centerOnScreen(nil, true, 0.2)
-						if win:isMaximizable() then
-							win:maximize(0.2)
-						end
-					end
+					win:centerOnScreen(nil, true, 0.2)
+					-- if win and win:isStandard() then
+					-- if win:isMaximizable() then
+					-- 	win:maximize(0.2)
+					-- end
+					-- end
 				end)
 				break
 			end

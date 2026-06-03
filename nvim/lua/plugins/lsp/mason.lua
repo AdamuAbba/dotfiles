@@ -14,7 +14,19 @@ return {
       }
       vim.list_extend(opts.ensure_installed, {
         "harper-ls",
-        "rust-analyzer",
+        "just-lsp",
+        "graphql-language-service-cli",
+        "gitlint",
+        "stylelint",
+        "lemminx",
+        "html-lsp",
+        "css-lsp",
+        "htmlhint",
+        "selene",
+        "tombi",
+        "tsgo",
+        "markdownlint-cli2",
+        "markdown-toc"
       })
       return opts
     end,

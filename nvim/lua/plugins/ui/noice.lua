@@ -5,6 +5,30 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
+    keys = function()
+      return {
+        {
+          "<c-f>",
+          function()
+            require("noice.lsp").scroll(4)
+          end,
+          desc = "Hover Scroll Down",
+          silent = true,
+          expr = true,
+          mode = { "n", "i", "s" },
+        },
+        {
+          "<c-b>",
+          function()
+            require("noice.lsp").scroll(-4)
+          end,
+          desc = "Hover Scroll up",
+          silent = true,
+          expr = true,
+          mode = { "n", "i", "s" },
+        },
+      }
+    end,
     opts = function(_, opts)
       local custom_border = require("lib.icons").custom_border
       opts.views = vim.tbl_deep_extend("force", opts.views or {}, {
@@ -23,14 +47,15 @@ return {
             style = custom_border,
           },
           position = {
-            row = "100%",
+            row = "95%",
             col = "100%",
             anchor = "SE",
             offset = { row = 0, col = -2 },
           },
           size = {
+            height = "1",
             width = "auto",
-            height = "auto",
+            max_height = 80,
             max_width = 80,
           },
           win_options = {
@@ -41,7 +66,7 @@ return {
 
       opts.lsp = vim.tbl_deep_extend("force", opts.lsp or {}, {
         progress = {
-          enabled = true,
+          enabled = false,
           view = "progress_with_border",
           format = "lsp_progress",
           format_done = "lsp_progress_done",
@@ -52,11 +77,9 @@ return {
           auto_open = {
             enabled = true,
             trigger = true,
-            luasnip = true,
             throttle = 50,
           },
           view = nil,
-          ---@type NoiceViewOptions
           opts = {
             border = {
               style = custom_border,
@@ -66,12 +89,14 @@ return {
         hover = {
           enabled = true,
           silent = false,
-          view = nil,
-          ---@type NoiceViewOptions
+          view = "hover",
           opts = {
             border = {
               style = custom_border,
             },
+            lang = "markdown",
+            replace = true,
+            render = "markdown",
           },
         },
         message = {
@@ -85,7 +110,6 @@ return {
         },
         documentation = {
           view = "hover",
-          ---@type NoiceViewOptions
           opts = {
             border = {
               style = custom_border,
@@ -102,7 +126,7 @@ return {
       })
 
       opts.notify = {
-        enabled = true,
+        enabled = false,
       }
 
       opts.presets = vim.tbl_deep_extend("force", opts.presets or {}, {

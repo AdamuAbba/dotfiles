@@ -4,7 +4,7 @@ if type brew &>/dev/null; then
 fi
 
 #============ custom completions ====================
-tools=(uv mw)
+tools=(uv mw opencode neru)
 missing=()
 
 for tool in "${tools[@]}"; do
@@ -16,6 +16,14 @@ done
 
 if [[ ${#missing[@]} -eq 0 ]]; then
   fpath=($HOME/Documents/dotfiles/zshrc-config/completions $fpath)
+fi
+
+if command -v uv >/dev/null 2>&1; then
+  # enable shell autocompletion for uv
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+else
+  echo "Error: uv is not installed. Skipping uv completions."
 fi
 
 #============ init completions safely ====================

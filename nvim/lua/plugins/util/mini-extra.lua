@@ -92,7 +92,7 @@ return {
           function()
             MiniExtra.pickers.list({ scope = "quickfix" })
           end,
-          desc = "Command History",
+          desc = "Quickfix List",
         },
         {
           "<leader>s/",

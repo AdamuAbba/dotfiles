@@ -1,7 +1,20 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "snacks_notif_history" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-mini/mini.icons",
+    },
+    ft = {
+      "snacks_notif_history",
+      "markdown",
+      "norg",
+      "rmd",
+      "org",
+      "codecompanion",
+      "lsp_markdown",
+      "noice",
+    },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     ---@param _ any
@@ -11,7 +24,9 @@ return {
         lsp = {
           enabled = true,
         },
-        blink = { enabled = true },
+        blink = {
+          enabled = true,
+        },
       })
       opts.indent = vim.tbl_deep_extend("force", opts.indent or {}, {
         enabled = true,
@@ -24,12 +39,29 @@ return {
       opts.pipe_table = vim.tbl_deep_extend("force", opts.pipe_table or {}, {
         enabled = true,
         preset = "round",
+        border = {
+          "╭",
+          "┬",
+          "╮",
+          "├",
+          "┼",
+          "┤",
+          "╰",
+          "┴",
+          "╯",
+          "|",
+          "─",
+        },
+      })
+      opts.dash = vim.tbl_deep_extend("force", opts.dash or {}, {
+        enabled = true,
+        icon = "╴",
       })
       opts.code = vim.tbl_deep_extend("force", opts.code or {}, {
         enabled = true,
         border = "thick",
-        above = "_",
-        below = "-",
+        above = "╴",
+        below = "╴",
         style = "full",
         language_border = "█",
         language_left = "",
@@ -48,8 +80,8 @@ return {
         border = true,
         enabled = true,
         border_virtual = false,
-        above = "_",
-        below = "-",
+        above = "╴",
+        below = "╴",
         signs = { "󰫎 " },
         backgrounds = {
           "RenderMarkdownH1Bg",
@@ -75,6 +107,9 @@ return {
         right_pad = 1,
       })
       return opts
+    end,
+    config = function(_, opts)
+      require("render-markdown").setup(opts)
     end,
   },
 }

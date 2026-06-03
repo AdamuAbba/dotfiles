@@ -9,7 +9,7 @@
 #-------- Load dracula color palette before sourcing brew
 source "$HOME/zshrc-config/theme.zsh"
 #============================================ ai-models ============================================
-source "$HOME/zshrc-config/ai/models.zsh"
+source "$HOME/zshrc-config/ai/providers.zsh"
 #============================================ homebrew =============================================
 source "$HOME/zshrc-config/homebrew.zsh"
 #============================================ omz plugins =======================================
@@ -30,8 +30,6 @@ source "$HOME/zshrc-config/ripgrep.zsh"
 source "$HOME/zshrc-config/bitcoin.zsh"
 #============================================ docker ==============================================
 source "$HOME/zshrc-config/docker.zsh"
-#============================================ bitwarden ===========================================
-source "$HOME/zshrc-config/bitwarden.zsh"
 #============================================ zellij ==============================================
 source "$HOME/zshrc-config/zellij.zsh"
 #============================================ tmux ==============================================
@@ -42,23 +40,16 @@ source "$HOME/zshrc-config/fzf.zsh"
 source "$HOME/zshrc-config/ssh.zsh"
 #============================================ Github ==============================================
 source "$HOME/zshrc-config/git.zsh"
-#============================================ atac ==============================================
-# source $HOME/zshrc-config/atac.zsh
 #============================================ Sketchy-bar =========================================
 source "$HOME/zshrc-config/sketchy-bar.zsh"
-#============================================ nvm =================================================
-# ---- leave above OMZ initialization because of {nvm} ------------------------
-# source $HOME/zshrc-config/languages/javascript.zsh
+#============================================ LSP =================================================
+source "$HOME/zshrc-config/LSP.zsh"
 #============================================ oh-my-zsh ===========================================
 source "$HOME/zshrc-config/omz-config.zsh"
 #============================================ Aliases =============================================
 source "$HOME/zshrc-config/aliases.zsh"
 #============================================ Additional completions for zsh ======================
-source "$HOME/zshrc-config/zsh-completions.zsh"
-#============================================ Lang (Do not remove from bottom) ====================
-source "$HOME/zshrc-config/languages/python.zsh"
-source "$HOME/zshrc-config/languages/ruby.zsh"
-
+# source "$HOME/zshrc-config/zsh-completions.zsh"
 #======================================= keep at bottom (DO NOT TOUCH ORDER SHYTYPES) ==============
 source $ZSH/oh-my-zsh.sh
 
@@ -75,3 +66,6 @@ source "$HOME/zshrc-config/atuin.zsh"
 zle -N tmux-edit-commandline-popup
 bindkey -M vicmd -r 'vv'
 bindkey -M vicmd 'vv' tmux-edit-commandline-popup
+
+#============================================= worktrunk =============================================
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

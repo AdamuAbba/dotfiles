@@ -7,7 +7,7 @@
 docker_interval = 1000
 
 # Attempt to colorize the logs, conflicts with "raw"
-color_logs = false
+color_logs = true
 
 # Show raw logs, default is to remove ansi formatting, conflicts with "color"
 raw_logs = false
@@ -38,7 +38,7 @@ timestamp_format = "%Y-%m-%dT%H:%M:%S.%8f"
 # save_dir = "$HOME"
 
 # Force use of docker cli when execing into containers, honestly mostly pointless
-use_cli = false
+use_cli = true
 
 # Show the logs section - this can be changed during operation with the log_section_toggle key
 show_logs = true
@@ -132,14 +132,14 @@ loading_spinner = "white"
 # Text color
 text = "white"
 # Text color of a selected header
-text_selected = "gray"
+text_selected = "green"
 
 # The borders around the selectable panels - Containers, Commands, Logs
 [colors.borders]
 # Border when selected
-selected = "#50fa7b"
+selected = "green"
 # Border when not selected
-unselected = "#bd93f9"
+unselected = "white"
 
 # The containers sections, in the future more color customization options should be made available in this section
 [colors.containers]
@@ -148,11 +148,11 @@ icon = "white"
 # Background color of panel
 background = "reset"
 # At the moment, this will only change the color of the name, id, and image columns
-text = "blue"
+text = "white"
 # Text color of the RX column
-text_rx = "#FFE9C1"
+text_rx = "white"
 # Text color of the TX column
-text_tx = "#CD8C8C"
+text_tx = "white"
 
 # The logs panel, will only be applied if color_logs is false
 [colors.logs]
@@ -177,13 +177,13 @@ unknown = "red"
 # Background color of panel
 background = "reset"
 # color of text
-text = "gray"
+text = "white"
 # background color of the selected filter by item (Name/Image/Status/All)
-selected_filter_background = "gray"
+selected_filter_background = "green"
 # text color of the selected filter by item (Name/Image/Status/All)
-selected_filter_text = "black"
+selected_filter_text = "white"
 # Highlighted text color
-highlight = "magenta"
+highlight = "white"
 
 # The color the of Docker commands available for each container
 [colors.commands]
@@ -201,9 +201,9 @@ start = "green"
 # Background color of panel
 background = "reset"
 # Border color
-border = "#bd93f9"
+border = "#ffffff"
 # Chart title - only whilst container is running, paused & stopped colors not yet customizable - or could just use state color?
-title = "green"
+title = "white"
 # Maximum CPU percentage - again paused & stopped colors not yet customizable
 max = "#FFB224"
 # Points on the chart - again paused & stopped colors not yet customizable
@@ -216,9 +216,9 @@ y_axis = "white"
 # Background color of panel
 background = "reset"
 # Border color
-border = "#bd93f9"
+border = "white"
 # Chart title - only whilst container is running, paused & stopped will use colors.container_state
-title = "green"
+title = "white"
 # Maximum memory use - again paused & stopped will use colors.container_state
 max = "#FFB224"
 # Points on the chart - again paused & stopped will use colors.container_state
@@ -231,11 +231,11 @@ y_axis = "white"
 # Background color of panel
 background = "reset"
 # Border color
-border = "#bd93f9"
+border = "#ffffff"
 # Chart title - only whilst container is running, paused & stopped will use colors.container_state
-title = "green"
+title = "white"
 # Private/Public/IP headings
-headings = "yellow"
+headings = "white"
 # Ports & IP listing text
 text = "white"
 
@@ -243,7 +243,7 @@ text = "white"
 [colors.popup_help]
 background = "reset"
 text = "white"
-text_highlight = "#50fa7b"
+text_highlight = "green"
 
 [colors.popup_info]
 background = "blue"
@@ -252,7 +252,7 @@ text = "white"
 [colors.popup_delete]
 background = "reset"
 text = "white"
-text_highlight = "red"
+text_highlight = "green"
 
 [colors.popup_error]
 background = "red"

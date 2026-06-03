@@ -41,7 +41,7 @@ done
 
 # Bracketed
 
-local group=(
+group=(
   # arround
   "a("
   "a)"

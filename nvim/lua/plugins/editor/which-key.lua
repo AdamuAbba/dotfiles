@@ -3,6 +3,9 @@ return {
   opts = function(_, opts)
     local custom_border = require("lib.icons").custom_border
     opts.preset = "helix"
+    opts.spec = opts.spec or {}
+    table.insert(opts.spec, { "<leader>b", group = "buffer", expand = false })
+    table.insert(opts.spec, { "<leader>gd", group = "Git Diff" })
     opts.plugins = vim.tbl_deep_extend("force", opts.plugins or {}, {
       marks = true,
       registers = true,

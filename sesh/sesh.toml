@@ -1,3 +1,7 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+
+blacklist = ["scratch"]
+
 #============================================= Configs =============================================
 [[session]]
 name = "dotfiles"
@@ -11,21 +15,16 @@ name = "join-queue-business"
 path = "~/Documents/join-queue-business/"
 startup_command = "~/.config/sesh/scripts/three-splits.sh"
 
-[[session]]
-name = "join-queue-customer"
-path = "~/Documents/join-queue-customer/"
-startup_command = "~/.config/sesh/scripts/three-splits.sh"
-
 #---- rust ----
 [[session]]
 name = "bdk_wallet"
 path = "~/Documents/bdk_wallet/"
-startup_command = "~/.config/sesh/scripts/two-splits.sh -w -c"
+startup_command = "~/.config/sesh/scripts/two-splits.sh -c"
 
 [[session]]
 name = "btc_test_area"
 path = "~/Documents/btc_test_area/"
-startup_command = "~/.config/sesh/scripts/open-in-nvim.sh '  Editor' && nvim -c 'lua require(\"persistence\").load()'"
+startup_command = "~/.config/sesh/scripts/open-in-nvim.sh 'Editor' && nvim -c 'lua require(\"persistence\").load()'"
 
 [[session]]
 name = "rust-esplora-client"
@@ -34,26 +33,11 @@ startup_command = "~/.config/sesh/scripts/two-splits.sh -w -c"
 
 #============================================= tools =============================================
 [[session]]
-name = "http-client"
+name = "rest"
 path = "~/Documents/api-collections/"
-startup_command = "~/.config/sesh/scripts/open-in-nvim.sh '  HTTP Client'"
-
-[[session]]
-name = "btop"
-path = "~"
-startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  btop' && btop"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh 'REST Client'"
 
 [[session]]
 name = "notes"
 path = "~/Documents/shytypes-obs-vault/"
-startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '󰠮  notes' && nvim -c 'lua require(\"persistence\").load()'"
-
-[[session]]
-name = "opencode"
-path = "~"
-startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  opencode' && opencode"
-
-[[session]]
-name = "spf"
-path = "~"
-startup_command = "~/.config/sesh/scripts/app-window-fmt.sh '  superfile' && spf"
+startup_command = "~/.config/sesh/scripts/app-window-fmt.sh 'notes'"

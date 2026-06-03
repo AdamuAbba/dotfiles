@@ -1,4 +1,4 @@
-export THEME_FONT="Iosevka NF"
+export THEME_FONT="IosevkaInput"
 # https://github.com/dracula/dracula-theme#color-palette
 #============================================ Dracula color palette================================================
 # export DRACULA_BACKGROUND=#282a36
@@ -18,6 +18,8 @@ export DRACULA_YELLOW=#f1fa8c
 export DRACULA_WHITE=#ffffff
 export DRACULA_BLACK=#000000
 export DRACULA_GRAY=#313243
+export DRACULA_STEEL_GRAY=#989FA3
+export DRACULA_DARK_GRAY=#14151C
 
 #============================================= 256-color numbers =============================================
 # - zle_highlight only supports:

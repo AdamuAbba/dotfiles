@@ -6,5 +6,4 @@
   export PATH=$PATH:$ANDROID_HOME/build-tools
   export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
   export PATH=$PATH:$ANDROID_HOME/platform-tools
-  export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   export PATH=~/.local/bin/:$PATH

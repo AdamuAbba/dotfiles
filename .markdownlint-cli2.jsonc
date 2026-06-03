@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.22.1/schema/markdownlint-cli2-config-schema.json",
+  "ignores": [
+    "CHANGELOG.md",
+    "/Users/abba/.local/state/nvim/**"
+  ]
+}

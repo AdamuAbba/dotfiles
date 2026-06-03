@@ -29,7 +29,18 @@ return {
         },
       }
 
+      -- Override vim.ui.select to use MiniPick with custom window options
+      vim.ui.select = function(items, local_opts, on_choice)
+        return MiniPick.ui_select(items, local_opts, on_choice, nil)
+      end
+
       MiniPick.setup(opts)
+
+      -- vim.keymap.set("n", "<leader><leader>", function()
+      --   vim.ui.select({ "One", "Two", "Three" }, {}, function(selected)
+      --     print("Selected: " .. selected)
+      --   end)
+      -- end)
 
       local add_items_to_qfl = function(items)
         local qf_items = {}
@@ -265,8 +276,15 @@ return {
         {
           "<leader>sh",
           function()
-            MiniPick.builtin.help({
-              default_split = "vertical",
+            MiniPick.builtin.help({}, {
+              source = {
+                choose = function(item)
+                  require("floating-help").open(item.name)
+                  vim.schedule(function()
+                    vim.cmd("wincmd w")
+                  end)
+                end,
+              },
             })
           end,
           icon = icons.documents.Help,

@@ -2,11 +2,11 @@
 export HELIX_RUNTIME=/opt/homebrew/Cellar/helix/25.01.1/libexec/runtime
 export XDG_CONFIG_HOME="$HOME/.config"
 export SCREEN_RECORDING_DIR="$HOME/Movies/screen-recordings"
-GITSTATUS_LOG_LEVEL=DEBUG
+export GITSTATUS_LOG_LEVEL=DEBUG
 export PATH="$HOME/bin:$PATH"
 export GDK_SCALE=2
-HYPHEN_INSENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
+export HYPHEN_INSENSITIVE="true"
+export COMPLETION_WAITING_DOTS="true"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -16,6 +16,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LAZYPLUGINS="$HOME/.local/share/nvim/site/pack/lazy/start"
+export DISABLE_AUTO_TITLE="true"
 
 #============================================= Hooks =============================================
 autoload -U add-zsh-hook

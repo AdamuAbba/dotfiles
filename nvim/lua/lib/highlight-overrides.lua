@@ -7,7 +7,7 @@ M.groups = {
   CursorColumn = { bg = theme_colors.gray },
   CursorLine = { bg = theme_colors.gray },
   StatusLine = { bg = theme_colors.background },
-  Visual = { fg = theme_colors.black, bg = theme_colors.pink },
+  Visual = { bg = theme_colors.gray },
   WinBar = { bg = theme_colors.background },
   WinBarNC = { bg = theme_colors.background },
   VertSplit = { fg = theme_colors.white, bg = theme_colors.background },
@@ -20,17 +20,30 @@ M.groups = {
   CursorLineNr = { bg = theme_colors.background },
   EndOfBuffer = { bg = theme_colors.background },
   StatusLineNC = { bg = theme_colors.background },
+  FloatFooter = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  FloatTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
 
-  -- Mini Files / Mini Pick
-  MiniFilesNormal = { bg = theme_colors.background },
+  -- Mini Files
+  MiniFilesNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
   MiniFilesBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  MiniFilesCursorLine = { fg = theme_colors.white, bg = theme_colors.green, bold = true },
-  MiniPickMatchCurrent = { fg = theme_colors.white, bg = theme_colors.green, bold = true },
+  MiniFilesCursorLine = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  MiniFilesTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  MiniFilesTitleFocused = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+
+  -- Mini Nofify
+  MiniNotifyBorder = { fg = theme_colors.white, bg = theme_colors.background },
+  MiniNotifyLspProgress = { fg = theme_colors.white, bg = theme_colors.background },
+  MiniNotifyNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniNotifyTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+
+  --Mini Pick
+  MiniPickMatchCurrent = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
   MiniPickMatchMarked = { fg = theme_colors.white, bg = theme_colors.green, bold = true },
-  MiniPickBorderText = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  MiniPickPrompt = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  MiniFilesTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  MiniFilesTitleFocused = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  MiniPickBorderText = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  MiniPickPrompt = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  MiniPickHeader = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniPickMatchRanges = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
+  MiniPickNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
   -- Lualine
   lualine_transitional_lualine_a_normal_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
@@ -41,7 +54,7 @@ M.groups = {
   BlinkCmpMenuBorder = { fg = theme_colors.white, bg = theme_colors.background },
   BlinkCmpMenu = { bg = theme_colors.background },
   BlinkCmpLabel = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  BlinkCmpMenuSelection = { fg = theme_colors.white, bg = theme_colors.green, bold = true },
+  BlinkCmpMenuSelection = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
   BlinkCmpSignatureHelpBorder = { fg = theme_colors.white, bg = theme_colors.background },
   BlinkCmpKind = { bg = theme_colors.background },
   BlinkCmpKindRipgrepRipgrep = { fg = theme_colors.yellow, bg = theme_colors.background, bold = true },
@@ -61,7 +74,11 @@ M.groups = {
 
   -- Snacks
   SnacksPickerFile = { bg = theme_colors.background },
-  SnacksPickerInput = { bg = theme_colors.background },
+  SnacksPickerInput = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
+  SnacksInputTitle = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
+  SnacksInputPrompt = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
+  SnacksInputIcon = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
+  SnacksInputBorder = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
   SnacksPickerList = { bg = theme_colors.background },
   SnacksPickerPreview = { bg = theme_colors.background },
   SnacksPickerBox = { bg = theme_colors.background },
@@ -76,8 +93,9 @@ M.groups = {
   SnacksNotifierTitleTrace = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
 
   -- Render Markdown
-  RenderMarkdownCodeBorder = { bg = theme_colors.current_line, bold = true },
-  RenderMarkdownCode = { bg = theme_colors.gray, bold = true },
+  RenderMarkdownCodeBorder = { bg = theme_colors.dark_gray, bold = true },
+  RenderMarkdownCode = { bg = theme_colors.dark_gray, bold = true },
+  RenderMarkdownChecked = { fg = theme_colors.green, bg = theme_colors.black, bold = true },
   RenderMarkdownH1 = { fg = theme_colors.white, bold = true },
   RenderMarkdownH1Bg = { bg = theme_colors.white, fg = theme_colors.black, bold = true },
   RenderMarkdownH2 = { fg = theme_colors.pink, bold = true },
@@ -118,16 +136,16 @@ M.groups = {
   TelescopePromptBorder = { fg = theme_colors.white, bg = theme_colors.background },
   TelescopeResultsBorder = { fg = theme_colors.white, bg = theme_colors.background },
   TelescopePreviewBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  TelescopeSelection = { fg = theme_colors.black, bg = theme_colors.green, bold = true },
+  TelescopeSelection = { fg = theme_colors.black, bg = theme_colors.gray, bold = true },
   TelescopeTitle = { fg = theme_colors.white, bg = theme_colors.background },
 
   -- Lazy
   LazyButton = { bg = theme_colors.background, bold = true },
-  LazyButtonActive = { fg = theme_colors.black, bg = theme_colors.green, bold = true },
+  LazyButtonActive = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
 
   -- Pmenu
   Pmenu = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  PmenuSel = { fg = theme_colors.black, bg = theme_colors.green, bold = true },
+  PmenuSel = { fg = theme_colors.black, bg = theme_colors.gray, bold = true },
 
   -- Git Conflict
   GitConflictCurrentLabel = { fg = theme_colors.black, bg = theme_colors.cyan, bold = true },

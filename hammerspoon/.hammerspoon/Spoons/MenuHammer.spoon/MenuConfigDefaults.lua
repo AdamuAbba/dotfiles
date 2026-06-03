@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global
 ----------------------------------------------------------------------------------------------------
 --------------------------------------- General Config ---------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -8,16 +9,16 @@ local utils = require("helpers.utils")
 
 --============================================= Clipboard load early =============================================
 spoon.SpoonInstall:andUse("ClipboardTool", {
-	start = true,
-	config = {
-		paste_on_select = true,
-		show_copied_alert = false,
-		show_in_menubar = false,
-		deduplicate = true,
-	},
+  start = true,
+  config = {
+    paste_on_select = true,
+    show_copied_alert = false,
+    show_in_menubar = false,
+    deduplicate = true,
+  },
 })
 
--- If enabled, the menus will appear over full screen applications.
+-- If enabled, the menus will appear over fullscreen applications.
 -- However, the Hammerspoon dock icon will also be disabled (required for fullscreen).
 menuShowInFullscreen = false
 
@@ -61,8 +62,8 @@ menuOuterPadding = 0
 menuWidth = 250
 
 -- Menu positioning (bottom-left corner)
-menuPaddingX = 30  -- Distance from left edge
-menuPaddingY = 60  -- Distance from bottom edge
+menuPaddingX = 30 -- Distance from left edge
+menuPaddingY = 60 -- Distance from bottom edge
 
 -- Extra vertical padding inside the menu (top and bottom)
 menuVerticalPadding = 0
@@ -72,11 +73,10 @@ menuVerticalPadding = 0
 ----------------------------------------------------------------------------------------------------
 
 -- The font to apply to menu items.
--- menuItemFont = "Courier-Bold"
-menuItemFont = "Iosevka NF"
+menuItemFont = "IosevkaInput"
 
 -- The font size to apply to menu items.
-menuItemFontSize = 18
+menuItemFontSize = 17
 
 -- The text alignment to apply to menu items.
 menuItemTextAlign = "left"
@@ -86,53 +86,53 @@ menuItemTextAlign = "left"
 ----------------------------------------------------------------------------------------------------
 
 menuItemColors = {
-	-- The default colors to use.
-	default = {
-		background = "#000000",
-		text = utils.colors.white,
-	},
-	-- The colors to use for the Exit menu item
-	exit = {
-		background = utils.colors.black,
-		text = utils.colors.white,
-	},
-	-- The colors to use for the Back menu items
-	back = {
-		background = utils.colors.black,
-		text = utils.colors.white,
-	},
-	-- The colors to use for menu menu items
-	submenu = {
-		background = "#000000",
-		text = utils.colors.white,
-	},
-	-- The colors to use for navigation menu items
-	navigation = {
-		background = "#000000",
-		text = utils.colors.white,
-	},
-	-- The colors to use for empty menu items
-	empty = {
-		background = "#000000",
-		text = "#aaaaaa",
-	},
-	-- The colors to use for action menu items
-	action = {
-		background = "#ffffff",
-		text = utils.colors.white,
-	},
-	menuBarActive = {
-		background = "#ff0000",
-		text = utils.colors.white,
-	},
-	menuBarIdle = {
-		background = "#ffffff",
-		text = utils.colors.white,
-	},
-	display = {
-		background = "#000000",
-		text = utils.colors.white,
-	},
+  -- The default colors to use.
+  default = {
+    background = "#000000",
+    text = utils.colors.white,
+  },
+  -- The colors to use for the Exit menu item
+  exit = {
+    background = utils.colors.black,
+    text = utils.colors.white,
+  },
+  -- The colors to use for the Back menu items
+  back = {
+    background = utils.colors.black,
+    text = utils.colors.white,
+  },
+  -- The colors to use for menu menu items
+  submenu = {
+    background = "#000000",
+    text = "#989FA3",
+  },
+  -- The colors to use for navigation menu items
+  navigation = {
+    background = "#000000",
+    text = utils.colors.white,
+  },
+  -- The colors to use for empty menu items
+  empty = {
+    background = "#000000",
+    text = "#aaaaaa",
+  },
+  -- The colors to use for action menu items
+  action = {
+    background = "#ffffff",
+    text = "#989FA3",
+  },
+  menuBarActive = {
+    background = "#ff0000",
+    text = utils.colors.white,
+  },
+  menuBarIdle = {
+    background = "#ffffff",
+    text = utils.colors.white,
+  },
+  display = {
+    background = "#000000",
+    text = "#989FA3",
+  },
 }
 
 ----------------------------------------------------------------------------------------------------
@@ -146,16 +146,16 @@ menuHammerToggleKey = { { "cmd", "shift", "ctrl" }, "Q" }
 
 -- Menu Prefixes
 menuItemPrefix = {
-	action = " ",
-	-- action = "↩",
-	submenu = "+",
-	-- submenu = "→",
-	back = " ",
-	exit = "󰛉",
-	navigation = "↩",
-	-- navigation = '⎋',
-	empty = "",
-	display = "",
+  action = " ",
+  -- action = "↩",
+  submenu = "+",
+  -- submenu = "→",
+  back = " ",
+  exit = "󰛉",
+  navigation = "↩",
+  -- navigation = '⎋',
+  empty = "",
+  display = "",
 }
 
 -- Menu item separator
@@ -172,7 +172,6 @@ local applicationMenu = "applicationMenu"
 --============================================= Utilities =============================================
 local utilitiesMenu = "utilitiesMenu"
 local aerospaceMenu = "aerospaceMenu"
-local clipboardMenu = "clipboardMenu"
 local frontmostAppMenu = "frontmostAppMenu"
 local simulatorMenu = "simulatorMenu"
 
@@ -203,1283 +202,1330 @@ local systemMenu = "systemMenu"
 ------------------------------------------------------------------------------------------------
 
 menuHammerMenuList = {
-	[mainMenu] = {
-		parentMenu = nil,
-		menuHotkey = { key_helper.hyper, "space" },
-		menuItems = {
-			{
-				cons.cat.submenu,
-				"",
-				"b",
-				"Display",
-				{
-					{ cons.act.menu, displayMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"O",
-				"Applications",
-				{
-					{ cons.act.menu, applicationMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"d",
-				"Documents",
-				{
-					{ cons.act.menu, documentsMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"u",
-				"Utilities",
-				{
-					{ cons.act.menu, utilitiesMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"M",
-				"Media Controls",
-				{
-					{ cons.act.menu, mediaMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"h",
-				"Help",
-				{
-					{ cons.act.menu, helpMenu },
-				},
-			},
-		},
-	},
+  [mainMenu] = {
+    parentMenu = nil,
+    menuHotkey = { key_helper.hyper, "space" },
+    menuItems = {
+      {
+        cons.cat.submenu,
+        "",
+        "o",
+        "Applications",
+        {
+          { cons.act.menu, applicationMenu },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "",
+        "t",
+        "Utilities",
+        {
+          { cons.act.menu, utilitiesMenu },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Help Menu
-	------------------------------------------------------------------------------------------------
-	helpMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "h" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"a",
-				"Aerospace docs",
-				{
-					{ cons.act.openurl, "https://nikitabobko.github.io/AeroSpace/guide#installation" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"h",
-				"HS docs",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.doc.hsdocs.forceExternalBrowser(true)
-							hs.doc.hsdocs.moduleEntitiesInSidebar(true)
-							hs.doc.hsdocs.help()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"m",
-				"MH docs",
-				{
-					{ cons.act.openurl, "https://github.com/FryJay/MenuHammer" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"l",
-				"LazyVim docs",
-				{
-					{ cons.act.openurl, "https://www.lazyvim.org/" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"w",
-				"Wezterm docs",
-				{
-					{ cons.act.openurl, "https://wezterm.org/" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"z",
-				"Zellij docs",
-				{
-					{ cons.act.openurl, "https://zellij.dev/" },
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Help Menu
+  ------------------------------------------------------------------------------------------------
+  helpMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = { key_helper.hyper, "h" },
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "a",
+        "Aerospace docs",
+        {
+          { cons.act.openurl, "https://nikitabobko.github.io/AeroSpace/guide#installation" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "h",
+        "HS docs",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.doc.hsdocs.forceExternalBrowser(true)
+              hs.doc.hsdocs.moduleEntitiesInSidebar(true)
+              hs.doc.hsdocs.help()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "MH docs",
+        {
+          { cons.act.openurl, "https://github.com/FryJay/MenuHammer" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "l",
+        "LazyVim docs",
+        {
+          { cons.act.openurl, "https://www.lazyvim.org/" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "w",
+        "Wezterm docs",
+        {
+          { cons.act.openurl, "https://wezterm.org/" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "z",
+        "Zellij docs",
+        {
+          { cons.act.openurl, "https://zellij.dev/" },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Application Menu
-	------------------------------------------------------------------------------------------------
-	applicationMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "o" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"a",
-				"Android studio",
-				{
-					{
-						cons.act.script,
-						"open -a 'Android Studio'",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"a",
-				"AVD",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/mac-os/launch_avd.sh",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"b",
-				"Books",
-				{
-					{ cons.act.launcher, "Books" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"c",
-				"ChatGPT",
-				{
-					{ cons.act.launcher, "ChatGPT" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"d",
-				"Discord",
-				{
-					{ cons.act.launcher, "Discord" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"F",
-				"Finder",
-				{
-					{ cons.act.launcher, "Finder" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"F",
-				"Figma",
-				{
-					{ cons.act.launcher, "Figma" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"g",
-				"Ghostty",
-				{
-					{ cons.act.launcher, "Ghostty" },
-				},
-			},
-			-- {
-			-- 	cons.cat.action,
-			-- 	"",
-			-- 	"w",
-			-- 	"WezTerm",
-			-- 	{
-			-- 		{ cons.act.launcher, "WezTerm" },
-			-- 	},
-			-- },
-			{
-				cons.cat.action,
-				"",
-				"x",
-				"Xcode",
-				{
-					{ cons.act.launcher, "Xcode" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"o",
-				"Obsidian",
-				{
-					{ cons.act.launcher, "Obsidian" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"h",
-				"Hammerspoon",
-				{
-					{ cons.act.launcher, "Hammerspoon" },
-				},
-			},
-			-- {
-			-- 	cons.cat.action,
-			-- 	"",
-			-- 	"k",
-			-- 	"Kitty",
-			-- 	{
-			-- 		{ cons.act.launcher, "Kitty" },
-			-- 	},
-			-- },
-			{
-				cons.cat.action,
-				"shift",
-				"k",
-				"Karabiner",
-				{
-					{ cons.act.launcher, "Karabiner-Elements" },
-				},
-			},
-			-- {
-			-- 	cons.cat.action,
-			-- 	"",
-			-- 	"s",
-			-- 	"Spotify",
-			-- 	{
-			-- 		{ cons.act.launcher, "Spotify" },
-			-- 	},
-			-- },
-			{
-				cons.cat.action,
-				"",
-				"p",
-				"Postman",
-				{
-					{ cons.act.launcher, "Postman" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"p",
-				"Settings",
-				{
-					{ cons.act.launcher, "System Preferences" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"s",
-				"Simulator",
-				{
-					{ cons.act.launcher, "Simulator" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"m",
-				"Mail",
-				{
-					{ cons.act.launcher, "Mail" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"m",
-				"Apple Music",
-				{
-					{ cons.act.launcher, "Apple Music" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"b",
-				"Bitwarden",
-				{
-					{ cons.act.launcher, "Bitwarden" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"v",
-				"VSCode",
-				{
-					{
-						cons.act.launcher,
-						"Visual Studio Code",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"v",
-				"Stremio",
-				{
-					{ cons.act.launcher, "Stremio" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"w",
-				"WhatsApp",
-				{
-					{ cons.act.launcher, "WhatsApp" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"z",
-				"Zen Browser",
-				{
-					{ cons.act.launcher, "Zen" },
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Application Menu
+  ------------------------------------------------------------------------------------------------
+  applicationMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = { key_helper.hyper, "o" },
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "a",
+        "Android studio",
+        {
+          {
+            cons.act.script,
+            "open -a 'Android Studio'",
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "a",
+        "AVD",
+        {
+          {
+            cons.act.script,
+            utils.SCRIPTS .. "/mac-os/launch_avd.sh",
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "b",
+        "Books",
+        {
+          { cons.act.launcher, "Books" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "c",
+        "Pearcleaner",
+        {
+          { cons.act.launcher, "Pearcleaner" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "d",
+        "Discord",
+        {
+          { cons.act.launcher, "Discord" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "F",
+        "Finder",
+        {
+          { cons.act.launcher, "Finder" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "F",
+        "Figma",
+        {
+          { cons.act.launcher, "Figma" },
+        },
+      },
+      -- {
+      --   cons.cat.action,
+      --   "",
+      --   "g",
+      --   "Ghostty",
+      --   {
+      --     { cons.act.launcher, "Ghostty" },
+      --   },
+      -- },
 
-	------------------------------------------------------------------------------------------------
-	-- Utilities Menu
-	------------------------------------------------------------------------------------------------
-	utilitiesMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "t" },
-		menuItems = {
-			{
-				cons.cat.submenu,
-				"",
-				"a",
-				"Aerospace",
-				{
-					{ cons.act.menu, aerospaceMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"c",
-				"Clipboard",
-				{
-					{ cons.act.menu, clipboardMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"h",
-				"Hammerspoon",
-				{
-					{ cons.act.menu, hammerspoonMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"f",
-				"frontmostApp",
-				{
-					{ cons.act.menu, frontmostAppMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"",
-				"s",
-				"Simulator",
-				{
-					{ cons.act.menu, simulatorMenu },
-				},
-			},
-			{
-				cons.cat.submenu,
-				"shift",
-				"s",
-				"System",
-				{
-					{ cons.act.menu, systemMenu },
-				},
-			},
-		},
-	},
+      {
+        cons.cat.action,
+        "",
+        "x",
+        "Xcode",
+        {
+          { cons.act.launcher, "Xcode" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "o",
+        "Obsidian",
+        {
+          { cons.act.launcher, "Obsidian" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "h",
+        "Hammerspoon",
+        {
+          { cons.act.launcher, "Hammerspoon" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "k",
+        "Karabiner",
+        {
+          { cons.act.launcher, "Karabiner-Elements" },
+        },
+      },
+      -- {
+      --   cons.cat.action,
+      --   "",
+      --   "s",
+      --   "Spotify",
+      --   {
+      --     { cons.act.launcher, "Spotify" },
+      --   },
+      -- },
+      {
+        cons.cat.action,
+        "lCmd",
+        "s",
+        "Safari",
+        {
+          { cons.act.launcher, "Safari" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "p",
+        "Postman",
+        {
+          { cons.act.launcher, "Postman" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "p",
+        "Settings",
+        {
+          { cons.act.launcher, "System Preferences" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "s",
+        "Simulator",
+        {
+          { cons.act.launcher, "Simulator" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "t",
+        "FaceTime",
+        {
+          { cons.act.launcher, "FaceTime" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "Mail",
+        {
+          { cons.act.launcher, "Mail" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "m",
+        "Messages",
+        {
+          { cons.act.launcher, "Messages" },
+        },
+      },
+      {
+        cons.cat.action,
+        "lCmd",
+        "m",
+        "Apple Music",
+        {
+          { cons.act.launcher, "Apple Music" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "n",
+        "Notes",
+        {
+          { cons.act.launcher, "Notes" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "v",
+        "VSCode",
+        {
+          {
+            cons.act.launcher,
+            "Visual Studio Code",
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "v",
+        "Stremio",
+        {
+          { cons.act.launcher, "Stremio" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "w",
+        "WhatsApp",
+        {
+          { cons.act.launcher, "WhatsApp" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "w",
+        "WezTerm",
+        {
+          { cons.act.launcher, "WezTerm" },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- clipboard Menu
-	------------------------------------------------------------------------------------------------
-	clipboardMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "c" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"t",
-				"Toggle CB",
-				{
-					{
-						cons.act.func,
-						function()
-							spoon.ClipboardTool:showClipboard()
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Utilities Menu
+  ------------------------------------------------------------------------------------------------
+  utilitiesMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = { key_helper.hyper, "t" },
+    menuItems = {
+      {
+        cons.cat.submenu,
+        "",
+        "a",
+        "Aerospace",
+        {
+          { cons.act.menu, aerospaceMenu },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "c",
+        "Clipboard",
+        {
+          {
+            cons.act.func,
+            function()
+              spoon.ClipboardTool:showClipboard()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "",
+        "d",
+        "Display",
+        {
+          { cons.act.menu, displayMenu },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "",
+        "f",
+        "frontmostApp",
+        {
+          { cons.act.menu, frontmostAppMenu },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "",
+        "h",
+        "Hammerspoon",
+        {
+          { cons.act.menu, hammerspoonMenu },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "",
+        "m",
+        "media",
+        {
+          { cons.act.menu, mediaMenu },
+        },
+      },
+      -- {
+      --   cons.cat.submenu,
+      --   "",
+      --   "s",
+      --   "spotify",
+      --   {
+      --     { cons.act.menu, spotifyMenu },
+      --   },
+      -- },
+      {
+        cons.cat.submenu,
+        "shift",
+        "s",
+        "Simulator",
+        {
+          { cons.act.menu, simulatorMenu },
+        },
+      },
+      {
+        cons.cat.submenu,
+        "shift",
+        "p",
+        "System",
+        {
+          { cons.act.menu, systemMenu },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- frontmostApp Menu
-	------------------------------------------------------------------------------------------------
-	frontmostAppMenu = {
-		parentMenu = utilitiesMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"m",
-				"Maximize",
-				{
-					{
-						cons.act.func,
-						function()
-							utils:maximizeAppWindow()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"q",
-				"Kill App",
-				{
-					{ cons.act.system, cons.sys.forcequit },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"r",
-				"Restart App",
-				{
-					{
-						cons.act.func,
-						function()
-							utils:restartFrontmostApp()
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- clipboard Menu
+  ------------------------------------------------------------------------------------------------
+  clipboardMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = { key_helper.hyper, "c" },
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "t",
+        "Toggle CB",
+        {
+          {
+            cons.act.func,
+            function()
+              spoon.ClipboardTool:showClipboard()
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- simulator Menu
-	------------------------------------------------------------------------------------------------
-	simulatorMenu = {
-		parentMenu = utilitiesMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"r",
-				"Restart app",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/mac-os/restart_sim_app.sh",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"u",
-				"uninstall app",
-				{
-					{
-						cons.act.script,
-						utils.SCRIPTS .. "/mac-os/uninstall-sim-app.sh",
-					},
-				},
-			},
-		},
-	},
-	------------------------------------------------------------------------------------------------
-	-- Documents Menu
-	------------------------------------------------------------------------------------------------
-	[documentsMenu] = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"C",
-				".config",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "g" },
-					{ cons.act.typetext, "~/.config\n" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"D",
-				"Google Drive (local)",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "g" },
-					{ cons.act.typetext, "~/Google Drive\n" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"D",
-				"Google Drive (online)",
-				{
-					{ cons.act.openurl, "https://drive.google.com/" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"I",
-				"iCloud Drive (local)",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "i" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"H",
-				"Hammerspoon",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "g" },
-					{ cons.act.typetext, "~/.hammerspoon\n" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"M",
-				"MenuHammer Custom Config",
-				{
-					{ cons.act.openfile, "~/.hammerspoon/menuHammerCustomConfig.lua" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"M",
-				"MenuHammer Default Config",
-				{
-					{ cons.act.openfile, "~/.hammerspoon/Spoons/MenuHammer.spoon/MenuConfigDefaults.lua" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"H",
-				"Hammerspoon init.lua",
-				{
-					{ cons.act.openfile, "~/.hammerspoon/init.lua" },
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- frontmostApp Menu
+  ------------------------------------------------------------------------------------------------
+  frontmostAppMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "c",
+        "Cheatsheet",
+        {
+          {
+            cons.act.func,
+            function()
+              spoon.KSheet:toggle()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "f",
+        "toggle fullscreen",
+        {
+          {
+            cons.act.func,
+            function()
+              utils:toggleFullScreen()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "Maximize",
+        {
+          {
+            cons.act.func,
+            function()
+              utils:maximizeAppWindow()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "q",
+        "Kill App",
+        {
+          { cons.act.system, cons.sys.forcequit },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "Restart App",
+        {
+          {
+            cons.act.func,
+            function()
+              utils:restartFrontmostApp()
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Finder Menu
-	------------------------------------------------------------------------------------------------
-	finderMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"A",
-				"Applications Folder",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "a" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"A",
-				"Airdrop",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "r" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"C",
-				"Computer",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "c" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"D",
-				"Desktop",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "d" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"D",
-				"Downloads",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "alt" }, "l" },
-				},
-			},
-			{ cons.cat.action, "", "F", "Finder", {
-				{ cons.act.launcher, "Finder" },
-			} },
-			{
-				cons.cat.action,
-				"",
-				"G",
-				"Go to Folder...",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "g" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"H",
-				"Home",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "h" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"H",
-				"Hammerspoon",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "g" },
-					{ cons.act.typetext, "~/.hammerspoon\n" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"I",
-				"iCloud Drive",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "i" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"K",
-				"Connect to Server...",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd" }, "K" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"L",
-				"Library",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "l" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"N",
-				"Network",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "k" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"O",
-				"Documents",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "o" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"R",
-				"Recent",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "f" },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"U",
-				"Utilities",
-				{
-					{ cons.act.launcher, "Finder" },
-					{ cons.act.keycombo, { "cmd", "shift" }, "u" },
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- simulator Menu
+  ------------------------------------------------------------------------------------------------
+  simulatorMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "Restart app",
+        {
+          {
+            cons.act.script,
+            utils.SCRIPTS .. "/mac-os/restart_sim_app.sh",
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "u",
+        "uninstall app",
+        {
+          {
+            cons.act.script,
+            utils.SCRIPTS .. "/mac-os/uninstall-sim-app.sh",
+          },
+        },
+      },
+    },
+  },
+  ------------------------------------------------------------------------------------------------
+  -- Documents Menu
+  ------------------------------------------------------------------------------------------------
+  [documentsMenu] = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "C",
+        ".config",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "g" },
+          { cons.act.typetext, "~/.config\n" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "D",
+        "Google Drive (local)",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "g" },
+          { cons.act.typetext, "~/Google Drive\n" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "D",
+        "Google Drive (online)",
+        {
+          { cons.act.openurl, "https://drive.google.com/" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "I",
+        "iCloud Drive (local)",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "i" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "H",
+        "Hammerspoon",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "g" },
+          { cons.act.typetext, "~/.hammerspoon\n" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "M",
+        "MenuHammer Custom Config",
+        {
+          { cons.act.openfile, "~/.hammerspoon/menuHammerCustomConfig.lua" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "M",
+        "MenuHammer Default Config",
+        {
+          { cons.act.openfile, "~/.hammerspoon/Spoons/MenuHammer.spoon/MenuConfigDefaults.lua" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "H",
+        "Hammerspoon init.lua",
+        {
+          { cons.act.openfile, "~/.hammerspoon/init.lua" },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Hammerspoon Menu
-	------------------------------------------------------------------------------------------------
-	hammerspoonMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"C",
-				"HS Console",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.toggleConsole()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"d",
-				"HS Manual",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.doc.hsdocs.forceExternalBrowser(true)
-							hs.doc.hsdocs.moduleEntitiesInSidebar(true)
-							hs.doc.hsdocs.help()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"r",
-				"Reload HS",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.reload()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"q",
-				"Quit HS",
-				{
-					{
-						cons.act.func,
-						function()
-							os.exit()
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Finder Menu
+  ------------------------------------------------------------------------------------------------
+  finderMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "A",
+        "Applications Folder",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "a" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "A",
+        "Airdrop",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "r" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "C",
+        "Computer",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "c" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "D",
+        "Desktop",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "d" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "D",
+        "Downloads",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "alt" }, "l" },
+        },
+      },
+      { cons.cat.action, "", "F", "Finder", {
+        { cons.act.launcher, "Finder" },
+      } },
+      {
+        cons.cat.action,
+        "",
+        "G",
+        "Go to Folder...",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "g" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "H",
+        "Home",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "h" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "H",
+        "Hammerspoon",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "g" },
+          { cons.act.typetext, "~/.hammerspoon\n" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "I",
+        "iCloud Drive",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "i" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "K",
+        "Connect to Server...",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd" }, "K" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "L",
+        "Library",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "l" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "N",
+        "Network",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "k" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "O",
+        "Documents",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "o" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "R",
+        "Recent",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "f" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "U",
+        "Utilities",
+        {
+          { cons.act.launcher, "Finder" },
+          { cons.act.keycombo, { "cmd", "shift" }, "u" },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Aerospace Menu
-	------------------------------------------------------------------------------------------------
-	aerospaceMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"d",
-				"Aerospace Docs",
-				{
-					{
-						-- modify to accept search query
-						cons.act.openurl,
-						"https://nikitabobko.github.io/AeroSpace/guide",
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"r",
-				"Reload Aerospace",
-				{
-					{
-						cons.act.func,
-						function()
-							local output, status = hs.execute("/opt/homebrew/bin/aerospace reload-config")
-							if status then
-								utils:nerd_alert(string.format(" Aerospace config reloaded"))
-							else
-								utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
-							end
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"r",
-				"Restart Aerospace",
-				{
-					{
-						cons.act.func,
-						function()
-							local output, status = hs.execute("killall AeroSpace && sleep 1 && open -a AeroSpace")
-							if status then
-								utils:nerd_alert(string.format(" Aerospace restarted"))
-							else
-								utils:nerd_alert(string.format(" error restarting aerospace: %s", output))
-							end
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"q",
-				"Kill Aerospace",
-				{
-					{
-						cons.act.script,
-						"killall AeroSpace",
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Hammerspoon Menu
+  ------------------------------------------------------------------------------------------------
+  hammerspoonMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "C",
+        "HS Console",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.toggleConsole()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "d",
+        "HS Manual",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.doc.hsdocs.forceExternalBrowser(true)
+              hs.doc.hsdocs.moduleEntitiesInSidebar(true)
+              hs.doc.hsdocs.help()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "Reload HS",
+        {
+          {
+            cons.act.func,
+            function()
+              utils.reloadHSConfig()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "r",
+        "Restart HS",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.relaunch()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "q",
+        "Quit HS",
+        {
+          {
+            cons.act.func,
+            function()
+              os.exit()
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Media Menu
-	------------------------------------------------------------------------------------------------
-	spotifyMenu = {
-		parentMenu = mediaMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"j",
-				" Volume Down",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.setVolume(hs.spotify.getVolume() - 10)
-							utils:nerd_alert(string.format("  Volume down: %d%%", hs.spotify.getVolume()))
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"K",
-				"  Volume Up",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.setVolume(hs.spotify.getVolume() + 10)
-							utils:nerd_alert(string.format("  Volume Up: %d%%", hs.spotify.getVolume()))
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"m",
-				"󰝟 Mute/Unmute",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.setVolume(0)
-							utils:nerd_alert("󰝟 Mute/Unmute")
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"l",
-				"󰼧 Next Track",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.next()
-							utils:nerd_alert("󰼧 Next Track")
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"h",
-				"󰼨 Prev Track",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.previous()
-							utils:nerd_alert("󰼨 Prev Track")
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"p",
-				"󰐎 Play/Pause",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.spotify.playpause()
-							utils:nerd_alert("󰐎 Play/Pause")
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Aerospace Menu
+  ------------------------------------------------------------------------------------------------
+  aerospaceMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "d",
+        "Aerospace Docs",
+        {
+          {
+            -- modify to accept search query
+            cons.act.openurl,
+            "https://nikitabobko.github.io/AeroSpace/guide",
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "Reload Aerospace",
+        {
+          {
+            cons.act.func,
+            function()
+              local output, status = hs.execute("/opt/homebrew/bin/aerospace reload-config")
+              if status then
+                utils:nerd_alert(string.format(" Aerospace config reloaded"))
+              else
+                utils:nerd_alert(string.format(" Aerospace config reload failed: %s", output))
+              end
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "r",
+        "Restart Aerospace",
+        {
+          {
+            cons.act.func,
+            function()
+              local output, status = hs.execute("killall AeroSpace && sleep 1 && open -a AeroSpace")
+              if status then
+                utils:nerd_alert(string.format(" Aerospace restarted"))
+              else
+                utils:nerd_alert(string.format(" error restarting aerospace: %s", output))
+              end
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "q",
+        "Kill Aerospace",
+        {
+          {
+            cons.act.script,
+            "killall AeroSpace",
+          },
+        },
+      },
+    },
+  },
 
-	mediaMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "v" },
-		menuItems = {
-			{
-				cons.cat.submenu,
-				"",
-				"s",
-				" Spotify",
-				{
-					{
-						cons.act.menu,
-						spotifyMenu,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"J",
-				" Volume Down",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.set_volume(-25)
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"K",
-				"  Volume Up",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.set_volume(25)
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"m",
-				"󰝟 Mute/Unmute",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.volume_mute()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"l",
-				"󰼧 Next Track",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.next_track()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"h",
-				"󰼨 Prev Track",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.prev_track()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"p",
-				"󰐎 Play/Pause",
-				{
-					{
-						cons.act.func,
-						function()
-							media_helper.play_pause()
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Media Menu
+  ------------------------------------------------------------------------------------------------
+  spotifyMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "j",
+        "Volume Down (-)",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.setVolume(hs.spotify.getVolume() - 10)
+              utils:nerd_alert(string.format("  Volume down: %d%%", hs.spotify.getVolume()))
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "K",
+        "Volume Up (+)",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.setVolume(hs.spotify.getVolume() + 10)
+              utils:nerd_alert(string.format("  Volume Up: %d%%", hs.spotify.getVolume()))
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "Mute/Unmute",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.setVolume(0)
+              utils:nerd_alert("󰝟 Mute/Unmute")
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "l",
+        "Next Track",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.next()
+              utils:nerd_alert("󰼧 Next Track")
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "h",
+        "Prev Track",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.previous()
+              utils:nerd_alert("󰼨 Prev Track")
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "p",
+        "Play/Pause",
+        {
+          {
+            cons.act.func,
+            function()
+              hs.spotify.playpause()
+              utils:nerd_alert("󰐎 Play/Pause")
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Display Menu
-	------------------------------------------------------------------------------------------------
-	displayMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = { key_helper.hyper, "b" },
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"j",
-				" Brightness",
-				{
-					{
-						cons.act.func,
-						function()
-							display_helper.decrease_brightness()
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"k",
-				" Brightness",
-				{
-					{
-						cons.act.func,
-						function()
-							display_helper.increase_brightness()
-						end,
-					},
-				},
-			},
-		},
-	},
+  mediaMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "J",
+        "Volume (-)",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.volume_down()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "K",
+        "Volume (+)",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.volume_up()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "Mute/Unmute",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.volume_mute()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "l",
+        "Next Track",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.next_track()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "h",
+        "Prev Track",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.prev_track()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "p",
+        "Play/Pause",
+        {
+          {
+            cons.act.func,
+            function()
+              media_helper.play_pause()
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Open Files Menu
-	------------------------------------------------------------------------------------------------
-	openFilesMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = {},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Display Menu
+  ------------------------------------------------------------------------------------------------
+  displayMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "j",
+        "Brightness (-)",
+        {
+          {
+            cons.act.func,
+            function()
+              display_helper.decrease_brightness()
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "k",
+        "Brightness (+)",
+        {
+          {
+            cons.act.func,
+            function()
+              display_helper.increase_brightness()
+            end,
+          },
+        },
+      },
+    },
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- Resolution Menu
-	------------------------------------------------------------------------------------------------
-	resolutionMenu = {
-		parentMenu = mainMenu,
-		menuHotkey = nil,
-		menuItems = resolutionMenuItems,
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Open Files Menu
+  ------------------------------------------------------------------------------------------------
+  openFilesMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = {},
+  },
 
-	------------------------------------------------------------------------------------------------
-	-- System Menu
-	------------------------------------------------------------------------------------------------
-	systemMenu = {
-		parentMenu = utilitiesMenu,
-		menuHotkey = nil,
-		menuItems = {
-			{
-				cons.cat.action,
-				"",
-				"l",
-				"Lock Screen",
-				{
-					{ cons.act.system, cons.sys.lockscreen },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"r",
-				"Restart",
-				{
-					{ cons.act.system, cons.sys.restart, true },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"S",
-				"Shutdown",
-				{
-					{ cons.act.system, cons.sys.shutdown, true },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"l",
-				"Logout",
-				{
-					{ cons.act.system, cons.sys.logoutnow },
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"d",
-				"Hide/Show Dock",
-				{
-					{ cons.act.keycombo, { "cmd", "alt" }, "d" },
-				},
-			},
-			{
-				cons.cat.action,
-				"shift",
-				"w",
-				"Disable wi-fi",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.wifi.setPower(false)
-						end,
-					},
-				},
-			},
-			{
-				cons.cat.action,
-				"",
-				"w",
-				"Enable wi-fi",
-				{
-					{
-						cons.act.func,
-						function()
-							hs.wifi.setPower(true)
-						end,
-					},
-				},
-			},
-		},
-	},
+  ------------------------------------------------------------------------------------------------
+  -- Resolution Menu
+  ------------------------------------------------------------------------------------------------
+  resolutionMenu = {
+    parentMenu = mainMenu,
+    menuHotkey = nil,
+    menuItems = resolutionMenuItems,
+  },
+
+  ------------------------------------------------------------------------------------------------
+  -- System Menu
+  ------------------------------------------------------------------------------------------------
+  systemMenu = {
+    parentMenu = utilitiesMenu,
+    menuHotkey = nil,
+    menuItems = {
+      {
+        cons.cat.action,
+        "",
+        "l",
+        "Lock Screen",
+        {
+          { cons.act.system, cons.sys.lockscreen },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "Restart",
+        {
+          { cons.act.system, cons.sys.restart, true },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "S",
+        "Shutdown",
+        {
+          { cons.act.system, cons.sys.shutdown, true },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "l",
+        "Logout",
+        {
+          { cons.act.system, cons.sys.logoutnow },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "d",
+        "Toggle Dock",
+        {
+          { cons.act.keycombo, { "cmd", "alt" }, "d" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "n",
+        "Toggle notifications",
+        {
+          { cons.act.keycombo, { "cmd", "alt" }, "n" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "w",
+        "Toggle wi-fi",
+        {
+          {
+            cons.act.func,
+            function()
+              local details = hs.wifi.interfaceDetails()
+              local powered = details and details.power or false
+              hs.wifi.setPower(not powered)
+            end,
+          },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "m",
+        "Toggle Menu Bar",
+        {
+          {
+            cons.act.func,
+            function()
+              display_helper.toggle_menu_bar()
+            end,
+          },
+        },
+      },
+    },
+  },
 }

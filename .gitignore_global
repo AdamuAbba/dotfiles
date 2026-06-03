@@ -1,10 +1,17 @@
 # Place a copy if this at ~/.gitignore_global
 # Run `git config --global core.excludesfile ~/.gitignore_global`
 
+#============================================ config stuff =======================================
+.config/tmux/plugins
+
 #============================================ AI stuff ===========================================
 .vectorcode
 AGENTS.md
  **/AGENTS.md
+env
+env.example
+**/.env
+**/env
 
 #============================================ flutter ===========================================
 pubspec.lock
@@ -113,3 +120,7 @@ artifacts/
 #============================================ Ruby & Coocaopods ===========================================
 **/Pods/
 /vendor/bundle/
+
+#============================================ CPP ===========================================
+compile_commands.json
+out/

@@ -2,15 +2,27 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    enabled = false,
-    ---@diagnostic disable-next-line: undefined-doc-name
-    ---@type Flash.Config
-    opts = {
-      modes = {
-        search = {
-          enabled = false,
+    enabled = true,
+    keys = function()
+      return {
+        {
+          "s",
+          mode = { "n", "x", "o" },
+          function()
+            require("flash").jump()
+          end,
+          desc = "Flash",
         },
-      },
-    },
+      }
+    end,
+    opts = function()
+      return {
+        modes = {
+          search = {
+            enabled = false,
+          },
+        },
+      }
+    end,
   },
 }

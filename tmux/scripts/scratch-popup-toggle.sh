@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SESSION="scratch"
-TITLE=" Scratch Session (Floating) "
+TITLE=" S:[scratch] "
 
 current_session="$(tmux display-message -p '#{session_name}')"
 
