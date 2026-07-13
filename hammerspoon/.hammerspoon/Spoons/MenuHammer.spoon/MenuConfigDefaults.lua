@@ -7,17 +7,6 @@ local display_helper = require("helpers.display_helper")
 local media_helper = require("helpers.media_helper")
 local utils = require("helpers.utils")
 
---============================================= Clipboard load early =============================================
-spoon.SpoonInstall:andUse("ClipboardTool", {
-  start = true,
-  config = {
-    paste_on_select = true,
-    show_copied_alert = false,
-    show_in_menubar = false,
-    deduplicate = true,
-  },
-})
-
 -- If enabled, the menus will appear over fullscreen applications.
 -- However, the Hammerspoon dock icon will also be disabled (required for fullscreen).
 menuShowInFullscreen = false
@@ -591,12 +580,8 @@ menuHammerMenuList = {
         "c",
         "Clipboard",
         {
-          {
-            cons.act.func,
-            function()
-              spoon.ClipboardTool:showClipboard()
-            end,
-          },
+          { cons.act.keycombo, { "cmd" }, "space" },
+          { cons.act.keycombo, { "cmd" }, "4" },
         },
       },
       {
