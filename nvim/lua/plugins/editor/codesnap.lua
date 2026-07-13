@@ -1,31 +1,74 @@
------ TODO:: update os path for windows and macOS
-local function os_save_path()
-  if vim.fn.has("mac") == 1 then
-    return "/home/abba/Pictures/"
-  elseif vim.fn.has("win32") == 1 then
-    return "/home/abba/Pictures/"
-  else
-    return "/home/abba/Pictures/"
-  end
-end
+local os = require("os")
 
 return {
   {
     "mistricky/codesnap.nvim",
-    lazy = true,
+    tag = "v2.0.0-beta.17",
     cmd = "CodeSnapSave",
     keys = {
-      { "<leader><space>s", "<cmd>CodeSnapSave<cr>", desc = "Save selected code snapshot in save path", mode = "x" },
+      {
+        "<leader>cs",
+        function()
+          local path = os.getenv("HOME") .. "/Pictures/screenshots/code-image.png"
+          require("codesnap").save(path)
+        end,
+        desc = "CodeSnap",
+        mode = "x",
+      },
     },
-    build = "make",
     opts = {
-      save_path = os_save_path(),
-      bg_theme = "grape",
-      has_breadcrumbs = false,
-      show_workspace = false,
-      watermark = "shytypes1028",
-      code_font_family = "JetBrainsMono Nerd Font Mono",
-      watermark_font_family = "JetBrainsMono Nerd Font Mono",
+      show_line_number = true,
+      highlight_color = "#ffffff20",
+      show_workspace = true,
+      snapshot_config = {
+        theme = "vercel@https://raw.githubusercontent.com/Railly/one-hunter-vscode/refs/heads/main/themes/OneHunter-Vercel-color-theme.json",
+        window = {
+          mac_window_bar = true,
+          shadow = {
+            radius = 20,
+            color = "#00000040",
+          },
+          margin = {
+            x = 82,
+            y = 82,
+          },
+          border = {
+            width = 1,
+            color = "#00000030",
+          },
+          title_config = {
+            color = "#ffffff",
+            font_family = "IosevkaInput",
+          },
+        },
+        themes_folders = {},
+        fonts_folders = {},
+        line_number_color = "#495162",
+        command_output_config = {
+          prompt = "❯",
+          font_family = "IosevkaInput",
+          prompt_color = "#F78FB3",
+          command_color = "#98C379",
+          string_arg_color = "#ff0000",
+        },
+        code_config = {
+          font_family = "IosevkaInput",
+          breadcrumbs = {
+            enable = true,
+            separator = "/",
+            color = "#80848b",
+            font_family = "IosevkaInput",
+          },
+        },
+        watermark = {
+          -- content = "CodeSnap.nvim",
+          -- font_family = "IosevkaInput",
+          -- color = "#ffffff",
+        },
+        background = {
+          color = "#000000",
+        },
+      },
     },
     config = function(_, opts)
       require("codesnap").setup(opts)

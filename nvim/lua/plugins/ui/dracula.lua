@@ -4,6 +4,7 @@ return {
   {
     "Mofiqul/dracula.nvim",
     lazy = false,
+    enabled = false,
     opts = {
       colors = {
         bg = theme_colors.background,

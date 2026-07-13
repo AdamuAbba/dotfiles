@@ -26,17 +26,15 @@ return {
     config = function(_, opts)
       local Scissors = require("scissors")
       local wk = require("which-key")
-      local icons = require("lib.icons")
 
       wk.add({
-        { "<leader>h", group = "scissors", icon = icons.ui.Scissors, mode = { "n", "x" } },
+        { "<leader>h", group = "scissors", mode = { "n", "x" } },
         {
           "<leader>he",
           function()
             Scissors.editSnippet()
           end,
           desc = "Edit snippet",
-          icon = icons.ui.Edit,
         },
         {
           "<leader>ha",
@@ -44,7 +42,6 @@ return {
             Scissors.addNewSnippet()
           end,
           desc = "Add new snippet",
-          icon = icons.ui.AddAlt,
           mode = { "n", "x" },
         },
       })

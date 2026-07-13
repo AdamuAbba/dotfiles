@@ -374,16 +374,15 @@ menuHammerMenuList = {
           { cons.act.launcher, "Figma" },
         },
       },
-      -- {
-      --   cons.cat.action,
-      --   "",
-      --   "g",
-      --   "Ghostty",
-      --   {
-      --     { cons.act.launcher, "Ghostty" },
-      --   },
-      -- },
-
+      {
+        cons.cat.action,
+        "",
+        "g",
+        "Ghostty",
+        {
+          { cons.act.launcher, "Ghostty" },
+        },
+      },
       {
         cons.cat.action,
         "",
@@ -449,6 +448,15 @@ menuHammerMenuList = {
       },
       {
         cons.cat.action,
+        "",
+        "r",
+        "RN (DevTools)",
+        {
+          { cons.act.launcher, "React Native DevTools" },
+        },
+      },
+      {
+        cons.cat.action,
         "shift",
         "p",
         "Settings",
@@ -508,6 +516,15 @@ menuHammerMenuList = {
         "Notes",
         {
           { cons.act.launcher, "Notes" },
+        },
+      },
+      {
+        cons.cat.action,
+        "shift",
+        "n",
+        "Netflix",
+        {
+          { cons.act.launcher, "Netflix" },
         },
       },
       {

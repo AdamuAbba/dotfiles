@@ -6,7 +6,7 @@ return {
     },
     cmd = "Neogen",
     opts = function(_, opts)
-      opts.snippet_engine = "mini"
+      opts.snippet_engine = "nvim"
       opts.enabled = true
       opts.input_after_comment = true
     end,

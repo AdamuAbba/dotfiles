@@ -4,12 +4,14 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
 export FZF_DEFAULT_OPTS="
   --style=full
-  --height 100%
+  --height=35%
   --ansi
   --no-scrollbar
-  --list-border=none
+  --list-border=rounded
   --info=hidden
-  --preview-window=right:50%:border-left
+  --margin=0,49%,0,0
+  --preview-border=rounded
+  --layout=reverse
   --pointer ''
   --marker ''
   --bind='result:transform-list-label:
@@ -35,14 +37,14 @@ _fzf_compgen_dir() {
 }
 
 fif() {
-  if [ "$#" -eq 0 ]; then
+  if [ "$" -eq 0 ]; then
     echo "Need a string to search for!"
     return 1
   fi
 
   local file
   file="$(rga --ignore-case --files-with-matches --no-messages "$*" |
-    fzf  --preview="rga --ignore-case --pretty --context 10 '$*' {}")"
+    fzf --preview="rga --ignore-case --pretty --context 10 '$*' {}")"
 
   if [ -n "$file" ]; then
     echo "opening $file"
@@ -52,9 +54,8 @@ fif() {
   fi
 }
 
-
 fid() {
-  if [ "$#" -eq 0 ]; then
+  if [ "$" -eq 0 ]; then
     echo "Need a filename or folder pattern to search for!"
     return 1
   fi

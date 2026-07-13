@@ -6,6 +6,7 @@ return {
     },
     config = function()
       local wk = require("which-key")
+      local custom_border = require("lib.icons").custom_border
       wk.add({
         {
           "<leader>ct",
@@ -23,7 +24,6 @@ return {
               vim.lsp.buf.selection_range(vim.v.count1)
             end
           end,
-          icon = "󰘖 ",
           desc = "Select parent treesitter node or outer incremental lsp selections",
           silent = true,
           mode = { "x", "o", "n" },
@@ -72,6 +72,7 @@ return {
           "bash",
           "c",
           "cmake",
+          "make",
           "cpp",
           "css",
           "diff",
@@ -135,7 +136,7 @@ return {
           "yaml",
           "mermaid",
         },
-        border = "rounded",
+        border = custom_border,
         auto_install = true,
         highlight = true,
       })

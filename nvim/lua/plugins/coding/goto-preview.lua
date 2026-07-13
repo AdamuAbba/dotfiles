@@ -24,13 +24,12 @@ return {
       end
 
       wk.add({
-        { "gb", group = "Goto Preview", icon = " ", mode = { "n" } },
+        { "gb", group = "Goto Preview", mode = { "n" } },
         {
           "gbi",
           function()
             go_to_preview.goto_preview_implementation({ focus_on_open = true })
           end,
-          icon = "",
           desc = "Preview Implementation",
         },
         {
@@ -38,7 +37,6 @@ return {
           function()
             go_to_preview.goto_preview_references()
           end,
-          icon = "",
           desc = "Preview References",
         },
         {
@@ -46,7 +44,6 @@ return {
           function()
             go_to_preview.goto_preview_declaration({ focus_on_open = true })
           end,
-          icon = "",
           desc = "Preview Declaration",
         },
         {
@@ -54,7 +51,6 @@ return {
           function()
             go_to_preview.goto_preview_definition()
           end,
-          icon = "",
           desc = "Preview Definition",
         },
         {
@@ -62,7 +58,6 @@ return {
           function()
             go_to_preview.goto_preview_type_definition({})
           end,
-          icon = "󰙅",
           desc = "Preview Type Definition",
         },
       })

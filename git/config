@@ -1,7 +1,7 @@
 [init]
   defaultBranch = main
 [user]
-  email = abbaadamu302@gmail.com
+  email = abbaadamu302@icloud.com
 	name = shytypes
   signingkey = B87CC68CF426C819
 [http]
@@ -50,6 +50,7 @@
 [commit]
 	gpgsign = true
 	signoff = true
+  verbose = true
 [gpg]
   program = gpg
 [tag]

@@ -33,7 +33,7 @@ source "$HOME/zshrc-config/docker.zsh"
 #============================================ zellij ==============================================
 source "$HOME/zshrc-config/zellij.zsh"
 #============================================ tmux ==============================================
-source "$HOME/zshrc-config/tmux.zsh"
+# source "$HOME/zshrc-config/tmux.zsh"
 #============================================ fzf =================================================
 source "$HOME/zshrc-config/fzf.zsh"
 #============================================= ssh ================================================
@@ -48,6 +48,8 @@ source "$HOME/zshrc-config/LSP.zsh"
 source "$HOME/zshrc-config/omz-config.zsh"
 #============================================ Aliases =============================================
 source "$HOME/zshrc-config/aliases.zsh"
+#============================================ pager(NVIM) =============================================
+source "$HOME/zshrc-config/pager.zsh"
 #============================================ Additional completions for zsh ======================
 # source "$HOME/zshrc-config/zsh-completions.zsh"
 #======================================= keep at bottom (DO NOT TOUCH ORDER SHYTYPES) ==============
@@ -63,9 +65,6 @@ source "$HOME/zshrc-config/eza.zsh"
 #============================================ atuin =================================================
 source "$HOME/zshrc-config/atuin.zsh"
 
-zle -N tmux-edit-commandline-popup
-bindkey -M vicmd -r 'vv'
-bindkey -M vicmd 'vv' tmux-edit-commandline-popup
-
-#============================================= worktrunk =============================================
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# zle -N tmux-edit-commandline-popup
+# bindkey -M vicmd -r 'vv'
+# bindkey -M vicmd 'vv' tmux-edit-commandline-popup

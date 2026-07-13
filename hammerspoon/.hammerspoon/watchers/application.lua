@@ -14,20 +14,18 @@ obj.homepage = ""
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 obj.appsToCenter = {
-	"Finder",
-	-- "Karabiner-Elements",
-	-- "Hammerspoon",
-	-- "Free Download Manager",
-	-- "Activity Monitor",
-	"System Settings",
-	-- "The Unarchiver",
-	-- "Safari",
-	-- "Ghostty",
-	-- "Zen",
-	-- "Stremio",
-	-- "Figma",
-	-- "Xcode",
-	-- "Bitwarden",
+  "Finder",
+  -- "Karabiner-Elements",
+  -- "Hammerspoon",
+  -- "Free Download Manager",
+  "Activity Monitor",
+  "System Settings",
+  -- "The Unarchiver",
+  "Safari",
+  "Ghostty",
+  "Netflix",
+  -- "Figma",
+  -- "Xcode",
 }
 
 --- ApplicationWatcher:start()
@@ -37,41 +35,41 @@ obj.appsToCenter = {
 --- Parameters:
 ---  * None
 function obj:start()
-	obj:stop() -- stop existing watcher if any
-	local appsToCenter = self.appsToCenter
+  obj:stop() -- stop existing watcher if any
+  local appsToCenter = self.appsToCenter
 
-	local function watcher_function(name, event, app)
-		if not (event == hs.application.watcher.launched or event == hs.application.watcher.activated) then
-			return
-		end
+  local function watcher_function(name, event, app)
+    if not (event == hs.application.watcher.launched or event == hs.application.watcher.activated) then
+      return
+    end
 
-		for _, target in ipairs(appsToCenter) do
-			if name == target then
-				hs.timer.doAfter(0.2, function()
-					local win = app:mainWindow() or hs.window.frontmostWindow()
-					win:centerOnScreen(nil, true, 0.2)
-					-- if win and win:isStandard() then
-					-- if win:isMaximizable() then
-					-- 	win:maximize(0.2)
-					-- end
-					-- end
-				end)
-				break
-			end
-		end
-	end
+    for _, target in ipairs(appsToCenter) do
+      if name == target then
+        hs.timer.doAfter(0.2, function()
+          local win = app:mainWindow() or hs.window.frontmostWindow()
+          win:centerOnScreen(nil, true, 0.2)
+          if win and win:isStandard() then
+            if win:isMaximizable() then
+              win:maximize(0.2)
+            end
+          end
+        end)
+        break
+      end
+    end
+  end
 
-	local w = hs.application.watcher.new(watcher_function)
-	w:start()
-	self.watcher = w
-	return self
+  local w = hs.application.watcher.new(watcher_function)
+  w:start()
+  self.watcher = w
+  return self
 end
 
 function obj:stop()
-	if self.watcher then
-		self.watcher:stop()
-		self.watcher = nil
-	end
+  if self.watcher then
+    self.watcher:stop()
+    self.watcher = nil
+  end
 end
 
 return obj

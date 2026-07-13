@@ -8,24 +8,56 @@ font-family = "Symbols Nerd Font Mono"
 font-size = 17
 adjust-underline-position = 7%
 adjust-cursor-thickness = 150%
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
 macos-option-as-alt = true
 mouse-hide-while-typing = true
-window-padding-y = 5
-window-padding-x = 5
-window-padding-balance = true
-window-inherit-working-directory = true
 maximize = true
 cursor-style-blink = false
 shell-integration-features = no-cursor
 quit-after-last-window-closed = true
 clipboard-paste-protection = false
+link-previews = true
+link-url = true
+copy-on-select = true
+confirm-close-surface = false
+progress-style = true
+
+#--- Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+
+#--- window settings
+window-title-font-family = "IosevkaInput"
+window-save-state = never
+window-padding-y = 5
+window-padding-x = 5
+window-padding-balance = true
+window-inherit-working-directory = true
+window-theme = dark
+window-new-tab-position = current
+window-width = 148
+window-height = 47
+
+#--- tab settings
+tab-inherit-working-directory = true
+
+#--- split settings
+split-inherit-working-directory = true
+split-divider-color=#282828
 
 # ============================================= colors =============================================
 background = #000000
 cursor-color = #ffffff
 cursor-text = #000000
-selection-background = #ff79c6
-selection-foreground = #000000
+selection-background = #44475a
+selection-foreground = #ffffff
 shell-integration = zsh
 keybind = clear
+keybind = alt+t=new_tab
+keybind = alt+]=next_tab
+keybind = alt+[=previous_tab
+keybind = alt+x=close_tab
+keybind = alt+p=new_split:right
+keybind = alt+shift+]=goto_split:right
+keybind = alt+shift+[=goto_split:left
+

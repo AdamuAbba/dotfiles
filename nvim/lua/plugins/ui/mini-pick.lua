@@ -17,6 +17,7 @@ return {
       local height = math.floor(0.618 * vim.o.lines)
       local width = math.floor(0.618 * vim.o.columns)
 
+      opts.source = { show = MiniPick.default_show }
       opts.window = {
         config = {
           border = icons.custom_border,
@@ -35,12 +36,6 @@ return {
       end
 
       MiniPick.setup(opts)
-
-      -- vim.keymap.set("n", "<leader><leader>", function()
-      --   vim.ui.select({ "One", "Two", "Three" }, {}, function(selected)
-      --     print("Selected: " .. selected)
-      --   end)
-      -- end)
 
       local add_items_to_qfl = function(items)
         local qf_items = {}
@@ -67,164 +62,6 @@ return {
         return false
       end
 
-      --============================================= Local grep Deps API  =============================================
-      -- copied and modified from https://github.com/james-orcales/big_bang/blob/master/dotfiles/common/.config/nvim/init.lua
-      -- dude is a genius
-
-      local rules = {
-        Lua = {
-          Function = [[(?:function [a-zA-Z0-9_]+\(|[a-zA-Z0-9_]+ = function\(|= def\()]],
-        },
-
-        Rust = {
-          -- We don't filter by file extension because Rust API searches often target
-          -- individual files, unlike Go or Odin, where the package system makes it
-          -- more common to search the entire directory.
-          Function = [[^\s*pub (const )?(unsafe )?fn +[a-zA-Z0-9_#]+]],
-          Macro = [[^\s*macro_rules! [a-zA-Z0-9_#]+]],
-          Impl = [[^\s*impl\b]],
-          Type = [[^\s*pub (?:struct|union|enum|trait|type) [a-zA-Z0-9_#]+]],
-        },
-
-        JavaScript = {
-          Function = [[(^\s*function [a-zA-Z0-9_$]+\(|^\s*const [a-zA-Z0-9_$]+ *= *\(|^\s*[a-zA-Z0-9_$]+ *= *\([^)]*\) *=>)]],
-          Class = [[^\s*class [a-zA-Z0-9_$]+]],
-        },
-
-        TypeScript = {
-          Function = [[(^\s*function [a-zA-Z0-9_$]+\(|^\s*const [a-zA-Z0-9_$]+ *= *\(|^\s*[a-zA-Z0-9_$]+ *= *\([^)]*\) *=>)]],
-          Type = [[^\s*(export )?(interface|type) [a-zA-Z0-9_$]+]],
-          Class = [[^\s*(export )?class [a-zA-Z0-9_$]+]],
-        },
-      }
-
-      local parse_programming_language = function(path)
-        if path:match("%.lua$") then
-          return "Lua"
-        elseif path:match("%.rs$") or path:lower() == "cargo.toml" then
-          return "Rust"
-        elseif path:match("%.js$") or path:match("%.jsx$") or path:lower() == "package.json" then
-          return "JavaScript"
-        elseif path:match("%.ts$") or path:match("%.tsx$") then
-          return "TypeScript"
-        end
-        return nil
-      end
-
-      local get_dependency_paths = function(programming_language)
-        if programming_language == "Rust" then
-          local cargo_src = vim.fn.expand("~/.cargo/registry/src")
-          if vim.fn.isdirectory(cargo_src) == 1 then
-            -- Find the index.crates.io directory (there should be only one)
-            local handle = vim.uv.fs_scandir(cargo_src)
-            if handle then
-              local index_dir = vim.uv.fs_scandir_next(handle)
-              if index_dir then
-                return { vim.fs.joinpath(cargo_src, index_dir) }
-              end
-            end
-          end
-          return nil
-        elseif programming_language == "Lua" then
-          local paths = {}
-          -- local candidates = {
-          --   vim.fn.expand("~/.local/share/nvim/"),
-          -- }
-          -- for _, path in ipairs(candidates) do
-          --   if vim.fn.isdirectory(path) == 1 then
-          --     table.insert(paths, path)
-          --   end
-          -- end
-
-          -- Add Neovim runtime Lua API (vim.*)
-          -- Use $VIMRUNTIME to get the current Neovim runtime path dynamically
-          local vimruntime = vim.env.VIMRUNTIME
-          if vimruntime then
-            local nvim_lua_path = vim.fs.joinpath(vimruntime, "lua")
-            if vim.fn.isdirectory(nvim_lua_path) == 1 then
-              table.insert(paths, nvim_lua_path)
-            end
-          end
-
-          -- Add system Lua libraries
-          -- local lua_paths = {
-          --   "/opt/homebrew/share/lua/5.1",
-          --   "/opt/homebrew/share/luajit-2.1",
-          --   "/usr/local/share/lua/5.1",
-          -- }
-          -- for _, lua_path in ipairs(lua_paths) do
-          --   if vim.fn.isdirectory(lua_path) == 1 then
-          --     table.insert(paths, lua_path)
-          --   end
-          -- end
-
-          return #paths > 0 and paths or nil
-        elseif programming_language == "JavaScript" or programming_language == "TypeScript" then
-          local cwd = vim.uv.cwd()
-          ---@diagnostic disable-next-line: param-type-mismatch
-          local node_modules = vim.fs.joinpath(cwd, "node_modules")
-          if vim.fn.isdirectory(node_modules) == 1 then
-            return { node_modules }
-          end
-          return nil
-        end
-        return nil
-      end
-
-      local dependency_api_search = function()
-        local path = vim.api.nvim_buf_get_name(0)
-        local programming_language = nil
-
-        -- Detect language from current buffer or directory
-        if not path:match("^oil://.*") then
-          programming_language = parse_programming_language(path)
-        else
-          ---@diagnostic disable-next-line: param-type-mismatch
-          local handle = vim.uv.fs_scandir(vim.uv.cwd())
-          if handle then
-            while true do
-              local name, t = vim.uv.fs_scandir_next(handle)
-              if not name then
-                break
-              end
-              if t == "file" then
-                programming_language = parse_programming_language(name)
-                if programming_language then
-                  break
-                end
-              end
-            end
-          end
-        end
-
-        if programming_language == nil then
-          vim.notify("Unable to detect language for dependency search", vim.log.levels.WARN)
-          return
-        end
-
-        -- Get dependency paths
-        local dependency_paths = get_dependency_paths(programming_language)
-        if dependency_paths == nil then
-          local location_hint = programming_language == "Rust" and "~/.cargo/registry"
-            or programming_language == "Lua" and "~/.local/share/nvim/lazy or ~/.luarocks"
-            or programming_language == "JavaScript" and "./node_modules"
-            or programming_language == "TypeScript" and "./node_modules"
-            or "dependency directory"
-          vim.notify(
-            string.format("No dependencies found for %s in %s", programming_language, location_hint),
-            vim.log.levels.WARN
-          )
-          return
-        end
-
-        MiniPick.builtin.grep_live({ tool = "rg" }, {
-          source = {
-            cwd = dependency_paths[1],
-            name = dependency_paths[1],
-          },
-        })
-      end
-
       --============================================= buffer picker =============================================
       local function handle_buffer()
         local wipeout_cur = function()
@@ -239,7 +76,7 @@ return {
               exclude_map[mark.bufnr] = true
               bufremove.delete(mark.bufnr)
             end
-          elseif matches.current then
+          elseif matches and matches.current and matches.current.bufnr then
             exclude_map[matches.current.bufnr] = true
             bufremove.delete(matches.current.bufnr)
           end
@@ -258,7 +95,6 @@ return {
         {
           "<leader>fb",
           handle_buffer,
-          icon = icons.documents.Buffer,
           desc = "Pick buffer",
           silent = true,
           mode = { "n" },
@@ -268,7 +104,6 @@ return {
           function()
             MiniPick.builtin.files({ tool = "rg" })
           end,
-          icon = icons.documents.File,
           desc = "Find Files",
           silent = true,
           mode = { "n" },
@@ -287,7 +122,6 @@ return {
               },
             })
           end,
-          icon = icons.documents.Help,
           desc = "Help Pages",
           silent = true,
           mode = { "n" },
@@ -301,7 +135,6 @@ return {
               },
             })
           end,
-          icon = icons.documents.SearchInFile,
           desc = "Grep (live)",
           silent = true,
           mode = { "n" },
@@ -316,13 +149,6 @@ return {
           end,
           desc = "Grep visual selection",
           mode = { "n", "x" },
-        },
-        {
-          "<leader>fa",
-          dependency_api_search,
-          desc = "Local grep Dep API",
-          silent = true,
-          mode = { "n" },
         },
       })
     end,

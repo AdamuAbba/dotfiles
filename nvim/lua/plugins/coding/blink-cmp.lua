@@ -1,10 +1,10 @@
 return {
   {
     "saghen/blink.cmp",
+    enabled = false,
     version = "1.*",
     dependencies = {
       "Kaiser-Yang/blink-cmp-git",
-      "moyiz/blink-emoji.nvim",
       "archie-judd/blink-cmp-words",
       "bydlw98/blink-cmp-env",
       "alexandre-abrioux/blink-cmp-npm.nvim",
@@ -38,24 +38,17 @@ return {
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
         ---@diagnostic disable-next-line: param-type-mismatch
         default = vim.list_extend(opts.sources.default or {}, {
-          "ecolog",
-          "filemention",
           "tmux",
           "npm",
           "ripgrep",
           "conventional_commits",
           "git",
-          "emoji",
           "dictionary",
           "env",
           "sshconfig",
           "ghostty",
         }),
         providers = vim.tbl_deep_extend("force", opts.sources.providers or {}, {
-          filemention = {
-            name = "filemention",
-            module = "filemention.sources.blink",
-          },
           ghostty = {
             name = "Ghostty",
             module = "blink-cmp-ghostty",
@@ -73,10 +66,6 @@ return {
           tmux = {
             name = "Tmux",
             module = "blink-cmp-tmux",
-          },
-          ecolog = {
-            name = "ecolog",
-            module = "ecolog.integrations.cmp.blink_cmp",
           },
           ripgrep = {
             module = "blink-ripgrep",
@@ -134,20 +123,6 @@ return {
             module = "blink-cmp-npm",
             async = true,
           },
-          emoji = {
-            module = "blink-emoji",
-            name = "Emoji",
-            score_offset = 15,
-            opts = {
-              insert = true,
-              trigger = function()
-                return { "e:" }
-              end,
-            },
-            should_show_items = function()
-              return vim.tbl_contains({ "lua", "gitcommit", "markdown" }, vim.o.filetype)
-            end,
-          },
           git = {
             module = "blink-cmp-git",
             name = "Git",
@@ -176,6 +151,7 @@ return {
         },
         menu = {
           auto_show = true,
+          max_height = 18,
           draw = {
             columns = {
               { "label" },
@@ -205,12 +181,9 @@ return {
           },
           border = custom_border,
           cmdline_position = function()
-            if vim.g.ui_cmdline_pos ~= nil then
-              local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-              return { pos[1] + 0.4, pos[2] }
-            end
-            local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-            return { vim.o.lines - height, 0 }
+            local row = math.floor(vim.o.lines * 0.38)
+            local col = math.floor(vim.o.columns * 0.3)
+            return { row + 1, col }
           end,
         },
         documentation = {
@@ -225,7 +198,7 @@ return {
         enabled = true,
         window = {
           border = custom_border,
-          show_documentation = false,
+          show_documentation = true,
         },
       })
       --CMDLINE specific config

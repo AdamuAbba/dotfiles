@@ -86,7 +86,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #============================================= vim-mode selection highlights =============================================
-BG=$(hex_to_256 "$DRACULA_PURPLE")
-FG=$(hex_to_256 "$DRACULA_BLACK")
+BG=$(hex_to_256 "$DRACULA_SELECTION")
+FG=$(hex_to_256 "$DRACULA_WHITE")
 
 zle_highlight=(region:bg=$BG,fg=$FG)

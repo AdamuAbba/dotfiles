@@ -3,7 +3,7 @@ SCRIPT_DIR="$CONFIG_DIR/scripts"
 
 #============================================= ios =============================================
 alias sim-clean="rm -r $HOME/Library/Developer/CoreSimulator/Caches"
-alias xcode-clean="rm -r $HOME/Library/Developer/Xcode/DerivedData"
+alias xcode-clean="rm -rf $HOME/Library/Developer/Xcode/DerivedData/* && rm -rf $HOME/Library/Caches/org.swift.swiftpm"
 alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
 alias hide-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to true"'
 alias show-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to false"'
@@ -47,15 +47,12 @@ alias grpr="$SCRIPT_DIR/git/pr-review.sh $1"
 alias ga="$SCRIPT_DIR/git/git-add-confirm.sh"
 
 #============================================= POSIX/Unix util (enhancements) ========================================
-alias -g -- cat="$SCRIPT_DIR/mac-os/view.sh"
 alias man="$SCRIPT_DIR/mac-os/manpopup.sh"
 alias ls="eza --group-directories-first --grid --no-quotes --color=always --sort=type --all --icons=always --no-filesize --no-time --no-user --no-permissions --show-symlinks"
 
 #============================================= tools =============================================
-alias kpp="gruyere --details"
 alias rm='trash'
-alias koji="koji --config=$HOME/.config/koji/config.toml"
-alias update-brew-pkgs="brew update && brew upgrade && brew cleanup --prune=all && brew link docker"
+alias update-brew-pkgs="brew update && brew upgrade -y && brew cleanup --prune=all && brew link docker"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias fastfetch='clear && echo -e "\n\n\n" && fastfetch && echo "\n\n\n"'
 alias speedtest="speedtest -u decimal-bytes"

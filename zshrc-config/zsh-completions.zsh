@@ -4,7 +4,7 @@ if type brew &>/dev/null; then
 fi
 
 #============ custom completions ====================
-tools=(uv mw opencode neru)
+tools=(uv)
 missing=()
 
 for tool in "${tools[@]}"; do

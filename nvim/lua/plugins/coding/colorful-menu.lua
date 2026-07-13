@@ -1,6 +1,7 @@
 return {
   {
     "xzbdmw/colorful-menu.nvim",
+    enabled = false,
     config = function()
       require("colorful-menu").setup({
         ls = {

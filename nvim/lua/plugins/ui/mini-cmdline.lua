@@ -19,8 +19,8 @@ return {
           config = {
             relative = "editor",
             anchor = "NW",
-            row = math.floor(vim.o.lines / 2) - 2,
-            col = math.floor(vim.o.columns / 2) - 32,
+            row = math.floor(vim.o.lines / 2) - 3.5,
+            col = math.floor(vim.o.columns / 2) - 31,
             width = 40,
             border = custom_border,
           },

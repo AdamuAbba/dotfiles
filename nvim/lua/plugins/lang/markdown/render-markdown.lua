@@ -11,9 +11,7 @@ return {
       "norg",
       "rmd",
       "org",
-      "codecompanion",
       "lsp_markdown",
-      "noice",
     },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig

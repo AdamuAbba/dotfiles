@@ -2,27 +2,10 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
+    enabled = false,
     opts = {},
-    keys = {
-      {
-        "<leader>qs",
-        function()
-          require("persistence").load()
-        end,
-        desc = "Restore Session",
-      },
-      {
-        "<leader>qS",
-        false,
-      },
-      {
-        "<leader>ql",
-        false,
-      },
-      {
-        "<leader>qd",
-        false,
-      },
-    },
+    keys = function ()
+      return {}
+    end,
   },
 }

@@ -7,7 +7,29 @@ local opt = vim.o
 local opt_local = vim.opt_local
 local g = vim.g
 local lsp = vim.lsp
+local ui2 = require("vim._core.ui2")
 
+ui2.enable({
+  enable = true,
+  msg = {
+    targets = "msg",
+    cmd = {
+      height = 0,
+    },
+    dialog = {
+      height = 0.5,
+    },
+    msg = {
+      height = 0.5,
+      timeout = 4000,
+    },
+    pager = {
+      height = 1,
+    },
+  },
+})
+
+vim.g.bufstate_no_default_maps = 1
 --=============================================  LazyVim Options ==============================================
 g.lazyvim_blink_main = true
 g.autoformat = false
@@ -20,7 +42,6 @@ g.trouble_lualine = false
 lsp.document_color.enable(true, nil, { style = "background" })
 g.lazyvim_ts_lsp = "tsgo"
 g.lazyvim_eslint_auto_format = false
-g.lazyvim_rust_diagnostics = "rust-analyzer"
 
 -- Formatter
 g.lazyvim_prettier_needs_config = true
@@ -37,7 +58,7 @@ vim.g.zenbones = {
   transparent_background = false,
   italic_strings = false,
   italic_comments = false,
-  solid_float_border = true
+  solid_float_border = true,
 }
 --============================================= set filetypes =============================================
 vim.filetype.add({
@@ -69,14 +90,14 @@ opt.termguicolors = true
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.number = true
-opt.relativenumber = false
-opt.signcolumn = "yes"
+opt.relativenumber = true
+opt.signcolumn = "no"
 opt.laststatus = 3
 opt.showmode = false
 opt.swapfile = false
 opt.clipboard = "unnamedplus"
 opt.mouse = ""
-opt.winbar = " "
+opt.winbar = ""
 opt.winborder = "rounded"
 opt.ignorecase = true
 opt.smartcase = true
@@ -84,7 +105,16 @@ opt.autoread = true
 opt.infercase = true
 opt.showcmd = false
 opt.spell = false
+---completion
+opt.wildmode = "noselect"
+opt.wildoptions = "pum,fuzzy"
 opt.pumborder = "rounded"
+opt.pumheight = 7
+opt.pummaxwidth = 65
+opt.cmdheight = 0
+opt.autocomplete = true
+opt.complete = ".,o"
+opt.completeopt = "preview,noinsert,menu,menuone,popup,fuzzy,noselect"
 
 --============================================= Buffer  Options ==============================================
 opt_local.spell = false

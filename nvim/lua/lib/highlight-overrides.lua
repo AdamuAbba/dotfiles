@@ -23,12 +23,17 @@ M.groups = {
   FloatFooter = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
   FloatTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
 
+  -- nvim icons
+  NvimTreeRootFolder = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+
   -- Mini Files
   MiniFilesNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
   MiniFilesBorder = { fg = theme_colors.white, bg = theme_colors.background },
   MiniFilesCursorLine = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
   MiniFilesTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
   MiniFilesTitleFocused = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  MiniFilesDirectory = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniFilesFile = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
   -- Mini Nofify
   MiniNotifyBorder = { fg = theme_colors.white, bg = theme_colors.background },
@@ -44,6 +49,17 @@ M.groups = {
   MiniPickHeader = { fg = theme_colors.steel_gray, bg = theme_colors.background },
   MiniPickMatchRanges = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
   MiniPickNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+
+  --Mini Icons
+  MiniIcons = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsAzure = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsRed = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsOrange = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsGreen = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsBlue = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsPurple = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsCyan = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniIconsYellow = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
   -- Lualine
   lualine_transitional_lualine_a_normal_to_StatusLine = { fg = theme_colors.cyan, bg = theme_colors.background },
@@ -66,6 +82,7 @@ M.groups = {
   DiagnosticFloatingWarn = { fg = theme_colors.orange },
   DiagnosticFloatingInfo = { fg = theme_colors.cyan },
   DiagnosticFloatingHint = { fg = theme_colors.purple },
+  LspInlayHint = { fg = "#79675e", bg = "none" },
 
   -- WhichKey
   WhichKeyBorder = { fg = theme_colors.white, bg = theme_colors.background },
@@ -87,7 +104,7 @@ M.groups = {
   SnacksPickerPreviewBorder = { fg = theme_colors.white, bg = theme_colors.background },
   SnacksPickerBoxBorder = { fg = theme_colors.white, bg = theme_colors.background },
   SnacksPickerBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksIndentScope = { fg = theme_colors.green },
+  SnacksIndentScope = { fg = theme_colors.steel_gray },
   SnacksIndent = { fg = theme_colors.gray },
   SnacksNotifierHistoryTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
   SnacksNotifierTitleTrace = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
@@ -144,8 +161,10 @@ M.groups = {
   LazyButtonActive = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
 
   -- Pmenu
-  Pmenu = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  PmenuSel = { fg = theme_colors.black, bg = theme_colors.gray, bold = true },
+  Pmenu = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  PmenuSel = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  PmenuMatch = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
+  PmenuMatchSel = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
 
   -- Git Conflict
   GitConflictCurrentLabel = { fg = theme_colors.black, bg = theme_colors.cyan, bold = true },

@@ -1,5 +1,62 @@
 local theme_colors = require("config.theme-colors")
 
+--============================================= LspProgress =============================================
+vim.api.nvim_create_autocmd("LspProgress", {
+  callback = function(ev)
+    local value = ev.data.params.value
+    vim.api.nvim_echo({ { value.message or "done" } }, false, {
+      id = "lsp." .. ev.data.client_id,
+      kind = "progress",
+      source = "vim.lsp",
+      title = value.title,
+      status = value.kind ~= "end" and "running" or "success",
+      percent = value.percentage,
+    })
+  end,
+})
+
+--============================================= Completion =============================================
+vim.api.nvim_create_autocmd("InsertCharPre", {
+  callback = function()
+    if vim.fn.pumvisible() == 1 or vim.fn.state("m") == "m" then
+      return
+    end
+
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+    if next(clients) ~= nil then
+      vim.lsp.completion.get()
+    else
+      local key = vim.keycode("<C-x><C-n>")
+      vim.api.nvim_feedkeys(key, "m", false)
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+  pattern = { ":", "/", "?" },
+  callback = function()
+    vim.fn.wildtrigger()
+  end,
+})
+--============================================= Force set buffer options =============================================
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+--============================================= Disable diagnostic for help buffers/update some highlights ===========
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+  pattern = "markdown",
+  callback = function(args)
+    local file_path = vim.api.nvim_buf_get_name(args.buf)
+    if file_path:find("^/Users/abba/%.local/state/nvim/") then
+      vim.diagnostic.enable(false, { bufnr = args.buf })
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function(args)
@@ -12,25 +69,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
-
---============================================= Force set buffer options =============================================
-vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
-  pattern = "*",
-  callback = function()
-    vim.opt_local.spell = false
-  end,
-})
---============================================= Disable diagnostic for help buffers =================================
-vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-  pattern = "markdown",
-  callback = function(args)
-    local file_path = vim.api.nvim_buf_get_name(args.buf)
-    if file_path:find("^/Users/abba/%.local/state/nvim/") then
-      vim.diagnostic.enable(false, { bufnr = args.buf })
-    end
-  end,
-})
-
 --============================================= no continue comments on new line ====================================
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("no_auto_comment", {}),
@@ -108,22 +146,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
         end)
 
         return
-      end
-    end
-  end,
-})
-
---============================================= auto cwd =============================================
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    local args = vim.fn.argv()
-    if #args > 0 then
-      local arg = args[1]
-      local stat = vim.loop.fs_stat(arg)
-      if stat and stat.type == "directory" then
-        vim.cmd("cd " .. arg)
-      else
-        vim.cmd("cd " .. vim.fn.fnamemodify(arg, ":p:h"))
       end
     end
   end,

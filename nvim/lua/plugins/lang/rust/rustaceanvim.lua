@@ -70,12 +70,12 @@ return {
               },
             },
             diagnostics = {
-              enable = true,
+              enable = false,
               experimental = {
-                enable = true,
+                enable = false,
               },
             },
-            checkOnSave = true,
+            checkOnSave = false,
             hover = {
               dropGlue = {
                 enable = false,

@@ -3,6 +3,7 @@ return {
     "oribarilan/lensline.nvim",
     branch = "release/2.x",
     event = "LspAttach",
+    enabled = false,
     config = function(_, opts)
       require("lensline").setup(vim.tbl_deep_extend("force", opts or {}, {
         profiles = {

@@ -220,116 +220,6 @@
       ]
     },
     {
-      "key": "b",
-      "type": "group",
-      "description": "buffer",
-      "items": [
-        {
-          "key": "l",
-          "type": "popup",
-          "command": "tmux list-buffers | less",
-          "description": "List buffers"
-        },
-        {
-          "key": "p",
-          "type": "tmux",
-          "command": "paste-buffer",
-          "description": "Paste"
-        },
-        {
-          "key": "c",
-          "type": "tmux",
-          "command": "choose-buffer",
-          "description": "Choose buffer"
-        },
-        {
-          "key": "d",
-          "type": "tmux",
-          "command": "delete-buffer",
-          "description": "Delete buffer"
-        },
-        {
-          "key": "s",
-          "type": "tmux",
-          "command": "command-prompt -p 'Save to:' 'save-buffer \"%%\"'",
-          "description": "Save to file"
-        },
-        {
-          "key": "L",
-          "type": "tmux",
-          "command": "command-prompt -p 'Load from:' 'load-buffer \"%%\"'",
-          "description": "Load from file"
-        },
-        {
-          "key": "v",
-          "type": "popup",
-          "command": "tmux show-buffer | less",
-          "description": "Show buffer"
-        },
-        {
-          "key": "y",
-          "type": "tmux",
-          "command": "copy-mode",
-          "description": "Copy mode"
-        },
-        {
-          "key": "C",
-          "type": "tmux",
-          "command": "capture-pane",
-          "description": "Capture pane"
-        }
-      ]
-    },
-    {
-      "key": "l",
-      "type": "group",
-      "description": "layout",
-      "items": [
-        {
-          "key": "n",
-          "type": "tmux",
-          "command": "next-layout",
-          "description": "Next layout"
-        },
-        {
-          "key": "p",
-          "type": "tmux",
-          "command": "previous-layout",
-          "description": "Previous layout"
-        },
-        {
-          "key": "1",
-          "type": "tmux",
-          "command": "select-layout even-horizontal",
-          "description": "Even horizontal"
-        },
-        {
-          "key": "2",
-          "type": "tmux",
-          "command": "select-layout even-vertical",
-          "description": "Even vertical"
-        },
-        {
-          "key": "3",
-          "type": "tmux",
-          "command": "select-layout main-horizontal",
-          "description": "Main horizontal"
-        },
-        {
-          "key": "4",
-          "type": "tmux",
-          "command": "select-layout main-vertical",
-          "description": "Main vertical"
-        },
-        {
-          "key": "5",
-          "type": "tmux",
-          "command": "select-layout tiled",
-          "description": "Tiled"
-        }
-      ]
-    },
-    {
       "key": "c",
       "type": "group",
       "description": "client",
@@ -379,61 +269,6 @@
       ]
     },
     {
-      "key": "o",
-      "type": "group",
-      "description": "options",
-      "items": [
-        {
-          "key": "g",
-          "type": "tmux",
-          "command": "show-options -g",
-          "description": "Show global options"
-        },
-        {
-          "key": "w",
-          "type": "tmux",
-          "command": "show-window-options -g",
-          "description": "Show window options"
-        },
-        {
-          "key": "e",
-          "type": "tmux",
-          "command": "show-environment -g",
-          "description": "Show environment"
-        },
-        {
-          "key": "s",
-          "type": "tmux",
-          "command": "command-prompt -p 'Set option:,Value:' 'set-option -g \"%1\" \"%2\"'",
-          "description": "Set global option"
-        },
-        {
-          "key": "c",
-          "type": "tmux",
-          "command": "customize-mode -Z",
-          "description": "Customize mode"
-        },
-        {
-          "key": "m",
-          "type": "tmux",
-          "command": "show-messages",
-          "description": "Show messages"
-        },
-        {
-          "key": "k",
-          "type": "tmux",
-          "command": "list-commands",
-          "description": "List commands"
-        }
-      ]
-    },
-    {
-      "key": "s",
-      "type": "popup",
-      "command": "~/.config/tmux/scripts/sesh.sh",
-      "description": "sesh"
-    },
-    {
       "key": ":",
       "type": "tmux",
       "command": "command-prompt",
@@ -450,12 +285,6 @@
       "type": "popup",
       "command": "tmux list-keys | less",
       "description": "List keybindings"
-    },
-    {
-      "key": "d",
-      "type": "tmux",
-      "command": "display-panes",
-      "description": "Display panes"
     }
   ]
 }

@@ -2,6 +2,7 @@ return {
   {
     "nvim-mini/mini.notify",
     version = false,
+    enabled = false,
     config = function()
       local icons = require("lib.icons")
 
@@ -15,8 +16,8 @@ return {
           row = vim.o.lines - pad,
         }
       end
-
-      require("mini.notify").setup({
+      local MiniNotify = require("mini.notify")
+      MiniNotify.setup({
         content = {
           format = function(notif)
             return " " .. notif.msg .. " "
@@ -29,13 +30,11 @@ return {
             return notif_arr
           end,
         },
-
         lsp_progress = {
           enable = true,
           level = "INFO",
           duration_last = 1500,
         },
-
         window = {
           config = win_config,
           max_width_share = 0.382,

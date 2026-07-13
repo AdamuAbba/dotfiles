@@ -21,9 +21,9 @@ zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'eza --group-directories-f
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview ''
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' fzf-min-height 15
-zstyle ':fzf-tab:*' popup-min-size 60 20
+# zstyle ':fzf-tab:*' popup-min-size 60 20
 zstyle ':fzf-tab:*' show-group false
 zstyle ':fzf-tab:*' switch-group '<' '>'
 

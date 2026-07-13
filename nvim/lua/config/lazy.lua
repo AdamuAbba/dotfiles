@@ -34,7 +34,6 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     --============================================= languages extras ==========================================
-    { import = "lazyvim.plugins.extras.lang.typescript.oxc" },
     { import = "lazyvim.plugins.extras.lang.typescript.tsgo" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
@@ -71,13 +70,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
-    { import = "lazyvim.plugins.extras.coding.mini-snippets" },
 
     --============================================= test extras ===============================================
-    { import = "lazyvim.plugins.extras.test.core" },
+    -- { import = "lazyvim.plugins.extras.test.core" },
 
     --============================================= debug-adapter extras ======================================
-    { import = "lazyvim.plugins.extras.dap.core" },
+    -- { import = "lazyvim.plugins.extras.dap.core" },
 
     --============================================= ai extras =================================================
     { import = "lazyvim.plugins.extras.ai.copilot-native" },
@@ -92,7 +90,7 @@ require("lazy").setup({
     { import = "plugins.editor" },
     { import = "plugins.coding" },
     { import = "plugins.lsp" },
-    { import = "plugins.test" },
+    -- { import = "plugins.test" },
     { import = "plugins.dap" },
     { import = "plugins.util" },
     { import = "plugins.ai" },

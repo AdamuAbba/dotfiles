@@ -41,13 +41,6 @@ return {
 
       wk.add({
         {
-          "<leader>fr",
-          function()
-            MiniExtra.pickers.visit_paths()
-          end,
-          desc = "Visit Recent paths",
-        },
-        {
           "<leader>sd",
           function()
             MiniExtra.pickers.diagnostic({ scope = "current" })

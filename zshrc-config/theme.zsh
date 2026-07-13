@@ -20,6 +20,7 @@ export DRACULA_BLACK=#000000
 export DRACULA_GRAY=#313243
 export DRACULA_STEEL_GRAY=#989FA3
 export DRACULA_DARK_GRAY=#14151C
+export DRACULA_BROWN_GRAY=#6E6763
 
 #============================================= 256-color numbers =============================================
 # - zle_highlight only supports:

@@ -38,9 +38,9 @@ beige_dark = "#6E644E"
 success_symbol = "[I  ](bold fg:steel_gray)"
 error_symbol = '[✘   ](bold fg:red)'
 vimcmd_symbol = "[N  ](bold fg:steel_gray)"
-vimcmd_replace_one_symbol = "[󰝿   ](bold fg:purple)"
-vimcmd_replace_symbol = "[   ](bold fg:purple)"
-vimcmd_visual_symbol = "[   ](bold fg:cyan)"
+vimcmd_replace_one_symbol = "[󰝿   ](bold fg:steel_gray)"
+vimcmd_replace_symbol = "[   ](bold fg:steel_gray)"
+vimcmd_visual_symbol = "[   ](bold fg:steel_gray)"
 
 [username]
 format = "[$user]($style) on "
@@ -61,9 +61,9 @@ symbol = " "
 symbol = " "
 
 [cmake]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 [conda]
 symbol = " "
@@ -73,9 +73,9 @@ symbol = " "
 
 #============================================= dart =============================================
 [dart]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = '[$symbol$version]($style)'
 
 #============================================= Directory =============================================
 [directory]
@@ -106,41 +106,29 @@ symbol = " "
 tag_symbol = '  '
 
 [git_branch]
-symbol = "   "
-style = "fg:white bold bg:gray"
-format = "[](gray)[$symbol$branch]($style)"
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = "[$symbol$branch]($style)"
 
 [git_status]
-format = '[ ](bg:gray)[(fg:white bg:gray)[$all_status]($style)](fg:white bg:gray)[](gray)'
-style = "bg:gray"
-conflicted = "[= ](fg:red bold bg:gray)"
-stashed = '[\$$count ](fg:orange bg:gray)'
-deleted = '[-$count ](fg:red bold bg:gray)'
-renamed = '[»$count ](fg:purple bold bg:gray)'
-modified = '[!$count ](fg:cyan bold bg:gray)'
-staged = '[+$count ](fg:green bold bg:gray)'
-untracked = '[?$count ](fg:yellow bold bg:gray)'
-ahead = '[⇡ $count ](fg:green bold bg:gray)'
-behind = '[⇣ $count ](fg:red bold bg:gray)'
-diverged = '[⇕ \(⇡ $ahead_count⇣ $behind_count\) ](fg:orange bold bg:gray)'
+format = '[$all_status]($style)'
+style = "bg:black"
+conflicted = "[= ](fg:red bold)"
+stashed = '[\$$count](fg:orange)'
+deleted = '[ -$count](fg:red bold)'
+renamed = '[»$count](fg:purple bold)'
+modified = '[!$count](fg:cyan bold)'
+staged = '[+$count](fg:green bold)'
+untracked = '[?$count](fg:yellow bold)'
+ahead = '[⇡ $count](fg:green bold)'
+behind = '[⇣ $count](fg:red bold)'
+diverged = '[⇕ \(⇡ $ahead_count⇣ $behind_count\) ](fg:orange bold)'
 
 #============================================= Golang =============================================
 [golang]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = " "
-
-[hg_branch]
-symbol = " "
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 [hostname]
 ssh_symbol = " "
@@ -155,11 +143,11 @@ symbol = " "
 [kotlin]
 symbol = " "
 
+#============================================= lua =============================================
 [lua]
 symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 [meson]
 symbol = "󰔷 "
@@ -172,17 +160,15 @@ symbol = " "
 
 #============================================= bun =============================================
 [bun]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
+
 #============================================= node =============================================
 [nodejs]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
-
-[ocaml]
-symbol = " "
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 [os.symbols]
 Alpaquita = " "
@@ -233,33 +219,25 @@ Windows = "󰍲 "
 
 #============================================= package =============================================
 [package]
-symbol = "[](gray)󰏗 "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
+symbol = "󰏗 "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
-[php]
-symbol = " "
-
-[pijul_channel]
-symbol = " "
-
+#============================================= python =============================================
 [python]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
-
-[rlang]
-symbol = "󰟔 "
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 #============================================= ruby =============================================
 [ruby]
-symbol = "[](gray) "
-style = "fg:white bold bg:gray"
-format = ' [$symbol$version]($style)[](gray)'
+symbol = " "
+style = "fg:steel_gray bold bg:black"
+format = ' [$symbol$version]($style)'
 
 #============================================= rust =============================================
 [rust]
-symbol = "[](gray)🦀 "
+symbol = "[](gray) "
 style = "fg:white bold bg:gray"
 format = ' [$symbol$version]($style)[](gray)'
 

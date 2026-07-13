@@ -6,27 +6,6 @@ return {
       --============================================= Notification =============================================
       return {
         {
-          "<leader>.",
-          function()
-            Snacks.scratch()
-          end,
-          desc = "Toggle Scratch Buffer",
-        },
-        {
-          "<leader>S",
-          function()
-            Snacks.scratch.select()
-          end,
-          desc = "Select Scratch Buffer",
-        },
-        {
-          "<leader>n",
-          function()
-            Snacks.notifier.show_history()
-          end,
-          desc = "Notification History",
-        },
-        {
           "<leader>si",
           function()
             Snacks.picker.icons({ layout = "select_no_preview" })
@@ -39,76 +18,14 @@ return {
     opts = function(_, opts)
       local custom_border = require("lib.icons").custom_border
 
-      ---@type table<string, snacks.win.Config>
-      opts.styles = vim.tbl_deep_extend("force", opts.styles or {}, {
-        notification = {
-          border = custom_border,
-          zindex = 100,
-          ft = "markdown",
-          wo = {
-            winblend = 0,
-            wrap = false,
-            conceallevel = 2,
-            colorcolumn = "",
-          },
-          bo = { filetype = "snacks_notif" },
-        },
-        notification_history = {
-          border = custom_border,
-          zindex = 100,
-          width = 0.7,
-          height = 0.7,
-          minimal = false,
-          title = " Notification History ",
-          title_pos = "left",
-          ft = "markdown",
-          bo = { filetype = "snacks_notif_history", modifiable = false },
-          wo = { winhighlight = "Normal:SnacksNotifierHistory" },
-          keys = {
-            q = "close",
-            ["<Esc>"] = "close",
-          },
-        },
-      })
-
-      local function getWinManager()
-        if vim.fn.has("mac") == 1 then
-          return {
-            icon = " ",
-            key = "a",
-            desc = "Edit Aerospace Config",
-            action = ":edit $HOME/.config/aerospace/aerospace.toml",
-          }
-        else
-          return {
-            icon = " ",
-            key = "i",
-            desc = "Edit i3 Config",
-            action = ":edit $HOME/.config/i3/config",
-          }
-        end
-      end
-      local function set_status_bar()
-        if vim.fn.has("mac") == 1 then
-          return {}
-        else
-          return {
-            icon = " ",
-            key = "p",
-            desc = "Edit Polybar Config",
-            action = ":edit $HOME/.config/polybar/forest/config.ini",
-          }
-        end
-      end
-
       --============================================= gitbrowse =============================================
       opts.gitbrowse = {
         enabled = false,
       }
       --============================================= bigfile =============================================
-      opts.bigfile = vim.tbl_deep_extend("force", opts.bigfile or {}, {
-        enabled = true,
-      })
+      opts.bigfile = {
+        enabled = false,
+      }
       --============================================= animate =============================================
       opts.animate = vim.tbl_deep_extend("force", opts.animate or {}, {
         enabled = true,
@@ -120,18 +37,26 @@ return {
         win = {
           border = custom_border,
           backdrop = false,
+          position = "float",
+          relative = "cursor",
+          title_pos = "left",
+          row = -3,
+          col = 0,
+          b = {
+            completion = true,
+          },
         },
       })
 
       --============================================= scope =============================================
-      opts.scope = vim.tbl_deep_extend("force", opts.scope or {}, {
-        enabled = true,
-      })
+      opts.scope = {
+        enabled = false,
+      }
 
       --============================================= notifier =============================================
-      opts.notifier = vim.tbl_deep_extend("force", opts.notifier or {}, {
-        enabled = true,
-      })
+      opts.notifier = {
+        enabled = false,
+      }
 
       --============================================= words =============================================
       opts.words = {
@@ -197,37 +122,15 @@ return {
       })
 
       --============================================= lazygit =============================================
-      opts.lazygit = vim.tbl_deep_extend("force", opts.lazygit or {}, {
+      opts.lazygit = {
         enabled = false,
-        theme = {
-          [241] = { fg = "Special" },
-          activeBorderColor = { fg = "@keyword", bold = true },
-          inactiveBorderColor = { fg = "DiagnosticFloatingHint", bold = true },
-          cherryPickedCommitBgColor = { fg = "Identifier" },
-          cherryPickedCommitFgColor = { fg = "Function" },
-          defaultFgColor = { fg = "Normal" },
-          optionsTextColor = { fg = "Function" },
-          searchingActiveBorderColor = { fg = "MatchParen", bold = true },
-          selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
-          unstagedChangesColor = { fg = "DiagnosticError" },
-        },
-        win = {
-          style = "lazygit",
-          width = math.floor(vim.o.columns * 0.94),
-          height = math.floor(vim.o.lines * 0.92),
-          row = math.floor(vim.o.lines * 0.03),
-          col = math.floor(vim.o.columns * 0.03),
-          border = custom_border,
-          backdrop = false,
-          title = "Lazygit",
-          title_pos = "center",
-        },
-      })
+      }
 
       --============================================= explorer =============================================
       opts.explorer = {
         enabled = false,
       }
+
       --============================================= picker =============================================
       opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
         enabled = false,
@@ -239,31 +142,6 @@ return {
           },
         },
         layouts = {
-          horizontal_side_bar = {
-            preview = true,
-            layout = {
-              box = "horizontal",
-              backdrop = false,
-              row = -1,
-              width = 0,
-              height = 0.5,
-              border = custom_border,
-              title = "",
-              title_pos = "left",
-              {
-                box = "vertical",
-                { win = "input", height = 1, border = custom_border },
-                { win = "list", border = "none" },
-              },
-              {
-                win = "preview",
-                title = "{preview}",
-                -- title_pos = "center",
-                width = 0.7,
-                border = "left",
-              },
-            },
-          },
           select_no_preview = {
             preview = false,
             layout = {
@@ -281,64 +159,9 @@ return {
               { win = "preview", title = "{preview}", height = 0.4, border = "top" },
             },
           },
-          select_with_preview = {
-            preview = true,
-            layout = {
-              backdrop = false,
-              width = math.floor(vim.o.columns * 0.90),
-              height = math.floor(vim.o.lines * 0.90),
-              row = math.floor((vim.o.lines - math.floor(vim.o.lines * 0.90)) / 2) - 3,
-              col = math.floor((vim.o.columns - math.floor(vim.o.columns * 0.90)) / 2),
-              min_width = 80,
-              min_height = 3,
-              box = "vertical",
-              border = custom_border,
-              title = "{title}",
-              title_pos = "center",
-              { win = "input", height = 1, border = "bottom" },
-              { win = "list", border = "none" },
-              { win = "preview", title = "{preview}", height = 0.7, border = "top" },
-            },
-          },
         },
         sources = {
-          explorer = {
-            hidden = true,
-            ignored = true,
-            follow = true,
-            follow_file = true,
-            trash = true,
-            win = {
-              input = {
-                title = "Explorer",
-              },
-            },
-            ---@class snacks.layout.Config
-            layout = {
-              preview = true,
-              layout = {
-                box = "horizontal",
-                backdrop = false,
-                row = -1,
-                width = 0,
-                height = 0.5,
-                border = custom_border,
-                title = "",
-                title_pos = "left",
-                {
-                  box = "vertical",
-                  { win = "input", height = 1, border = "rounded" },
-                  { win = "list", border = "none" },
-                },
-                {
-                  win = "preview",
-                  title = "{preview}",
-                  width = 0.7,
-                  border = "left",
-                },
-              },
-            },
-          },
+          explorer = {},
         },
       })
       --============================================= zen =============================================
@@ -368,9 +191,9 @@ return {
       })
 
       --============================================= quickfile =============================================
-      opts.quickfile = vim.tbl_deep_extend("force", opts.quickfile or {}, {
-        enabled = true,
-      })
+      opts.quickfile = {
+        enabled = false,
+      }
 
       --============================================= toggle =============================================
       opts.toggle = {
@@ -378,21 +201,14 @@ return {
       }
 
       --============================================= scroll =============================================
-      opts.scroll = vim.tbl_deep_extend("force", opts.scroll or {}, {
-        enabled = true,
-      })
+      opts.scroll = {
+        enabled = false,
+      }
 
       --============================================= statuscolumn =============================================
-      opts.statuscolumn = vim.tbl_deep_extend("force", opts.statuscolumn or {}, {
-        enabled = true,
-        left = {},
-        right = {"fold" },
-        folds = {
-          open = true,
-          git_hl = true,
-        },
-        refresh = 50,
-      })
+      opts.statuscolumn = {
+        enabled = false,
+      }
 
       --============================================= terminal =============================================
       opts.terminal = {
@@ -407,112 +223,6 @@ return {
       --============================================= dashboard =============================================
       opts.dashboard = {
         enabled = false,
-        width = 60,
-        row = nil,
-        col = nil,
-        sections = {
-          { section = "header" },
-          { section = "keys", gap = 0.5, padding = 1 },
-        },
-        ---@class snacks.dashboard.Config
-        preset = {
-          pick = nil,
-          header = [[
-       ███████╗██╗  ██╗██╗   ██╗████████╗██╗   ██╗██████╗ ███████╗███████╗
-       ██╔════╝██║  ██║╚██╗ ██╔╝╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔════╝
-       ███████╗███████║ ╚████╔╝    ██║    ╚████╔╝ ██████╔╝█████╗  ███████╗
-       ╚════██║██╔══██║  ╚██╔╝     ██║     ╚██╔╝  ██╔═══╝ ██╔══╝  ╚════██║
-       ███████║██║  ██║   ██║      ██║      ██║   ██║     ███████╗███████║
-       ╚══════╝╚═╝  ╚═╝   ╚═╝      ╚═╝      ╚═╝   ╚═╝     ╚══════╝╚══════╝
-        ]],
-          keys = {
-            {
-              icon = "󰘿 ",
-              key = "u",
-              desc = "Update Plugins",
-              action = ":Lazy update",
-            },
-            {
-              icon = " ",
-              key = "p",
-              desc = "Projects",
-              action = function()
-                Snacks.picker.projects({ dev = { "~/Documents" } })
-              end,
-            },
-            {
-              icon = " ",
-              key = "n",
-              desc = "Edit Nvim Config",
-              action = function()
-                local nvim_config = vim.fn.expand("~/.config/nvim")
-                vim.cmd("cd " .. nvim_config)
-                Snacks.picker.files({
-                  root = false,
-                })
-              end,
-            },
-            {
-              icon = " ",
-              key = "w",
-              desc = "Edit Wezterm Config",
-              action = function()
-                local wezterm_config = vim.fn.expand("~/.config/wezterm")
-                vim.cmd("cd " .. wezterm_config)
-                Snacks.picker.files({
-                  root = false,
-                })
-              end,
-            },
-            {
-              icon = "󱓞 ",
-              key = "s",
-              desc = "Edit Starship config",
-              action = function()
-                local starship_config = vim.fn.expand("~/.config")
-                vim.cmd("cd " .. starship_config)
-                Snacks.picker.files({
-                  root = false,
-                })
-              end,
-            },
-            set_status_bar(),
-            getWinManager(),
-            {
-              icon = "󰠓 ",
-              key = "b",
-              desc = "Edit Bitcoin Core Config",
-              action = ":edit $HOME/Library/Application Support/Bitcoin/bitcoin.conf",
-            },
-            {
-              icon = "󱐋 ",
-              key = "l",
-              desc = "Edit Lightening Config",
-              action = ":edit $HOME/Library/Application Support/Lnd/lnd.conf",
-            },
-            { icon = " ", key = "z", desc = "Edit .zshrc", action = ":edit ~/.zshrc" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-          },
-          formats = {
-            icon = function(item)
-              if item.file and item.icon == "file" or item.icon == "directory" then
-                return M.icon(item.file, item.icon)
-              end
-              return { item.icon, width = 2, hl = "icon" }
-            end,
-            key = function(item)
-              return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
-            end,
-            footer = { "%s", align = "center" },
-            header = { "%s", align = "center" },
-            file = function(item, ctx)
-              local fname = vim.fn.fnamemodify(item.file, ":~")
-              fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
-              local dir, file = fname:match("^(.*)/(.+)$")
-              return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
-            end,
-          },
-        },
       }
       return opts
     end,
