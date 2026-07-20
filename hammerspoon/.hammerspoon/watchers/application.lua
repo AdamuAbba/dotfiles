@@ -24,7 +24,8 @@ obj.appsToCenter = {
   "Safari",
   "Ghostty",
   "Netflix",
-  -- "Figma",
+  "WhatsApp",
+  "ChatGPT",
   -- "Xcode",
 }
 

@@ -61,7 +61,6 @@ return {
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
             end
           end,
-          icon = "󰡌 ",
           desc = "Select child treesitter node or inner incremental lsp selections",
           silent = true,
           mode = { "x", "o" },
@@ -75,6 +74,7 @@ return {
           "make",
           "cpp",
           "css",
+          "ghostty",
           "diff",
           "dockerfile",
           "dtd",

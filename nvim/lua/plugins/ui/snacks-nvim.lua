@@ -4,15 +4,7 @@ return {
     "folke/snacks.nvim",
     keys = function()
       --============================================= Notification =============================================
-      return {
-        {
-          "<leader>si",
-          function()
-            Snacks.picker.icons({ layout = "select_no_preview" })
-          end,
-          desc = "Icons",
-        },
-      }
+      return {}
     end,
     ---@param opts snacks.Config
     opts = function(_, opts)
@@ -141,25 +133,7 @@ return {
             backdrop = false,
           },
         },
-        layouts = {
-          select_no_preview = {
-            preview = false,
-            layout = {
-              width = 0.5,
-              height = 0.4,
-              backdrop = false,
-              min_width = 80,
-              min_height = 3,
-              box = "vertical",
-              border = custom_border,
-              title = "{title}",
-              title_pos = "center",
-              { win = "input", height = 1, border = "bottom" },
-              { win = "list", border = "none" },
-              { win = "preview", title = "{preview}", height = 0.4, border = "top" },
-            },
-          },
-        },
+        layouts = {},
         sources = {
           explorer = {},
         },

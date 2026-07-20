@@ -14,13 +14,13 @@ ui2.enable({
   msg = {
     targets = "msg",
     cmd = {
-      height = 0,
+      height = 1,
     },
     dialog = {
       height = 0.5,
     },
     msg = {
-      height = 0.5,
+      height = 1,
       timeout = 4000,
     },
     pager = {
@@ -73,17 +73,6 @@ vim.filetype.add({
 })
 
 --=============================================  Options ==============================================
-opt.guicursor = "n:block-blinkon0,"
-  -- visual mode
-  .. "v:block-blinkon0,"
-  -- insert mode
-  .. "i-ci-ve:ver75-blinkon0,"
-  -- command mode
-  .. "c:block-blinkon0,"
-  .. "c-ci-ve:ver25-blinkon0,"
-  -- replace mode
-  .. "r-cr-o:hor20-blinkon500-blinkoff500,"
-
 opt.conceallevel = 0
 opt.concealcursor = ""
 opt.termguicolors = true

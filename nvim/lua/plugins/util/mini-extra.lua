@@ -41,20 +41,6 @@ return {
 
       wk.add({
         {
-          "<leader>sd",
-          function()
-            MiniExtra.pickers.diagnostic({ scope = "current" })
-          end,
-          desc = "Buffer Diagnostics",
-        },
-        {
-          "<leader>sD",
-          function()
-            MiniExtra.pickers.diagnostic({ scope = "all" })
-          end,
-          desc = "Workspace Diagnostics",
-        },
-        {
           "<leader>sk",
           function()
             MiniExtra.pickers.keymaps()

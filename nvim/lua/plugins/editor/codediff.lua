@@ -1,6 +1,7 @@
 return {
   {
     "esmuellert/codediff.nvim",
+    lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
     cmd = "CodeDiff",
     keys = {
@@ -13,9 +14,9 @@ return {
         view_mode = "tree",
       })
       opts.history = vim.tbl_deep_extend("force", opts.history or {}, {
-          position = "bottom",
-          view_mode = "tree",
-        })
+        position = "bottom",
+        view_mode = "tree",
+      })
       return opts
     end,
   },

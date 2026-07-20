@@ -338,6 +338,15 @@ menuHammerMenuList = {
       },
       {
         cons.cat.action,
+        "shift",
+        "c",
+        "ChatGPT",
+        {
+          { cons.act.launcher, "ChatGPT" },
+        },
+      },
+      {
+        cons.cat.action,
         "",
         "d",
         "Discord",

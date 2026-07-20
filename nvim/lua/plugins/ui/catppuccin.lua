@@ -1,3 +1,6 @@
 return {
-  { "catppuccin/nvim", name = "catppuccin", enabled = false },
+  {
+    "catppuccin/nvim",
+    enabled = false,
+  },
 }

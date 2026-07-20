@@ -24,7 +24,6 @@ del("i", "<Tab>")
 ------ Snacks Toggle module
 del("n", "<leader>uf")
 del("n", "<leader>uF")
--- del("n", "<leader>uG")
 del("n", "<leader>ug")
 del("n", "<leader>uh")
 del("n", "<leader>uz")
@@ -103,6 +102,16 @@ del("n", "<leader>bd")
 
 wk.add({
   { mode = "n", "<leader>bd", "<cmd>:bd<cr>", desc = "Delete Buffer" },
+})
+
+wk.add({
+  {
+    "<leader>sq",
+    function()
+      vim.cmd("copen")
+    end,
+    desc = "Quickfix List",
+  },
 })
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys

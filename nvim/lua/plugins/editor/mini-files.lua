@@ -20,6 +20,15 @@ return {
         trim_left = "<",
         trim_right = ">",
       })
+
+      opts.content = {
+        prefix = function(fs_entry)
+          if fs_entry.fs_type == "directory" then
+            return " ", "MiniFilesDirectory"
+          end
+          return " ", "MiniFilesFile"
+        end,
+      }
       opts.windows = vim.tbl_deep_extend("force", opts.windows or {}, {
         preview = true,
         width_focus = 30,
@@ -270,7 +279,6 @@ return {
               mode = "n",
             },
           })
-
         end,
       })
     end,

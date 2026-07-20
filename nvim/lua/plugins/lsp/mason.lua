@@ -16,6 +16,7 @@ return {
         "harper-ls",
         "just-lsp",
         "graphql-language-service-cli",
+        "rust-analyzer",
         "gitlint",
         "stylelint",
         "lemminx",
@@ -26,7 +27,7 @@ return {
         "tombi",
         "tsgo",
         "markdownlint-cli2",
-        "markdown-toc"
+        "markdown-toc",
       })
       return opts
     end,

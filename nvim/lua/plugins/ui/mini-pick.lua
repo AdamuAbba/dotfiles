@@ -109,24 +109,6 @@ return {
           mode = { "n" },
         },
         {
-          "<leader>sh",
-          function()
-            MiniPick.builtin.help({}, {
-              source = {
-                choose = function(item)
-                  require("floating-help").open(item.name)
-                  vim.schedule(function()
-                    vim.cmd("wincmd w")
-                  end)
-                end,
-              },
-            })
-          end,
-          desc = "Help Pages",
-          silent = true,
-          mode = { "n" },
-        },
-        {
           "<leader>fg",
           function()
             MiniPick.builtin.grep_live({ tool = "rg" }, {

@@ -2,6 +2,7 @@ return {
   {
     "mrcjkb/rustaceanvim",
     lazy = false,
+    enabled = false,
     version = "^9",
     config = function(_, opts)
       local custom_border = require("lib.icons").custom_border

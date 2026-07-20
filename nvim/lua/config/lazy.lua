@@ -40,7 +40,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.python" },
-    -- rust configured manually no need for extra
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.sql" },
     { import = "lazyvim.plugins.extras.lang.git" },
@@ -66,21 +65,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.rest" },
 
     --============================================= coding extras =============================================
-    { import = "lazyvim.plugins.extras.coding.blink" },
-    { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
 
-    --============================================= test extras ===============================================
-    -- { import = "lazyvim.plugins.extras.test.core" },
-
-    --============================================= debug-adapter extras ======================================
-    -- { import = "lazyvim.plugins.extras.dap.core" },
-
     --============================================= ai extras =================================================
     { import = "lazyvim.plugins.extras.ai.copilot-native" },
-
-    --============================================= ui extras =================================================
 
     --============================================= import my plugins =====================================
     { import = "plugins" },

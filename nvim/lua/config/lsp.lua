@@ -29,6 +29,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
           mode = { "n" },
           desc = "Lsp Info",
         },
+        ------ diagnostics
+        {
+          "<leader>sd",
+          function()
+            vim.diagnostic.setloclist({ open = true, title = "Buffer Diagnostics" })
+          end,
+          desc = "Buffer Diagnostics",
+        },
+        {
+          "<leader>sD",
+          function()
+            vim.diagnostic.setqflist({ open = true, title = "Workspace Diagnostics" })
+          end,
+          desc = "Workspace Diagnostics",
+        },
       })
     end
 
@@ -143,7 +158,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client ~= nil and client:supports_method("textDocument/signatureHelp") then
       wk.add({
         {
-          "<C-k>",
+          "gk",
           function()
             if vim.fn.pumvisible() == 1 then
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-e>", true, false, true), "n", false)
@@ -152,7 +167,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
               vim.lsp.buf.signature_help()
             end
           end,
-          mode = { "n", "i" },
+          mode = { "n" },
           desc = "[LSP] Signature Help",
         },
       })
@@ -187,6 +202,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
           "<Tab>",
           function()
             if not vim.lsp.inline_completion.get() then
+              ---@diagnostic disable-next-line: redundant-return-value
               return "<Tab>"
             end
           end,
@@ -265,8 +281,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
               vim.cmd("h " .. vim.fn.expand("<cword>"))
             elseif filetype == "man" then
               vim.cmd("Man " .. vim.fn.expand("<cword>"))
-            elseif filetype == "rust" then
-              vim.cmd.RustLsp({ "hover", "actions" })
+            -- elseif filetype == "rust" then
+            --   vim.cmd.RustLsp({ "hover", "actions" })
             elseif vim.fn.expand("%:t") == "Cargo.toml" and require("crates").popup_available() then
               require("crates").show_popup()
             else
