@@ -6,12 +6,11 @@ return {
     config = function(_, opts)
       local go_to_preview = require("goto-preview")
       local wk = require("which-key")
-      local icons = require("lib.icons")
 
       opts.references = {
         provider = "mini_pick",
       }
-      opts.border = icons.custom_border
+      opts.border = "rounded"
       opts.focus_on_open = true
       opts.preview_window_title = {
         enable = true,

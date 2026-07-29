@@ -12,7 +12,6 @@ return {
       "orjangj/neotest-ctest",
     },
     opts = function(_, opts)
-      local custom_border = require("lib.icons").custom_border
       opts.adapters = vim.tbl_deep_extend("force", opts.adapters or {}, {
         require("neotest-ctest").setup({
           extra_args = {
@@ -31,7 +30,7 @@ return {
         },
       })
       opts.floating = vim.tbl_deep_extend("force", opts.floating or {}, {
-        border = custom_border,
+        border = "rounded",
         max_height = 0.7,
         max_width = 0.6,
         options = {}

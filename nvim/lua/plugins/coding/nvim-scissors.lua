@@ -5,8 +5,6 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     opts = function(_, opts)
-      local icons = require("lib.icons")
-
       opts.jsonFormatOpts = vim.tbl_deep_extend("force", opts.jsonFormatOpts or {}, {
         sort_keys = true,
         indent = "  ",
@@ -16,10 +14,10 @@ return {
         blend = 50,
       })
       opts.editSnippetPopup = vim.tbl_deep_extend("force", opts.editSnippetPopup or {}, {
-        border = icons.custom_border,
+        border = "rounded",
       })
       opts.snippetSelection = vim.tbl_deep_extend("force", opts.snippetSelection or {}, {
-        picker = "vim.ui.select", ---@type "auto"|"fzf-lua"|"telescope"|"snacks"|"vim.ui.select"
+        picker = "vim.ui.select",
       })
       return opts
     end,

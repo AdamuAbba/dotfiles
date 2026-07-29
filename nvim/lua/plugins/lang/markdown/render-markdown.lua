@@ -6,7 +6,6 @@ return {
       "nvim-mini/mini.icons",
     },
     ft = {
-      "snacks_notif_history",
       "markdown",
       "norg",
       "rmd",

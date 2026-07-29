@@ -3,9 +3,8 @@ return {
     "nvim-mini/mini.cmdline",
     version = false,
     config = function(_, opts)
-      local custom_border = require("lib.icons").custom_border
       opts.autocomplete = {
-        enable = false,
+        enable = true,
       }
 
       opts.autocorrect = {
@@ -19,10 +18,10 @@ return {
           config = {
             relative = "editor",
             anchor = "NW",
-            row = math.floor(vim.o.lines / 2) - 3.5,
-            col = math.floor(vim.o.columns / 2) - 31,
+            -- row = math.floor(vim.o.lines / 2) - 3.5,
+            -- col = math.floor(vim.o.columns / 2) - 31,
             width = 40,
-            border = custom_border,
+            border = "rounded",
           },
         },
       }

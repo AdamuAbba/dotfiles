@@ -20,35 +20,28 @@ M.groups = {
   CursorLineNr = { bg = theme_colors.background },
   EndOfBuffer = { bg = theme_colors.background },
   StatusLineNC = { bg = theme_colors.background },
-  FloatFooter = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-  FloatTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  FloatFooter = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  FloatTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  -- quickfixlist
+  QuickFixLine = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
+  qfFileName = { fg = theme_colors.white, bg = theme_colors.background },
+  qfLineNr = { fg = theme_colors.white, bg = theme_colors.background },
+  qfText = { fg = theme_colors.white, bg = theme_colors.background },
+
+  -- oil
+  OilDir = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
 
   -- nvim icons
   NvimTreeRootFolder = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
-  -- Mini Files
-  MiniFilesNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
-  MiniFilesBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  MiniFilesCursorLine = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
-  MiniFilesTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-  MiniFilesTitleFocused = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-  MiniFilesDirectory = { fg = theme_colors.steel_gray, bg = theme_colors.background },
-  MiniFilesFile = { fg = theme_colors.steel_gray, bg = theme_colors.background },
-
-  -- Mini Nofify
-  MiniNotifyBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  MiniNotifyLspProgress = { fg = theme_colors.white, bg = theme_colors.background },
-  MiniNotifyNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
-  MiniNotifyTitle = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-
   --Mini Pick
-  MiniPickMatchCurrent = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  MiniPickMatchCurrent = { fg = "None", bg = theme_colors.gray, bold = true },
   MiniPickMatchMarked = { fg = theme_colors.white, bg = theme_colors.green, bold = true },
-  MiniPickBorderText = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-  MiniPickPrompt = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
-  MiniPickHeader = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniPickBorderText = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  MiniPickPrompt = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  MiniPickHeader = { fg = theme_colors.white, bg = theme_colors.background },
   MiniPickMatchRanges = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
-  MiniPickNormal = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  MiniPickNormal = { fg = theme_colors.white, bg = theme_colors.background },
 
   --Mini Icons
   MiniIcons = { fg = theme_colors.steel_gray, bg = theme_colors.background },
@@ -75,9 +68,14 @@ M.groups = {
   BlinkCmpKind = { bg = theme_colors.background },
   BlinkCmpKindRipgrepRipgrep = { fg = theme_colors.yellow, bg = theme_colors.background, bold = true },
 
+  -- indent-blankline
+  IndentLineCurrent = { link = "String" },
+  IblIndent = { link = "String" },
+  IndentLine = { link = "String" },
+
   -- LSP / Diagnostics
   FloatBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  NormalFloat = { bg = theme_colors.background },
+  NormalFloat = { fg = theme_colors.white, bg = theme_colors.background },
   DiagnosticFloatingError = { fg = theme_colors.red },
   DiagnosticFloatingWarn = { fg = theme_colors.orange },
   DiagnosticFloatingInfo = { fg = theme_colors.cyan },
@@ -88,26 +86,8 @@ M.groups = {
   WhichKeyBorder = { fg = theme_colors.white, bg = theme_colors.background },
   WhichKeyTitle = { fg = theme_colors.white, bg = theme_colors.background },
   WhichKeySeparator = { fg = theme_colors.white, bg = theme_colors.background },
-
-  -- Snacks
-  SnacksPickerFile = { bg = theme_colors.background },
-  SnacksPickerInput = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
-  SnacksInputTitle = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
-  SnacksInputPrompt = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
-  SnacksInputIcon = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
-  SnacksInputBorder = { bg = theme_colors.background, fg = theme_colors.white, bold = true },
-  SnacksPickerList = { bg = theme_colors.background },
-  SnacksPickerPreview = { bg = theme_colors.background },
-  SnacksPickerBox = { bg = theme_colors.background },
-  SnacksPickerInputBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksPickerListBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksPickerPreviewBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksPickerBoxBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksPickerBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  SnacksIndentScope = { fg = theme_colors.steel_gray },
-  SnacksIndent = { fg = theme_colors.gray },
-  SnacksNotifierHistoryTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  SnacksNotifierTitleTrace = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
+  WhichKeyValue = { fg = theme_colors.white, bg = theme_colors.background },
+  WhichKeyGroup = { fg = theme_colors.white, bg = theme_colors.background },
 
   -- Render Markdown
   RenderMarkdownCodeBorder = { bg = theme_colors.dark_gray, bold = true },
@@ -122,33 +102,6 @@ M.groups = {
   RenderMarkdownH4 = { fg = theme_colors.orange, bold = true },
   RenderMarkdownH4Bg = { bg = theme_colors.orange, fg = theme_colors.black, bold = true },
 
-  -- Noice
-  NoiceLspProgressTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderSearch = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleSearch = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderCmdline = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleCmdline = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderInput = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleInput = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorder = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderFilter = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleFilter = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitle = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderCalculator = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleCalculator = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderLua = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleLua = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderHelp = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleHelp = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupBorderIncRename = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlinePopupTitleIncRename = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIcon = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIconCmdline = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIconFilter = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIconLua = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIconCalculator = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-  NoiceCmdlineIconSearch = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
-
   -- Telescope
   TelescopePromptBorder = { fg = theme_colors.white, bg = theme_colors.background },
   TelescopeResultsBorder = { fg = theme_colors.white, bg = theme_colors.background },
@@ -161,10 +114,10 @@ M.groups = {
   LazyButtonActive = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
 
   -- Pmenu
-  Pmenu = { fg = theme_colors.steel_gray, bg = theme_colors.background },
-  PmenuSel = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  Pmenu = { fg = theme_colors.white, bg = theme_colors.background },
+  PmenuSel = { fg = "None", bg = theme_colors.gray, bold = true },
   PmenuMatch = { fg = theme_colors.green, bg = theme_colors.background, bold = true },
-  PmenuMatchSel = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  PmenuMatchSel = { fg = "None", bg = theme_colors.gray, bold = true },
 
   -- Git Conflict
   GitConflictCurrentLabel = { fg = theme_colors.black, bg = theme_colors.cyan, bold = true },

@@ -24,7 +24,6 @@ return {
     ---@param _ any
     ---@param opts blink.cmp.Config
     opts = function(_, opts)
-      local custom_border = require("lib.icons").custom_border
       opts.fuzzy = { implementation = "rust" }
       opts.keymap = vim.tbl_deep_extend("force", opts.keymap or {}, {
         ["<Up>"] = false,
@@ -179,7 +178,7 @@ return {
               },
             },
           },
-          border = custom_border,
+          border = "rounded",
           cmdline_position = function()
             local row = math.floor(vim.o.lines * 0.38)
             local col = math.floor(vim.o.columns * 0.3)
@@ -190,14 +189,14 @@ return {
           auto_show = true,
           auto_show_delay_ms = 500,
           window = {
-            border = custom_border,
+            border = "rounded",
           },
         },
       })
       opts.signature = vim.tbl_deep_extend("force", opts.signature or {}, {
         enabled = true,
         window = {
-          border = custom_border,
+          border = "rounded",
           show_documentation = true,
         },
       })

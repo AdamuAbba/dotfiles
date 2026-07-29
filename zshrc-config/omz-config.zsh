@@ -3,8 +3,10 @@ export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 #============================================= Base configs =====================================
 zstyle ':omz:lib:directories' aliases no
 zstyle ':omz:lib:*' aliases no
+
 #============================================= zoxide ===========================================
 export ZOXIDE_CMD_OVERRIDE="cd"
+
 #============================================= VI-mode ==========================================
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
@@ -17,13 +19,11 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 zstyle ':fzf-tab:*' continuous-trigger '/'
 zstyle ':completion:*:descriptions' format ''
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'eza --group-directories-first --long --no-quotes --color=never --sort=type --all --icons=always --no-filesize --no-time --no-user --no-permissions --show-symlinks $realpath'
+zstyle ':fzf-tab:complete:(cd|ls|bat):*' fzf-preview 'ls -p -a --color=always $realpath'
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview ''
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' fzf-min-height 15
-# zstyle ':fzf-tab:*' popup-min-size 60 20
 zstyle ':fzf-tab:*' show-group false
 zstyle ':fzf-tab:*' switch-group '<' '>'
 

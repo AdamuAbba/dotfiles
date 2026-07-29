@@ -2,10 +2,8 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
-      local custom_border = require("lib.icons").custom_border
-
       opts.ui = vim.tbl_deep_extend("force", opts.ui or {}, {
-        border = custom_border,
+        border = "rounded",
         backdrop = 100,
       })
       opts.registries = {
@@ -28,6 +26,8 @@ return {
         "tsgo",
         "markdownlint-cli2",
         "markdown-toc",
+        "nil",
+        "statix",
       })
       return opts
     end,

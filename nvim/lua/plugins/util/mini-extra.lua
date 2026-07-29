@@ -5,14 +5,13 @@ return {
     config = function(_, opts)
       local MiniExtra = require("mini.extra")
       local wk = require("which-key")
-      local icons = require("lib.icons")
 
       local height = math.floor(0.618 * vim.o.lines)
       local width = math.floor(0.618 * vim.o.columns)
 
       opts.window = {
         config = {
-          border = icons.custom_border,
+          border = "rounded",
           relative = "editor",
           anchor = "NW",
           height = height,
@@ -58,27 +57,6 @@ return {
             })
           end,
           desc = "Highlight Groups",
-        },
-        {
-          "<leader>sc",
-          function()
-            MiniExtra.pickers.history({ scope = ":" })
-          end,
-          desc = "Command History",
-        },
-        {
-          "<leader>sq",
-          function()
-            MiniExtra.pickers.list({ scope = "quickfix" })
-          end,
-          desc = "Quickfix List",
-        },
-        {
-          "<leader>s/",
-          function()
-            MiniExtra.pickers.history({ scope = "/" })
-          end,
-          desc = "search History",
         },
       })
     end,

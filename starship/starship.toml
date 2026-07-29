@@ -8,7 +8,8 @@ $directory\
 $git_branch\
 $git_status\
 $git_state\
-$all\
+$rust\
+$direnv\
 $line_break\
 $character
 """
@@ -19,7 +20,7 @@ palette = "dracula"
 # Define Dracula color palette
 [palettes.dracula]
 white = "#ffffff"
-steel_gray = "#989FA3"
+steel_white = "#989FA3"
 background = "#282a36"
 current_line = "#44475a"
 gray = "#313243"
@@ -35,12 +36,12 @@ beige = "#F9F0E1"
 beige_dark = "#6E644E"
 
 [character]
-success_symbol = "[I  ](bold fg:steel_gray)"
+success_symbol = "[I  ](bold fg:white)"
 error_symbol = "[✘   ](bold fg:red)"
-vimcmd_symbol = "[N  ](bold fg:steel_gray)"
-vimcmd_replace_one_symbol = "[󰝿   ](bold fg:steel_gray)"
-vimcmd_replace_symbol = "[   ](bold fg:steel_gray)"
-vimcmd_visual_symbol = "[   ](bold fg:steel_gray)"
+vimcmd_symbol = "[N  ](bold fg:white)"
+vimcmd_replace_one_symbol = "[󰝿   ](bold fg:white)"
+vimcmd_replace_symbol = "[   ](bold fg:white)"
+vimcmd_visual_symbol = "[   ](bold fg:white)"
 
 [username]
 format = "[$user]($style) on "
@@ -62,7 +63,7 @@ symbol = " "
 
 [cmake]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 [conda]
@@ -71,16 +72,25 @@ symbol = " "
 [crystal]
 symbol = " "
 
+# ============================================= direnv =============================================
+[direnv]
+disabled = false
+symbol = " 󱂀 "
+style = "fg:white bold bg:black"
+format = "[$symbol$loaded/$allowed]($style)"
+detect_files = [".envrc"]
+unloaded_msg='unloaded'
+
 # ============================================= dart =============================================
 [dart]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = "[$symbol$version]($style)"
 
 # ============================================= Directory =============================================
 [directory]
-read_only = " 󰌾"
-style = "fg:steel_gray bold bg:black"
+read_only = " 󰌾 "
+style = "fg:white bold bg:black"
 read_only_style = "bold red"
 format = "[$path]($style)[$read_only]($read_only_style) "
 home_symbol = "/Users/abba"
@@ -107,7 +117,7 @@ tag_symbol = "  "
 
 [git_branch]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = "[$symbol$branch]($style)"
 
 [git_status]
@@ -127,7 +137,7 @@ diverged = '[⇕ \(⇡ $ahead_count⇣ $behind_count\) ](fg:orange bold)'
 # ============================================= Golang =============================================
 [golang]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 [hostname]
@@ -146,7 +156,7 @@ symbol = " "
 # ============================================= lua =============================================
 [lua]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 [meson]
@@ -161,13 +171,13 @@ symbol = " "
 # ============================================= bun =============================================
 [bun]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= node =============================================
 [nodejs]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 [os.symbols]
@@ -221,41 +231,41 @@ Windows = "󰍲 "
 [package]
 symbol = "󰏗 "
 disabled = true
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= python =============================================
 [python]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= ruby =============================================
 [ruby]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= rust =============================================
 [rust]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= swift =============================================
 [swift]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= zig =============================================
 [zig]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"
 
 # ============================================= gradle =============================================
 [gradle]
 symbol = " "
-style = "fg:steel_gray bold bg:black"
+style = "fg:white bold bg:black"
 format = " [$symbol$version]($style)"

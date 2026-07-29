@@ -1,7 +1,6 @@
 return {
   "folke/which-key.nvim",
   opts = function(_, opts)
-    local custom_border = require("lib.icons").custom_border
     opts.preset = "helix"
     opts.spec = opts.spec or {}
     table.insert(opts.spec, { "<leader>b", group = "buffer", expand = false })
@@ -32,7 +31,7 @@ return {
 
     opts.win = vim.tbl_deep_extend("force", opts.win or {}, {
       no_overlap = true,
-      border = custom_border,
+      border = "rounded",
       width = 31,
       height = { max = 35 },
       title = true,

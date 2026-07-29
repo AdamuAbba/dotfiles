@@ -12,9 +12,6 @@ alias show-menu-bar='osascript -e "tell application \"System Events\" to set aut
 alias finder-show-hidden="defaults write com.apple.finder AppleShowAllFiles true && killall Finder"
 alias finder-hide-hidden="defaults write com.apple.finder AppleShowAllFiles false && killall Finder"
 
-#============================================= docker =============================================
-alias oxker="oxker --host $DOCKER_HOST --config-file $HOME/.config/oxker/config.toml"
-
 #============================================= bitcoin =============================================
 alias rpcauth="python3 $HOME/Documents/bitcoin/share/rpcauth/rpcauth.py"
 alias edit-bitcoin="nvim $HOME/Library/Application\ Support/Bitcoin/bitcoin.conf"
@@ -37,15 +34,13 @@ alias grpr="$SCRIPT_DIR/git/pr-review.sh $1"
 alias ga="$SCRIPT_DIR/git/git-add-confirm.sh"
 
 #============================================= POSIX/Unix util (enhancements) ========================================
-alias ls="eza --group-directories-first --grid --no-quotes --color=always --sort=type --all --icons=always --no-filesize --no-time --no-user --no-permissions --show-symlinks"
+alias ls="ls -p -a --color=always"
 
 #============================================= tools =============================================
 alias rm='trash'
 alias update-brew-pkgs="brew update && brew upgrade -y && brew cleanup --prune=all"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
 alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
-alias edit-dotfiles="cd $HOME/Documents/dotfiles && nvim -c 'lua require(\"snacks\").picker(\"files\", { root = false, hidden = true, ignored = true })'"
-alias mini-trash="cd ~/.local/share/nvim/mini.files/trash/ && ls"
 
 #============================================= zsh =============================================
 alias reload-zsh="omz reload"

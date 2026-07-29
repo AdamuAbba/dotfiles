@@ -30,15 +30,6 @@ $input
 ]],
         },
       })
-      opts.window = vim.tbl_deep_extend(
-        "force",
-        opts.window or {},
-        ---@class snacks.layout.Config
-        {
-          layout = "vertical",
-          border = "rounded",
-        }
-      )
       return opts
     end,
   },

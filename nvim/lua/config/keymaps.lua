@@ -30,7 +30,7 @@ del("n", "<leader>uz")
 del("n", "<leader>uZ")
 del("n", "<leader>ui")
 del("n", "<leader>uI")
-del("n", "<leader>up")
+-- del("n", "<leader>up")
 del("n", "<leader>ur")
 del("n", "<leader>us")
 del("n", "<leader>uS")
@@ -74,13 +74,6 @@ del("n", "<leader>L")
 wk.add({
   { "<leader>l", group = "Lazy", mode = { "n" } },
   { "<leader>ll", "<cmd>Lazy<cr>", desc = "Plugin manager" },
-  {
-    "<leader>lc",
-    function()
-      LazyVim.news.changelog()
-    end,
-    desc = "LazyVim Changelog",
-  },
 })
 
 ----- window
@@ -108,7 +101,7 @@ wk.add({
   {
     "<leader>sq",
     function()
-      vim.cmd("copen")
+      vim.cmd("copen 16")
     end,
     desc = "Quickfix List",
   },
@@ -164,10 +157,10 @@ wk.add({
 
 --============================================= Nvim Built-ins =============================================
 wk.add({
-  { "<leader>m", "<cmd>messages<cr>", desc = "Show :messages" },
+  { "<leader>m", "<cmd>messages<cr>", desc = "Show messages" },
 })
 
---============================================= Yank Line + Diagnostic (maodified to yank just diagnostic) ===========
+--============================================= Yank Line + Diagnostic (modified to yank just diagnostic) ===========
 map("n", "yd", function()
   local pos = vim.api.nvim_win_get_cursor(0)
   local line_num = pos[1] - 1 -- 0-indexed
@@ -204,12 +197,13 @@ local function make_file_executable()
 
   local ok = os.execute("chmod +x " .. vim.fn.shellescape(file))
   if ok then
-    vim.notify("  " .. name .. " made executable", vim.log.levels.INFO)
+    vim.notify(name .. " made executable", vim.log.levels.INFO)
   else
-    vim.notify("  Failed to chmod " .. name, vim.log.levels.ERROR)
+    vim.notify("Failed to chmod " .. name, vim.log.levels.ERROR)
   end
 end
 
 wk.add({
   { "<leader>fx", make_file_executable, desc = "Make file executable", mode = { "n" } },
 })
+

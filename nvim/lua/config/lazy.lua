@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local custom_border = require("lib.icons").custom_border
 
 ---@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -55,18 +54,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.formatting.black" },
 
-    --============================================= editor extras =============================================
-    { import = "lazyvim.plugins.extras.editor.mini-files" },
-    { import = "lazyvim.plugins.extras.editor.inc-rename" },
-
     --============================================= util extras ===============================================
-    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.rest" },
-
-    --============================================= coding extras =============================================
-    { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    { import = "lazyvim.plugins.extras.coding.mini-comment" },
 
     --============================================= ai extras =================================================
     { import = "lazyvim.plugins.extras.ai.copilot-native" },
@@ -79,14 +69,12 @@ require("lazy").setup({
     { import = "plugins.editor" },
     { import = "plugins.coding" },
     { import = "plugins.lsp" },
-    -- { import = "plugins.test" },
     { import = "plugins.dap" },
     { import = "plugins.util" },
     { import = "plugins.ai" },
 
     ------- my language extras
     { import = "plugins.lang.markdown" },
-    { import = "plugins.lang.typescript" },
     { import = "plugins.lang.rust" },
     { import = "plugins.lang.ghostty" },
   },
@@ -99,7 +87,7 @@ require("lazy").setup({
     colorscheme = { "zenbones" },
   },
   ui = {
-    border = custom_border,
+    border = "rounded",
     backdrop = 100,
     title = " Lazy ",
     title_pos = "left",

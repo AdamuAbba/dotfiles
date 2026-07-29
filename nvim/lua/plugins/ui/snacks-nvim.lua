@@ -1,44 +1,33 @@
----@diagnostic disable: undefined-field, undefined-global
+---@diagnostic disable: undefined-field, undefined-global, inject-field
 return {
   {
     "folke/snacks.nvim",
+    enabled = true,
     keys = function()
       --============================================= Notification =============================================
       return {}
     end,
     ---@param opts snacks.Config
     opts = function(_, opts)
-      local custom_border = require("lib.icons").custom_border
-
       --============================================= gitbrowse =============================================
       opts.gitbrowse = {
         enabled = false,
       }
+
       --============================================= bigfile =============================================
       opts.bigfile = {
         enabled = false,
       }
+
       --============================================= animate =============================================
-      opts.animate = vim.tbl_deep_extend("force", opts.animate or {}, {
-        enabled = true,
-      })
+      opts.animate = {
+        enabled = false,
+      }
 
       --============================================= input =============================================
-      opts.input = vim.tbl_deep_extend("force", opts.input or {}, {
-        enabled = true,
-        win = {
-          border = custom_border,
-          backdrop = false,
-          position = "float",
-          relative = "cursor",
-          title_pos = "left",
-          row = -3,
-          col = 0,
-          b = {
-            completion = true,
-          },
-        },
-      })
+      opts.input = {
+        enabled = false,
+      }
 
       --============================================= scope =============================================
       opts.scope = {
@@ -56,62 +45,9 @@ return {
       }
 
       --============================================= indent =============================================
-      opts.indent = vim.tbl_deep_extend("force", opts.indent or {}, {
-        enabled = true,
-        priority = 1,
-        char = "╎",
-        only_scope = false,
-        only_current = false,
-        -- animate scopes. Enabled by default for Neovim >= 0.10
-        -- Works on older versions but has to trigger redraws during animation.
-        ---@class snacks.indent.animate: snacks.animate.Config
-        ---@diagnostic disable-next-line: duplicate-doc-field
-        ---@field enabled? boolean
-        --- * out: animate outwards from the cursor
-        --- * up: animate upwards from the cursor
-        --- * down: animate downwards from the cursor
-        --- * up_down: animate up or down based on the cursor position
-        ---@diagnostic disable-next-line: duplicate-doc-field
-        ---@field style? "out"|"up_down"|"down"|"up"
-        animate = {
-          enabled = true,
-          style = "out",
-          easing = "linear",
-          duration = {
-            step = 40,
-            total = 1000,
-          },
-        },
-        ---@class snacks.indent.Scope.Config: snacks.scope.Config
-        scope = {
-          enabled = true,
-          priority = 200,
-          char = "╎",
-          underline = false,
-          only_current = false,
-          ---@type string|string[] hl group for scopes
-          hl = "SnacksIndentScope",
-        },
-        chunk = {
-          enabled = true,
-          only_current = false,
-          priority = 200,
-          ---@type string|string[] hl group for chunk scopes
-          hl = "SnacksIndentChunk",
-          char = {
-            corner_top = "╭",
-            corner_bottom = "╰",
-            horizontal = "",
-            vertical = "|",
-            arrow = ">",
-          },
-        },
-        -- filter for buffers to enable indent guides
-        ---@param buf number
-        filter = function(buf, _)
-          return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
-        end,
-      })
+      opts.indent = {
+        enabled = false,
+      }
 
       --============================================= lazygit =============================================
       opts.lazygit = {
@@ -124,20 +60,10 @@ return {
       }
 
       --============================================= picker =============================================
-      opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
+      opts.picker = {
         enabled = false,
-        hidden = true,
-        layout = {
-          cycle = false,
-          layout = {
-            backdrop = false,
-          },
-        },
-        layouts = {},
-        sources = {
-          explorer = {},
-        },
-      })
+      }
+
       --============================================= zen =============================================
       opts.zen = {
         enabled = false,
@@ -149,20 +75,9 @@ return {
       }
 
       --============================================= image =============================================
-      opts.image = vim.tbl_deep_extend("force", opts.image or {}, {
-        enabled = true,
-        force = true,
-        doc = {
-          max_height = 20,
-          max_width = 40,
-          float = false,
-          enabled = true,
-          inline = true,
-        },
-        env = {
-          SNACKS_GHOSTTY = true,
-        },
-      })
+      opts.image = {
+        enabled = false,
+      }
 
       --============================================= quickfile =============================================
       opts.quickfile = {
@@ -198,6 +113,7 @@ return {
       opts.dashboard = {
         enabled = false,
       }
+
       return opts
     end,
   },

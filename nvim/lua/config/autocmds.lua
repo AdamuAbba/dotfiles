@@ -1,10 +1,14 @@
-local theme_colors = require("config.theme-colors")
-
 --============================================= LspProgress =============================================
 vim.api.nvim_create_autocmd("LspProgress", {
   callback = function(ev)
     local value = ev.data.params.value
-    vim.api.nvim_echo({ { value.message or "done" } }, false, {
+    local msg = value.message or "done"
+
+    if #msg > 40 then
+      msg = msg:sub(1, 37) .. "..."
+    end
+
+    vim.api.nvim_echo({ { msg } }, false, {
       id = "lsp." .. ev.data.client_id,
       kind = "progress",
       source = "vim.lsp",
@@ -58,15 +62,10 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
+  pattern = { "qf", "markdown", "lazy" },
   callback = function(args)
-    local ft = vim.bo.filetype
-    if ft == "markdown" then
-      vim.api.nvim_set_hl(0, "CursorColumn", { bg = "NONE" })
-      vim.diagnostic.enable(false, { bufnr = args.buf })
-    else
-      vim.api.nvim_set_hl(0, "CursorColumn", { bg = theme_colors.gray })
-    end
+    vim.o.cursorcolumn = false
+    vim.diagnostic.enable(false, { bufnr = args.buf })
   end,
 })
 --============================================= no continue comments on new line ====================================

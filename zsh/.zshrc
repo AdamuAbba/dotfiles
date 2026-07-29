@@ -20,8 +20,8 @@ source "$HOME/zshrc-config/general_zsh_config.zsh"
 source "$HOME/zshrc-config/text-editor.zsh"
 #============================================ asciinema ===========================================
 source "$HOME/zshrc-config/asciinema.zsh"
-#============================================ machine-specifics ===================================
-source "$HOME/zshrc-config/machine_specifics.zsh"
+#============================================ android env ===================================
+source "$HOME/zshrc-config/android.zsh"
 #============================================ bat =================================================
 source "$HOME/zshrc-config/bat.zsh"
 #============================================ ripgrep =================================================
@@ -59,12 +59,5 @@ source $ZSH/oh-my-zsh.sh
 #                              MUST SOURCE REMAINING ONLY AFTER OMZ                              #
 #================================================================================================#
 
-#============================================ eza ===================================================
-source "$HOME/zshrc-config/eza.zsh"
-
 #============================================ atuin =================================================
 source "$HOME/zshrc-config/atuin.zsh"
-
-# zle -N tmux-edit-commandline-popup
-# bindkey -M vicmd -r 'vv'
-# bindkey -M vicmd 'vv' tmux-edit-commandline-popup

@@ -22,6 +22,7 @@ return {
         zsh = { "shfmt" },
         rest = { "kulala" },
         http = { "kulala" },
+        nix = { "nixfmt" },
       })
       return opts
     end,

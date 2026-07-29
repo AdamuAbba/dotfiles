@@ -6,7 +6,6 @@ return {
     },
     config = function()
       local wk = require("which-key")
-      local custom_border = require("lib.icons").custom_border
       wk.add({
         {
           "<leader>ct",
@@ -93,6 +92,7 @@ return {
           "kitty",
           "html",
           "xresources",
+          "nix",
           "zsh",
           "html_tags",
           "http",
@@ -136,7 +136,7 @@ return {
           "yaml",
           "mermaid",
         },
-        border = custom_border,
+        border = "rounded",
         auto_install = true,
         highlight = true,
       })

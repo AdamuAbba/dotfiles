@@ -1,6 +1,6 @@
 return {
   {
-    "mrcjkb/rustaceanvim",
+    "smjonas/inc-rename.nvim",
     enabled = false,
   },
 }

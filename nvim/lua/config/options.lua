@@ -3,9 +3,9 @@
 
 vim.env.RIPGREP_CONFIG_PATH = vim.fn.expand("~/.ripgreprc")
 
-local opt = vim.o
-local opt_local = vim.opt_local
+local o = vim.o
 local g = vim.g
+local opt_local = vim.opt_local
 local lsp = vim.lsp
 local ui2 = require("vim._core.ui2")
 
@@ -17,7 +17,7 @@ ui2.enable({
       height = 1,
     },
     dialog = {
-      height = 0.5,
+      height = 1,
     },
     msg = {
       height = 1,
@@ -33,8 +33,6 @@ vim.g.bufstate_no_default_maps = 1
 --=============================================  LazyVim Options ==============================================
 g.lazyvim_blink_main = true
 g.autoformat = false
-g.snacks_animate = true
-g.trouble_lualine = false
 g.ai_cmp = false
 g.trouble_lualine = false
 
@@ -73,37 +71,37 @@ vim.filetype.add({
 })
 
 --=============================================  Options ==============================================
-opt.conceallevel = 0
-opt.concealcursor = ""
-opt.termguicolors = true
-opt.cursorline = true
-opt.cursorcolumn = true
-opt.number = true
-opt.relativenumber = true
-opt.signcolumn = "no"
-opt.laststatus = 3
-opt.showmode = false
-opt.swapfile = false
-opt.clipboard = "unnamedplus"
-opt.mouse = ""
-opt.winbar = ""
-opt.winborder = "rounded"
-opt.ignorecase = true
-opt.smartcase = true
-opt.autoread = true
-opt.infercase = true
-opt.showcmd = false
-opt.spell = false
----completion
-opt.wildmode = "noselect"
-opt.wildoptions = "pum,fuzzy"
-opt.pumborder = "rounded"
-opt.pumheight = 7
-opt.pummaxwidth = 65
-opt.cmdheight = 0
-opt.autocomplete = true
-opt.complete = ".,o"
-opt.completeopt = "preview,noinsert,menu,menuone,popup,fuzzy,noselect"
+o.conceallevel = 0
+o.concealcursor = ""
+o.termguicolors = true
+o.cursorline = true
+o.cursorcolumn = true
+o.number = true
+o.relativenumber = true
+o.signcolumn = "no"
+o.laststatus = 3
+o.showmode = false
+o.swapfile = false
+o.clipboard = "unnamedplus"
+o.mouse = ""
+o.winbar = ""
+o.winborder = "rounded"
+o.ignorecase = true
+o.smartcase = true
+o.autoread = true
+o.infercase = true
+o.showcmd = false
+o.spell = false
+o.cmdwinheight = 20
+o.wildmode = "noselect"
+o.wildoptions = "pum,fuzzy"
+o.pumborder = "rounded"
+o.pumheight = 10
+o.pummaxwidth = 65
+o.cmdheight = 1
+o.autocomplete = true
+o.complete = ".,o"
+o.completeopt = "noinsert,menu,menuone,popup,fuzzy,noselect"
 
 --============================================= Buffer  Options ==============================================
 opt_local.spell = false
