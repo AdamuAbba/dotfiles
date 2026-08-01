@@ -125,3 +125,5 @@ artifacts/
 #============================================ CPP ===========================================
 compile_commands.json
 out/
+
+**/.claude/settings.local.json

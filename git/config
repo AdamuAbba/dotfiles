@@ -8,30 +8,30 @@
   version = HTTP/2
   postBuffer = 524288000
 [core]
-  pager = delta
+  ; pager = delta
   excludesfile = /Users/abba/.gitignore_global
   editor = nvim
-[delta]
-  features = side-by-side line-numbers decorations
-  syntax-theme = Dracula
-  plus-style = syntax "#003800"
-  minus-style = syntax "#3f0001"
-  navigate = true
-  dark = true
-  hyperlinks = true
-  hyperlinks-file-link-format = "file://{path}#L{line}"
-[interactive]
-  diffFilter = delta --color-only
-[delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style = bold yellow ul
-  file-decoration-style = none
-  hunk-header-decoration-style = cyan box ul
-[delta "line-numbers"]
-  line-numbers-left-style = cyan
-  line-numbers-right-style = cyan
-  line-numbers-minus-style = 124
-  line-numbers-plus-style = 28
+; [delta]
+;   features = side-by-side line-numbers decorations
+;   syntax-theme = Dracula
+;   plus-style = syntax "#003800"
+;   minus-style = syntax "#3f0001"
+;   navigate = true
+;   dark = true
+;   hyperlinks = true
+;   hyperlinks-file-link-format = "file://{path}#L{line}"
+; [interactive]
+;   diffFilter = delta --color-only
+; [delta "decorations"]
+;   commit-decoration-style = bold yellow box ul
+;   file-style = bold yellow ul
+;   file-decoration-style = none
+;   hunk-header-decoration-style = cyan box ul
+; [delta "line-numbers"]
+;   line-numbers-left-style = cyan
+;   line-numbers-right-style = cyan
+;   line-numbers-minus-style = 124
+;   line-numbers-plus-style = 28
 [diff]
   colorMoved = default
   tool = nvimdiff

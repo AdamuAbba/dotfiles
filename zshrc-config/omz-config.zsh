@@ -35,7 +35,7 @@ autoload -U select-quoted
 zle -N select-quoted
 for m in visual viopp; do
   for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
+    bindkey -M $m "$c" select-quoted
   done
 done
 
@@ -65,6 +65,6 @@ autoload -U select-bracketed
 zle -N select-bracketed
 for m in visual viopp; do
   for c in "${group[@]}"; do
-    bindkey -M $m $c select-bracketed
+    bindkey -M $m "$c" select-bracketed
   done
 done
