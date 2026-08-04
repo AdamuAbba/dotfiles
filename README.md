@@ -1,7 +1,5 @@
 # shytype's dotfiles
 
-![dotfiles](./demo/dotfiles.png)
-
 **Disclaimer**: I have mostly stolen and adapted configurations from various
 sources (some credited in code comments), including GitHub repositories, AI
 generated code, Reddit posts, and my imaginary girlfriend **Shylina**. I do not
