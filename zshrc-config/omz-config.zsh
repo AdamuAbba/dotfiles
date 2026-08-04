@@ -19,7 +19,7 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 zstyle ':fzf-tab:*' continuous-trigger '/'
 zstyle ':completion:*:descriptions' format ''
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:(cd|ls|bat):*' fzf-preview 'ls -p -a --color=always $realpath'
+zstyle ':fzf-tab:complete:(cd|ls|cat):*' fzf-preview 'ls -p -a --color=always $realpath'
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview ''
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes

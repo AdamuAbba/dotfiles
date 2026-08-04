@@ -1,19 +1,301 @@
-tap "homebrew/bundle"
-tap "kitagry/tap"
-brew "bash-completion"
-brew "bat"
+tap "adembc/tap", "https://github.com/Adembc/homebrew-tap", trusted: true
+tap "anomalyco/tap", trusted: true
+tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
+tap "dracula/install", trusted: true
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
+tap "gromgit/brewtils", trusted: true
+tap "homebrew/services"
+tap "jesseduffield/lazydocker", trusted: true
+tap "nikitabobko/tap", trusted: true
+tap "noahgorstein/tap", trusted: true
+tap "oven-sh/bun", trusted: true
+tap "tmuxpack/tpack", trusted: true
+tap "y3owk1n/tap", trusted: true
+# Run your GitHub Actions locally
+brew "act"
+# Asciicast to GIF converter
+brew "agg"
+# Mozilla CA certificate store
+brew "ca-certificates"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# YAML Parser
+brew "libyaml"
+# Library for command-line editing
+brew "readline"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Checks ansible playbooks for practices and behaviour
+brew "ansible-lint"
+# Record and share terminal sessions
+brew "asciinema"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Text-based UI library
+brew "ncurses"
+# Parser generator
+brew "bison"
+# Collection of portable C++ source libraries
+brew "boost"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
+# Ruby environment tool
+brew "chruby"
+# Cross-platform make
+brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Platform keystore credential helper for Docker
+brew "docker-credential-helper"
+# Asynchronous event library
+brew "libevent"
+# Command-line tool to interact with exercism.io
+brew "exercism"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Text mode browser and Gemini, NNTP, FTP, Gopher, Finger, and BitTorrent client
+brew "felinks"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# High-performance, asynchronous messaging library
+brew "zeromq"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU awk utility
+brew "gawk"
+# GNU database manager
+brew "gdbm"
+# GitHub command-line tool
 brew "gh"
-brew "git"
-brew "git-delta"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Open-source GitLab command-line tool
+brew "glab"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Generic library support script
+brew "libtool"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Post-modern modal text editor
+brew "helix"
+# Advanced HTML-to-text converter
+brew "html2text"
+# Configurable static site generator
+brew "hugo"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Install and debug iPhone apps from the command-line
+brew "ios-deploy"
+# Synchronize a maildir with an IMAP server
+brew "isync"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
+# Portable Foreign Function Interface library
+brew "libffi"
+# SIXEL encoder/decoder implementation
+brew "libsixel"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Just-In-Time Compiler (JIT) for the Lua programming language
+brew "luajit"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Text-based web browser
+brew "lynx"
+# Apple Silicon Monitor Top written in Go Lang
+brew "mactop"
+# Scalable distributed version control system
+brew "mercurial"
+# CLI for Mermaid library
+brew "mermaid-cli"
+# SMTP client that can be used as an SMTP plugin for Mutt
+brew "msmtp"
+# Open source relational database management system
+brew "mysql", restart_service: :changed
+# Cross-platform ncurses Spotify client written in Rust
+brew "ncspot"
+# Clean C library for processing UTF-8 Unicode data
+brew "utf8proc"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-brew "pyenv"
-brew "pyenv-virtualenv"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Outputs current CPU temperature for OSX
+brew "osx-cpu-temp"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Password manager
+brew "pass"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
+# Utilities for manipulating PostScript documents
+brew "psutils"
+# SVG rendering tool and library
+brew "resvg"
+# Command-line toolbox for fancy output in the terminal
+brew "rich-cli"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Wrapper around ripgrep that adds multiple rich file types
+brew "ripgrep-all"
+# Install various Ruby versions and implementations
+brew "ruby-build"
+# Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
+brew "ruby-install"
+# Small man page generator
+brew "scdoc"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Fuzzy Finder in rust!
+brew "sk"
+# Fast, collaborative live terminal sharing over the web
+brew "sshx"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# HTML Language Server & Templating Language Library
+brew "superhtml"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
+# TOML toolkit written in Rust
+brew "taplo"
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
+# Terminal multiplexer
+brew "tmux"
+# CLI tool that moves files or folder to the trash
+brew "trash"
+# Command-line interface to the freedesktop.org trashcan
+brew "trash-cli"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Auto-hinter for TrueType fonts
+brew "ttfautohint"
+# Pretty print math in monospace fonts, using a TeX-like syntax
+brew "utftex"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Pager/text based browser
+brew "w3m"
+# Watch files and take action when they change
+brew "watchman"
+# Convert HTML to PDF
+brew "weasyprint"
+# Internet file retriever
 brew "wget"
+# Linter for YAML files
+brew "yamllint"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
-brew "zsh"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
 brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# A simple terminal UI for managing SSH connections.  
+brew "adembc/tap/lazyssh"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace"
+# Tools for building Android applications
+cask "android-studio"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+# Voice and text chat software
+cask "discord"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# Collaborative team software
+cask "figma"
+cask "font-hack-nerd-font"
+cask "font-inter"
+cask "font-iosevka-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-meslo-lg-nerd-font"
+cask "font-monaspace"
+cask "font-shure-tech-mono-nerd-font"
+cask "font-sora"
+cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Tools to protect your emails and files
+cask "gpg-suite"
+# Desktop automation application
+cask "hammerspoon"
+# Keyboard customiser
+cask "karabiner-elements"
+# Blocks all Keyboard and TouchBar input
+cask "keyboardcleantool"
+# Utility to uninstall apps and remove leftover files from old/uninstalled apps
+cask "pearcleaner"
+# Collaboration platform for API development
+cask "postman"
+# Tool that provides consistent, highly configurable symbols for apps
+cask "sf-symbols"
+# Unpacks archive files
+cask "the-unarchiver"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+# OpenJDK distribution from Azul
+cask "zulu@17"
+go "github.com/lightningnetwork/lnd/cmd/lncli"
+go "github.com/lightningnetwork/lnd/cmd/lnd"
+cargo "bdk-cli"
+cargo "buck2"
+cargo "cargo-binstall"
+cargo "dioxus-cli"
+cargo "ecolog-lsp"
+cargo "mdbook"
+cargo "mdbook-admonish"
+cargo "mdbook-linkcheck"
+cargo "mdbook-snippets"
+cargo "payjoin-cli"
+cargo "wasm-bindgen-cli"
+npm "@mariozechner/pi-coding-agent"
+npm "eas-cli"
+npm "node-gyp"
+npm "yarn"

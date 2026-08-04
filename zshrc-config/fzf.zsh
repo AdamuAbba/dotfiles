@@ -24,7 +24,7 @@ export FZF_DEFAULT_OPTS="
   --color=border:${DRACULA_WHITE},label:${DRACULA_WHITE}
   --color=preview-border:${DRACULA_WHITE},preview-label:${DRACULA_WHITE}
   --color=input-border:${DRACULA_WHITE},input-label:${DRACULA_WHITE}
-  --color=bg+:${DRACULA_WHITE},fg+:${DRACULA_WHITE},fg:${DRACULA_WHITE},prompt:${DRACULA_WHITE}
+  --color=bg+:${DRACULA_GRAY},fg+:${DRACULA_WHITE},fg:${DRACULA_WHITE},prompt:${DRACULA_WHITE}
 "
 
 _fzf_compgen_path() {

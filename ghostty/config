@@ -61,6 +61,10 @@ keybind = alt+p>l=new_split:right
 keybind = alt+p>j=new_split:down
 keybind = alt+p>h=new_split:left
 keybind = alt+p>k=new_split:up
+keybind = copy=copy_to_clipboard:mixed
+keybind = paste=paste_from_clipboard
+keybind = cmd+c=copy_to_clipboard:mixed
+keybind = cmd+v=paste_from_clipboard
 # keybind = ctrl+l=goto_split:right
 # keybind = ctrl+h=goto_split:left
 

@@ -40,7 +40,6 @@ alias ls="ls -p -a --color=always"
 alias rm='trash'
 alias update-brew-pkgs="brew update && brew upgrade -y && brew cleanup --prune=all"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
-alias jqp="jqp --config $HOME/.config/jqp/config.yaml"
 
 #============================================= zsh =============================================
 alias reload-zsh="omz reload"

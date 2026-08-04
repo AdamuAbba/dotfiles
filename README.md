@@ -36,3 +36,9 @@ bash scripts/utils/symlinks.sh --create
 # Check homebrew/ directory for Brewfile {outdated}
 brew bundle --file=homebrew/Brewfile
 ```
+
+1. Enable git hooks (keeps `homebrew/Brewfile` in sync via a pre-commit hook):
+
+```bash
+git config core.hooksPath .githooks
+```

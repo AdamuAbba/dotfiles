@@ -18,7 +18,6 @@ plugins=(
   starship
   docker-compose
   pyenv
-  ubuntu
   gh
   vi-mode
   fzf-tab

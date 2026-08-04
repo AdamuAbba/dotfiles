@@ -1,6 +1,23 @@
 return {
   {
     "coder/claudecode.nvim",
+    opts = {
+      focus_after_send = true,
+      terminal = {
+        split_side = "right",
+        split_width_percentage = 0.40,
+        diff_split_width_percentage = nil,
+        provider = "native",
+        auto_close = true,
+      },
+      diff_opts = {
+        layout = "horizontal",
+        vertical_split = false,
+        open_in_new_tab = false,
+        open_in_current_tab = true,
+        keep_terminal_focus = true,
+      },
+    },
     config = true,
     cmd = {
       "ClaudeCode",

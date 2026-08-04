@@ -22,8 +22,6 @@ source "$HOME/zshrc-config/text-editor.zsh"
 source "$HOME/zshrc-config/asciinema.zsh"
 #============================================ android env ===================================
 source "$HOME/zshrc-config/android.zsh"
-#============================================ bat =================================================
-source "$HOME/zshrc-config/bat.zsh"
 #============================================ ripgrep =================================================
 source "$HOME/zshrc-config/ripgrep.zsh"
 #============================================ bitcoin =============================================
@@ -32,14 +30,10 @@ source "$HOME/zshrc-config/bitcoin.zsh"
 source "$HOME/zshrc-config/docker.zsh"
 #============================================ zellij ==============================================
 source "$HOME/zshrc-config/zellij.zsh"
-#============================================ tmux ==============================================
-# source "$HOME/zshrc-config/tmux.zsh"
 #============================================ fzf =================================================
 source "$HOME/zshrc-config/fzf.zsh"
 #============================================= ssh ================================================
 source "$HOME/zshrc-config/ssh.zsh"
-#============================================ Github ==============================================
-source "$HOME/zshrc-config/git.zsh"
 #============================================ Sketchy-bar =========================================
 source "$HOME/zshrc-config/sketchy-bar.zsh"
 #============================================ LSP =================================================
@@ -52,6 +46,7 @@ source "$HOME/zshrc-config/aliases.zsh"
 source "$HOME/zshrc-config/pager.zsh"
 #============================================ Additional completions for zsh ======================
 # source "$HOME/zshrc-config/zsh-completions.zsh"
+
 #======================================= keep at bottom (DO NOT TOUCH ORDER SHYTYPES) ==============
 source $ZSH/oh-my-zsh.sh
 

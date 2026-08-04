@@ -3,7 +3,7 @@ return {
     "stevearc/oil.nvim",
     lazy = false,
     keys = {
-      { "<leader>fm", "<cmd>Oil --float<cr>", desc = "Open Oil" },
+      { "<leader>fm", "<cmd>Oil --float --preview<cr>", desc = "Open Oil" },
     },
     ---@module 'oil'
     ---@param opts oil.SetupOpts
@@ -80,7 +80,7 @@ return {
         win_options = {
           winblend = 0,
         },
-        preview_split = "auto",
+        preview_split = "right",
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
         override = function(conf)
