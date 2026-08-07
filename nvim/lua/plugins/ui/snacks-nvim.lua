@@ -4,7 +4,6 @@ return {
     "folke/snacks.nvim",
     enabled = true,
     keys = function()
-      --============================================= Notification =============================================
       return {}
     end,
     ---@param opts snacks.Config

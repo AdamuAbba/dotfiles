@@ -1,9 +1,6 @@
 return {
   {
     "chrisgrieser/nvim-scissors",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
     opts = function(_, opts)
       opts.jsonFormatOpts = vim.tbl_deep_extend("force", opts.jsonFormatOpts or {}, {
         sort_keys = true,

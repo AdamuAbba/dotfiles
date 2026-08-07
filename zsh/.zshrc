@@ -5,8 +5,7 @@
 #============================================ FUCKING =============================================
 #============================================ RE-ORDER ANYTHING ===================================
 
-#============================================ Dracula theme========================================
-#-------- Load dracula color palette before sourcing brew
+#============================================ load theme========================================
 source "$HOME/zshrc-config/theme.zsh"
 #============================================ ai-models ============================================
 source "$HOME/zshrc-config/ai/providers.zsh"
@@ -24,18 +23,10 @@ source "$HOME/zshrc-config/asciinema.zsh"
 source "$HOME/zshrc-config/android.zsh"
 #============================================ ripgrep =================================================
 source "$HOME/zshrc-config/ripgrep.zsh"
-#============================================ bitcoin =============================================
-source "$HOME/zshrc-config/bitcoin.zsh"
-#============================================ docker ==============================================
-source "$HOME/zshrc-config/docker.zsh"
-#============================================ zellij ==============================================
-source "$HOME/zshrc-config/zellij.zsh"
 #============================================ fzf =================================================
 source "$HOME/zshrc-config/fzf.zsh"
 #============================================= ssh ================================================
 source "$HOME/zshrc-config/ssh.zsh"
-#============================================ Sketchy-bar =========================================
-source "$HOME/zshrc-config/sketchy-bar.zsh"
 #============================================ LSP =================================================
 source "$HOME/zshrc-config/LSP.zsh"
 #============================================ oh-my-zsh ===========================================
@@ -45,7 +36,7 @@ source "$HOME/zshrc-config/aliases.zsh"
 #============================================ pager(NVIM) =============================================
 source "$HOME/zshrc-config/pager.zsh"
 #============================================ Additional completions for zsh ======================
-# source "$HOME/zshrc-config/zsh-completions.zsh"
+source "$HOME/zshrc-config/zsh-completions.zsh"
 
 #======================================= keep at bottom (DO NOT TOUCH ORDER SHYTYPES) ==============
 source $ZSH/oh-my-zsh.sh

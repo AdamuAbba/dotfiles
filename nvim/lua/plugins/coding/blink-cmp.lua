@@ -156,27 +156,6 @@ return {
               { "label" },
               { "kind_icon", "kind", "source_name" },
             },
-            components = {
-              label = {
-                width = { fill = true, max = 30 },
-                text = function(ctx)
-                  return require("colorful-menu").blink_components_text(ctx)
-                end,
-                highlight = function(ctx)
-                  return require("colorful-menu").blink_components_highlight(ctx)
-                end,
-              },
-              kind_icon = {
-                text = function(ctx)
-                  return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
-                end,
-              },
-              source_name = {
-                text = function(ctx)
-                  return " [" .. ctx.source_name .. "]"
-                end,
-              },
-            },
           },
           border = "rounded",
           cmdline_position = function()

@@ -53,18 +53,20 @@ selection-background = #44475a
 selection-foreground = #ffffff
 shell-integration = zsh
 keybind = clear
-keybind = alt+t>n=new_tab
-keybind = alt+t>x=close_tab
+keybind = ctrl+shift+t>n=new_tab
+keybind = ctrl+shift+t>x=close_tab
 keybind = alt+]=next_tab
 keybind = alt+[=previous_tab
-keybind = alt+p>l=new_split:right
-keybind = alt+p>j=new_split:down
-keybind = alt+p>h=new_split:left
-keybind = alt+p>k=new_split:up
+keybind = ctrl+shift+p>l=new_split:right
+keybind = ctrl+shift+p>j=new_split:down
+keybind = ctrl+shift+p>h=new_split:left
+keybind = ctrl+shift+p>k=new_split:up
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+j=goto_split:down
 keybind = copy=copy_to_clipboard:mixed
 keybind = paste=paste_from_clipboard
 keybind = cmd+c=copy_to_clipboard:mixed
 keybind = cmd+v=paste_from_clipboard
-# keybind = ctrl+l=goto_split:right
-# keybind = ctrl+h=goto_split:left
 

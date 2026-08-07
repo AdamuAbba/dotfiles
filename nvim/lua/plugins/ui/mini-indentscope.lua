@@ -1,6 +1,7 @@
 return {
   {
     "nvim-mini/mini.indentscope",
+    enabled = false,
     version = false,
     config = function()
       require("mini.indentscope").setup({
@@ -9,8 +10,6 @@ return {
           predicate = function(scope)
             return not scope.body.is_incomplete
           end,
-
-          -- Symbol priority. Increase to display on top of more symbols.
           priority = 2,
         },
 
@@ -21,10 +20,7 @@ return {
           goto_bottom = "",
         },
 
-        -- Options which control scope computation
         options = {
-          -- Type of scope's border: which line(s) with smaller indent to
-          -- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
           border = "both",
           indent_at_cursor = true,
           n_lines = 10000,

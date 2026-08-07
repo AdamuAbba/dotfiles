@@ -11,7 +11,7 @@ return {
         auto_close = true,
       },
       diff_opts = {
-        layout = "horizontal",
+        layout = "unified",
         vertical_split = false,
         open_in_new_tab = false,
         open_in_current_tab = true,

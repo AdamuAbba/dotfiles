@@ -29,10 +29,13 @@ M.groups = {
   qfText = { fg = theme_colors.white, bg = theme_colors.background },
 
   -- oil
-  OilDir = { fg = theme_colors.steel_gray, bg = theme_colors.background, bold = true },
+  OilDir = { bg = theme_colors.background, bold = true },
 
   -- nvim icons
   NvimTreeRootFolder = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+
+  --Mini Indentscope
+  MiniIndentscopeSymbol = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
   --Mini Pick
   MiniPickMatchCurrent = { fg = "None", bg = theme_colors.gray, bold = true },
@@ -69,9 +72,9 @@ M.groups = {
   BlinkCmpKindRipgrepRipgrep = { fg = theme_colors.yellow, bg = theme_colors.background, bold = true },
 
   -- indent-blankline
-  IndentLineCurrent = { link = "String" },
-  IblIndent = { link = "String" },
-  IndentLine = { link = "String" },
+  IndentLineCurrent = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  IblIndent = { fg = theme_colors.steel_gray, bg = theme_colors.background },
+  IndentLine = { fg = theme_colors.steel_gray, bg = theme_colors.background },
 
   -- LSP / Diagnostics
   FloatBorder = { fg = theme_colors.white, bg = theme_colors.background },

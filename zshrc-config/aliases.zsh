@@ -5,10 +5,10 @@ SCRIPT_DIR="$CONFIG_DIR/scripts"
 alias sim-clean="rm -r $HOME/Library/Developer/CoreSimulator/Caches"
 alias xcode-clean="rm -rf $HOME/Library/Developer/Xcode/DerivedData/* && rm -rf $HOME/Library/Caches/org.swift.swiftpm"
 alias check-running-sim="xcrun simctl list devices | grep -B 1 Booted"
-alias hide-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to true"'
-alias show-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to false"'
 
 #TODO: make into scripts and exec with hammerspoon=>MenuHammer toggle menu
+alias hide-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to true"'
+alias show-menu-bar='osascript -e "tell application \"System Events\" to set autohide menu bar of dock preferences to false"'
 alias finder-show-hidden="defaults write com.apple.finder AppleShowAllFiles true && killall Finder"
 alias finder-hide-hidden="defaults write com.apple.finder AppleShowAllFiles false && killall Finder"
 
@@ -31,7 +31,6 @@ alias edit-git-global="nvim $HOME/.config/git/config"
 alias edit-git-local='nvim "$(git rev-parse --show-toplevel)/.git/config"'
 alias gbd="$SCRIPT_DIR/git/delete-branch.sh"
 alias grpr="$SCRIPT_DIR/git/pr-review.sh $1"
-alias ga="$SCRIPT_DIR/git/git-add-confirm.sh"
 
 #============================================= POSIX/Unix util (enhancements) ========================================
 alias ls="ls -p -a --color=always"

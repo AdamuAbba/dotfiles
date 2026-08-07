@@ -21,7 +21,6 @@ plugins=(
   gh
   vi-mode
   fzf-tab
-  command-not-found
   colored-man-pages
   rust
   react-native

@@ -1,10 +1,5 @@
-#============ brew completions ====================
-if type brew &>/dev/null; then
-  fpath=($(brew --prefix)/share/zsh-completions $fpath)
-fi
-
 #============ custom completions ====================
-tools=(uv)
+tools=(uv brew)
 missing=()
 
 for tool in "${tools[@]}"; do
@@ -15,15 +10,7 @@ for tool in "${tools[@]}"; do
 done
 
 if [[ ${#missing[@]} -eq 0 ]]; then
-  fpath=($HOME/Documents/dotfiles/zshrc-config/completions $fpath)
-fi
-
-if command -v uv >/dev/null 2>&1; then
-  # enable shell autocompletion for uv
-  eval "$(uv generate-shell-completion zsh)"
-  eval "$(uvx --generate-shell-completion zsh)"
-else
-  echo "Error: uv is not installed. Skipping uv completions."
+  fpath=("$HOME"/Documents/dotfiles/zshrc-config/completions "$(brew --prefix)/share/zsh-completions" $fpath)
 fi
 
 #============ init completions safely ====================
@@ -32,4 +19,12 @@ if ! typeset -f compinit >/dev/null; then
 fi
 if [[ -z $ZSH_COMPDUMP ]]; then
   compinit -u
+fi
+
+if command -v uv >/dev/null 2>&1; then
+  # enable shell autocompletion for uv
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+else
+  echo "Error: uv is not installed. Skipping uv completions."
 fi

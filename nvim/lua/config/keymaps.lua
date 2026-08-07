@@ -178,8 +178,6 @@ map("n", "yd", function()
     end
   end
   local formatted = {}
-  -- table.insert(formatted, "Line:\n" .. line_text .. "\n")
-  -- table.insert(formatted, "Diagnostic on that line:\n" .. table.concat(message_lines, "\n"))
   table.insert(formatted, table.concat(message_lines, "\n"))
   vim.fn.setreg("+", table.concat(formatted, "\n\n"))
   vim.notify("Line and diagnostic copied to clipboard", vim.log.levels.INFO)

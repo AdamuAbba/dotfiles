@@ -2,7 +2,7 @@ local wk = require("which-key")
 
 vim.lsp.diagnostics = {
   virtual_lines = false,
-  virtual_text = false,
+  virtual_text = true,
   update_in_insert = false,
   float = {
     border = "rounded",

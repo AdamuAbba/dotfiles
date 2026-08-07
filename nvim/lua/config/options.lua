@@ -63,6 +63,7 @@ vim.filetype.add({
   filename = {
     ["tmux.conf"] = "tmux",
     [".tmux.conf"] = "tmux",
+    ["*ghostty/config"] = "ghostty",
   },
   pattern = {
     [".git/hooks/.*"] = "sh",

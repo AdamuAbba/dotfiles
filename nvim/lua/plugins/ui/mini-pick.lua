@@ -15,10 +15,6 @@ return {
         return minipick.ui_select(items, local_opts, on_choice, nil)
       end
 
-      -- local ui_select_orig = vim.ui.select
-      -- minipick.setup(opts)
-      -- vim.ui.select = ui_select_orig
-
       local add_items_to_qfl = function()
         local qf_items = {}
         local all_matches = minipick.get_picker_items() or {}

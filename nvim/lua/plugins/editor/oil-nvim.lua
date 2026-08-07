@@ -3,7 +3,7 @@ return {
     "stevearc/oil.nvim",
     lazy = false,
     keys = {
-      { "<leader>fm", "<cmd>Oil --float --preview<cr>", desc = "Open Oil" },
+      { "<leader>fm", "<cmd>Oil --preview<cr>", desc = "Open Oil" },
     },
     ---@module 'oil'
     ---@param opts oil.SetupOpts
@@ -118,7 +118,23 @@ return {
       return opts
     end,
     config = function(_, opts)
-      require("oil").setup(opts)
+      local oil = require("oil")
+      oil.setup(opts)
+
+      local augroup = vim.api.nvim_create_augroup("OilOpenPreview", { clear = true })
+      local is_previewing = false
+      -- Autocommand for trigering preview when entering neovim with `nvim .`
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "OilEnter",
+        group = augroup,
+        callback = function()
+          if is_previewing then
+            return
+          end
+          is_previewing = true
+          oil.open_preview()
+        end,
+      })
     end,
   },
 }

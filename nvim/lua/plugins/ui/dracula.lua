@@ -12,7 +12,7 @@ return {
       italic_comment = true,
       lualine_bg_color = theme_colors.background,
       overrides = function(_)
-        local highlight_overrides = require("lib.highlight-overrides")
+        local highlight_overrides = require("config.highlight-overrides")
         return highlight_overrides.groups
       end
     },

@@ -84,7 +84,7 @@ require("lazy").setup({
   },
   install = {
     missing = true,
-    colorscheme = { "zenbones" },
+    colorscheme = { "monokai-pro" },
   },
   ui = {
     border = "rounded",
