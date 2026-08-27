@@ -6,114 +6,72 @@ return {
     keys = function()
       return {}
     end,
-    ---@param opts snacks.Config
-    opts = function(_, opts)
-      --============================================= gitbrowse =============================================
-      opts.gitbrowse = {
-        enabled = false,
+    opts = function()
+      return {
+        gitbrowse = {
+          enabled = false,
+        },
+        bigfile = {
+          enabled = false,
+        },
+        animate = {
+          enabled = false,
+        },
+        input = {
+          enabled = false,
+        },
+        scope = {
+          enabled = false,
+        },
+        notifier = {
+          enabled = false,
+        },
+        words = {
+          enabled = false,
+        },
+        indent = {
+          enabled = false,
+        },
+        lazygit = {
+          enabled = false,
+        },
+        explorer = {
+          enabled = false,
+        },
+        picker = {
+          enabled = false,
+        },
+        zen = {
+          enabled = false,
+        },
+        dim = {
+          enabled = false,
+        },
+        image = {
+          enabled = false,
+        },
+        quickfile = {
+          enabled = false,
+        },
+        toggle = {
+          enabled = false,
+        },
+        scroll = {
+          enabled = false,
+        },
+        statuscolumn = {
+          enabled = false,
+        },
+        terminal = {
+          enabled = false,
+        },
+        gh = {
+          enabled = false,
+        },
+        dashboard = {
+          enabled = false,
+        },
       }
-
-      --============================================= bigfile =============================================
-      opts.bigfile = {
-        enabled = false,
-      }
-
-      --============================================= animate =============================================
-      opts.animate = {
-        enabled = false,
-      }
-
-      --============================================= input =============================================
-      opts.input = {
-        enabled = false,
-      }
-
-      --============================================= scope =============================================
-      opts.scope = {
-        enabled = false,
-      }
-
-      --============================================= notifier =============================================
-      opts.notifier = {
-        enabled = false,
-      }
-
-      --============================================= words =============================================
-      opts.words = {
-        enabled = false,
-      }
-
-      --============================================= indent =============================================
-      opts.indent = {
-        enabled = false,
-      }
-
-      --============================================= lazygit =============================================
-      opts.lazygit = {
-        enabled = false,
-      }
-
-      --============================================= explorer =============================================
-      opts.explorer = {
-        enabled = false,
-      }
-
-      --============================================= picker =============================================
-      opts.picker = {
-        enabled = false,
-      }
-
-      --============================================= zen =============================================
-      opts.zen = {
-        enabled = false,
-      }
-
-      --============================================= dim =============================================
-      opts.dim = {
-        enabled = false,
-      }
-
-      --============================================= image =============================================
-      opts.image = {
-        enabled = false,
-      }
-
-      --============================================= quickfile =============================================
-      opts.quickfile = {
-        enabled = false,
-      }
-
-      --============================================= toggle =============================================
-      opts.toggle = {
-        enabled = false,
-      }
-
-      --============================================= scroll =============================================
-      opts.scroll = {
-        enabled = false,
-      }
-
-      --============================================= statuscolumn =============================================
-      opts.statuscolumn = {
-        enabled = false,
-      }
-
-      --============================================= terminal =============================================
-      opts.terminal = {
-        enabled = false,
-      }
-
-      --============================================= gh =============================================
-      opts.gh = {
-        enabled = false,
-      }
-
-      --============================================= dashboard =============================================
-      opts.dashboard = {
-        enabled = false,
-      }
-
-      return opts
     end,
   },
 }

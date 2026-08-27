@@ -29,8 +29,6 @@ brew "xz"
 brew "ansible-lint"
 # Record and share terminal sessions
 brew "asciinema"
-# Improved shell history for zsh, bash, fish and nushell
-brew "atuin"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -67,8 +65,6 @@ brew "fd"
 brew "felinks"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# High-performance, asynchronous messaging library
-brew "zeromq"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Command-line fuzzy finder written in Go
@@ -223,6 +219,8 @@ brew "wget"
 brew "yamllint"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# High-performance, asynchronous messaging library
+brew "zeromq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh

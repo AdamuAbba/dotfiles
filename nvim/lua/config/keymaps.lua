@@ -123,6 +123,7 @@ vim.keymap.set("i", "<CR>", function()
   return "\n"
 end, { expr = true })
 
+
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
 if vim.fn.has("mac") == 1 then

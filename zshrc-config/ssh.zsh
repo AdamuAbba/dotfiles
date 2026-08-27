@@ -5,7 +5,7 @@ gen_ssh_key() {
   fi
 
   local KEY_NAME="id_ed25519_$1"
-  local EMAIL="abbaadamu302@gmail.com"
+  local EMAIL="abbaadamu302@icloud.com"
   local KEY_PATH="$HOME/.ssh/$KEY_NAME"
 
   ssh-keygen -t ed25519 -C "$EMAIL" -f "$KEY_PATH" -N ""

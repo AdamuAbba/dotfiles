@@ -4,8 +4,8 @@ local M = {}
 
 M.groups = {
   -- Core
-  CursorColumn = { bg = theme_colors.gray },
-  CursorLine = { bg = theme_colors.gray },
+  -- CursorColumn = { bg = theme_colors.gray },
+  -- CursorLine = { bg = theme_colors.gray },
   StatusLine = { bg = theme_colors.background },
   Visual = { bg = theme_colors.gray },
   WinBar = { bg = theme_colors.background },
@@ -13,11 +13,12 @@ M.groups = {
   VertSplit = { fg = theme_colors.white, bg = theme_colors.background },
   WinSeparator = { fg = theme_colors.white, bg = theme_colors.background },
   Normal = { bg = theme_colors.background },
+  Directory = { bg = theme_colors.background, bold = true },
   NormalNC = { bg = theme_colors.background },
   SignColumn = { bg = theme_colors.background },
   FoldColumn = { bg = theme_colors.background },
   LineNr = { bg = theme_colors.background },
-  CursorLineNr = { bg = theme_colors.background },
+  -- CursorLineNr = { bg = theme_colors.background },
   EndOfBuffer = { bg = theme_colors.background },
   StatusLineNC = { bg = theme_colors.background },
   FloatFooter = { fg = theme_colors.white, bg = theme_colors.background, bold = true },
@@ -105,16 +106,10 @@ M.groups = {
   RenderMarkdownH4 = { fg = theme_colors.orange, bold = true },
   RenderMarkdownH4Bg = { bg = theme_colors.orange, fg = theme_colors.black, bold = true },
 
-  -- Telescope
-  TelescopePromptBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  TelescopeResultsBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  TelescopePreviewBorder = { fg = theme_colors.white, bg = theme_colors.background },
-  TelescopeSelection = { fg = theme_colors.black, bg = theme_colors.gray, bold = true },
-  TelescopeTitle = { fg = theme_colors.white, bg = theme_colors.background },
-
   -- Lazy
   LazyButton = { bg = theme_colors.background, bold = true },
   LazyButtonActive = { fg = theme_colors.white, bg = theme_colors.gray, bold = true },
+  LazyNormal = { fg = "#989798", bg = theme_colors.background },
 
   -- Pmenu
   Pmenu = { fg = theme_colors.white, bg = theme_colors.background },

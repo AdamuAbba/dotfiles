@@ -1,4 +1,8 @@
-export DISABLE_FZF_KEY_BINDINGS=true
+# export DISABLE_FZF_KEY_BINDINGS=true
+FZF_ALT_C_COMMAND=
+FZF_CTRL_T_COMMAND=
+
+source <(fzf --zsh)
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 

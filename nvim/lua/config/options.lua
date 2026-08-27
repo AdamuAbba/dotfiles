@@ -62,7 +62,6 @@ vim.g.zenbones = {
 vim.filetype.add({
   filename = {
     ["tmux.conf"] = "tmux",
-    [".tmux.conf"] = "tmux",
     ["*ghostty/config"] = "ghostty",
   },
   pattern = {

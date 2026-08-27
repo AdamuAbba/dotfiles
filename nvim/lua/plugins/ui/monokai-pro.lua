@@ -23,13 +23,12 @@ return {
         day_filter = "classic",
         night_filter = "classic",
       },
-      inc_search = "background", -- underline | background
+      inc_search = "background",
       background_clear = {
-        "toggleterm",
         "telescope",
-        "renamer",
-        "notify",
         "which-key",
+        "lazy",
+        "mason"
       },
       disabled_plugins = { "bufferline", "neo-tree" },
       plugins = {

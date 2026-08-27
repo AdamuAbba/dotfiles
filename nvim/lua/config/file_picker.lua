@@ -24,6 +24,54 @@ vim.keymap.set("n", "<leader>st", function()
   vim.cmd("copen 16")
 end, { desc = "Search TODOs" })
 
+--============================================= Word Grep =============================================
+local function grep_to_qflist(pattern, whole_word)
+  if pattern == "" then
+    vim.notify("No word under cursor", vim.log.levels.WARN)
+    return
+  end
+
+  local cmd = { "rg", "--vimgrep", "--hidden", "--glob", "!.git", "--fixed-strings" }
+  if whole_word then
+    table.insert(cmd, "--word-regexp")
+  end
+  table.insert(cmd, "--")
+  table.insert(cmd, pattern)
+
+  local result = vim.system(cmd, { text = true, cwd = vim.uv.cwd() }):wait()
+
+  if result.code > 1 then
+    vim.notify(result.stderr, vim.log.levels.ERROR)
+    return
+  end
+
+  local lines = vim.split(result.stdout or "", "\n", { trimempty = true })
+
+  vim.fn.setqflist({}, "r", {
+    title = "Grep: " .. pattern,
+    lines = lines,
+    efm = "%f:%l:%c:%m",
+  })
+
+  if #lines == 0 then
+    vim.notify("No matches for " .. pattern, vim.log.levels.INFO)
+    vim.cmd("cclose")
+    return
+  end
+
+  vim.cmd("copen 16")
+end
+
+vim.keymap.set("n", "<leader>sw", function()
+  grep_to_qflist(vim.fn.expand("<cword>"), true)
+end, { desc = "Grep word under cursor" })
+
+vim.keymap.set("x", "<leader>sw", function()
+  local region = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() })
+  vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
+  grep_to_qflist(region[1] or "", false)
+end, { desc = "Grep selection" })
+
 --============================================= File Picker =============================================
 local filescache = {}
 local cache_cwd = nil

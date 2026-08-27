@@ -1,6 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
+    enabled = false,
     lazy = false,
     keys = {
       { "<leader>fm", "<cmd>Oil --preview<cr>", desc = "Open Oil" },
@@ -8,7 +9,7 @@ return {
     ---@module 'oil'
     ---@param opts oil.SetupOpts
     opts = function(_, opts)
-      opts.default_file_explorer = true
+      opts.default_file_explorer = false
       opts.columns = {
         -- "icon",
         -- "permissions",

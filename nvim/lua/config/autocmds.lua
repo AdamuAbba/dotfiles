@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf", "markdown", "lazy" },
+  pattern = { "qf", "netrw", "markdown", "lazy" },
   callback = function(args)
     vim.o.cursorcolumn = false
     vim.diagnostic.enable(false, { bufnr = args.buf })

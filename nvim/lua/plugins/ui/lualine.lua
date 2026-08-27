@@ -8,7 +8,6 @@ return {
     event = "VeryLazy",
     opts = function(_, opts)
       local theme_colors = require("config/theme-colors")
-      local icons = LazyVim.config.icons
 
       local separators = {
         left = "",
@@ -120,10 +119,10 @@ return {
           {
             "diagnostics",
             symbols = {
-              error = icons.diagnostics.Error,
-              warn = icons.diagnostics.Warn,
-              info = icons.diagnostics.Info,
-              hint = icons.diagnostics.Hint,
+              error = " ",
+              warn = " ",
+              info = " ",
+              hint = " ",
             },
           },
           {

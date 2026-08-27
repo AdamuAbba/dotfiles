@@ -1,6 +1,6 @@
 return {
   {
     "justinsgithub/wezterm-types",
-    enabled = true,
+    enabled = false,
   },
 }

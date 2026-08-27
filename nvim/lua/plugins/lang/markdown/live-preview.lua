@@ -1,9 +1,6 @@
 return {
   {
     "brianhuster/live-preview.nvim",
-    dependencies = {
-      "nvim-mini/mini.pick",
-    },
     keys = {
       {
         "<leader>cp",
@@ -20,7 +17,7 @@ return {
         browser = "default",
         dynamic_root = false,
         sync_scroll = true,
-        picker = "mini.pick",
+        picker = "vim.ui.select",
         address = "127.0.0.1",
       })
     end,
