@@ -1,5 +1,6 @@
 ---@type vim.lsp.Config
 return {
+  cmd = { "/opt/homebrew/bin/lua-language-server" },
   ---@type lspconfig.settings.lua_ls
   settings = {
     Lua = {

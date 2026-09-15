@@ -11,7 +11,7 @@ return {
   --- @type lspconfig.settings.vtsls
   --- using vtsls types since it's same with tsgo (I think?)
   settings = {
-    typescript = {
+    ["js/ts"] = {
       inlayHints = {
         parameterNames = {
           enabled = "literals",

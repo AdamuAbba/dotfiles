@@ -446,11 +446,11 @@ menuHammerMenuList = {
       },
       {
         cons.cat.action,
-        "",
-        "r",
-        "RN (DevTools)",
+        "lCmd",
+        "p",
+        "Polar",
         {
-          { cons.act.launcher, "React Native DevTools" },
+          { cons.act.launcher, "Polar" },
         },
       },
       {
@@ -460,6 +460,15 @@ menuHammerMenuList = {
         "Settings",
         {
           { cons.act.launcher, "System Preferences" },
+        },
+      },
+      {
+        cons.cat.action,
+        "",
+        "r",
+        "RN (DevTools)",
+        {
+          { cons.act.launcher, "React Native DevTools" },
         },
       },
       {

@@ -12,7 +12,7 @@
   editor = nvim
 [diff]
   colorMoved = default
-  tool = nvimdiff
+	tool = codediff
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [difftool]
@@ -38,3 +38,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[difftool "codediff"]
+	cmd = nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"

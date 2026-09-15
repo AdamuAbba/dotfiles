@@ -33,7 +33,6 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     --============================================= languages extras ==========================================
-    { import = "lazyvim.plugins.extras.lang.typescript.tsgo" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.cmake" },

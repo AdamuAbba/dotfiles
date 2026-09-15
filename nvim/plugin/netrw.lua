@@ -1,7 +1,7 @@
 vim.g.netrw_preview = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
+vim.g.netrw_winsize = 18
 vim.g.netrw_browse_split = 0
 vim.g.netrw_altfile = 1 -- keep the alternate file correct
 local map = vim.keymap.set

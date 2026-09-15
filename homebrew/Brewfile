@@ -33,6 +33,10 @@ brew "asciinema"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Background rust code check
+brew "bacon"
+# Rust diagnostic provider based on Bacon
+brew "bacon-ls"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Text-based UI library
@@ -113,6 +117,8 @@ brew "libffi"
 brew "libsixel"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
 # Package manager for the Lua programming language
@@ -171,8 +177,12 @@ brew "ripgrep-all"
 brew "ruby-build"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
 # Small man page generator
 brew "scdoc"
+# Blazing-fast modern Lua linter
+brew "selene"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -207,6 +217,8 @@ brew "ttfautohint"
 brew "utftex"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Terminal UI for SQL databases
+brew "vi-sql"
 # Pager/text based browser
 brew "w3m"
 # Watch files and take action when they change
@@ -282,17 +294,15 @@ cask "whatsapp"
 cask "zulu@17"
 go "github.com/lightningnetwork/lnd/cmd/lncli"
 go "github.com/lightningnetwork/lnd/cmd/lnd"
-cargo "bdk-cli"
 cargo "buck2", source: "https://github.com/facebook/buck2.git"
 cargo "cargo-binstall"
-cargo "dioxus-cli"
 cargo "ecolog-lsp"
 cargo "mdbook"
 cargo "mdbook-admonish"
 cargo "mdbook-linkcheck"
 cargo "mdbook-snippets"
-cargo "payjoin-cli"
 cargo "wasm-bindgen-cli"
 npm "eas-cli"
 npm "node-gyp"
+npm "typescript"
 npm "yarn"

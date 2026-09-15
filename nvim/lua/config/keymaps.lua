@@ -205,4 +205,3 @@ end
 wk.add({
   { "<leader>fx", make_file_executable, desc = "Make file executable", mode = { "n" } },
 })
-

@@ -1,11 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "figma@claude-plugins-official": true,
-    "caveman@caveman": true,
+    "caveman@caveman": false,
     "lua-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -26,5 +27,7 @@
     }
   },
   "theme": "dark",
-  "model": "opus"
+  "model": "opus",
+  "editorMode": "vim",
+  "vimInsertModeRemaps": { "jj": "<Esc>" }
 }

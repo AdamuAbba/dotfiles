@@ -1,5 +1,6 @@
 ---@type vim.lsp.Config
 return {
+  cmd = { "/opt/homebrew/bin/rust-analyzer" },
   ---@type lspconfig.settings.rust_analyzer
   settings = {
     ["rust-analyzer"] = {
@@ -13,10 +14,23 @@ return {
         termSearch = {
           enable = true,
         },
+        fullFunctionSignatures = {
+          enable = true,
+        },
+        addColonsToModule = true
       },
       inlayHints = {
         renderColons = true,
+        closureCaptureHints = {
+          enable = true,
+        },
+        closureReturnTypeHints = {
+          enable = "always",
+        },
         typeHints = {
+          enable = true,
+        },
+        chainingHints = {
           enable = true,
         },
       },
@@ -39,6 +53,7 @@ return {
         },
       },
       cargo = {
+        features = "all",
         buildScripts = {
           enable = true,
         },

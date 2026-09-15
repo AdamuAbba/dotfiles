@@ -17,6 +17,15 @@ return {
         position = "bottom",
         view_mode = "tree",
       })
+      opts.diff = vim.tbl_deep_extend("force", opts.diff or {}, {
+        gutter_signs = {
+          insert_text = "＋",
+          delete_text = "－",
+          highlight_numbers = true,
+          changed_priority = 100,
+          unchanged_priority = nil,
+        },
+      })
       return opts
     end,
   },

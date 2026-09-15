@@ -149,3 +149,4 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     end
   end,
 })
+

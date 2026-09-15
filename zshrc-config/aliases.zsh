@@ -42,3 +42,6 @@ alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --f
 
 #============================================= zsh =============================================
 alias reload-zsh="omz reload"
+
+#============================================ rust stuff =============================================  
+alias payjoin-cli="$HOME/Documents/rust-payjoin/target/debug/payjoin-cli"
