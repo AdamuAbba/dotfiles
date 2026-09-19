@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     keys = {
       { "<leader>fm", "<cmd>Oil --preview<cr>", desc = "Open Oil" },
@@ -9,13 +9,17 @@ return {
     ---@module 'oil'
     ---@param opts oil.SetupOpts
     opts = function(_, opts)
+      function _G.get_oil_winbar()
+        local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+        local dir = require("oil").get_current_dir(bufnr)
+        if dir then
+          return vim.fn.fnamemodify(dir, ":~")
+        else
+          return vim.api.nvim_buf_get_name(0)
+        end
+      end
       opts.default_file_explorer = false
-      opts.columns = {
-        -- "icon",
-        -- "permissions",
-        -- "size",
-        -- "mtime",
-      }
+      opts.columns = {}
       opts.buf_options = {
         buflisted = false,
         bufhidden = "hide",
@@ -31,6 +35,7 @@ return {
         list = false,
         conceallevel = 3,
         concealcursor = "nvic",
+        winbar = "%!v:lua.get_oil_winbar()",
       }
       opts.delete_to_trash = true
       opts.skip_confirm_for_simple_edits = true
@@ -120,11 +125,10 @@ return {
     end,
     config = function(_, opts)
       local oil = require("oil")
-      oil.setup(opts)
 
+      oil.setup(opts)
       local augroup = vim.api.nvim_create_augroup("OilOpenPreview", { clear = true })
       local is_previewing = false
-      -- Autocommand for trigering preview when entering neovim with `nvim .`
       vim.api.nvim_create_autocmd("User", {
         pattern = "OilEnter",
         group = augroup,

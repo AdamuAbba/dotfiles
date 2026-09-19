@@ -8,12 +8,12 @@ font-family = "Symbols Nerd Font Mono"
 font-size = 17
 adjust-underline-position = 7%
 adjust-cursor-thickness = 150%
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 macos-option-as-alt = true
 mouse-hide-while-typing = true
 maximize = true
 cursor-style-blink = false
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,no-title
 quit-after-last-window-closed = true
 clipboard-paste-protection = false
 link-previews = true
@@ -28,7 +28,7 @@ clipboard-write = allow
 
 #--- window settings
 window-title-font-family = "IosevkaInput"
-window-save-state = never
+window-save-state = always
 window-padding-y = 5
 window-padding-x = 5
 window-padding-balance = true

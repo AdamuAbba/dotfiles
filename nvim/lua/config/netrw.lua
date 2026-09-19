@@ -8,28 +8,28 @@ local map = vim.keymap.set
 
 -- Open the netrw side panel at the current file's directory and put the cursor
 -- on that file, instead of dropping into the cwd root.
-local function toggle_netrw()
-  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "netrw" then
-      vim.cmd("Lexplore")
-      return
-    end
-  end
+-- local function toggle_netrw()
+--   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+--     if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "netrw" then
+--       vim.cmd("Lexplore")
+--       return
+--     end
+--   end
+--
+--   local file = vim.api.nvim_buf_get_name(0)
+--   if file == "" or vim.bo.buftype ~= "" or vim.fn.filereadable(file) == 0 then
+--     vim.cmd("Lexplore")
+--     return
+--   end
+--
+--   vim.cmd("Lexplore " .. vim.fn.fnameescape(vim.fn.fnamemodify(file, ":h")))
+--
+--   local name = vim.fn.escape(vim.fn.fnamemodify(file, ":t"), "\\")
+--   vim.fn.cursor(1, 1)
+--   vim.fn.search([[\V\^\%(| \)\*]] .. name .. [[\$]], "cW")
+-- end
 
-  local file = vim.api.nvim_buf_get_name(0)
-  if file == "" or vim.bo.buftype ~= "" or vim.fn.filereadable(file) == 0 then
-    vim.cmd("Lexplore")
-    return
-  end
-
-  vim.cmd("Lexplore " .. vim.fn.fnameescape(vim.fn.fnamemodify(file, ":h")))
-
-  local name = vim.fn.escape(vim.fn.fnamemodify(file, ":t"), "\\")
-  vim.fn.cursor(1, 1)
-  vim.fn.search([[\V\^\%(| \)\*]] .. name .. [[\$]], "cW")
-end
-
-vim.keymap.set("n", "<leader>fm", toggle_netrw, { silent = true, desc = "Netrw (current file)" })
+-- vim.keymap.set("n", "<leader>fm", toggle_netrw, { silent = true, desc = "Netrw (current file)" })
 
 ------ netrw buffer-local keymaps
 vim.api.nvim_create_autocmd("FileType", {

@@ -24,6 +24,8 @@ source "$HOME/zshrc-config/LSP.zsh"
 source "$HOME/zshrc-config/omz-config.zsh"
 #============================================ Aliases =============================================
 source "$HOME/zshrc-config/aliases.zsh"
+#============================================ ghostty =============================================
+source "$HOME/zshrc-config/ghostty.zsh"
 #============================================ pager(NVIM) =============================================
 source "$HOME/zshrc-config/pager.zsh"
 #============================================ Additional completions for zsh ======================

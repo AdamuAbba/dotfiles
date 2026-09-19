@@ -356,6 +356,15 @@ menuHammerMenuList = {
       },
       {
         cons.cat.action,
+        "shift",
+        "D",
+        "Device Hub",
+        {
+          { cons.act.launcher, "Device Hub" },
+        },
+      },
+      {
+        cons.cat.action,
         "",
         "F",
         "Finder",

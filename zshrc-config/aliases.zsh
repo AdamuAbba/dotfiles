@@ -25,6 +25,7 @@ alias lnd="lnd --configfile=$HOME/Library/Application\ Support/Lnd/lnd.conf"
 
 #============================================= AI =============================================
 alias run-prompt="$HOME/.config/scripts/ai/run-prompt.sh"
+alias ccrm="$SCRIPT_DIR/ai/claude-session-delete.sh"
 
 #============================================= github =============================================
 alias edit-git-global="nvim $HOME/.config/git/config"
@@ -39,6 +40,7 @@ alias ls="ls -p -a --color=always"
 alias rm='trash'
 alias update-brew-pkgs="brew update && brew upgrade -y && brew cleanup --prune=all"
 alias agg="agg -v --theme dracula --font-size 23 --font-family '$THEME_FONT' --fps-cap 60"
+alias sqlite3="sqlite3 -table -readonly -ifexists"
 
 #============================================= zsh =============================================
 alias reload-zsh="omz reload"
