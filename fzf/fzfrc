@@ -1,0 +1,22 @@
+--style=full
+--height=35%
+--ansi
+--no-scrollbar
+--list-border=rounded
+--info=hidden
+--margin=0,49%,0,0
+--preview-border=rounded
+--layout=reverse
+--pointer ''
+--marker ''
+--bind='result:transform-list-label:
+  if [[ -z $FZF_QUERY ]]; then
+    echo " $FZF_MATCH_COUNT items "
+  else
+    echo " $FZF_MATCH_COUNT matches for [$FZF_QUERY] "
+  fi'
+--bind='focus:transform-preview-label:[[ -n {} ]] && printf " [%s] " {}'
+--color=border:#ffffff,label:#ffffff
+--color=preview-border:#ffffff,preview-label:#ffffff
+--color=input-border:#ffffff,input-label:#ffffff
+--color=bg+:#313243,fg+:#ffffff,fg:#ffffff,prompt:#ffffff

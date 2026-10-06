@@ -8,6 +8,7 @@ source "$HOME/zshrc-config/languages/javascript.zsh"
 
 #============================================= plugins ===========================
 plugins=(
+  tmux
   zoxide
   pip
   golang
@@ -29,4 +30,7 @@ plugins=(
   direnv
   gradle
   bundler
+  zsh-autosuggestions
+  # ----- zsh-syntax-highlighting must be last -  
+  zsh-syntax-highlighting
 )

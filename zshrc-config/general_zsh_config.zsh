@@ -35,8 +35,6 @@ stty susp undef
 bindkey -r '^Z'
 
 export PATH="/opt/homebrew/opt/trash/bin:$PATH"
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #============================================= vim-mode selection highlights =============================================
 BG=$(hex_to_256 "$DRACULA_SELECTION")

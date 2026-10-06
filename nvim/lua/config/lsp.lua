@@ -1,14 +1,58 @@
 local wk = require("which-key")
 
-vim.lsp.diagnostics = {
-  virtual_lines = false,
-  virtual_text = true,
+--============================================= diagnostics =============================================
+vim.diagnostic.config({
+  underline = true,
   update_in_insert = false,
+  severity_sort = true,
+  virtual_lines = false,
+  virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
   float = {
     border = "rounded",
     source = true,
   },
-}
+})
+
+--============================================= servers =============================================
+-- Per-server settings live in after/lsp/<server>.lua. This list is what actually starts.
+vim.lsp.config("*", {
+  capabilities = {
+    workspace = { fileOperations = { didRename = true, willRename = true } },
+  },
+})
+
+vim.lsp.enable({
+  "bacon_ls",
+  "bashls",
+  "clangd",
+  "copilot",
+  "cssls",
+  "docker_compose_language_service",
+  "dockerls",
+  "eslint",
+  "ghostty",
+  "graphql",
+  "harper_ls",
+  "html",
+  "jsonls",
+  "just",
+  "kotlin_language_server",
+  "lemminx",
+  "lua_ls",
+  "marksman",
+  "neocmake",
+  "nil_ls",
+  "pyright",
+  "rubocop",
+  "ruby_lsp",
+  "ruff",
+  "rust_analyzer",
+  "statix",
+  "tailwindcss",
+  "tombi",
+  "tsc",
+  "yamlls",
+})
 
 --============================================= lsp on attach =============================================
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -48,6 +92,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       ---- inlayHints keymaps
       if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
+
+      ------ folds from the server when it supports them (replaces LazyVim's lsp folds)
+      if client:supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
+        for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
+          vim.wo[win][0].foldmethod = "expr"
+          vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+        end
       end
 
       ------ rename keymaps
@@ -125,7 +177,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 vim.cmd("Man " .. vim.fn.expand("<cword>"))
               -- elseif filetype == "rust" then
               --   vim.cmd.RustLsp({ "hover", "actions" })
-              elseif vim.fn.expand("%:t") == "Cargo.toml" and require("crates").popup_available() then
+              elseif
+                vim.fn.expand("%:t") == "Cargo.toml"
+                and pcall(require, "crates")
+                and require("crates").popup_available()
+              then
                 require("crates").show_popup()
               else
                 vim.lsp.buf.hover()
@@ -245,7 +301,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         },
         {
           "<leader>cA",
-          LazyVim.lsp.action.source,
+          function()
+            vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
+          end,
           desc = "Source Action",
           mode = { "n", "x" },
         },

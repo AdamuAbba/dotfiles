@@ -12,6 +12,7 @@ env
 env.example
 **/.env
 **/env
+claude/skills/synced/
 
 #============================================ flutter ===========================================
 pubspec.lock

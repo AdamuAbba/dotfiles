@@ -482,15 +482,6 @@ menuHammerMenuList = {
       },
       {
         cons.cat.action,
-        "shift",
-        "s",
-        "Simulator",
-        {
-          { cons.act.launcher, "Simulator" },
-        },
-      },
-      {
-        cons.cat.action,
         "",
         "t",
         "FaceTime",

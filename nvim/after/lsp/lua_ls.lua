@@ -17,6 +17,12 @@ return {
       codeLens = {
         enable = false,
       },
+      completion = {
+        callSnippet = "Replace",
+      },
+      doc = {
+        privateName = { "^_" },
+      },
       workspace = {
         checkThirdParty = false,
       },

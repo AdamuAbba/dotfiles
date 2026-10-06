@@ -17,7 +17,7 @@ return {
         fullFunctionSignatures = {
           enable = true,
         },
-        addColonsToModule = true
+        addColonsToModule = true,
       },
       inlayHints = {
         renderColons = true,

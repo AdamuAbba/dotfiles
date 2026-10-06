@@ -56,12 +56,6 @@
       },
       {
         "language": [
-          "snacks_dashboard"
-        ],
-        "path": "./snacks_dashboard.json"
-      },
-      {
-        "language": [
           "tmux"
         ],
         "path": "./tmux.json"

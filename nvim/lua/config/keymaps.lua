@@ -1,98 +1,14 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-
 local wk = require("which-key")
 local map = vim.keymap.set
 local del = vim.keymap.del
 
---============================================= Lazy defaults =============================================
------- terminal defaults
-del("n", "<leader>fT")
-del("n", "<leader>ft")
-del("n", "<c-/>")
-del("n", "<c-_>")
-
------- Git
-del("n", "<leader>gb")
-del("n", "<leader>gB")
-del("n", "<leader>gl")
-del("n", "<leader>gL")
-del("n", "<leader>gY")
-del("n", "<leader>gf")
-del("i", "<Tab>")
-
------- Snacks Toggle module
-del("n", "<leader>uf")
-del("n", "<leader>uF")
-del("n", "<leader>ug")
-del("n", "<leader>uh")
-del("n", "<leader>uz")
-del("n", "<leader>uZ")
-del("n", "<leader>ui")
-del("n", "<leader>uI")
--- del("n", "<leader>up")
-del("n", "<leader>ur")
-del("n", "<leader>us")
-del("n", "<leader>uS")
-del("n", "<leader>uL")
-del("n", "<leader>ul")
-del("n", "<leader>ud")
-del("n", "<leader>uD")
-del("n", "<leader>uc")
-del("n", "<leader>uA")
-del("n", "<leader>ua")
-del("n", "<leader>uT")
-del("n", "<leader>ub")
-del("n", "<leader>uw")
-
------- quit/sessions
-
------- diagnostics/quickfix
-del("n", "<leader>xl")
-del("n", "<leader>xq")
-del("n", "]e")
-del("n", "[e")
-del("n", "]w")
-del("n", "[w")
-
------- tabs
-del("n", "<leader><tab>l")
-del("n", "<leader><tab>o")
-del("n", "<leader><tab>f")
-del("n", "<leader><tab><tab>")
-del("n", "<leader><tab>]")
-del("n", "<leader><tab>d")
-del("n", "<leader><tab>[")
-
------- keywordprg
-del("n", "<leader>K")
-
------- lazy
-del("n", "<leader>l")
-del("n", "<leader>L")
-
-wk.add({
-  { "<leader>l", group = "Lazy", mode = { "n" } },
-  { "<leader>ll", "<cmd>Lazy<cr>", desc = "Plugin manager" },
-})
-
 ----- window
-del("n", "<leader>-")
-del("n", "<leader>|")
-
 wk.add({
   { "<leader>wb", "<C-W>s", desc = "Split Window Below", remap = true },
   { "<leader>wr", "<C-W>v", desc = "Split Window Right", remap = true },
 })
 
 ---- buffer
-del("n", "[b")
-del("n", "]b")
-del("n", "<leader>bb")
-del("n", "<leader>`")
-del("n", "<leader>bD")
-del("n", "<leader>bd")
-
 wk.add({
   { mode = "n", "<leader>bd", "<cmd>:bd<cr>", desc = "Delete Buffer" },
 })
@@ -106,6 +22,72 @@ wk.add({
     desc = "Quickfix List",
   },
 })
+
+--============================================= Neovim defaults I don't want =============================================
+del("i", "<Tab>") -- vim.snippet jump
+del("n", "[b")
+del("n", "]b")
+
+--============================================= Editing defaults (formerly LazyVim's) =============================================
+------ move by display line on wrapped text, unless given a count
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+------ resize window
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
+------ clear search highlight on escape
+map({ "i", "n", "s" }, "<esc>", function()
+  vim.cmd("noh")
+  return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
+
+------ n always searches forward and N backward; zv opens folds at the match
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+map({ "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+map({ "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+
+------ undo break-points while typing
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
+
+------ keep the selection after indenting
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+
+------ comments
+map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+------ files / windows
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+------ format (conform, falling back to the LSP formatter)
+map({ "n", "x" }, "<leader>cf", function()
+  local ok, conform = pcall(require, "conform")
+  if not ok then
+    vim.notify("conform.nvim isn't installed in this mode yet", vim.log.levels.WARN)
+    return
+  end
+  conform.format({ lsp_format = "fallback" })
+end, { desc = "Format" })
+
+------ diagnostics (Neovim's own ]d/[d don't open the float)
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", function()
+  vim.diagnostic.jump({ count = vim.v.count1, float = true })
+end, { desc = "Next Diagnostic" })
+map("n", "[d", function()
+  vim.diagnostic.jump({ count = -vim.v.count1, float = true })
+end, { desc = "Prev Diagnostic" })
 --============================================= deactivate defaults =============================================
 ------ Deactive Direction keys
 map({ "n", "i", "v" }, "<Up>", "<NOP>", { noremap = true })
@@ -122,7 +104,6 @@ vim.keymap.set("i", "<CR>", function()
   end
   return "\n"
 end, { expr = true })
-
 
 --============================================= Open URL =============================================
 local open_command = "xdg-open"
@@ -165,8 +146,6 @@ wk.add({
 map("n", "yd", function()
   local pos = vim.api.nvim_win_get_cursor(0)
   local line_num = pos[1] - 1 -- 0-indexed
-  ---@diagnostic disable-next-line: unused-local
-  local line_text = vim.api.nvim_buf_get_lines(0, line_num, line_num + 1, false)[1]
   local diagnostics = vim.diagnostic.get(0, { lnum = line_num })
   if #diagnostics == 0 then
     vim.notify("No diagnostic found on this line", vim.log.levels.WARN)

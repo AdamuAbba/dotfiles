@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf", "netrw", "markdown", "lazy" },
+  pattern = { "qf", "netrw", "markdown" },
   callback = function(args)
     vim.o.cursorcolumn = false
     vim.diagnostic.enable(false, { bufnr = args.buf })
@@ -83,8 +83,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   group = vim.api.nvim_create_augroup("templates", { clear = true }),
   desc = "Load template file",
   callback = function(args)
-    if args.event == "BufReadPost" and vim.fn.line2byte(vim.fn.line("$")) > 1 then
-      return -- skip if file is not empty on read
+    if args.event == "BufReadPost" and vim.fn.getfsize(args.file) > 0 then
+      return -- skip files that already have content on disk (one-line files included)
     end
 
     local fpath = args.file
@@ -150,3 +150,107 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   end,
 })
 
+--============================================= Editing defaults (formerly LazyVim's) ====================================
+local function augroup(name)
+  return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
+end
+
+------ reload files changed outside Neovim
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = augroup("checktime"),
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
+------ highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup("highlight_yank"),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+------ equalize splits when the terminal is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup("resize_splits"),
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
+  end,
+})
+
+------ reopen files at the last cursor position
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup("last_loc"),
+  callback = function(event)
+    local buf = event.buf
+    if vim.bo[buf].filetype == "gitcommit" or vim.b[buf].last_loc then
+      return
+    end
+    vim.b[buf].last_loc = true
+    local mark = vim.api.nvim_buf_get_mark(buf, '"')
+    if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+------ close tool windows with q (overrides the global q -> <NOP> in keymaps.lua)
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_q"),
+  pattern = { "checkhealth", "dap-float", "gitsigns-blame", "grug-far", "help", "lspinfo", "qf", "startuptime" },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.schedule(function()
+      vim.keymap.set("n", "q", function()
+        vim.cmd("close")
+        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+      end, { buffer = event.buf, silent = true, desc = "Quit buffer" })
+    end)
+  end,
+})
+
+------ keep man pages out of the buffer list
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("man_unlisted"),
+  pattern = "man",
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+  end,
+})
+
+------ wrap prose (LazyVim also turned spell on here; spell is forced off above)
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("wrap_prose"),
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
+
+------ create missing parent directories on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup("auto_create_dir"),
+  callback = function(event)
+    if event.match:match("^%w%w+:[\\/][\\/]") then
+      return -- skip URLs such as oil:// or scp://
+    end
+    local file = vim.uv.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+------ treesitter folds (config/lsp.lua switches to LSP folds when a server provides them)
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("treesitter_folds"),
+  callback = function(event)
+    if vim.treesitter.get_parser(event.buf, nil, { error = false }) then
+      vim.wo.foldmethod = "expr"
+      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    end
+  end,
+})

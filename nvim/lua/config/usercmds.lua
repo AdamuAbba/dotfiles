@@ -10,10 +10,9 @@ vim.api.nvim_create_user_command("RustRun", function()
   vim.cmd("terminal cargo run")
 end, { nargs = 0 })
 
-
 vim.api.nvim_create_user_command("TypeScript", function()
   vim.cmd("compiler tsc")
   vim.opt.makeprg = "npx tsc"
   vim.cmd("make")
   vim.cmd("copen")
-end, {nargs=0})
+end, { nargs = 0 })

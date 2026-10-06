@@ -54,7 +54,7 @@ spin() {
 }
 
 # run claude in background; use json output so we can extract clean text
-command claude -p "$PROMPT" --model claude-sonnet-5 --output-format json |
+command claude -p "$PROMPT" --model claude-opus-5 --output-format json |
   jq -rj '.result' >"$OUT" &
 spin "generating..." $!
 

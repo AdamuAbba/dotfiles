@@ -1,5 +1,7 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Loaded first by init.lua, so mapleader is set before any keymap exists
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.env.RIPGREP_CONFIG_PATH = vim.fn.expand("~/.ripgreprc")
 
@@ -29,20 +31,8 @@ ui2.enable({
   },
 })
 
-vim.g.bufstate_no_default_maps = 1
---=============================================  LazyVim Options ==============================================
-g.lazyvim_blink_main = true
-g.autoformat = false
-g.ai_cmp = false
-g.trouble_lualine = false
-
---- LSP
+--=============================================  LSP ==============================================
 lsp.document_color.enable(true, nil, { style = "background" })
-g.lazyvim_ts_lsp = "tsgo"
-g.lazyvim_eslint_auto_format = false
-
--- Formatter
-g.lazyvim_prettier_needs_config = true
 
 --=============================================  Globals ==============================================
 g.skip_ts_context_commentstring_module = true
@@ -50,14 +40,6 @@ g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_python3_provider = 0
---zenbones specifics
-vim.g.zenbones = {
-  solid_line_nr = false,
-  transparent_background = false,
-  italic_strings = false,
-  italic_comments = false,
-  solid_float_border = true,
-}
 --============================================= set filetypes =============================================
 vim.filetype.add({
   filename = {
@@ -102,6 +84,40 @@ o.cmdheight = 1
 o.autocomplete = true
 o.complete = ".,o"
 o.completeopt = "noinsert,menu,menuone,popup,fuzzy,noselect"
+
+--============================================= Editing defaults (formerly LazyVim's) ==============================================
+o.expandtab = true
+o.shiftwidth = 2
+o.tabstop = 2
+o.shiftround = true
+o.smartindent = true
+o.wrap = false
+o.linebreak = true
+o.list = true
+o.scrolloff = 4
+o.sidescrolloff = 8
+o.smoothscroll = true
+o.splitbelow = true
+o.splitright = true
+o.splitkeep = "screen"
+o.winminwidth = 5
+o.confirm = true
+o.autowrite = true
+o.undofile = true
+o.undolevels = 10000
+o.timeoutlen = 300
+o.updatetime = 200
+o.virtualedit = "block"
+o.jumpoptions = "view"
+o.ruler = false
+o.pumblend = 10
+o.foldlevel = 99
+o.foldmethod = "indent"
+o.foldtext = ""
+o.formatoptions = "jcroqlnt"
+o.fillchars = "foldopen:,foldclose:,fold: ,foldsep: ,diff:╱,eob: "
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+g.markdown_recommended_style = 0
 
 --============================================= Buffer  Options ==============================================
 opt_local.spell = false

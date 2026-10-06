@@ -36,5 +36,8 @@ return {
     workingDirectory = {
       mode = "auto",
     },
+    workingDirectories = {
+      mode = "auto",
+    },
   },
 }

@@ -108,6 +108,7 @@ local function get_files()
   return filescache
 end
 
+-- selene: allow(global_usage) -- called by name through v:lua
 _G.__cmdline_fuzzy_find = function(arg)
   if arg:match("^%s*$") then
     return {}

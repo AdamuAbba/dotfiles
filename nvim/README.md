@@ -1,48 +1,20 @@
 # Neovim Configuration
 
-This repository contains my personal Neovim configuration.
-
-## Contents
-
-<!-- mtoc start -->
-
-- [Overview](#overview)
-- [Structure](#structure)
-- [Getting Started](#getting-started)
-- [Customization](#customization)
-
-<!-- mtoc end -->
-
-## Overview
-
-This setup leverages **LazyVim** for efficient plugin management and a
-streamlined configuration experience.
+My personal Neovim configuration: plain Neovim 0.12 with the built-in `vim.pack`
+plugin manager. Plugins install on first launch; exact versions are pinned in
+`nvim-pack-lock.json`.
 
 ## Structure
 
-- **`init.lua`**: The entry point of the configuration, responsible for loading
-  LazyVim and other essential settings.
-- **`lua/config/lazy.lua`**: This file is where my LazyVim plugin specifications
-  and their configurations reside.
-- **`lazy-lock.json`**: Managed by LazyVim, this file locks the versions of your
-  plugins.
-- **`lazyvim.json`**: Contains LazyVim-specific settings.
-- **`stylua.toml`**: Configuration for `stylua`, a Lua formatter.
-- **`snippets/`**: Contains various snippets for different file types.
-- **`templates/`**: Holds templates for new files.
+- **`init.lua`**: load order. Options first, then one module per plugin, then
+  shared config.
+- **`lua/<category>/<plugin>.lua`**: installs (`vim.pack.add`) and configures
+  one plugin.
+- **`lua/config/`**: options, keymaps, autocmds, LSP setup and user commands.
+- **`after/lsp/<server>.lua`**: per-server LSP settings. Servers are switched on
+  in `lua/config/lsp.lua`.
+- **`plugin/`**: small hand-written plugins (grep, line moving, sessions).
+- **`snippets/`**, **`templates/`**: snippets and new-file templates.
 
-## Getting Started
-
-LazyVim will automatically install the necessary plugins on the first launch.
-
-## Customization
-
-You can customize this Neovim setup by modifying the Lua files in the `lua`
-directory. For LazyVim-specific customizations, refer to the
-[LazyVim documentation](https://www.lazyvim.org/)।
-
-**Note**: This README is a general overview i quickly generated with AI as a
-placeholder (feeling too lazy to make this robust for now). For detailed
-information on specific plugins or custom configurations, please refer to
-`lua/plugins/<dir>/<plugin-name>.lua` files or the official documentation of the
-respective plugins.
+Language servers, formatters and linters are installed separately, mostly with
+Homebrew.
