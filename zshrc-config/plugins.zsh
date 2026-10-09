@@ -10,6 +10,7 @@ source "$HOME/zshrc-config/languages/javascript.zsh"
 plugins=(
   tmux
   zoxide
+  zsh-claudecode-completion
   pip
   golang
   gpg-agent
@@ -31,6 +32,6 @@ plugins=(
   gradle
   bundler
   zsh-autosuggestions
-  # ----- zsh-syntax-highlighting must be last -  
+  # ----- zsh-syntax-highlighting must be last -
   zsh-syntax-highlighting
 )

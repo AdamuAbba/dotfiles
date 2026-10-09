@@ -1,4 +1,4 @@
 {
-  "diagnostics.disable": []
+  "diagnostics.disable": [],
+  "diagnostics.globals": ["vim", "hs", "spoon"]
 }
-

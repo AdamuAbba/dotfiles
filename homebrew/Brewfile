@@ -6,6 +6,7 @@ tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", tr
 tap "gromgit/brewtils", trusted: true
 tap "homebrew/services"
 tap "jesseduffield/lazydocker", trusted: true
+tap "manaflow-ai/cmux"
 tap "nikitabobko/tap", trusted: true
 tap "noahgorstein/tap", trusted: true
 tap "oven-sh/bun", trusted: true
@@ -336,8 +337,6 @@ cask "pearcleaner"
 cask "postman"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
-# Native desktop client for WhatsApp
-cask "whatsapp"
 # OpenJDK distribution from Azul
 cask "zulu@17"
 go "github.com/lightningnetwork/lnd/cmd/lncli"
